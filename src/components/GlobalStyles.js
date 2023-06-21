@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import PoppinsMedium from "../assets/fonts/poppins/Poppins-Regular.ttf";
-import PoppinsRegular from "../assets/fonts/Poppins-Regular.ttf";
+import PoppinsRegular from "../assets/fonts/poppins/Poppins-Regular.ttf";
 import InterBold from "../assets/fonts/inter/Inter-Bold.ttf";
 import InterMedium from "../assets/fonts/inter/Inter-Medium.ttf";
 import InterRegular from "../assets/fonts/inter/Inter-Regular.ttf";

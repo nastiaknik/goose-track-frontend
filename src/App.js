@@ -1,5 +1,5 @@
 import "modern-normalize";
-import { GlobalStyles } from "./GlobalStyles";
+import { GlobalStyles } from "./components/GlobalStyles";
 import { Suspense, lazy } from "react";
 import { Route, Routes } from "react-router-dom";
 import { RestrictedRoute } from "./components/RestrictedRoute";
