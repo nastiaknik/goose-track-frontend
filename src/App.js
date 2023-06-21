@@ -1,3 +1,5 @@
+import "modern-normalize";
+import { GlobalStyles } from "./GlobalStyles";
 import { Suspense, lazy } from "react";
 import { Route, Routes } from "react-router-dom";
 import { RestrictedRoute } from "./components/RestrictedRoute";
@@ -20,6 +22,7 @@ const StatisticsPage = lazy(() =>
 function App() {
   return (
     <>
+      <GlobalStyles />
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route path="/" element={<MainPage />} />
