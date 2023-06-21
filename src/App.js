@@ -4,8 +4,8 @@ import { Suspense, lazy } from "react";
 import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { ChoosedMonth } from "./components/ChoosedMonth/ChoosedMonth";
-import { ChoosedDay } from "./components/ChoosedDay/ChoosedDay";
+import { ChoosedMonth } from "./components/CalendarPage/ChoosedMonth/ChoosedMonth";
+import { ChoosedDay } from "./components/CalendarPage/ChoosedDay/ChoosedDay";
 
 const MainPage = lazy(() => import("pages/MainPage/MainPage"));
 const LoginPage = lazy(() => import("pages/LoginPage/LoginPage"));
