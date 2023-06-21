@@ -1,4 +1,6 @@
+import PropTypes from "prop-types";
 import { useLocation } from "react-router-dom";
+
 import { RegisterForm } from "../RegisterForm/RegisterForm";
 import { LoginForm } from "../LoginForm/LoginForm";
 import { Container, ContentThumb, StyledLink } from "./AuthNavigate.styled";
@@ -14,4 +16,9 @@ export const AuthNavigate = ({ linkPath, linktext, children }) => {
       </ContentThumb>
     </Container>
   );
+};
+
+AuthNavigate.propTypes = {
+  linkPath: PropTypes.string.isRequired,
+  linktext: PropTypes.string.isRequired,
 };
