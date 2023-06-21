@@ -1,5 +1,11 @@
+import { AuthNavigate } from "components/Auth/AuthNavigate/AuthNavigate";
+
 function RegisterPage() {
-  return <div>RegisterPage</div>;
+  return (
+    <AuthNavigate linkPath={"/login"} linktext={"Log In"}>
+      Register
+    </AuthNavigate>
+  );
 }
 
 export default RegisterPage;
