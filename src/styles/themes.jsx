@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "./globalStyle";
 
@@ -31,24 +32,25 @@ const darkTheme = {
 
 const otherColors = {
   testcolor1: "#ff0000",
-  testcolor2:"#ff00ff"
-}
- 
-// КОЛИ БУДЕ КНОПКА ЗМІНИ КОЛЬОРУ ТО ПРИДУМАЄМ ЯК ПЕРЕДАВАТИ СЮДИ ТРУ АБО ФОЛС
-// поки за потреби міняєму руцями)
+  testcolor2: "#ff00ff",
+};
 
-const theme = (chekboxTheme = true) => {
-  return chekboxTheme
-    ? { ...lightTheme, ...otherColors }
-    : { ...darkTheme, ...otherColors };
-  
-}
-//  console.log(theme())
-export const Theme = ({children}) => {
-    return (
-      <ThemeProvider theme={theme()}>
-        <GlobalStyle />
-        {children}
-      </ThemeProvider>
-    );
-}
+ 
+export const Theme = ({ children }) => {
+  const currentTheme = useSelector((state) => state.theme.currentTheme);
+  const theme = (checkTheme=true) => {
+    return checkTheme
+      ? { ...lightTheme, ...otherColors }
+      : { ...darkTheme, ...otherColors };
+  };
+  console.log(currentTheme)
+  console.log(theme(currentTheme));
+
+
+  return (
+    <ThemeProvider theme={theme(currentTheme)}>
+      <GlobalStyle />
+      {children}
+    </ThemeProvider>
+  );
+};
