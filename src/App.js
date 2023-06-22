@@ -6,10 +6,8 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { ChoosedMonth } from "./components/CalendarPage/ChoosedMonth/ChoosedMonth";
 import { ChoosedDay } from "./components/CalendarPage/ChoosedDay/ChoosedDay";
-import { MainLayout } from "components/MainLayout";
 
 const MainPage = lazy(() => import("pages/MainPage/MainPage"));
-
 const LoginPage = lazy(() => import("pages/LoginPage/LoginPage"));
 const RegisterPage = lazy(() => import("pages/RegisterPage/RegisterPage"));
 const AccountPage = lazy(() => import("pages/AccountPage/AccountPage"));
@@ -23,7 +21,7 @@ function App() {
       <GlobalStyles />
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
-          <Route path="/" element={<MainLayout />} />
+          <Route path="/" element={<MainPage />} />
           <Route path="/layout" element={<MainPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />

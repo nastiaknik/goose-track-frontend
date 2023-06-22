@@ -7,8 +7,11 @@ export const Container = styled.div`
   gap: 16px;
 `;
 export const StyleNavLink = styled(NavLink)`
-  width: 225px;
+  @media (min-width: 325px) {
+  }
+  width: 100%;
   height: 56px;
+  background-color: gray;
   display: flex;
   font-family: "InterRegular";
   justify-content: center;
@@ -22,6 +25,7 @@ export const StyleNavLink = styled(NavLink)`
   &:focus {
     background-color: rgba(227, 243, 255, 1);
     border-radius: 8px;
+    color: rgba(62, 133, 243, 1);
   }
 `;
 export const Span = styled.span`
