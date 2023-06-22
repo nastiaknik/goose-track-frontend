@@ -1,5 +1,6 @@
 import "modern-normalize";
-import { GlobalStyles } from "./components/GlobalStyles";
+import { GlobalStyles } from "./styles/GlobalStyles";
+import { StyleVariables } from "./styles/StyleVariables";
 import { Suspense, lazy } from "react";
 import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
@@ -19,6 +20,7 @@ function App() {
   return (
     <>
       <GlobalStyles />
+      <StyleVariables />
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route path="/" element={<MainPage />} />
