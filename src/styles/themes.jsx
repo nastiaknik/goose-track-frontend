@@ -1,5 +1,6 @@
 import { ThemeProvider } from "styled-components";
-import { GlobalStyle } from "./globalStyle";
+import { GlobalStyles } from "./GlobalStyles";
+import { StyleVariables } from "./StyleVariables";
 
 // *** ТІЛЬКИ ДЛЯ ТИХ ЄЛЕМЕНТІВ ЩО ЗМІНЮЮТЬ КОЛІР ***
 // ПРИКЛАД ЯК ОБРАТИ ПОТРІБНИЙ КОЛІР У КОМПОНЕНТІ
@@ -20,16 +21,17 @@ const lightTheme = {
 //     sideBar: "#13151A", // колір бокової панелі
 //     backgroun: "#171820", // колір сомого нижнього фону
 //     backgroun2: "#21222C", // колір фону
-//     buttonBlue: "#3E85F3", // колір кнопок 
-//     text: "#FFFFFF", // колір тексту 
+//     buttonBlue: "#3E85F3", // колір кнопок
+//     text: "#FFFFFF", // колір тексту
 //   },
 // };
 
-export const Theme = ({children}) => {
-    return (
-        <ThemeProvider theme={lightTheme}>
-            <GlobalStyle/>
-            {children}
-        </ThemeProvider>
-    )
-}
+export const Theme = ({ children }) => {
+  return (
+    <ThemeProvider theme={lightTheme}>
+      <GlobalStyles />
+      <StyleVariables />
+      {children}
+    </ThemeProvider>
+  );
+};
