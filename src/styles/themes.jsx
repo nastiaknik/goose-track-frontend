@@ -33,6 +33,7 @@ const darkTheme = {
 const otherColors = {
   testcolor1: "#ff0000",
   testcolor2: "#ff00ff",
+  accsentBlue: "#3E85F3",
 };
 
  
