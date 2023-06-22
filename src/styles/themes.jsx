@@ -35,7 +35,6 @@ const otherColors = {
   testcolor2: "#ff00ff",
   accsentBlue: "#3E85F3",
 };
-
  
 export const Theme = ({ children }) => {
   const currentTheme = useSelector((state) => state.theme.currentTheme);
@@ -44,9 +43,6 @@ export const Theme = ({ children }) => {
       ? { ...lightTheme, ...otherColors }
       : { ...darkTheme, ...otherColors };
   };
-  console.log(currentTheme)
-  console.log(theme(currentTheme));
-
 
   return (
     <ThemeProvider theme={theme(currentTheme)}>
