@@ -1,10 +1,6 @@
-import { ThemeToggler } from "components/MainLayout/ThemeToggler/ThemeToggler";
 function MainPage() {
-  return (
-    <>
+  return (  
       <div>MainPage</div>
-      <ThemeToggler />
-    </>
   );
 }
 
