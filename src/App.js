@@ -14,9 +14,7 @@ const RegisterPage = lazy(() => import("pages/RegisterPage/RegisterPage"));
 const AccountPage = lazy(() => import("pages/AccountPage/AccountPage"));
 const CalendarPage = lazy(() => import("pages/CalendarPage/CalendarPage"));
 const NotFoundPage = lazy(() => import("pages/NotFoundPage/NotFoundPage"));
-const StatisticsPage = lazy(() =>
-  import("pages/StatisticsPage/StatisticsPage")
-);
+const StatisticsPage = lazy(() => import("pages/StatisticsPage/StatisticsPage"));
 
 function App() {
   return (
