@@ -1,7 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 
 export const StyleVariables = createGlobalStyle`
-root {
+:root {
   /* breakpoints */
   --mobile: 375px;
   --tablet: 768px;

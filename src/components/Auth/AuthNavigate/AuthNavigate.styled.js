@@ -22,7 +22,7 @@ export const Container = styled.section`
   width: 100vw;
   height: 100vh;
 
-  background-color: #dcebf7;
+  background-color: var(--auth-bg-color);
 
   @media screen and (min-width: 1440px) {
     background-image: ${(prop) => setBgImage(prop.currentPage)};
@@ -81,14 +81,14 @@ export const StyledLink = styled(Link)`
   font-weight: 600;
   font-size: 12px;
   line-height: 1.16;
-  color: #3e85f3;
+  color: var(--accent-bg-color);
   text-decoration-line: underline;
   text-shadow: 0px 47px 355px rgba(0, 0, 0, 0.07),
     0px 9.4px 57.6875px rgba(0, 0, 0, 0.035);
 
   :hover,
   :focus {
-    color: #2b78ef;
+    color: var(--hover-btn-bg-color);
   }
 
   @media screen and (min-width: 768px) {
