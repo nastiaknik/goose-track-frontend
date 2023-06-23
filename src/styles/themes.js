@@ -35,6 +35,7 @@ const otherColors = {
   testcolor1: "#ff0000",
   testcolor2: "#ff00ff",
   accsentBlue: "#3E85F3",
+  // gradPink: `linear-gradient(${90}deg, ${"#FFD2DD"}, ${"#FFD2DD99"})`,
 };
 
 export const Theme = ({ children }) => {

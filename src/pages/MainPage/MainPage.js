@@ -8,6 +8,7 @@ function MainPage() {
       <AuthSection />
       <Description />
       <ReviewsSlider />
+
     </>
   );
 }
