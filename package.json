@@ -59,5 +59,8 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/nastiaknik/goose-track-frontend.git/issues"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
   }
 }
