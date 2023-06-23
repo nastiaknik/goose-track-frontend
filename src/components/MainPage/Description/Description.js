@@ -4,6 +4,10 @@ import {
   StyledUl,
   StyledLi,
   StyledH3,
+  StyledNumberSpan,
+  StyledAccentH3,
+  StyledTextP,
+  StyledThumbDiv,
 } from "./Description.styled";
 
 import images from "../images";
@@ -15,16 +19,18 @@ export const Description = () => {
       <HiddenH2>Description</HiddenH2>
       <StyledUl>
         <StyledLi>
-          <StyledH3>
-            <span>1.</span>
-            <span>Calendar</span>View
-          </StyledH3>
-          <p>
-            GooseTrack's Calendar view provides a comprehensive overview of your
-            schedule, displaying all your tasks, events, and appointments in a
-            visually appealing and intuitive layout.
-          </p>
           <div>
+            <StyledH3>
+              <StyledNumberSpan>1.</StyledNumberSpan>
+              <StyledAccentH3>Calendar</StyledAccentH3>View
+            </StyledH3>
+            <StyledTextP>
+              GooseTrack's Calendar view provides a comprehensive overview of
+              your schedule, displaying all your tasks, events, and appointments
+              in a visually appealing and intuitive layout.
+            </StyledTextP>
+          </div>
+          <StyledThumbDiv>
             <picture>
               <source
                 type="image/webp"
@@ -58,19 +64,21 @@ export const Description = () => {
               />
               <img src={`${phone.landingPhone1png}`} alt="Calendar landing" />
             </picture>
-          </div>
+          </StyledThumbDiv>
         </StyledLi>
         <StyledLi>
-          <StyledH3>
-            <span>2.</span>sidebar
-          </StyledH3>
-          <p>
-            GooseTrack offers easy access to your account settings, calendar,
-            and filters. The "My Account" section allows you to manage your
-            profile information and preferences, while the calendar provides a
-            quick and convenient way to view your upcoming events and tasks.
-          </p>
           <div>
+            <StyledH3>
+              <StyledNumberSpan>2.</StyledNumberSpan>sidebar
+            </StyledH3>
+            <StyledTextP>
+              GooseTrack offers easy access to your account settings, calendar,
+              and filters. The "My Account" section allows you to manage your
+              profile information and preferences, while the calendar provides a
+              quick and convenient way to view your upcoming events and tasks.
+            </StyledTextP>
+          </div>
+          <StyledThumbDiv>
             <picture>
               <source
                 type="image/webp"
@@ -104,19 +112,22 @@ export const Description = () => {
               />
               <img src={`${phone.landingPhone2png}`} alt="Calendar landing" />
             </picture>
-          </div>
+          </StyledThumbDiv>
         </StyledLi>
         <StyledLi>
-          <StyledH3>
-            <span>3.</span>
-            <span>all in</span>one
-          </StyledH3>
-          <p>
-            GooseTrack is an all-in-one productivity tool that helps you stay on
-            top of your tasks, events, and deadlines. Say goodbye to scattered
-            to-do lists and hello to streamlined productivity with GooseTrack.
-          </p>
           <div>
+            <StyledH3>
+              <StyledNumberSpan>3.</StyledNumberSpan>
+              <StyledAccentH3>all in</StyledAccentH3>one
+            </StyledH3>
+            <StyledTextP>
+              GooseTrack is an all-in-one productivity tool that helps you stay
+              on top of your tasks, events, and deadlines. Say goodbye to
+              scattered to-do lists and hello to streamlined productivity with
+              GooseTrack.
+            </StyledTextP>
+          </div>
+          <StyledThumbDiv>
             <picture>
               <source
                 type="image/webp"
@@ -150,7 +161,7 @@ export const Description = () => {
               />
               <img src={`${phone.landingPhone3png}`} alt="Calendar landing" />
             </picture>
-          </div>
+          </StyledThumbDiv>
         </StyledLi>
       </StyledUl>
     </Container>
