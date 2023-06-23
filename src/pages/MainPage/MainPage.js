@@ -1,11 +1,14 @@
-import { StatisticsChart } from "components/StatisticsPage/StatisticsChart/StatisticsChart";
+import { AuthSection } from "components/MainPage/AuthSection/AuthSection";
+import { Description } from "components/MainPage/Description/Description";
+import { ReviewsSlider } from "components/MainPage/ReviewsSlider/ReviewsSlider";
+
 function MainPage() {
   return (
     <>
-      <div>MainPage</div>
-      <div>
-        <StatisticsChart />
-      </div>
+      <AuthSection />
+      <Description />
+      <ReviewsSlider />
+
     </>
   );
 }

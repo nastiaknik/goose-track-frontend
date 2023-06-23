@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "./GlobalStyles";
-import { StyleVariables} from "./StyleVariables"
+import { StyleVariables } from "./StyleVariables";
 
 // *** ТІЛЬКИ ДЛЯ ТИХ ЄЛЕМЕНТІВ ЩО ЗМІНЮЮТЬ КОЛІР ***
 // ПРИКЛАД ЯК ОБРАТИ ПОТРІБНИЙ КОЛІР У КОМПОНЕНТІ
@@ -36,10 +36,10 @@ const otherColors = {
   testcolor2: "#ff00ff",
   accsentBlue: "#3E85F3",
 };
- 
+
 export const Theme = ({ children }) => {
   const currentTheme = useSelector((state) => state.theme.currentTheme);
-  const theme = (checkTheme=true) => {
+  const theme = (checkTheme = true) => {
     return checkTheme
       ? { ...lightTheme, ...otherColors }
       : { ...darkTheme, ...otherColors };
@@ -48,7 +48,7 @@ export const Theme = ({ children }) => {
   return (
     <ThemeProvider theme={theme(currentTheme)}>
       <GlobalStyles />
-      <StyleVariables/>
+      <StyleVariables />
       {children}
     </ThemeProvider>
   );
