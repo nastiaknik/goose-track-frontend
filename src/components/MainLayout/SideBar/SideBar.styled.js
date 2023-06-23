@@ -7,20 +7,22 @@ export const Container = styled.div`
   gap: 16px;
 `;
 export const StyleNavLink = styled(NavLink)`
-  @media (min-width: 325px) {
-  }
   width: 100%;
   height: 56px;
-  background-color: gray;
-  display: flex;
-  font-family: "InterRegular";
-  justify-content: center;
-  align-items: center;
-  font-family: inter;
+  font-family: var(--primary-font-family);
   color: rgba(52, 52, 52, 0.5);
+  display: flex;
+  gap: 13px;
   font-size: 16px;
   font-weight: 600;
   line-height: 19px;
+  padding-left: 23px;
+  align-items: center;
+  justify-content: flex-start;
+  @media (min-width: 375px) {
+    width: 225px;
+  }
+
   &:hover,
   &:focus {
     background-color: rgba(227, 243, 255, 1);
@@ -33,4 +35,7 @@ export const Span = styled.span`
   font-family: "InterRegular";
   font-size: 14px;
   color: rgba(52, 52, 52, 0.5);
+  @media (min-width: 768px) {
+    font-size: 16px;
+  }
 `;
