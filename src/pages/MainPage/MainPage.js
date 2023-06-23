@@ -1,6 +1,12 @@
+import { StatisticsChart } from "components/StatisticsPage/StatisticsChart/StatisticsChart";
 function MainPage() {
-  return (  
+  return (
+    <>
       <div>MainPage</div>
+      <div>
+        <StatisticsChart />
+      </div>
+    </>
   );
 }
 
