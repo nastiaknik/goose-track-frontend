@@ -2,12 +2,16 @@ import { useState } from "react";
 import { useFormik } from "formik";
 import { RegisterSchema } from "../../../helpers/formValidationSchemas";
 
+import { useDispatch } from "react-redux";
+import { register } from "redux/auth/operations";
+
 import { LuLogIn } from "react-icons/lu";
 import { FormInput } from "components/FormInput/FormInput";
 import { StyledForm, Title, SubmitBtn } from "./RegisterForm.styled";
 
 export const RegisterForm = () => {
   const [isSubmited, setIsSubmited] = useState(false);
+  const dispatch = useDispatch();
 
   const formik = useFormik({
     initialValues: {
@@ -16,8 +20,10 @@ export const RegisterForm = () => {
       password: "",
     },
     validationSchema: RegisterSchema,
-    onSubmit: (values) => {
-      console.log(values);
+    onSubmit: (values, { resetForm }) => {
+      dispatch(register(values));
+      resetForm();
+      setIsSubmited(false);
     },
   });
 
