@@ -2,6 +2,9 @@ import { useState } from "react";
 import { useFormik } from "formik";
 import { LoginSchema } from "helpers/formValidationSchemas";
 
+import { useDispatch } from "react-redux";
+import { login } from "redux/auth/operations";
+
 import { LuLogIn } from "react-icons/lu";
 import { FormInput } from "components/FormInput/FormInput";
 import {
@@ -12,6 +15,7 @@ import {
 
 export const LoginForm = () => {
   const [isSubmited, setIsSubmited] = useState(false);
+  const dispatch = useDispatch();
 
   const formik = useFormik({
     initialValues: {
@@ -19,8 +23,10 @@ export const LoginForm = () => {
       password: "",
     },
     validationSchema: LoginSchema,
-    onSubmit: (values) => {
-      console.log(values);
+    onSubmit: (values, { resetForm }) => {
+      dispatch(login(values));
+      resetForm();
+      setIsSubmited(false);
     },
   });
 
