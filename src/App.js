@@ -6,7 +6,6 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { ChoosedMonth } from "./components/CalendarPage/ChoosedMonth/ChoosedMonth";
 import { ChoosedDay } from "./components/CalendarPage/ChoosedDay/ChoosedDay";
-import { TaskForm } from "./components/TaskForm/TaskForm";
 
 const MainPage = lazy(() => import("pages/MainPage/MainPage"));
 const LoginPage = lazy(() => import("pages/LoginPage/LoginPage"));
@@ -39,7 +38,6 @@ function App() {
               </Suspense>
             }
           />
-           <Route path="/task" element={<TaskForm />} />
           <Route path="/statistics" element={<StatisticsPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
