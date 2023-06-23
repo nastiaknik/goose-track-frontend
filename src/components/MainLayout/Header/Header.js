@@ -1,48 +1,51 @@
-import React, { useState } from "react";
-import AddFeedbackBtn from "./AddFeedbackBtn";
-import ThemeToggler from "./ThemeToggler";
-import UserInfo from "./UserInfo";
-import AddFeedbackModal from "./AddFeedbackModal";
+import React from "react";
+import { useLocation } from "react-router-dom";
+import AddFeedbackBtn from "../AddFeedbackBtn/AddFeedbackBtn";
+import ThemeToggler from "../ThemeToggler/ThemeToggler";
+import UserInfo from "../UserInfo/UserInfo";
+import {
+  HeaderContainer,
+  ContentContainer,
+  Title,
+  //   MotivationContainer,
+  //   MotivationImage,
+  //   MotivationText,
+} from "./Header.styled";
+
+// 2. На планшетній та мобільній версіях відображається кнопка для відкриття бургер меню.
+//??? 3. На сторінці з календарем дня, при наявності не виконаних завдань в цей день, відображається Гусак з мотиваційним повідомленням, так як показано на макеті.
+//  /calendar/day/:currentDay
 
 export const Header = () => {
-  const [activePage, setActivePage] = useState("User Profile");
-  const hasUncompletedTasks = true; // Замените на логику определения наличия невыполненных задач
-
-  const handlePageChange = (page) => {
-    setActivePage(page);
-  };
-
-  let pageTitle;
-  switch (activePage) {
-    case "My account":
-      pageTitle = "User Profile";
-      break;
-    case "Calendar":
-      pageTitle = "Calendar";
-      break;
-    case "Statistics":
-      pageTitle = "Statistics";
-      break;
-    default:
-      pageTitle = "User Profile";
-  }
+  const location = useLocation();
 
   return (
-    <header>
-      <nav>
-        <button className="burger-menu-button">Burger Menu</button>
-      </nav>
-      <h1>{pageTitle}</h1>
-      {activePage === "Calendar" && hasUncompletedTasks && (
-        <div className="goose-message">Гусак с мотивационным сообщением</div>
-      )}
-      <div className="header-components">
+    <HeaderContainer>
+      <Title>
+        {location.pathname === "/account"
+          ? "User Profile"
+          : location.pathname === "/calendar" ||
+            location.pathname.startsWith("/calendar/day")
+          ? "Calendar"
+          : location.pathname === "/statistics"
+          ? "Statistics"
+          : "User Profile"}
+      </Title>
+
+      {/* цей дів повинен рендеритись якщо {location.pathname.startsWith("/calendar/day")} && є невиконані таскиза цей день (в Todo аба в In progress) */}
+      {/* <MotivationContainer>
+          <MotivationImage  src="" alt="Гусак-мотивак" />
+          <MotivationText>
+            <span>Let go</span>of the past and focus on the present!
+          </MotivationText>
+        </MotivationContainer> */}
+
+      <ContentContainer>
         <AddFeedbackBtn />
         <ThemeToggler />
         <UserInfo />
-        <AddFeedbackModal />
-      </div>
-    </header>
+      </ContentContainer>
+    </HeaderContainer>
   );
 };
 

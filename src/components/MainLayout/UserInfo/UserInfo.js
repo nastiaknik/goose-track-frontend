@@ -1,20 +1,27 @@
-import React, { useState } from "react";
+import React from "react";
+import {
+  UserInfoContainer,
+  Username,
+  Avatar,
+  AvatarImage,
+} from "./UserInfo.styled";
 
-const UserInfo = () => {
-  const [username, setUsername] = useState("John Doe");
-  const [userPhotoUrl, setUserPhotoUrl] = useState("");
-
-  const userPhoto = userPhotoUrl ? (
-    <img src={userPhotoUrl} alt="User Avatar" />
-  ) : (
-    <div className="avatar">{username.charAt(0).toUpperCase()}</div>
-  );
-
+const UserInfo = ({
+  username = "Бандеро Гусак",
+  userPhotoUrl = "",
+  // "https://valerias.neocities.org/img/gus.svg",
+}) => {
   return (
-    <div className="user-info">
-      {userPhoto}
-      <span>{username}</span>
-    </div>
+    <UserInfoContainer>
+      <Username>{username}</Username>
+      <Avatar>
+        {userPhotoUrl ? (
+          <AvatarImage src={userPhotoUrl} alt="User Avatar" />
+        ) : (
+          <div className="avatar">{username.charAt(0).toUpperCase()}</div>
+        )}
+      </Avatar>
+    </UserInfoContainer>
   );
 };
 
