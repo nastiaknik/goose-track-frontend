@@ -1,49 +1,60 @@
 import { useState } from "react";
-import { LuLogIn, LuEye, LuEyeOff } from "react-icons/lu";
-import {
-  StyledForm,
-  Title,
-  StyledLabel,
-  StyledLabelPassword,
-  StyledInput,
-  SubmitBtn,
-} from "./RegisterForm.styled";
+import { useFormik } from "formik";
+import { RegisterSchema } from "../../../helpers/formValidationSchemas";
+
+import { LuLogIn } from "react-icons/lu";
+import { FormInput } from "components/FormInput/FormInput";
+import { StyledForm, Title, SubmitBtn } from "./RegisterForm.styled";
 
 export const RegisterForm = () => {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isSubmited, setIsSubmited] = useState(false);
 
-  const handleClick = () => {
-    setIsVisible((prevState) => !prevState);
+  const formik = useFormik({
+    initialValues: {
+      username: "",
+      email: "",
+      password: "",
+    },
+    validationSchema: RegisterSchema,
+    onSubmit: (values) => {
+      console.log(values);
+    },
+  });
+
+  const handleValidation = (e) => {
+    e.preventDefault();
+    setIsSubmited(true);
+    formik.handleSubmit();
   };
 
   return (
     <StyledForm>
       <Title>Sign Up</Title>
-      <StyledLabel>
-        Name
-        <StyledInput
-          type="text"
-          name="username"
-          placeholder="Enter your name"
-        />
-      </StyledLabel>
-      <StyledLabel>
-        Email
-        <StyledInput type="email" name="email" placeholder="Enter email" />
-      </StyledLabel>
-      <StyledLabelPassword>
-        Password
-        <StyledInput
-          type={isVisible ? "text" : "password"}
-          name="password"
-          placeholder="Enter password"
-        />
-        <button type="button" onClick={handleClick}>
-          {" "}
-          {isVisible ? <LuEye /> : <LuEyeOff />}
-        </button>
-      </StyledLabelPassword>
-      <SubmitBtn type="submit">
+      <FormInput
+        text="Name"
+        name="username"
+        type="text"
+        placeholder="Enter your name"
+        isSubmited={isSubmited}
+        formik={formik}
+      />
+      <FormInput
+        text="Email"
+        name="email"
+        type="email"
+        placeholder="Enter your email"
+        isSubmited={isSubmited}
+        formik={formik}
+      />
+      <FormInput
+        text="Password"
+        name="password"
+        type="password"
+        placeholder="Enter your password"
+        isSubmited={isSubmited}
+        formik={formik}
+      />
+      <SubmitBtn type="submit" onClick={handleValidation}>
         Sign Up <LuLogIn />
       </SubmitBtn>
     </StyledForm>
