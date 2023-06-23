@@ -31,9 +31,9 @@ const darkTheme = {
 
 const otherColors = {
   testcolor1: "#ff0000",
-  testcolor2:"#ff00ff"
-}
- 
+  testcolor2: "#ff00ff",
+};
+
 // КОЛИ БУДЕ КНОПКА ЗМІНИ КОЛЬОРУ ТО ПРИДУМАЄМ ЯК ПЕРЕДАВАТИ СЮДИ ТРУ АБО ФОЛС
 // поки за потреби міняєму руцями)
 
@@ -41,14 +41,13 @@ const theme = (chekboxTheme = true) => {
   return chekboxTheme
     ? { ...lightTheme, ...otherColors }
     : { ...darkTheme, ...otherColors };
-  
-}
+};
 //  console.log(theme())
-export const Theme = ({children}) => {
-    return (
-      <ThemeProvider theme={theme()}>
-        <GlobalStyle />
-        {children}
-      </ThemeProvider>
-    );
-}
+export const Theme = ({ children }) => {
+  return (
+    <ThemeProvider theme={theme()}>
+      <GlobalStyle />
+      {children}
+    </ThemeProvider>
+  );
+};
