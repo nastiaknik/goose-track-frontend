@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/623.b5457fd4.chunk.js","mappings":"sJAIA,UAJA,WACE,OAAOA,EAAAA,EAAAA,KAAA,OAAAC,SAAK,kBACd,C","sources":["pages/StatisticsPage/StatisticsPage.js"],"sourcesContent":["function StatisticsPage() {\n  return <div>StatisticsPage</div>;\n}\n\nexport default StatisticsPage;\n"],"names":["_jsx","children"],"sourceRoot":""}
