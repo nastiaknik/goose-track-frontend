@@ -1,8 +1,8 @@
 import logo1x from "assets/images/logo_goose-min.png";
 import logo2x from "assets/images/logo_goose@2x-min.png";
 
-import { StyledLogoImg, DivBurger, Span, Div, SpanSecond, GrCloseBtn } from "./BurgerMenu.styled";
-export const BurgerMenu = () => {
+import { StyledLogoImg, ButtonClose, DivBurger, Span, Div, SpanSecond, GrCloseBtn } from "./BurgerMenu.styled";
+export const BurgerMenu = ({ isOpen, toggleMenu }) => {
   return (
     <DivBurger>
       <Div>
@@ -11,7 +11,9 @@ export const BurgerMenu = () => {
           G<SpanSecond>oo</SpanSecond>seTrack
         </Span>
       </Div>
-      <GrCloseBtn />
+      <ButtonClose onClick={toggleMenu}>
+        <GrCloseBtn />
+      </ButtonClose>
     </DivBurger>
   );
 };
