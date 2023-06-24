@@ -3,6 +3,7 @@ import { Description } from "components/MainPage/Description/Description";
 import { ReviewsSlider } from "components/MainPage/ReviewsSlider/ReviewsSlider";
 
 import { Modal } from "components/SharedComponents/Modal/Modal";
+import { AddTaskBtn } from "components/CalendarPage/AddTaskBtn/AddTaskBtn";
 import { useState } from "react";
 
 function MainPage() {
@@ -22,9 +23,11 @@ function MainPage() {
       <Description />
       <ReviewsSlider />
 
-      <button type="button" onClick={toggleModal}>
+      {/* <button type="button" onClick={toggleModal}>
         Open modal
-      </button>
+      </button> */}
+      <AddTaskBtn onClick={toggleModal} />
+
       {isModalOpen && <Modal onClose={toggleModal} />}
     </>
   );
