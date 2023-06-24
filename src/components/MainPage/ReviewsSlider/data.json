@@ -1,0 +1,32 @@
+[
+  {
+    "url": "https://picsum.photos/200/300?random=1",
+    "name": "User1",
+    "rating": 4,
+    "text": "GooseTrack is impressive, the calendar view and filter options make it easy to stay organized and focused. Highly recommended."
+  },
+  {
+    "url": "https://picsum.photos/200/300?random=2",
+    "name": "User2",
+    "rating": 5,
+    "text": "GooseTrack is incredibly helpful, the sidebar with account management, calendar, and filter options make navigation seamless. Great for staying organized."
+  },
+  {
+    "url": "https://picsum.photos/200/300?random=3",
+    "name": "User3",
+    "rating": 3,
+    "text": "Review text Review text Review text Review text Review text Review text Review text"
+  },
+  {
+    "url": "https://picsum.photos/200/300?random=4",
+    "name": "User4",
+    "rating": 2,
+    "text": "Review text Review text Review text Review text Review text Review text Review text"
+  },
+  {
+    "url": "https://picsum.photos/200/300?random=5",
+    "name": "User5",
+    "rating": 1,
+    "text": "Review text Review text Review text Review text Review text Review text Review text"
+  }
+]
