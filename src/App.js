@@ -36,7 +36,15 @@ function App() {
       <StyleVariables />
       <Suspense fallback={<GusLoader />}>
         <Routes>
-          <Route path="/" element={<MainPage />} />
+          <Route
+            path="/"
+            element={
+              <RestrictedRoute
+                redirectTo="/calendar"
+                component={<MainPage />}
+              />
+            }
+          />
           <Route
             path="/login"
             element={

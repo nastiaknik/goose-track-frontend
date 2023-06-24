@@ -4,6 +4,7 @@ import {
   selectIsRefreshingUser,
   selectIsLoggedIn,
 } from "../../redux/auth/selectrors";
+import { MainLayout } from "components/MainLayout/MainLayout";
 
 export const PrivateRoute = ({
   component: Component,
@@ -13,5 +14,9 @@ export const PrivateRoute = ({
   const isRefreshing = useSelector(selectIsRefreshingUser);
   const shouldRedirect = !isLoggedIn && !isRefreshing;
 
-  return shouldRedirect ? <Navigate to={redirectTo} /> : Component;
+  return shouldRedirect ? (
+    <Navigate to={redirectTo} />
+  ) : (
+    <MainLayout>{Component}</MainLayout>
+  );
 };
