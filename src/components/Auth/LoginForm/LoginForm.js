@@ -1,40 +1,61 @@
 import { useState } from "react";
-import { LuLogIn, LuEye, LuEyeOff } from "react-icons/lu";
+import { useFormik } from "formik";
+import { LoginSchema } from "helpers/formValidationSchemas";
+
+import { useDispatch } from "react-redux";
+import { login } from "redux/auth/operations";
+
+import { LuLogIn } from "react-icons/lu";
+import { FormInput } from "components/FormInput/FormInput";
 import {
   StyledLoginForm,
   LoginTitle,
-  LoginLabel,
-  LoginPasswordLabel,
-  LoginInput,
   LoginSubmitBtn,
 } from "./LoginForm.styled";
 
 export const LoginForm = () => {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isSubmited, setIsSubmited] = useState(false);
+  const dispatch = useDispatch();
 
-  const handleClick = () => {
-    setIsVisible((prevState) => !prevState);
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    validationSchema: LoginSchema,
+    onSubmit: (values, { resetForm }) => {
+      dispatch(login(values));
+      resetForm();
+      setIsSubmited(false);
+    },
+  });
+
+  const handleValidation = (e) => {
+    e.preventDefault();
+    setIsSubmited(true);
+    formik.handleSubmit();
   };
 
   return (
     <StyledLoginForm>
       <LoginTitle>Log In</LoginTitle>
-      <LoginLabel>
-        Email
-        <LoginInput type="email" name="email" placeholder="Enter email" />
-      </LoginLabel>
-      <LoginPasswordLabel>
-        Password
-        <LoginInput
-          type={isVisible ? "text" : "password"}
-          name="password"
-          placeholder="Enter password"
-        />
-        <button type="button" onClick={handleClick}>
-          {isVisible ? <LuEye /> : <LuEyeOff />}
-        </button>
-      </LoginPasswordLabel>
-      <LoginSubmitBtn type="submit">
+      <FormInput
+        text="Email"
+        name="email"
+        type="email"
+        placeholder="Enter your email"
+        isSubmited={isSubmited}
+        formik={formik}
+      />
+      <FormInput
+        text="Password"
+        name="password"
+        type="password"
+        placeholder="Enter your password"
+        isSubmited={isSubmited}
+        formik={formik}
+      />
+      <LoginSubmitBtn type="submit" onClick={handleValidation}>
         Log In <LuLogIn />
       </LoginSubmitBtn>
     </StyledLoginForm>

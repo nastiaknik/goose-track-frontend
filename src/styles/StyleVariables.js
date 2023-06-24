@@ -2,16 +2,6 @@ import { createGlobalStyle } from "styled-components";
 
 export const StyleVariables = createGlobalStyle`
 :root {
-  /* breakpoints */
-  --mobile: 375px;
-  --tablet: 768px;
-  --desktop: 1440px;
-
-  /* fonts */
-  --primary-font: 'Inter', sans-serif;
-  --secondary-font: 'Poppins', sans-serif;
-  --logo-font: 'Coolvetica', sans-serif;
-
   /* background colors */
   --primary-bg-color: #ffffff;
   --secondary-bg-color: #f7f6f9;
@@ -119,8 +109,8 @@ export const StyleVariables = createGlobalStyle`
   --border-calendar-dark-theme: 1px solid rgba(255, 255, 255, 0.15);
   --border-add-task-btn-dark-theme: 1px solid transparent;
 
-  --avatar-fill-color: #ffffff2e;
-  --avatar-bg-color: #171820;
+  --avatar-fill-color-dark-theme: #ffffff2e;
+  --avatar-bg-color-dark-theme: #171820;
 
   --active-toggle-bg-color-dark-theme: #3e85f3; 
   --inactive-toggle-bg-color-dark-theme: #e3f3ff; 

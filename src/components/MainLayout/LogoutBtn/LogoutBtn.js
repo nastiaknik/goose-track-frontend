@@ -1,10 +1,22 @@
-import { Button } from "./LogoutBtn.styled";
+import { useDispatch } from "react-redux";
+import { logout } from "redux/auth/operations";
 
-const LogOut = () => {
+import { Button } from "./LogoutBtn.styled";
+import { FiLogOut } from "react-icons/fi";
+
+export const LogOut = () => {
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    dispatch(logout());
+  };
+
   return (
     <>
-      <Button>LogOut</Button>
+      <Button type="button" onClick={handleLogout}>
+        Log Out
+        <FiLogOut />
+      </Button>
     </>
   );
 };
-export { LogOut };
