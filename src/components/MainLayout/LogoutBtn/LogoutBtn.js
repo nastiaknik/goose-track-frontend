@@ -1,12 +1,11 @@
-import { Button } from "./LogoutBtn.styled";
-import { FiLogOut } from "react-icons/fi";
+import { Button, IconLogOut } from "./LogoutBtn.styled";
 
 export const LogOut = () => {
   return (
     <>
       <Button>
         Log Out
-        <FiLogOut />
+        <IconLogOut />
       </Button>
     </>
   );
