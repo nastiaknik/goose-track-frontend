@@ -11,10 +11,14 @@ export const Button = styled.button`
   text-align: center;
   display: inline-block;
   color: ${({ theme }) => theme.variableColors.text};
-  font-family: var(--primary-font);
+  font-family: "InterSemiBold";
   font-size: 14px;
   font-weight: 600;
   min-width: 299px;
+
+  @media screen and (min-width: 768px) {
+    min-width: 304px;
+    padding: 18px 102px;
 `;
 
 export const PlusSvg = styled(BiPlus)`
