@@ -7,10 +7,11 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { ChoosedMonth } from "./components/CalendarPage/ChoosedMonth/ChoosedMonth";
 import { ChoosedDay } from "./components/CalendarPage/ChoosedDay/ChoosedDay";
-
 import { useDispatch } from "react-redux";
 import { refresh } from "redux/auth/operations";
 import { GusLoader } from "components/Loader/GusLoader";
+import { RestrictedRoute } from "components/SharedComponents/RestrictedRoute";
+import { PrivateRoute } from "components/SharedComponents/PrivateRoute";
 
 const MainPage = lazy(() => import("pages/MainPage/MainPage"));
 const LoginPage = lazy(() => import("pages/LoginPage/LoginPage"));
@@ -36,22 +37,48 @@ function App() {
       <Suspense fallback={<GusLoader />}>
         <Routes>
           <Route path="/" element={<MainPage />} />
-
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/calendar" element={<CalendarPage />}>
+          <Route
+            path="/login"
+            element={
+              <RestrictedRoute
+                redirectTo="/calendar"
+                component={<LoginPage />}
+              />
+            }
+          />
+          <Route
+            path="/register"
+            element={
+              <RestrictedRoute
+                redirectTo="/calendar"
+                component={<RegisterPage />}
+              />
+            }
+          />
+          <Route
+            path="/calendar"
+            element={
+              <PrivateRoute redirectTo="/login" component={<CalendarPage />} />
+            }
+          >
             <Route path="month/:currentDate" element={<ChoosedMonth />} />
             <Route path="day/:currentDay" element={<ChoosedDay />} />
           </Route>
           <Route
             path="/account"
             element={
-              <Suspense fallback={<GusLoader />}>
-                <AccountPage />
-              </Suspense>
+              <PrivateRoute redirectTo="/login" component={<AccountPage />} />
             }
           />
-          <Route path="/statistics" element={<StatisticsPage />} />
+          <Route
+            path="/statistics"
+            element={
+              <PrivateRoute
+                redirectTo="/login"
+                component={<StatisticsPage />}
+              />
+            }
+          />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>
