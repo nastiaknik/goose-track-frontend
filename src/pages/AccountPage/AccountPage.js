@@ -1,5 +1,11 @@
+import { UserForm } from "components/AccountPage/UserForm/UserForm";
+
 function AccountPage() {
-  return <div>AccountPage</div>;
+  return (
+    <>
+      <UserForm />
+    </>
+  );
 }
 
 export default AccountPage;
