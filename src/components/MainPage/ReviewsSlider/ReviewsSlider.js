@@ -1,5 +1,11 @@
 import { useCallback, useRef } from "react";
 
+// Redux
+import { selectReviews } from "redux/reviews/selectors";
+import { useSelector, useDispatch } from "react-redux";
+import { getReviews } from "redux/reviews/operations";
+import { useEffect } from "react";
+
 // Swiper
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Autoplay } from "swiper";
@@ -10,6 +16,7 @@ import "swiper/css/virtual";
 // Icons
 import { ReactComponent as LeftArrow } from "assets/images/landing/icons/leftArrow.svg";
 import { ReactComponent as RightArrow } from "assets/images/landing/icons/rightArrow.svg";
+import { LuUser } from "react-icons/lu";
 
 // Styles
 import {
@@ -26,7 +33,6 @@ import {
   StyledSwiperContainer,
 } from "./ReviewsSlider.styled";
 
-import data from "./data.json";
 // Rating
 import { Rating, ThinRoundedStar } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
@@ -38,7 +44,14 @@ const customStyles = {
 };
 
 export const ReviewsSlider = () => {
-  const slides = data;
+  // Reviews
+  const dispatch = useDispatch();
+  const reviews = useSelector(selectReviews);
+
+  useEffect(() => {
+    dispatch(getReviews());
+    window.scrollTo(0, 16000);
+  }, [dispatch]);
 
   // Swiper
   const swiperRef = useRef(null);
@@ -73,29 +86,31 @@ export const ReviewsSlider = () => {
             },
           }}
         >
-          {slides.map((slide, index) => (
-            <SwiperSlide key={index} virtualIndex={index}>
-              <CardContainer>
-                <TopCardContent>
-                  <ImgThumbCard>
-                    <img src={slide.url} alt={`${slide.name} avatar`} />
-                  </ImgThumbCard>
-                  <NameCardContentContainer>
-                    <NameCard>{slide.name}</NameCard>
-                    <div>
-                      <Rating
-                        value={slide.rating}
-                        style={{ maxWidth: 110, gap: 5 }}
-                        itemStyles={customStyles}
-                        readOnly
-                      />
-                    </div>
-                  </NameCardContentContainer>
-                </TopCardContent>
-                <CardText>{slide.text}</CardText>
-              </CardContainer>
-            </SwiperSlide>
-          ))}
+          {reviews.length !== 0 &&
+            reviews.map((slide, index) => (
+              <SwiperSlide key={slide.owner._id} virtualIndex={index}>
+                <CardContainer>
+                  <TopCardContent>
+                    <ImgThumbCard>
+                      <LuUser size={18} color="rgba(62, 133, 243, .18)" />
+                      {/* <img src={"#"} alt={`${slide.owner.username} avatar`} /> */}
+                    </ImgThumbCard>
+                    <NameCardContentContainer>
+                      <NameCard>{slide.owner.username}</NameCard>
+                      <div>
+                        <Rating
+                          value={slide.rating}
+                          style={{ maxWidth: 110, gap: 5 }}
+                          itemStyles={customStyles}
+                          readOnly
+                        />
+                      </div>
+                    </NameCardContentContainer>
+                  </TopCardContent>
+                  <CardText>{slide.comment}</CardText>
+                </CardContainer>
+              </SwiperSlide>
+            ))}
           <StyledNavigationContainer className="swiper-nav-btns">
             <StyledBtnContainer onClick={prevSlide}>
               <LeftArrow />
