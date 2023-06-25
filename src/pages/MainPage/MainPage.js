@@ -2,6 +2,8 @@ import { AuthSection } from "components/MainPage/AuthSection/AuthSection";
 import { Description } from "components/MainPage/Description/Description";
 import { ReviewsSlider } from "components/MainPage/ReviewsSlider/ReviewsSlider";
 
+import { TaskToolbar } from "components/CalendarPage/TaskToolbar/TaskToolbar";
+
 function MainPage() {
   return (
     <>
@@ -9,6 +11,7 @@ function MainPage() {
       <Description />
       <ReviewsSlider />
 
+      <TaskToolbar />
     </>
   );
 }
