@@ -50,7 +50,6 @@ export const ReviewsSlider = () => {
 
   useEffect(() => {
     dispatch(getReviews());
-    window.scrollTo(0, 16000);
   }, [dispatch]);
 
   // Swiper
