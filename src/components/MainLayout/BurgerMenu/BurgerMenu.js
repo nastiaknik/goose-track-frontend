@@ -2,7 +2,7 @@ import logo1x from "assets/images/logo_goose-min.png";
 import logo2x from "assets/images/logo_goose@2x-min.png";
 
 import { StyledLogoImg, ButtonClose, DivBurger, Span, Div, SpanSecond, GrCloseBtn } from "./BurgerMenu.styled";
-export const BurgerMenu = ({ isOpen, toggleMenu }) => {
+export const BurgerMenu = ({ toggleMenu }) => {
   return (
     <DivBurger>
       <Div>
