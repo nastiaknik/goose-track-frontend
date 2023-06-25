@@ -4,6 +4,7 @@ import { ColumnsTasksList } from './ColumnTaskList';
 import { Container } from './TaskColumn.styled';
 import { TaskModal } from '../../TaskModal/TaskModal';
 import {Modal} from "../../SharedComponents/Modal/Modal";
+import { AddTaskBtn } from '../AddTaskBtn/AddTaskBtn';
 
 export const TasksColumn = ({ status = "In progress" }) => {
   const [showModal, setShowModal] = useState(false);
@@ -21,14 +22,16 @@ export const TasksColumn = ({ status = "In progress" }) => {
       <Container>
         <ColumnHeadBar title={status?.name} handleShowModal={handleShowModal} />
         <ColumnsTasksList status={status} />
+        <AddTaskBtn onClick={handleShowModal} />
       </Container>
       {showModal &&
-    <Modal>
-          <TaskModal
-            handleCloseModal={handleCloseModal}
-            status={status?.name}
-          /></Modal>
-        }
-    </>
-  );
+      <Modal onClose={handleCloseModal}> 
+      <TaskModal 
+        handleCloseModal={handleCloseModal} 
+        status={status.name} 
+      /> 
+  </Modal> 
+    } 
+</> 
+); 
 };
