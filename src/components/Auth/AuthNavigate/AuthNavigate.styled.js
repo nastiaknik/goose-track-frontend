@@ -4,6 +4,7 @@ import * as signupGooseImg from "../../../assets/images/register/signup_goose-mi
 import * as bigSignupGooseImg from "../../../assets/images/register/signup_goose@2x-min.png";
 import * as loginGooseImg from "../../../assets/images/login/login_goose-min.png";
 import * as bigLoginGooseImg from "../../../assets/images/login/login_goose@2x-min.png";
+import * as arrowSvg from "../../../assets/images/svg/arrow-right.svg";
 
 const setBgImage = (currentPage) => {
   return currentPage === "/register"
@@ -96,5 +97,54 @@ export const StyledLink = styled(Link)`
 
     font-size: 18px;
     line-height: 1.33;
+  }
+`;
+
+export const StyledDetails = styled.details`
+  margin-top: 10px;
+  font-family: var(--primary-font);
+  font-weight: 600;
+  color: var(--accent-bg-color);
+  cursor: pointer;
+
+  > summary {
+    list-style: none;
+
+    font-size: 16px;
+    text-decoration-line: underline;
+
+    ::-webkit-details-marker {
+      display: none;
+    }
+  }
+`;
+
+export const StyledOption = styled.li`
+  position: relative;
+  font-size: 14px;
+
+  ::before {
+    position: absolute;
+    top: 0;
+    left: 90px;
+
+    content: " ";
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+    background-image: url(${arrowSvg.default});
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    opacity: 0;
+    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  :hover,
+  :focus {
+    ::before {
+      opacity: 1;
+    }
   }
 `;
