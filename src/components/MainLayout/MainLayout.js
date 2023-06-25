@@ -1,4 +1,4 @@
-import Header from "./Header/Header";
+// import Header from "./Header/Header";
 import { DivHeader, DivLayout } from "./MainLayout.styled";
 import { SideBar } from "./SideBar/SideBar";
 import { useState } from "react";
@@ -11,13 +11,9 @@ export const MainLayout = ({ children }) => {
   };
   return (
     <DivLayout>
-      {isOpen && (
-        <div>
-          <SideBar toggleMenu={toggleMenu} />
-        </div>
-      )}
+      {isOpen && <SideBar toggleMenu={toggleMenu} />}
       <DivHeader>
-        <Header />
+        {/* <Header /> */}
         {children}
       </DivHeader>
     </DivLayout>
