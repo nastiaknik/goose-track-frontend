@@ -1,7 +1,5 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import AddFeedbackBtn from "../AddFeedbackBtn/AddFeedbackBtn";
-import ThemeToggler from "../ThemeToggler/ThemeToggler";
 import UserInfo from "../UserInfo/UserInfo";
 import {
   HeaderContainer,
@@ -11,6 +9,8 @@ import {
   //   MotivationImage,
   //   MotivationText,
 } from "./Header.styled";
+import { ThemeToggler } from "../ThemeToggler/ThemeToggler";
+import AddFeedbackBtn from "../AddFeedbackBtn/AddFeedbackBtn";
 
 // 2. На планшетній та мобільній версіях відображається кнопка для відкриття бургер меню.
 //??? 3. На сторінці з календарем дня, при наявності не виконаних завдань в цей день, відображається Гусак з мотиваційним повідомленням, так як показано на макеті.
@@ -24,14 +24,12 @@ export const Header = () => {
       <Title>
         {location.pathname === "/account"
           ? "User Profile"
-          : location.pathname === "/calendar" ||
-            location.pathname.startsWith("/calendar/day")
+          : location.pathname === "/calendar" || location.pathname.startsWith("/calendar/day")
           ? "Calendar"
           : location.pathname === "/statistics"
           ? "Statistics"
           : "User Profile"}
       </Title>
-
       {/* цей дів повинен рендеритись якщо {location.pathname.startsWith("/calendar/day")} && є невиконані таскиза цей день (в Todo аба в In progress) */}
       {/* <MotivationContainer>
           <MotivationImage  src="" alt="Гусак-мотивак" />

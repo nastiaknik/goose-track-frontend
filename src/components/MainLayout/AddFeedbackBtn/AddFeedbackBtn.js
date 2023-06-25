@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import AddFeedbackModal from "./AddFeedbackModal";
+// import AddFeedbackModal from "./AddFeedbackModal";
 import { FeedbackButton } from "./AddFeedbackBtn.styled";
 
 const AddFeedbackBtn = () => {
@@ -16,7 +16,7 @@ const AddFeedbackBtn = () => {
   return (
     <div>
       <FeedbackButton onClick={handleButtonClick}>Feedback</FeedbackButton>
-      {isModalOpen && <AddFeedbackModal onCloseModal={handleCloseModal} />}
+      {/* {isModalOpen && <AddFeedbackModal onCloseModal={handleCloseModal} />} */}
     </div>
   );
 };

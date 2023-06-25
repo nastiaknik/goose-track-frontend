@@ -1,22 +1,16 @@
-import { Container, StyleNavLink, Statistscs, Span, Calendar, User } from "./SideBar.styled";
-export const Navigation = () => {
+import { BurgerMenu } from "../BurgerMenu/BurgerMenu";
+import { LogOut } from "../LogoutBtn/LogoutBtn";
+import { Navigation } from "./Navigation/Navigation";
+import { DivNavBurger, DivSideBar } from "./SideBar.styled";
+
+export const SideBar = ({ toggleMenu }) => {
   return (
-    <nav>
-      <Container>
-        <Span>User Panel</Span>
-        <StyleNavLink to="/account">
-          <User />
-          My account
-        </StyleNavLink>
-        <StyleNavLink to="/calendar">
-          <Calendar />
-          Calendar
-        </StyleNavLink>
-        <StyleNavLink to="/statistics">
-          <Statistscs />
-          Statistscs
-        </StyleNavLink>
-      </Container>
-    </nav>
+    <DivSideBar>
+      <DivNavBurger>
+        <BurgerMenu toggleMenu={toggleMenu} />
+        <Navigation />
+      </DivNavBurger>
+      <LogOut />
+    </DivSideBar>
   );
 };
