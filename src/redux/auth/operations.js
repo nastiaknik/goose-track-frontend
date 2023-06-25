@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 axios.defaults.baseURL = "https://goose-track-backend-i4mr.onrender.com";
 
@@ -43,8 +44,10 @@ export const register = createAsyncThunk(
   async (userdata, { rejectWithValue }) => {
     try {
       const response = await axios.post("api/auth/register", userdata);
+      toast.success("Registration success");
       return response.data;
     } catch (e) {
+      toast.error(e.response.data.message);
       return rejectWithValue(e.message);
     }
   }
@@ -56,8 +59,10 @@ export const login = createAsyncThunk(
     try {
       const response = await axios.post("api/auth/login", userdata);
       token.set(response.data.accessToken);
+      toast.success("Login success");
       return response.data;
     } catch (e) {
+      toast.error(e.response.data.message);
       return rejectWithValue(e.message);
     }
   }
@@ -99,6 +104,7 @@ export const logout = createAsyncThunk(
       await $api.post("api/auth/logout");
       token.unset();
     } catch (e) {
+      toast.error(e.response.data.message);
       return rejectWithValue(e.message);
     }
   }

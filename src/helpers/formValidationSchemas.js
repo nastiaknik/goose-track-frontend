@@ -28,3 +28,13 @@ export const LoginSchema = object().shape({
     .min(6, "Password is too short")
     .required("Password is required"),
 });
+
+export const EmailSchema = object().shape({
+  email: string()
+    .email("Invalid email")
+    .matches(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/, {
+      message: "Invalid email",
+      excludeEmptyString: true,
+    })
+    .required("Email is required"),
+});
