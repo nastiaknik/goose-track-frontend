@@ -20,6 +20,9 @@ export const DivSideBar = styled.div`
   @media (min-width: 768px) {
     width: 289px;
   }
+  @media (min-width: 1024px) {
+    position: relative;
+  }
 `;
 export const DivNavBurger = styled.div`
   display: flex;

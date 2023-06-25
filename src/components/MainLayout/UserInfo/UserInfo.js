@@ -1,26 +1,23 @@
 import React from "react";
-import {
-  UserInfoContainer,
-  Username,
-  Avatar,
-  AvatarImage,
-} from "./UserInfo.styled";
+import { UserInfoContainer, Username, Avatar, AvatarImage } from "./UserInfo.styled";
+import { ThemeToggler } from "../ThemeToggler/ThemeToggler";
 
 const UserInfo = ({
-  username = "Бандеро Гусак",
-  userPhotoUrl = "",
+  username = "User",
+  userPhotoUrl = null,
   // "https://valerias.neocities.org/img/gus.svg",
 }) => {
   return (
     <UserInfoContainer>
+      <ThemeToggler />
+
       <Username>{username}</Username>
-      <Avatar>
-        {userPhotoUrl ? (
-          <AvatarImage src={userPhotoUrl} alt="User Avatar" />
-        ) : (
-          <div className="avatar">{username.charAt(0).toUpperCase()}</div>
-        )}
-      </Avatar>
+
+      {userPhotoUrl ? (
+        <AvatarImage src={userPhotoUrl} alt="User Avatar" />
+      ) : (
+        <Avatar>{username.charAt(0).toUpperCase()}</Avatar>
+      )}
     </UserInfoContainer>
   );
 };

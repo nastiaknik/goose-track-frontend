@@ -3,22 +3,26 @@ import styled from "styled-components";
 export const UserInfoContainer = styled.div`
   display: flex;
   align-items: center;
+  gap: 10px;
+  @media (min-width: 768px) {
+    gap: 14px;
+  }
 `;
 
-export const Username = styled.div`
-  margin-right: 14px;
+export const Username = styled.span`
   color: #343434;
-  font-family: Inter;
-  font-size: 18px;
+  font-family: InterBold;
+  font-size: 14px;
   font-weight: 700;
   line-height: 18px;
-  letter-spacing: 0em;
-  text-align: left;
+  @media (min-width: 768px) {
+    font-size: 18px;
+  }
 `;
 
 export const Avatar = styled.div`
-  width: 44px;
-  height: 44px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   background-color: #3e85f3;
   color: #ffffff;
@@ -27,10 +31,18 @@ export const Avatar = styled.div`
   justify-content: center;
   font-weight: bold;
   font-size: 20px;
+  @media (min-width: 768px) {
+    width: 44px;
+    height: 44px;
+  }
 `;
 
 export const AvatarImage = styled.img`
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
+  @media (min-width: 768px) {
+    width: 44px;
+    height: 44px;
+  }
 `;
