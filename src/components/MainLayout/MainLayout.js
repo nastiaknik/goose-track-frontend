@@ -1,24 +1,25 @@
-import { LogOut } from "./LogoutBtn/LogoutBtn";
-import { Navigation } from "./SideBar/SideBar";
-import { Container } from "./MainLayout.styled";
-import { BurgerMenu } from "./BurgerMenu/BurgerMenu";
+import Header from "./Header/Header";
+import { DivHeader, DivLayout } from "./MainLayout.styled";
+import { SideBar } from "./SideBar/SideBar";
 import { useState } from "react";
 
-export const MainLayout = () => {
+export const MainLayout = ({ children }) => {
   const [isOpen, setIsOpen] = useState(true);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
   return (
-    isOpen && (
-      <div>
-        <BurgerMenu toggleMenu={toggleMenu} isOpen={isOpen} />
-        <Container>
-          <Navigation />
-          <LogOut />
-        </Container>
-      </div>
-    )
+    <DivLayout>
+      {isOpen && (
+        <div>
+          <SideBar toggleMenu={toggleMenu} />
+        </div>
+      )}
+      <DivHeader>
+        <Header />
+        {children}
+      </DivHeader>
+    </DivLayout>
   );
 };

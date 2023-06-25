@@ -27,6 +27,7 @@ export const Button = styled.button`
   &:hover,
   &:focus {
     background-color: rgba(43, 120, 239, 1);
+    transition: background-color var(--transition-duration) ease;
   }
   @media (min-width: 768px) {
     height: 56px;
