@@ -1,4 +1,4 @@
-import { TASK_PRIORITY } from './Priority';
+import { TASK_PRIORITY } from '../../../constants/Priority';
 import styled from 'styled-components';
 
 export const Container = styled.div`
