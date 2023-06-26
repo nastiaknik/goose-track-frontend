@@ -28,7 +28,7 @@ export const TasksColumn = ({ status = "In progress" }) => {
       <Modal onClose={handleCloseModal}> 
       <TaskModal 
         handleCloseModal={handleCloseModal} 
-        status={status.name} 
+        status={status?.name} 
       /> 
   </Modal> 
     } 

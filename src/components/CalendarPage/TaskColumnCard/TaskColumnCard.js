@@ -1,4 +1,4 @@
-import { Container,TaskPriority,TaskAvatarWrapper,TaskTitle,Wrapper,} from './TaskColumnCard.styled';
+import { Container,TaskPriority,TaskTitle,Wrapper,} from './TaskColumnCard.styled';
   import { TASK_PRIORITY } from '../../../constants/Priority';
   
   export const TaskColumnCard = ({
