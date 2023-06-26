@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import { PeriodPaginator } from "../PeriodPaginator/PeriodPaginator";
+// import { PeriodPaginator } from "../PeriodPaginator/PeriodPaginator";
 import { PeriodTypeSelect } from "../PeriodTypeSelect/PeriodTypeSelect";
 import { Wrapper } from "./CalendarToolbar.styled";
 
