@@ -29,12 +29,12 @@ const CalendarPage = () => {
 
   return (
     <Container>
-      <CalendarHead />
       <CalendarToolbar
         isActivePage={isActivePage}
         doActiveMonth={doActiveMonth}
         doActiveDate={doActiveDate}
       />
+      <CalendarHead />
       <Suspense fallback={null}>
         <Outlet />
       </Suspense>
