@@ -11,6 +11,10 @@ const lightTheme = {
     primaryBackground: "#F7F6F9", // колір сомого нижнього фону
     secondaryBackground: "#FFFFFF", // колір фону
     buttonBlue: "#E3F3FF", // колір кнопок
+    activeButtonBlue: "#CAE8FF", // колір активних кнопок
+    activeTextColorBtn: "#3E85F3", // колір тексту активних кнопок
+    textColorButton: "#3E85F3", // колір тексту кнопок
+    hoverTextBtn: "#FFFFFF", // колір тексту при ховері
     text: "#111111", // колір тексту
   },
 };
@@ -21,6 +25,10 @@ const darkTheme = {
     primaryBackground: "#171820", // колір сомого нижнього фону
     secondaryBackground: "#21222C", // колір фону
     buttonBlue: "#3E85F3", // колір кнопок
+    activeButtonBlue: "#21222C", // колір активних кнопок
+    activeTextColorBtn: "#FFFFFF", // колір тексту активних кнопок
+    textColorButton: "#FFFFFF", // колір тексту кнопок
+    hoverTextBtn: "#CAE8FF", // колір тексту при ховері
     text: "#FFFFFF", // колір тексту
   },
 };
@@ -31,9 +39,9 @@ const darkTheme = {
 
 const otherColors = {
   testcolor1: "#ff0000",
-  testcolor2:"#ff00ff"
-}
- 
+  testcolor2: "#ff00ff",
+};
+
 // КОЛИ БУДЕ КНОПКА ЗМІНИ КОЛЬОРУ ТО ПРИДУМАЄМ ЯК ПЕРЕДАВАТИ СЮДИ ТРУ АБО ФОЛС
 // поки за потреби міняєму руцями)
 
@@ -41,14 +49,13 @@ const theme = (chekboxTheme = true) => {
   return chekboxTheme
     ? { ...lightTheme, ...otherColors }
     : { ...darkTheme, ...otherColors };
-  
-}
+};
 //  console.log(theme())
-export const Theme = ({children}) => {
-    return (
-      <ThemeProvider theme={theme()}>
-        <GlobalStyle />
-        {children}
-      </ThemeProvider>
-    );
-}
+export const Theme = ({ children }) => {
+  return (
+    <ThemeProvider theme={theme()}>
+      <GlobalStyle />
+      {children}
+    </ThemeProvider>
+  );
+};
