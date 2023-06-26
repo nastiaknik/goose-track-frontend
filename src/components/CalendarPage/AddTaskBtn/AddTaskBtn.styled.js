@@ -19,6 +19,7 @@ export const Button = styled.button`
   @media screen and (min-width: 768px) {
     min-width: 304px;
     padding: 18px 102px;
+  }
 `;
 
 export const PlusSvg = styled(BiPlus)`
