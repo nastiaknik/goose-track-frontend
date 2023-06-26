@@ -2,11 +2,12 @@ import { useState } from 'react';
 import { ColumnHeadBar } from '../ColumnHeadBar/ColumnHeadBar';
 import { ColumnsTasksList } from './ColumnTaskList';
 import { Container } from './TaskColumn.styled';
-import { TaskModal } from '../../TaskModal/TaskModal';
-import {Modal} from "../../SharedComponents/Modal/Modal";
+import { TaskModal } from 'components/SharedComponents/TaskModal/TaskModal';
+import { Modal } from 'components/SharedComponents/Modal/Modal';
 import { AddTaskBtn } from '../AddTaskBtn/AddTaskBtn';
 
-export const TasksColumn = ({ status = "In progress" }) => {
+
+export const TasksColumn = ({ status = "To do" }) => {
   const [showModal, setShowModal] = useState(false);
 
   const handleShowModal = () => {
@@ -28,7 +29,7 @@ export const TasksColumn = ({ status = "In progress" }) => {
       <Modal onClose={handleCloseModal}> 
       <TaskModal 
         handleCloseModal={handleCloseModal} 
-        status={status?.name} 
+        status={status.name} 
       /> 
   </Modal> 
     } 
