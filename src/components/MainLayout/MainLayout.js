@@ -4,20 +4,18 @@ import { SideBar } from "./SideBar/SideBar";
 import { useState } from "react";
 
 export const MainLayout = ({ children }) => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const isMobile = window.matchMedia("(max-width: 1023px)").matches;
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
   return (
     <DivLayout>
-      {isOpen && (
-        <div>
-          <SideBar toggleMenu={toggleMenu} />
-        </div>
-      )}
+      {(isOpen || !isMobile) && <SideBar toggleMenu={toggleMenu} />}
       <DivHeader>
-        <Header />
+        <Header toggleMenu={toggleMenu} />
         {children}
       </DivHeader>
     </DivLayout>

@@ -1,5 +1,5 @@
 import { TasksColumn } from '../TaskColumn/TaskColumn';
-import { TASK_STATUS } from './Status';
+import { TASK_STATUS } from '../../../constants/Status';
 import { ListContainer } from './TaskColumnList.styled';
 import { useMedia, useWindowSize } from 'react-use';
 
