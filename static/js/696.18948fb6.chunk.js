@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkgoose_track_frontend=self.webpackChunkgoose_track_frontend||[]).push([[696],{6696:function(e,n,r){r.r(n);var t=r(3329);n.default=function(){return(0,t.jsx)("calendarHead",{})}}}]);
+//# sourceMappingURL=696.18948fb6.chunk.js.map
