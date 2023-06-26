@@ -14,6 +14,7 @@ const lightTheme = {
     secondaryBackground: "#FFFFFF", // колір фону
     buttonBlue: "#E3F3FF", // колір кнопок
     text: "#111111", // колір тексту
+    borderColor: "#E3F3FF"
   },
 };
 
@@ -24,6 +25,7 @@ const darkTheme = {
     secondaryBackground: "#21222C", // колір фону
     buttonBlue: "#3E85F3", // колір кнопок
     text: "#FFFFFF", // колір тексту
+    borderColor: "#e3f3ff26",
   },
 };
 
