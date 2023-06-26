@@ -15,7 +15,7 @@ import { VscEdit } from 'react-icons/vsc';
 export const TaskForm = ({ onClose, ...props }) => {
 //   const dispatch = useDispatch();
   const editMode = props?.editMode || false;
-  const status = props?.status || 'To do';
+  // const status = props?.status || 'To do';
   
 
   const initialValues = {
