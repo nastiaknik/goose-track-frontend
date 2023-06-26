@@ -74,6 +74,8 @@ export const TopCardContent = styled.div`
 
 export const ImgThumbCard = styled.div`
   border-radius: 50%;
+  border: 2px solid #3e85f3;
+
   overflow: hidden;
 
   width: 50px;
@@ -99,6 +101,7 @@ export const NameCard = styled.h4`
   font-weight: 700;
   font-size: 18px;
   line-height: 18px;
+  text-transform: capitalize;
 `;
 
 export const CardText = styled.p`

@@ -8,7 +8,7 @@ export const SideBar = ({ toggleMenu }) => {
     <DivSideBar>
       <DivNavBurger>
         <BurgerMenu toggleMenu={toggleMenu} />
-        <Navigation />
+        <Navigation toggleMenu={toggleMenu} />
       </DivNavBurger>
       <LogOut />
     </DivSideBar>

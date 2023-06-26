@@ -1,46 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import UserInfo from "../UserInfo/UserInfo";
-import {
-  HeaderContainer,
-  ContentContainer,
-  Title,
-  //   MotivationContainer,
-  //   MotivationImage,
-  //   MotivationText,
-} from "./Header.styled";
-import { ThemeToggler } from "../ThemeToggler/ThemeToggler";
 import AddFeedbackBtn from "../AddFeedbackBtn/AddFeedbackBtn";
 
-// 2. На планшетній та мобільній версіях відображається кнопка для відкриття бургер меню.
-//??? 3. На сторінці з календарем дня, при наявності не виконаних завдань в цей день, відображається Гусак з мотиваційним повідомленням, так як показано на макеті.
-//  /calendar/day/:currentDay
+import { HeaderContainer, ContentContainer, Title, HamburgerMenu } from "./Header.styled";
+import { CalendarTitle } from "./CalendarTitle/CalendarTitle";
+import UserInfo from "../UserInfo/UserInfo";
 
-export const Header = () => {
+export const Header = ({ toggleMenu }) => {
   const location = useLocation();
+  const [page, setPage] = useState("");
+
+  useEffect(() => {
+    const calendarPage = location.pathname === "/calendar" || location.pathname.startsWith("/calendar/day");
+    if (location.pathname === "/account") {
+      setPage("User Menu");
+      return;
+    } else if (calendarPage) {
+      setPage("Calendar");
+      return;
+    } else if (location.pathname === "/statistics") {
+      setPage("Statistics");
+      return;
+    }
+  }, [setPage, page, location.pathname]);
 
   return (
     <HeaderContainer>
-      <Title>
-        {location.pathname === "/account"
-          ? "User Profile"
-          : location.pathname === "/calendar" || location.pathname.startsWith("/calendar/day")
-          ? "Calendar"
-          : location.pathname === "/statistics"
-          ? "Statistics"
-          : "User Profile"}
-      </Title>
-      {/* цей дів повинен рендеритись якщо {location.pathname.startsWith("/calendar/day")} && є невиконані таскиза цей день (в Todo аба в In progress) */}
-      {/* <MotivationContainer>
-          <MotivationImage  src="" alt="Гусак-мотивак" />
-          <MotivationText>
-            <span>Let go</span>of the past and focus on the present!
-          </MotivationText>
-        </MotivationContainer> */}
-
+      <HamburgerMenu onClick={toggleMenu} />
+      {page === "Calendar" ? <CalendarTitle /> : <Title>{page}</Title>}
       <ContentContainer>
         <AddFeedbackBtn />
-        <ThemeToggler />
         <UserInfo />
       </ContentContainer>
     </HeaderContainer>
