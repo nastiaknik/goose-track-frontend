@@ -1,7 +1,13 @@
-import { CalendarHead } from "../../components/CalendarPage/CalendarTable/CalendarTable";
+import { CalendarTable } from "../../components/CalendarPage/CalendarTable/CalendarTable";
+import { CalendarTableItem } from "../../components/CalendarPage/CalendarTable/CalendarTableItem";
 
 function CalendarPage() {
-  return <CalendarHead />;
+  return (
+    <>
+      <CalendarTable />
+      <CalendarTableItem />
+    </>
+  );
 }
 
 export default CalendarPage;
