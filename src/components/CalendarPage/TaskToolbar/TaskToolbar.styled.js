@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { BsArrowRightCircle } from "react-icons/bs";
-import { RxPencil1 } from "react-icons/rx";
+import { BiPencil } from "react-icons/bi";
 import { CiTrash } from "react-icons/ci";
 
 export const Wrapper = styled.ul`
@@ -25,7 +25,7 @@ export const ArrowSvg = styled(BsArrowRightCircle)`
   }
 `;
 
-export const PencilSvg = styled(RxPencil1)`
+export const PencilSvg = styled(BiPencil)`
   width: 14px;
   height: 14px;
   fill: ${({ theme }) => theme.variableColors.text};
