@@ -6,7 +6,7 @@ import { useState } from "react";
 export const MainLayout = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const isMobile = window.matchMedia("(max-width: 768px)").matches;
+  const isMobile = window.matchMedia("(max-width: 1023px)").matches;
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
