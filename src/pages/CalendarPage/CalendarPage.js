@@ -1,3 +1,4 @@
+function CalendarPage() {
 import { format } from "date-fns";
 import { useEffect, useState, Suspense } from "react";
 import { useNavigate, Outlet, useLocation } from "react-router-dom";

@@ -1,3 +1,9 @@
+import { Wrapper } from "./ChoosedDay.styled";
+import { TasksColumnsList } from "../TaskColumnBoard/TaskColumnList";
 export const ChoosedDay = () => {
-  return <div>ChoosedDay</div>;
+  return (
+    <Wrapper>
+ <TasksColumnsList />
+    </Wrapper>
+  );
 };
