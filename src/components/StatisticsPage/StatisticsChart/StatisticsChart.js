@@ -104,7 +104,7 @@ export const StatisticsChart = () => {
           {/* <Legend /> */}
           <Bar
             dataKey="ByDay"
-            fill="#FFD2DD"
+            fill="var(--gradient-chart-by-day)"
             radius={[0, 0, 10, 10]}
             // maxBarSize={27}
           >
