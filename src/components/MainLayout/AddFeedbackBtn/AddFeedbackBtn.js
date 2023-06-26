@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import AddFeedbackModal from "./AddFeedbackModal";
+import { useState } from "react";
+import { AddFeedbackModal } from "../AddFeedbackModal/AddFeedbackModal";
 import { FeedbackButton } from "./AddFeedbackBtn.styled";
 
 const AddFeedbackBtn = () => {

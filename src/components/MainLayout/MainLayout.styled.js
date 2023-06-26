@@ -9,4 +9,17 @@ export const Container = styled.div`
   justify-content: space-between;
   flex-direction: column;
   height: 100vh;
+  @media (min-width: 768px) {
+    margin-left: 32px;
+  }
+`;
+
+export const DivLayout = styled.div`
+  display: flex;
+
+  flex-direction: row;
+`;
+
+export const DivHeader = styled.div`
+  width: 100%;
 `;

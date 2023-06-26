@@ -1,5 +1,7 @@
+import { CalendarHead } from "../../components/CalendarPage/CalendarTable/CalendarTable";
+
 function CalendarPage() {
-  return <div>CalendarPage</div>;
+  return <CalendarHead />;
 }
 
 export default CalendarPage;
