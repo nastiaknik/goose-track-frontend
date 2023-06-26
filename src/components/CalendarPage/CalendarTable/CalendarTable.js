@@ -21,7 +21,7 @@ import {
   ListDays,
   OtherMonthStyledLink,
   CurrentMonthStyledLink,
-} from "./CalendarHead.styled";
+} from "./CalendarTable.styled";
 
 export const CalendarHead = ({ currentDay }) => {
   const isWide = useMedia("(min-width: 768px)");
@@ -47,11 +47,11 @@ export const CalendarHead = ({ currentDay }) => {
       <List>
         {daysInWeek?.map((day, idx) => {
           const Week = currentDay ? Days : Month;
-          const StyledLink = !isSameMonth(new Date(day), new Date(currentMonth))
+          const StyledLink = !isSameMonth(new Date(day), new Date())
             ? OtherMonthStyledLink
             : CurrentMonthStyledLink;
 
-          const DateOfWeek = isSameMonth(new Date(day), new Date(currentMonth))
+          const DateOfWeek = isSameMonth(new Date(day), new Date())
             ? DateOfWeekCurrentMonth
             : DateOfWeekOtherMonth;
 
