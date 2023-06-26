@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
+import { /* useDispatch, */ useSelector } from "react-redux";
 import {
   Calendar,
   AllDays,
@@ -13,28 +13,24 @@ import {
   startOfWeek,
   endOfWeek,
   isSameMonth,
-  parseISO,
   eachDayOfInterval,
   formatISO,
   getWeeksInMonth,
 } from "date-fns";
 import {
-  selectCurrentMonth,
-  selectIsLoading,
-  selectTasks,
-} from "../../../redux/calendar.selectors";
+  selectMonthTasks,
+  selectIsLoadingTasks,
+} from "../../../redux/tasks/selectors";
 import { CalendarTableItem } from "./CalendarTableItem";
 import { GusLoader } from "../../Loader/GusLoader";
-import { addIndexCurrentDay } from "../../../redux/calendar.slice";
-import { addChoosedDay } from "../../../redux/calendar.slice";
 import { useMedia, useWindowSize } from "react-use";
 
 export const CalendarTable = () => {
-  const dispath = useDispatch();
-  const currentMonth = parseISO(useSelector(selectCurrentMonth));
-  const isLoading = useSelector(selectIsLoading);
+  /* const dispath = useDispatch(); */
+  const currentMonth = new Date();
+  const isLoading = useSelector(selectIsLoadingTasks);
 
-  const tasksOfMonth = useSelector(selectTasks);
+  const tasksOfMonth = useSelector(selectMonthTasks);
 
   const monthStart = startOfMonth(currentMonth);
   const monthEnd = endOfMonth(currentMonth);
@@ -93,16 +89,6 @@ export const CalendarTable = () => {
                 to={`/calendar/day/${formatISO(new Date(day), {
                   representation: "date",
                 })}`}
-                onClick={() => {
-                  dispath(addIndexCurrentDay(Number(format(day, "d")) - 1));
-                  dispath(
-                    addChoosedDay(
-                      formatISO(new Date(day), {
-                        representation: "date",
-                      })
-                    )
-                  );
-                }}
               >
                 {isSameMonth(day, currentMonth) && (
                   <CalendarTableItem

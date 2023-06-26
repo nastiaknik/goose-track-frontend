@@ -5,7 +5,6 @@ import CalendarToolbar from "../../components/CalendarPage/CalendarToolbar/Calen
 import { useDate } from "hooks/useDate";
 import { Container } from "./CalendarPage.styled";
 import { CalendarTable } from "../../components/CalendarPage/CalendarTable/CalendarTable";
-import { CalendarTableItem } from "../../components/CalendarPage/CalendarTable/CalendarTableItem";
 
 const CalendarPage = () => {
   const [isActivePage, setIsActivePage] = useState(false);
@@ -30,13 +29,12 @@ const CalendarPage = () => {
 
   return (
     <Container>
-      <CalendarTable />
-      <CalendarTableItem />
       <CalendarToolbar
         isActivePage={isActivePage}
         doActiveMonth={doActiveMonth}
         doActiveDate={doActiveDate}
       />
+      <CalendarTable />
       <Suspense fallback={null}>
         <Outlet />
       </Suspense>
