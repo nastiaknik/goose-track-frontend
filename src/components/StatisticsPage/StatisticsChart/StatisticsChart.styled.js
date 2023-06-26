@@ -1,5 +1,22 @@
 import styled from "styled-components";
 export const Container = styled.section`
+  width: 1087px;
+  height: 752px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 32px;
+  border-radius: 16px;
+  background-color: ${({ theme }) => theme.variableColors.secondaryBackground};
+  padding-left:113px;
+  padding-right: 114px;
+  padding-top: 142px;
+  padding-bottom:104px;
+`;
+export const ChartHead = styled.div`
+display:flex;
+justify-content: space-between;
+`;
+export const Chart = styled.div`
   width: 860px;
   height: 440px;
   display: flex;
@@ -13,7 +30,7 @@ export const Container = styled.section`
 
   padding: 10px;
   border-radius: 29px;
-  border: 0.8px solid rgba(227, 243, 255, 0.15);
+  border: 0.8px solid ${({ theme }) => theme.variableColors.borderColor};
   margin-left: 40px;
 
   @media screen and (min-width: 768px) {

@@ -20,6 +20,7 @@ const lightTheme = {
     textColorButton: "#3E85F3", // колір тексту кнопок
     hoverTextBtn: "#FFFFFF", // колір тексту при ховері
     text: "#111111", // колір тексту
+    borderColor: "#E3F3FF", // колір рамки графіка
     arrowColor: "#343434", // колір стрілки
     activeArrowColor: "#dce3e5", // колір активної стрілки
   },
@@ -38,6 +39,7 @@ const darkTheme = {
     textColorButton: "#FFFFFF", // колір тексту кнопок
     hoverTextBtn: "#CAE8FF", // колір тексту при ховері
     text: "#FFFFFF", // колір тексту
+    borderColor: "#e3f3ff26", // колір рамки графіка
     arrowColor: "#FFFFFF", // колір стрілки
     activeArrowColor: "rgba(255, 255, 255, 0.15)", // колір активної стрілки
   },
