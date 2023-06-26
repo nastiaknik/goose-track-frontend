@@ -7,6 +7,7 @@ export const Wrapper = styled.ul`
   display: flex;
   gap: 10px;
 `;
+
 export const Button = styled.button`
   padding: 0;
   display: flex;

@@ -7,11 +7,11 @@ import {
 } from "./TaskToolbar.styled";
 // import PropTypes from "prop-types";
 
-export const TaskToolbar = ({ toggleModal, onDelete }) => {
+export const TaskToolbar = ({ toggleMenu, toggleModal, onDelete }) => {
   return (
     <Wrapper>
       <li>
-        <Button type="button">
+        <Button type="button" onClick={toggleMenu}>
           <ArrowSvg />
         </Button>
       </li>
@@ -34,6 +34,7 @@ export const TaskToolbar = ({ toggleModal, onDelete }) => {
 // import { Modal } from "components/SharedComponents/Modal/Modal";
 // import { useState } from "react";
 
+// const [isMenuOpen, setIsMenuOpen] = useState(false);
 //   const [isModalOpen, setIsModalOpen] = useState(false);
 
 //   const toggleModal = () => {
@@ -44,12 +45,17 @@ export const TaskToolbar = ({ toggleModal, onDelete }) => {
 //     }
 //   };
 
+// const toggleMenu = () => {
+//   if (isMenuOpen) {
+//     setIsMenuOpen(false);
+//   } else {
+//     setIsMenuOpen(true);
+//   }
+// };
+
 //   return (
 //     <>
-
-//       <button type="button" onClick={toggleModal}>
-//         Open modal
-//       </button>
+//       {isMenuOpen && <Menu/>}
 //       {isModalOpen && <Modal onClose={toggleModal} />}
 //     </>
 //   );
