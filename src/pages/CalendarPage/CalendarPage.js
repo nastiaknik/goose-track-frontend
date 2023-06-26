@@ -1,11 +1,10 @@
-function CalendarPage() {
 import { format } from "date-fns";
 import { useEffect, useState, Suspense } from "react";
 import { useNavigate, Outlet, useLocation } from "react-router-dom";
 import CalendarToolbar from "../../components/CalendarPage/CalendarToolbar/CalendarToolbar";
 import { useDate } from "hooks/useDate";
 import { Container } from "./CalendarPage.styled";
-import { CalendarHead } from "../../components/CalendarPage/CalendarTable/CalendarTable";
+import { CalendarTable } from "../../components/CalendarPage/CalendarTable/CalendarTable";
 
 const CalendarPage = () => {
   const [isActivePage, setIsActivePage] = useState(false);
@@ -35,7 +34,7 @@ const CalendarPage = () => {
         doActiveMonth={doActiveMonth}
         doActiveDate={doActiveDate}
       />
-      <CalendarHead />
+      <CalendarTable />
       <Suspense fallback={null}>
         <Outlet />
       </Suspense>
