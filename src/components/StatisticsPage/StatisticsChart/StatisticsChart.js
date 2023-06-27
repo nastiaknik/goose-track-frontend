@@ -1,4 +1,3 @@
-import { Chart, Container, ChartHead } from "./StatisticsChart.styled";
 import { useSelector } from "react-redux";
 import {
   BarChart,
@@ -13,6 +12,14 @@ import {
   // Legend,
   ResponsiveContainer,
 } from "recharts";
+import {
+  Chart,
+  Container,
+  ChartHead,
+  LegendList,
+} from "./StatisticsChart.styled";
+import { DatePicker } from "components/SharedComponents/DatePicker/DatePicker";
+import { TbPointFilled } from "react-icons/tb";
 
 const todoByDay = 3;
 const inprogressByDay = 2;
@@ -87,7 +94,34 @@ export const StatisticsChart = () => {
 
   return (
     <Container>
-      <ChartHead></ChartHead>
+      <ChartHead>
+        <DatePicker
+          // id="birthday"
+          // name="birthday"
+          // selected={new Date(formik.values.birthday)}
+          // onChange={(date) => {
+          //   formik.setFieldValue("birthday", date);
+          // }}
+          // onBlur={formik.handleBlur}
+          dateFormat="dd-MM-yyyy"
+          // maxDate={new Date()}
+          placeholderText="dd-MM-yyyy"
+          formatWeekDay={(day) => day.charAt(0)}
+          calendarStartDay={1}
+          // hasError={formik.touched.birthday && formik.errors.birthday}
+          // success={formik.touched.birthday}
+        />
+        <LegendList>
+          <li>
+            <TbPointFilled color="#FFD2DD" size={20} />
+            <span>By Day</span>
+          </li>
+          <li>
+            <TbPointFilled color="#3E85F3" size={20} />
+            <span>By Month</span>
+          </li>
+        </LegendList>
+      </ChartHead>
       <Chart>
         <ResponsiveContainer width={800} height="80%">
           <BarChart
