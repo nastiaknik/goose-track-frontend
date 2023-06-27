@@ -1,5 +1,6 @@
-import { TASK_PRIORITY } from '../../../constants/Priority';
-import styled from 'styled-components';
+import { TASK_PRIORITY } from "../../../constants/Priority";
+import { TaskToolbar } from "components/CalendarPage/TaskToolbar/TaskToolbar";
+import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
@@ -40,14 +41,14 @@ export const TaskAvatarWrapper = styled.div`
 export const TaskPriority = styled.p`
   padding: 4px 12px;
   background: var(
-    ${props => {
+    ${(props) => {
       if (props.priority === TASK_PRIORITY.medium) {
-        return '--priority-medium-bg-color';
+        return "--priority-medium-bg-color";
       }
       if (props.priority === TASK_PRIORITY.high) {
-        return '--priority-high-bg-color';
+        return "--priority-high-bg-color";
       }
-      return '--priority-low-bg-color';
+      return "--priority-low-bg-color";
     }}
   );
   border-radius: 4px;
@@ -60,4 +61,8 @@ export const TaskPriority = styled.p`
   text-align: center;
 
   color: var(--light-text-color);
+`;
+
+export const Toolbar = styled(TaskToolbar)`
+  margin-left: auto;
 `;
