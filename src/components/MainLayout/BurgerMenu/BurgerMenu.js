@@ -11,7 +11,7 @@ export const BurgerMenu = ({ toggleMenu }) => {
           G<SpanSecond>oo</SpanSecond>seTrack
         </Span>
       </Div>
-      <ButtonClose onClick={toggleMenu}>
+      <ButtonClose type="button" onClick={toggleMenu}>
         <GrCloseBtn />
       </ButtonClose>
     </DivBurger>
