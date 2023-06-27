@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { BurgerMenu } from "../BurgerMenu/BurgerMenu";
 import { LogOut } from "../LogoutBtn/LogoutBtn";
 import { Navigation } from "./Navigation/Navigation";
-import { DivNavBurger, OverlaySideBar, DivSideBar } from "./SideBar.styled";
+import { DivNavBurger, DivSideBar } from "./SideBar.styled";
 
 export const SideBar = ({ toggleMenu }) => {
   useEffect(() => {
@@ -14,13 +14,13 @@ export const SideBar = ({ toggleMenu }) => {
       toggleMenu();
     }
   };
-  const closeOnBackdrop = (evt) => {
-    if (evt.currentTarget === evt.target) {
-      toggleMenu();
-    }
-  };
+  // const closeOnBackdrop = (evt) => {
+  //   if (evt.currentTarget === evt.target) {
+  //     toggleMenu();
+  //   }
+  // };
   return (
-    <OverlaySideBar onClick={closeOnBackdrop}>
+    // <OverlaySideBar onClick={closeOnBackdrop}>
       <DivSideBar>
         <DivNavBurger>
           <BurgerMenu toggleMenu={toggleMenu} />
@@ -28,6 +28,6 @@ export const SideBar = ({ toggleMenu }) => {
         </DivNavBurger>
         <LogOut />
       </DivSideBar>
-    </OverlaySideBar>
+    // </OverlaySideBar>
   );
 };
