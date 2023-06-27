@@ -8,7 +8,8 @@ export const Container = styled.div`
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
+
   @media (min-width: 768px) {
     margin-left: 32px;
   }
@@ -16,10 +17,14 @@ export const Container = styled.div`
 
 export const DivLayout = styled.div`
   display: flex;
-background:${({ theme }) => theme.variableColors.primaryBackground};
-  flex-direction: row;
+  background: ${({ theme }) => theme.variableColors.primaryBackground};
+  width: 100vw;
+  min-height: 100vh;
 `;
 
 export const DivHeader = styled.div`
   width: 100%;
+  height: 100%;
+  background: ${({ theme }) => theme.variableColors.primaryBackground};
+  padding: 32px;
 `;
