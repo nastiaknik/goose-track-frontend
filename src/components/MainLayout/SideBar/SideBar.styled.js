@@ -5,7 +5,7 @@ export const OverlaySideBar = styled.div`
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   z-index: 1000;
   background-color: rgba(0, 0, 0, 0.1);
 `;
@@ -18,7 +18,7 @@ export const DivSideBar = styled.div`
   flex-direction: column;
   justify-content: space-between;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   padding-left: 20px;
   padding-top: 24px;
   padding-right: 20px;
@@ -32,7 +32,6 @@ export const DivSideBar = styled.div`
   }
   @media (min-width: 1024px) {
     position: relative;
-    height: 100vw;
   }
 `;
 export const DivNavBurger = styled.div`
