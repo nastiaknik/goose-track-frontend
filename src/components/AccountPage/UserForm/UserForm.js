@@ -23,9 +23,8 @@ import {
   BirthdayContainer,
   ArrowIcon,
   DefaultIcon,
-  StyledDatePicker,
-  DatePickerStyles,
 } from "./UserForm.styled";
+import { DatePicker } from "components/SharedComponents/DatePicker/DatePicker";
 
 export const UserForm = () => {
   const [image, setImage] = useState();
@@ -190,7 +189,6 @@ export const UserForm = () => {
                   <Errors>{formik.touched.phone && formik.errors.phone}</Errors>
                 </Label>
 
-                <DatePickerStyles />
                 <BirthdayContainer>
                   <Label htmlFor="birthday">
                     <LabelSpan
@@ -203,7 +201,7 @@ export const UserForm = () => {
                       <ArrowIcon />
                     </StyledIconContainer>
                   </Label>
-                  <StyledDatePicker
+                  <DatePicker
                     id="birthday"
                     name="birthday"
                     selected={new Date(formik.values.birthday)}

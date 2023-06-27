@@ -40,7 +40,6 @@ export const tasksSlice = createSlice({
         state.dayTasks = state.dayTasks.map((task) =>
           task._id === payload._id ? payload : task
         );
-
         state.monthTasks = state.monthTasks.map((task) =>
           task._id === payload._id ? payload : task
         );

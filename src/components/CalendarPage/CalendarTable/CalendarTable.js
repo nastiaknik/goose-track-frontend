@@ -1,89 +1,107 @@
+import { /* useDispatch, */ useSelector } from "react-redux";
 import {
-  startOfISOWeek,
-  format,
-  eachDayOfInterval,
-  endOfISOWeek,
-  isSameDay,
-  formatISO,
-  isSameMonth,
-} from "date-fns";
-import PropTypes from "prop-types";
-import { useMedia } from "react-use";
-
-import {
-  ListMonth,
-  DateOfWeekCurrentMonth,
-  DateOfWeekOtherMonth,
-  ChoosedDate,
-  DayWeek,
-  Days,
-  Month,
-  ListDays,
+  Calendar,
+  AllDays,
+  CurrentMonthDays,
   OtherMonthStyledLink,
   CurrentMonthStyledLink,
 } from "./CalendarTable.styled";
+import {
+  format,
+  startOfMonth,
+  endOfMonth,
+  startOfWeek,
+  endOfWeek,
+  isSameMonth,
+  eachDayOfInterval,
+  formatISO,
+  getWeeksInMonth,
+} from "date-fns";
+import {
+  selectMonthTasks,
+  selectIsLoadingTasks,
+} from "../../../redux/tasks/selectors";
+import { CalendarTableItem } from "./CalendarTableItem";
+import { GusLoader } from "../../Loader/GusLoader";
+import { useMedia, useWindowSize } from "react-use";
 
-export const CalendarHead = ({ currentDay }) => {
-  const isWide = useMedia("(min-width: 768px)");
+export const CalendarTable = () => {
+  /* const dispath = useDispatch(); */
+  const currentMonth = new Date();
+  const isLoading = useSelector(selectIsLoadingTasks);
 
-  let daysInWeek;
+  const tasksOfMonth = useSelector(selectMonthTasks);
 
-  if (currentDay) {
-    daysInWeek = eachDayOfInterval({
-      start: startOfISOWeek(new Date(currentDay), { weekStartsOn: 1 }),
-      end: endOfISOWeek(new Date(currentDay), { weekStartsOn: 1 }),
-    });
-  } else {
-    daysInWeek = eachDayOfInterval({
-      start: startOfISOWeek(new Date(), { weekStartsOn: 1 }),
-      end: endOfISOWeek(new Date(), { weekStartsOn: 1 }),
-    });
+  const monthStart = startOfMonth(currentMonth);
+  const monthEnd = endOfMonth(currentMonth);
+
+  const daysInMonth = eachDayOfInterval({
+    start: startOfWeek(monthStart, { weekStartsOn: 1 }),
+    end: endOfWeek(monthEnd, { weekStartsOn: 1 }),
+  });
+
+  const isTablet = useMedia("(min-width: 768px) and (max-width: 1279.98px)");
+  const isDesktop = useMedia("(min-width: 1280px)");
+
+  let minGridRowsHeight = 94;
+  let headerHeight = 278;
+
+  if (isTablet) {
+    minGridRowsHeight = 122;
+    headerHeight = 264;
   }
 
-  const List = currentDay ? ListDays : ListMonth;
+  if (isDesktop) {
+    minGridRowsHeight = 122;
+    headerHeight = 294;
+  }
+
+  const { height: windowHeight } = useWindowSize();
+  const weeksInMonth = getWeeksInMonth(new Date(currentMonth), {
+    weekStartsOn: 1,
+  });
+  const minCalendarHeight = weeksInMonth * minGridRowsHeight;
+  let calendarHeight = minCalendarHeight;
+  if (windowHeight > minCalendarHeight + headerHeight) {
+    calendarHeight = windowHeight - headerHeight - 2;
+  }
+
+  const gridRowHeight = Math.floor(calendarHeight / weeksInMonth);
 
   return (
     <>
-      <List>
-        {daysInWeek?.map((day, idx) => {
-          const Week = currentDay ? Days : Month;
-          const StyledLink = !isSameMonth(new Date(day), new Date())
+      <Calendar
+        calendarHeight={`${calendarHeight}px`}
+        minGridRowsHeight={`${minGridRowsHeight}px`}
+      >
+        {isLoading && <GusLoader />}
+        {daysInMonth?.map((day, idx) => {
+          const StyledLink = !isSameMonth(day, currentMonth)
             ? OtherMonthStyledLink
             : CurrentMonthStyledLink;
 
-          const DateOfWeek = isSameMonth(new Date(day), new Date())
-            ? DateOfWeekCurrentMonth
-            : DateOfWeekOtherMonth;
-
-          const DateWeek = isSameDay(new Date(currentDay), new Date(day))
-            ? ChoosedDate
-            : DateOfWeek;
-
+          const Days = !isSameMonth(day, currentMonth)
+            ? AllDays
+            : CurrentMonthDays;
           return (
-            <Week key={idx}>
-              {isWide ? (
-                <DayWeek>{format(day, "EEE")}</DayWeek>
-              ) : (
-                <DayWeek>{format(day, "EEEEE")}</DayWeek>
-              )}
-
-              {currentDay && (
-                <StyledLink
-                  to={`/calendar/day/${formatISO(new Date(day), {
-                    representation: "date",
-                  })}`}
-                >
-                  <DateWeek>{format(day, "d")}</DateWeek>
-                </StyledLink>
-              )}
-            </Week>
+            <Days key={idx}>
+              <StyledLink
+                to={`/calendar/day/${formatISO(new Date(day), {
+                  representation: "date",
+                })}`}
+              >
+                {isSameMonth(day, currentMonth) && (
+                  <CalendarTableItem
+                    day={day}
+                    dayTasks={tasksOfMonth[Number(format(day, "d")) - 1]}
+                    gridRowHeight={gridRowHeight}
+                  />
+                )}
+              </StyledLink>
+            </Days>
           );
         })}
-      </List>
+      </Calendar>
     </>
   );
-};
-
-CalendarHead.propTypes = {
-  currentDay: PropTypes.string,
 };

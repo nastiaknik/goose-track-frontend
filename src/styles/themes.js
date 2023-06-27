@@ -13,7 +13,16 @@ const lightTheme = {
     primaryBackground: "#F7F6F9", // колір сомого нижнього фону
     secondaryBackground: "#FFFFFF", // колір фону
     buttonBlue: "#E3F3FF", // колір кнопок
+    backgroundButton: "#3E85F3", // колір фону кнопок
+    textButton: "#FFFFFF", // колір тексту кнопок
+    activeButtonBlue: "#CAE8FF", // колір активних кнопок
+    activeTextColorBtn: "#3E85F3", // колір тексту активних кнопок
+    textColorButton: "#3E85F3", // колір тексту кнопок
+    hoverTextBtn: "#FFFFFF", // колір тексту при ховері
     text: "#111111", // колір тексту
+    borderColor: "#E3F3FF", // колір рамки графіка
+    arrowColor: "#343434", // колір стрілки
+    activeArrowColor: "#dce3e5", // колір активної стрілки
   },
 };
 
@@ -23,7 +32,16 @@ const darkTheme = {
     primaryBackground: "#171820", // колір сомого нижнього фону
     secondaryBackground: "#21222C", // колір фону
     buttonBlue: "#3E85F3", // колір кнопок
+    backgroundButton: "#3E85F3", // колір фону кнопок
+    textButton: "#FFFFFF", // колір тексту кнопок
+    activeButtonBlue: "#21222C", // колір активних кнопок
+    activeTextColorBtn: "#FFFFFF", // колір тексту активних кнопок
+    textColorButton: "#FFFFFF", // колір тексту кнопок
+    hoverTextBtn: "#CAE8FF", // колір тексту при ховері
     text: "#FFFFFF", // колір тексту
+    borderColor: "#e3f3ff26", // колір рамки графіка
+    arrowColor: "#FFFFFF", // колір стрілки
+    activeArrowColor: "rgba(255, 255, 255, 0.15)", // колір активної стрілки
   },
 };
 
@@ -40,7 +58,7 @@ const otherColors = {
 
 export const Theme = ({ children }) => {
   const currentTheme = useSelector((state) => state.theme.currentTheme);
-  const theme = (checkTheme = true) => {
+  const theme = (checkTheme = false) => {
     return checkTheme
       ? { ...lightTheme, ...otherColors }
       : { ...darkTheme, ...otherColors };

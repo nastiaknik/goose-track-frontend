@@ -1,38 +1,45 @@
-import { CalendarHead } from "../../components/CalendarPage/CalendarTable/CalendarTable";
+import { format } from "date-fns";
+import { useEffect, useState, Suspense } from "react";
+import { useNavigate, Outlet, useLocation } from "react-router-dom";
+import CalendarToolbar from "../../components/CalendarPage/CalendarToolbar/CalendarToolbar";
+import { useDate } from "hooks/useDate";
+import { Container } from "./CalendarPage.styled";
+import { CalendarTable } from "../../components/CalendarPage/CalendarTable/CalendarTable";
 
-import { TaskToolbar } from "components/CalendarPage/TaskToolbar/TaskToolbar";
-import { Menu } from "components/CalendarPage/TaskToolbar/Menu";
-import { Modal } from "components/SharedComponents/Modal/Modal";
-import { useState } from "react";
+const CalendarPage = () => {
+  const [isActivePage, setIsActivePage] = useState(false);
+  const navigate = useNavigate();
+  const urlDate = useDate();
+  const location = useLocation();
+  const formattedCurrentDate = format(urlDate, "MMMMu");
 
-function CalendarPage() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const toggleModal = () => {
-    if (isModalOpen) {
-      setIsModalOpen(false);
-    } else {
-      setIsModalOpen(true);
+  useEffect(() => {
+    if (location.pathname === "/calendar") {
+      navigate(`/calendar/month/${formattedCurrentDate}`);
+      return;
     }
+  }, [formattedCurrentDate, navigate, location.pathname]);
+
+  const doActiveDate = () => {
+    setIsActivePage(false);
   };
-
-  const toggleMenu = () => {
-    if (isMenuOpen) {
-      setIsMenuOpen(false);
-    } else {
-      setIsMenuOpen(true);
-    }
+  const doActiveMonth = () => {
+    setIsActivePage(true);
   };
 
   return (
-    <>
-      <CalendarHead />
-      <TaskToolbar toggleMenu={toggleMenu} toggleModal={toggleModal} />
-      {isMenuOpen && <Menu toggleMenu={toggleMenu} />}
-      {isModalOpen && <Modal onClose={toggleModal} />}
-    </>
+    <Container>
+      <CalendarToolbar
+        isActivePage={isActivePage}
+        doActiveMonth={doActiveMonth}
+        doActiveDate={doActiveDate}
+      />
+      <CalendarTable />
+      <Suspense fallback={null}>
+        <Outlet />
+      </Suspense>
+    </Container>
   );
-}
+};
 
 export default CalendarPage;

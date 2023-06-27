@@ -10,6 +10,7 @@ import {
   SaveButton,
   StyledForm,
 } from "./FeedbackForm.styled";
+import "@smastrom/react-rating/style.css";
 
 const customStar = (
   <path
