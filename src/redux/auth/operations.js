@@ -110,4 +110,35 @@ export const logout = createAsyncThunk(
   }
 );
 
+export const getUserInfo = createAsyncThunk(
+  "auth/getUserInfo",
+  async (_, { rejectWithValue }) => {
+    try {
+      const { data } = await $api.get("api/auth/current");
+      return data;
+    } catch (e) {
+      toast.error(e.response.data.message);
+      return rejectWithValue(e.message);
+    }
+  }
+);
+
+export const updateUserInfo = createAsyncThunk(
+  "auth/updateUserInfo",
+  async (data, { rejectWithValue }) => {
+    try {
+      await $api.patch("api/auth/user", data, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      toast.success("User data updated");
+      return data;
+    } catch (e) {
+      toast.error(e.response.data.message);
+      return rejectWithValue(e.message);
+    }
+  }
+);
+
 export default $api;

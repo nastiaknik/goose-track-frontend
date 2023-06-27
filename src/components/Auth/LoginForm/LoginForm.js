@@ -43,7 +43,7 @@ export const LoginForm = () => {
         text="Email"
         name="email"
         type="email"
-        placeholder="Enter your email"
+        placeholder="Enter email"
         isSubmited={isSubmited}
         formik={formik}
       />
@@ -51,7 +51,7 @@ export const LoginForm = () => {
         text="Password"
         name="password"
         type="password"
-        placeholder="Enter your password"
+        placeholder="Enter password"
         isSubmited={isSubmited}
         formik={formik}
       />

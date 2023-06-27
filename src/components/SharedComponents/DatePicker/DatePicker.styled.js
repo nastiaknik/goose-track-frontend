@@ -241,9 +241,9 @@ export const StyledDatePicker = styled(DatePicker)`
   color: var(--primary-text-color);
   background-color: var(--primary-bg-color);
 
-  &:focus-visible {
+  :focus-visible {
     outline: none;
-    border: var(--border);
+    border: var(--border-input-hover);
     border-radius: 8px;
   }
 
@@ -255,7 +255,8 @@ export const StyledDatePicker = styled(DatePicker)`
     padding: 14px 14px 14px 18px;
   }
   transition: border var(--animation);
-  &:hover,
+
+  :hover,
   :focus {
     border: ${({ hasError, success }) => {
       if (hasError) {
@@ -264,7 +265,7 @@ export const StyledDatePicker = styled(DatePicker)`
       if (success) {
         return "var(--border-auth-correct)";
       }
-      return "var(--border)";
+      return "var(--border-input-hover)";
     }};
   }
 `;
