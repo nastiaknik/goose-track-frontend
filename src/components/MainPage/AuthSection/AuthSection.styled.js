@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const Container = styled.section`
+  min-height: 420px;
   height: 100vh;
   padding-inline: 20px;
   padding-bottom: 74px;
@@ -16,6 +17,7 @@ export const Container = styled.section`
   background-color: var(--accent-bg-color);
 
   @media screen and (min-width: 768px) {
+    min-height: 460px;
     gap: 40px;
   }
 `;
