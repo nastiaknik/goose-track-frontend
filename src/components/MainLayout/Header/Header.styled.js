@@ -18,7 +18,8 @@ export const HeaderContainer = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #f5f5f5;
+  background-color: ${({ theme }) => theme.variableColors.primaryBackground};
+  
   padding: 20px;
   height: 116px;
   @media (min-width: 1024px) {
@@ -44,7 +45,7 @@ export const Title = styled.p`
   line-height: 32px;
   letter-spacing: 0em;
   text-align: left;
-  color: #111111;
+  color:${({ theme }) => theme.variableColors.text};
   box-shadow: 0px 9.399999618530273px 57.6875px 0px #00000009;
   display: none;
 

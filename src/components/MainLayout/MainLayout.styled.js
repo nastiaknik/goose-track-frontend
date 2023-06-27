@@ -16,7 +16,7 @@ export const Container = styled.div`
 
 export const DivLayout = styled.div`
   display: flex;
-
+background:${({ theme }) => theme.variableColors.primaryBackground};
   flex-direction: row;
 `;
 

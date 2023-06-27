@@ -83,6 +83,11 @@ export const GlobalStyles = createGlobalStyle`
     }
 
 body {
+  @media (min-width: 1440px) {
+   width:1440px;
+  margin-left:auto;
+  margin-right:auto;}
+
       position: relative;
   margin: 0;
   font-family: "MontserratMedium", sans-serif;
