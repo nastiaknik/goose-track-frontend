@@ -16,7 +16,6 @@ export const Container = styled.div`
 
 export const DivLayout = styled.div`
   display: flex;
-
   flex-direction: row;
 `;
 
