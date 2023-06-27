@@ -15,7 +15,7 @@ export const Overlay = styled.div`
 export const MenuContent = styled.div`
   position: absolute;
   top: 50%;
-  right: 0;
+  right: 50%;
   width: 115px;
   height: 70px;
   padding: 12px;
@@ -26,6 +26,8 @@ export const MenuContent = styled.div`
   box-shadow: var(--task-modal-shadow);
 
   @media screen and (min-width: 768px) {
+    top: 405px;
+    right: 305px;
     width: 147px;
     height: 90px;
     padding: 20px;

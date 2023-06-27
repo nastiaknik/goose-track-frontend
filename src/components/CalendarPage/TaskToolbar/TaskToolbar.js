@@ -5,9 +5,15 @@ import {
   TrashSvg,
   Wrapper,
 } from "./TaskToolbar.styled";
+import { useDispatch } from "react-redux";
+import { deleteTask } from "redux/tasks/operations";
 // import PropTypes from "prop-types";
 
-export const TaskToolbar = ({ toggleMenu, toggleModal, onDelete }) => {
+export const TaskToolbar = ({ toggleMenu, toggleModal, task }) => {
+  const dispatch = useDispatch();
+
+  const onDelete = () => dispatch(deleteTask(task.id));
+
   return (
     <Wrapper>
       <li>

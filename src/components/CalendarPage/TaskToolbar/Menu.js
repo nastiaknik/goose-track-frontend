@@ -2,10 +2,12 @@ import { useEffect } from "react";
 import { createPortal } from "react-dom";
 import { Overlay, MenuContent, ArrowSvg, List, Button } from "./Menu.styled";
 // import PropTypes from "prop-types";
+import { useDispatch } from "react-redux";
+import { updateTask } from "redux/tasks/operations";
 
 const modalRoot = document.querySelector("#modal-root");
 
-export const Menu = ({ toggleMenu }) => {
+export const Menu = ({ task, toggleMenu }) => {
   useEffect(() => {
     window.addEventListener("keydown", handleKeyDown);
 
@@ -25,19 +27,21 @@ export const Menu = ({ toggleMenu }) => {
       toggleMenu();
     }
   };
+  const dispatch = useDispatch();
+  const onUpdateTaskStatus = () => dispatch(updateTask(task.id));
 
   return createPortal(
     <Overlay onClick={handleBackdropClick}>
       <MenuContent>
         <List>
           <li>
-            <Button type="button">
+            <Button type="button" onClick={onUpdateTaskStatus}>
               In progress
               <ArrowSvg />
             </Button>
           </li>
           <li>
-            <Button type="button">
+            <Button type="button" onClick={onUpdateTaskStatus}>
               Done
               <ArrowSvg />
             </Button>
