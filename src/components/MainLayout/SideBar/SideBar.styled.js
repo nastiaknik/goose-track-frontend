@@ -32,7 +32,7 @@ export const DivSideBar = styled.div`
   }
   @media (min-width: 1024px) {
     position: relative;
-    height: 100vw;
+    height: 100vh;
   }
 `;
 export const DivNavBurger = styled.div`
