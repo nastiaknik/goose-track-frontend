@@ -1,23 +1,19 @@
-// import { useParams } from 'react-router';
 import { Formik } from 'formik';
-import { isAfter, isValid, parse } from 'date-fns';
-import * as Yup from 'yup';
 import { RadioButtonInput, Wrapper, Button, ButtonCancel, Span, Label, Form, Errors, RadioButtonGroup, RadioButtonLabel, Input } from './TaskForm.styled';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { BiPlus } from 'react-icons/bi';
 import { VscEdit } from 'react-icons/vsc';
-
-// import {
-//   addTaskOperation,
-//   editTaskOperation,
-// } from '../../redux/operations';
+import {
+  addTask,
+  updateTask,
+} from '../../../redux/tasks/operations';
+import { validationTaskSchema } from 'helpers/formValidationSchemas';
 
 export const TaskForm = ({ onClose, ...props }) => {
-//   const dispatch = useDispatch();
-  const editMode = props?.editMode || false;
-  // const status = props?.status || 'To do';
+const dispatch = useDispatch();
+const editMode = props?.editMode || false;
+const status = props?.status || 'To do';
   
-
   const initialValues = {
     title: props?.title || '',
     start: props?.start || '',
@@ -25,49 +21,17 @@ export const TaskForm = ({ onClose, ...props }) => {
     priority: props?.priority || 'Low',
   };
 
-//   const { currentDay: date } = useParams();
+  const handleAdd = values => {
+    if (!editMode) {
+      dispatch(addTask({ ...values, status }));
+      onClose();
+    } else {
+      dispatch(updateTask({ ...values, status, _id: props._id }));
+      onClose();
+    }
+  };
 
-//   const handleAdd = values => {
-//     if (!editMode) {
-//       const payload = { ...values, date, status };
-//       dispatch(addTask(payload));
-//       onClose();
-//     } else {
-//       const payload = { ...values, date, status, _id: props._id };
-//       dispatch(editTask(payload));
-//       onClose();
-//     }
-//   };
-
-  const validationSchema = Yup.object({
-    title: Yup.string()
-      .required('Title is required')
-      .max(250, 'Title should not exceed 250 characters'),
-    start: Yup.string()
-      .test('valid-time', 'Invalid time format', value =>
-        isValid(parse(value, 'HH:mm', new Date()))
-      )
-      .required('Start is required'),
-    end: Yup.string()
-      .nullable()
-      .test('valid-time', 'Invalid time format', value => {
-        if (!value) return true; // return true if value is empty
-        return isValid(parse(value, 'HH:mm', new Date()));
-      })
-      .when('start', (start, schema) =>
-        schema.test('end-time-greater', 'Less than start', end =>
-          start && end
-            ? isAfter(
-                parse(end, 'HH:mm', new Date()),
-                parse(start, 'HH:mm', new Date())
-              )
-            : true
-        )
-      ),
-    priority: Yup.string()
-      .required('Priority is required')
-      .oneOf(['Low', 'Medium', 'High'], 'Invalid priority'),
-  });
+  
 
   return (
     <>
@@ -75,9 +39,9 @@ export const TaskForm = ({ onClose, ...props }) => {
         initialValues={initialValues}
         validateOnBlur={true}
         validateOnChange={true}
-        validationSchema={validationSchema}
+        validationSchema={validationTaskSchema}
         onSubmit={(values, { setSubmitting }) => {
-        //   handleAdd(values);
+        handleAdd(values);
           setSubmitting(false);
         }}
       >

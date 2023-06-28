@@ -15,6 +15,13 @@ export const Button = styled.button`
   font-size: 14px;
   font-weight: 600;
   min-width: 299px;
+   transition: background-color var(--animation), box-shadow var(--animation);
+  &:hover,
+  :focus {
+    box-shadow: 4px 2px 16px rgba(136, 165, 191, 1);
+    background-color:${({theme})=>theme.variableColors.activeButtonBlue};
+  }
+
 
   @media screen and (min-width: 768px) {
     min-width: 304px;

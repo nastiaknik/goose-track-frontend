@@ -66,7 +66,7 @@ function App() {
           <Route
             path="/calendar"
             element={
-              <PrivateRoute redirectTo="/login" component={<CalendarPage />} />
+              <PrivateRoute redirectTo="/" component={<CalendarPage />} />
             }
           >
             <Route path="month/:currentDate" element={<ChoosedMonth />} />
@@ -75,16 +75,13 @@ function App() {
           <Route
             path="/account"
             element={
-              <PrivateRoute redirectTo="/login" component={<AccountPage />} />
+              <PrivateRoute redirectTo="/" component={<AccountPage />} />
             }
           />
           <Route
             path="/statistics"
             element={
-              <PrivateRoute
-                redirectTo="/login"
-                component={<StatisticsPage />}
-              />
+              <PrivateRoute redirectTo="/" component={<StatisticsPage />} />
             }
           />
           <Route path="*" element={<NotFoundPage />} />

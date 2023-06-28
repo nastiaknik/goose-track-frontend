@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, NavLink } from "react-router-dom";
 import AddFeedbackBtn from "../AddFeedbackBtn/AddFeedbackBtn";
 
-import { HeaderContainer, ContentContainer, Title, HamburgerMenu } from "./Header.styled";
+import {
+  HeaderContainer,
+  ContentContainer,
+  Title,
+  HamburgerMenu,
+} from "./Header.styled";
 import { CalendarTitle } from "./CalendarTitle/CalendarTitle";
 import UserInfo from "../UserInfo/UserInfo";
 
@@ -11,7 +16,9 @@ export const Header = ({ toggleMenu }) => {
   const [page, setPage] = useState("");
 
   useEffect(() => {
-    const calendarPage = location.pathname === "/calendar" || location.pathname.startsWith("/calendar/day");
+    const calendarPage =
+      location.pathname === "/calendar" ||
+      location.pathname.startsWith("/calendar/day");
     if (location.pathname === "/account") {
       setPage("User Menu");
       return;
@@ -30,7 +37,9 @@ export const Header = ({ toggleMenu }) => {
       {page === "Calendar" ? <CalendarTitle /> : <Title>{page}</Title>}
       <ContentContainer>
         <AddFeedbackBtn />
-        <UserInfo />
+        <NavLink to="/account" onClick={toggleMenu}>
+          <UserInfo />
+        </NavLink>
       </ContentContainer>
     </HeaderContainer>
   );

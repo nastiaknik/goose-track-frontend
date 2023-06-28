@@ -4,15 +4,17 @@ import {
   TaskTitle,
   Wrapper,
   TaskAvatarWrapper,
+  SvgAvatar,
 } from "./TaskColumnCard.styled";
 import { TASK_PRIORITY } from "../../../constants/Priority";
-import { RxAvatar } from "react-icons/rx";
+
 
 // import { TaskToolbar } from "components/CalendarPage/TaskToolbar/TaskToolbar";
 import { Toolbar } from "./TaskColumnCard.styled";
 import { Menu } from "components/CalendarPage/TaskToolbar/Menu";
 import { Modal } from "components/SharedComponents/Modal/Modal";
 import { useState } from "react";
+import { TaskModal } from "components/SharedComponents/TaskModal/TaskModal";
 
 export const TaskColumnCard = ({
   title = "Lorem ipsum dolor sit amet consectetur ",
@@ -43,14 +45,14 @@ export const TaskColumnCard = ({
       <Wrapper>
         <Wrapper>
           <TaskAvatarWrapper>
-            <RxAvatar />
+            <SvgAvatar />
           </TaskAvatarWrapper>
           <TaskPriority priority={priority}>{priority}</TaskPriority>
         </Wrapper>
 
         <Toolbar toggleMenu={toggleMenu} toggleModal={toggleModal} />
         {isMenuOpen && <Menu toggleMenu={toggleMenu} />}
-        {isModalOpen && <Modal onClose={toggleModal} />}
+        {isModalOpen && <Modal onClose={toggleModal}><TaskModal editMode={true}/></Modal>}
       </Wrapper>
     </Container>
   );

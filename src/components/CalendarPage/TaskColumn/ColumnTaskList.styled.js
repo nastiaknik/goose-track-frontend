@@ -1,10 +1,11 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const TasksList = styled.ul`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   overflow: auto;
+  padding-left: 0;
 
   gap: 14px;
   @media (min-width: 768px) {

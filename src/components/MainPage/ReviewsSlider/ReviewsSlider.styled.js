@@ -43,13 +43,22 @@ export const StyledNavigationContainer = styled.div`
   margin-top: 20px;
 `;
 
-export const StyledBtnContainer = styled.div`
+export const StyledBtn = styled.button`
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+
   width: 50px;
   height: 50px;
+
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
+
+  :disabled {
+    opacity: 0.4;
+    cursor: auto;
+  }
 `;
 
 export const CardContainer = styled.div`
