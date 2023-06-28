@@ -103,7 +103,7 @@ export const MoreTasks = styled.p`
   margin-top: 4px;
   white-space: nowrap;
 
-  font-family: var(--primary-font);
+  font-family: "InterMedium", sans-serif;
   font-weight: 500;
   font-size: 10px;
   line-height: 1;
