@@ -125,10 +125,10 @@ export const getUserInfo = createAsyncThunk(
 
 export const updateUserInfo = createAsyncThunk(
   "auth/updateUserInfo",
-  async (data, { rejectWithValue }) => {
+  async (userData, { rejectWithValue }) => {
     try {
       /* const boundary = crypto.randomBytes(16).toString("hex");*/
-      await $api.patch("api/auth/user", data, {
+      const { data } = await $api.patch("api/auth/user", userData, {
         headers: {
           "Content-Type": `multipart/form-data; boundary=a1f8bdc2e9c7a5eef43d73e79fc8b2a1`,
         },
