@@ -4,9 +4,10 @@ import {
   TaskTitle,
   Wrapper,
   TaskAvatarWrapper,
+  SvgAvatar,
 } from "./TaskColumnCard.styled";
 import { TASK_PRIORITY } from "../../../constants/Priority";
-import { RxAvatar } from "react-icons/rx";
+
 
 // import { TaskToolbar } from "components/CalendarPage/TaskToolbar/TaskToolbar";
 import { Toolbar } from "./TaskColumnCard.styled";
@@ -43,7 +44,7 @@ export const TaskColumnCard = ({
       <Wrapper>
         <Wrapper>
           <TaskAvatarWrapper>
-            <RxAvatar />
+            <SvgAvatar />
           </TaskAvatarWrapper>
           <TaskPriority priority={priority}>{priority}</TaskPriority>
         </Wrapper>

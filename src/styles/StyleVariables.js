@@ -34,9 +34,9 @@ export const StyleVariables = createGlobalStyle`
   --label-text-color:  rgba(52, 52, 52, 0.8);
 
   /* calendar */
-  --priority-low-bg-color: #ceeefd;
-  --priority-medium-bg-color: #fcf0d4;
-  --priority-high-bg-color: #ffd2dd;
+  --priority-low-bg-color: #72C2F8;
+  --priority-medium-bg-color: #F3B249;
+  --priority-high-bg-color: #EA3D65;
   --active-toggle-bg-color: #cae8ff; 
   --inactive-toggle-bg-color: #e3f3ff; // not active state of toggle (month/day)
   --hover-toggle-bg-color: rgba(202, 232, 255, 0.7);
