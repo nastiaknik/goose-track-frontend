@@ -6,7 +6,6 @@ export const Container = styled.div`
   padding-right: 47px;
   margin: 0 auto;
   width: 100%;
-  //   background-color: var(--secondary-bg-color);
   background-color: ${({ theme }) => theme.variableColors.primaryBackground};
   text-align: center;
   min-height: 100vh;
@@ -32,6 +31,20 @@ export const Container = styled.div`
 
 export const Wrapper = styled.div`
   display: flex;
+  align-items: center;
+  margin: 0 15px;
+
+  @media screen and (min-width: 768px) {
+    margin: 0;
+  }
+`;
+
+export const StyledPicture = styled.picture`
+  margin: 0 -30px;
+
+  @media screen and (min-width: 768px) {
+    margin: 0 -60px;
+  }
 `;
 
 export const Number = styled.span`
