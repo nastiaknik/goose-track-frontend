@@ -13,7 +13,7 @@ export const MainLayout = ({ children }) => {
   };
   return (
     <DivLayout>
-      {(isOpen || !isMobile) && <SideBar toggleMenu={toggleMenu} />}
+      {(isOpen || !isMobile) && <SideBar toggleMenu={toggleMenu} isMobile={isMobile} />}
       <DivHeader>
         <Header toggleMenu={toggleMenu} />
         {children}

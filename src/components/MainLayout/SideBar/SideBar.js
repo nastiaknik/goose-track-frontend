@@ -2,9 +2,9 @@ import { useEffect } from "react";
 import { BurgerMenu } from "../BurgerMenu/BurgerMenu";
 import { LogOut } from "../LogoutBtn/LogoutBtn";
 import { Navigation } from "./Navigation/Navigation";
-import { DivNavBurger, DivSideBar } from "./SideBar.styled";
+import { DivNavBurger, DivSideBar, OverlaySideBar } from "./SideBar.styled";
 
-export const SideBar = ({ toggleMenu }) => {
+export const SideBar = ({ toggleMenu, isMobile }) => {
   useEffect(() => {
     window.addEventListener("keydown", closeOnEsc);
     return () => window.removeEventListener("keydown", closeOnEsc);
@@ -14,13 +14,13 @@ export const SideBar = ({ toggleMenu }) => {
       toggleMenu();
     }
   };
-  // const closeOnBackdrop = (evt) => {
-  //   if (evt.currentTarget === evt.target) {
-  //     toggleMenu();
-  //   }
-  // };
-  return (
-    // <OverlaySideBar onClick={closeOnBackdrop}>
+  const closeOnBackdrop = (evt) => {
+    if (evt.currentTarget === evt.target) {
+      toggleMenu();
+    }
+  };
+  return isMobile ? (
+    <OverlaySideBar onClick={closeOnBackdrop}>
       <DivSideBar>
         <DivNavBurger>
           <BurgerMenu toggleMenu={toggleMenu} />
@@ -28,6 +28,14 @@ export const SideBar = ({ toggleMenu }) => {
         </DivNavBurger>
         <LogOut />
       </DivSideBar>
-    // </OverlaySideBar>
+    </OverlaySideBar>
+  ) : (
+    <DivSideBar>
+      <DivNavBurger>
+        <BurgerMenu toggleMenu={toggleMenu} />
+        <Navigation toggleMenu={toggleMenu} />
+      </DivNavBurger>
+      <LogOut />
+    </DivSideBar>
   );
 };

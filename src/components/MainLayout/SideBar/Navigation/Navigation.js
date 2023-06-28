@@ -1,9 +1,9 @@
-import { Container, StyleNavLink, Statistscs, Span, Calendar, User } from "./NavigationNav.styled";
+import { Container, Nav, StyleNavLink, Statistscs, Span, Calendar, User } from "./NavigationNav.styled";
 export const Navigation = ({ toggleMenu }) => {
   return (
-    <nav>
+    <Nav>
+      <Span>User Panel</Span>
       <Container>
-        <Span>User Panel</Span>
         <StyleNavLink to="/account" onClick={toggleMenu}>
           <User />
           My account
@@ -17,6 +17,6 @@ export const Navigation = ({ toggleMenu }) => {
           Statistscs
         </StyleNavLink>
       </Container>
-    </nav>
+    </Nav>
   );
 };
