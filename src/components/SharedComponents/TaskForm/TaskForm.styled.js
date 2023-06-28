@@ -13,12 +13,13 @@ export const Form = styled.form`
   border-radius: 8px;
   box-shadow: 0px 4px 16px rgba(17, 17, 17, 0.1); */
 
-  font-family: var(--primary-font);
+  font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 1.29;
   color: var(--primary-text-color);
+  
 
   @media (min-width: 375px) {
     /* padding: 40px 28px; */
@@ -46,12 +47,12 @@ export const Label = styled.label`
 
 export const Span = styled.span`
   margin-bottom: 8px;
-  font-family: var(--primary-font);
+  font-family: 'Inter'; 
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
   line-height: 1.17;
-  color: var(--label-text-color);
+  color:${({theme})=>theme.variableColors.textUserPanel};
 `;
 
 export const Input = styled.input`
@@ -63,8 +64,8 @@ export const Input = styled.input`
   background-color: rgba(255, 255, 255, 0);
   border: var(--border-auth);
   border-radius: 8px;
-  font-family: var(--primary-font);
-  color: var(--secondary-text-color);
+  font-family: 'Inter'; 
+  color:${({theme})=>theme.variableColors.calendarTextColor};
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
@@ -76,7 +77,8 @@ export const Input = styled.input`
   }
 
   &::placeholder {
-    color: var(--light-text-color);
+    /* color: var(--light-text-color); */
+    color:${({theme})=>theme.variableColors.calendarTextColor};
   }
 `;
 
@@ -85,7 +87,7 @@ export const Errors = styled.span`
   margin-top: 4px;
   margin-bottom: 2px;
   color: red;
-  font-family: var(--primary-font);
+  font-family: 'Inter'; 
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
@@ -110,7 +112,7 @@ export const Button = styled.button`
   border-radius: 8px;
   border: none;
   color: var(--light-text-color);
-  font-family: var(--primary-font);
+  font-family: 'Inter'; 
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
@@ -142,7 +144,7 @@ export const ButtonCancel = styled.button`
   border-radius: 8px;
   border: none;
   text-align: center;
-  font-family: var(--primary-font);
+  font-family: 'Inter'; 
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
@@ -195,13 +197,12 @@ export const RadioButtonGroup = styled.div`
 
 export const RadioButtonLabel = styled.label`
   padding-left: 20px;
-
-  font-family: var(--primary-font);
+  font-family: 'Inter'; 
   font-style: normal;
   font-weight: 600;
   font-size: 12px;
   line-height: 1.17;
-  color: var(--secondary-text-color);
+  color:${({theme})=>theme.variableColors.calendarTextColor};
   cursor: pointer;
   @media (min-width: 768px) {
     font-size: 14px;
@@ -220,7 +221,6 @@ export const RadioButtonInput = styled.input`
     position: absolute;
     top: 0px;
     left: -17px;
-
     border-radius: 50%;
     height: 12px;
     width: 12px;
@@ -232,18 +232,18 @@ export const RadioButtonInput = styled.input`
       left: -20px;
     }
 
-
-    border: 1px solid var(--secondary-bg-color-dark-theme);
+    /* color:${({theme})=>theme.variableColors.calendarTextColor}; */
+    /* border: 1px solid var(--secondary-bg-color-dark-theme); */
     ${({ value }) => {
       switch (value) {
         case 'Low':
-          return 'background-color: var(--task-priority-low-color); color: var(--task-priority-low-checked-color)';
+          return 'background-color: var(--task-priority-low-color); color: var(--task-priority-low-checked-color); border-color: var(--task-priority-low-color)';
         case 'Medium':
           return 'background-color: var(--task-priority-medium-color); color: var(--task-priority-medium-checked-color)';
         case 'High':
           return 'background-color: var(--task-priority-high-color); color: var(--task-priority-high-checked-color)';
         default:
-          return 'background-color: var(--task-priority-low-color); color: var(--task-priority-low-checked-color)';
+          return 'background-color: var(--task-priority-low-color); color: var(--task-priority-low-checked-color); color: var(--task-priority-low-color)';
       }
     }}
   }
@@ -255,6 +255,7 @@ export const RadioButtonInput = styled.input`
     width: 12px;
     /* border-radius: 50%; */
 
+    color:${({ theme }) => theme.variableColors.calendarTextColor};
     outline: 2px solid;
     @media (min-width: 768px) {
       height: 14px;
