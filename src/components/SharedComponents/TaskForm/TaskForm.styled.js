@@ -13,7 +13,7 @@ export const Form = styled.form`
   border-radius: 8px;
   box-shadow: 0px 4px 16px rgba(17, 17, 17, 0.1); */
 
-  font-family: 'Inter';
+  font-family: 'InterRegular';
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -47,7 +47,7 @@ export const Label = styled.label`
 
 export const Span = styled.span`
   margin-bottom: 8px;
-  font-family: 'Inter'; 
+  font-family: 'InterMedium'; 
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
@@ -64,7 +64,7 @@ export const Input = styled.input`
   background-color: rgba(255, 255, 255, 0);
   border: var(--border-auth);
   border-radius: 8px;
-  font-family: 'Inter'; 
+  font-family: 'InterSemiBold'; 
   color:${({theme})=>theme.variableColors.calendarTextColor};
   font-style: normal;
   font-weight: 600;
@@ -87,7 +87,7 @@ export const Errors = styled.span`
   margin-top: 4px;
   margin-bottom: 2px;
   color: red;
-  font-family: 'Inter'; 
+  font-family: 'InterRegular'; 
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
@@ -112,7 +112,7 @@ export const Button = styled.button`
   border-radius: 8px;
   border: none;
   color: var(--light-text-color);
-  font-family: 'Inter'; 
+  font-family: 'InterSemiBold'; 
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
@@ -144,7 +144,7 @@ export const ButtonCancel = styled.button`
   border-radius: 8px;
   border: none;
   text-align: center;
-  font-family: 'Inter'; 
+  font-family: 'InterSemiBold'; 
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
@@ -197,7 +197,7 @@ export const RadioButtonGroup = styled.div`
 
 export const RadioButtonLabel = styled.label`
   padding-left: 20px;
-  font-family: 'Inter'; 
+  font-family: 'InterSemiBold'; 
   font-style: normal;
   font-weight: 600;
   font-size: 12px;
