@@ -14,6 +14,7 @@ import { Toolbar } from "./TaskColumnCard.styled";
 import { Menu } from "components/CalendarPage/TaskToolbar/Menu";
 import { Modal } from "components/SharedComponents/Modal/Modal";
 import { useState } from "react";
+import { TaskModal } from "components/SharedComponents/TaskModal/TaskModal";
 
 export const TaskColumnCard = ({
   title = "Lorem ipsum dolor sit amet consectetur ",
@@ -51,7 +52,7 @@ export const TaskColumnCard = ({
 
         <Toolbar toggleMenu={toggleMenu} toggleModal={toggleModal} />
         {isMenuOpen && <Menu toggleMenu={toggleMenu} />}
-        {isModalOpen && <Modal onClose={toggleModal} />}
+        {isModalOpen && <Modal onClose={toggleModal}><TaskModal editMode={true}/></Modal>}
       </Wrapper>
     </Container>
   );
