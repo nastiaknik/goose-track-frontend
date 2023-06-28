@@ -10,11 +10,9 @@ export const LogOut = () => {
   };
 
   return (
-    <>
-      <Button type="button" onClick={handleLogout}>
-        Log Out
-        <IconLogOut />
-      </Button>
-    </>
+    <Button type="button" onClick={handleLogout}>
+      Log Out
+      <IconLogOut />
+    </Button>
   );
 };

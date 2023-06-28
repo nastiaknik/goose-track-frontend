@@ -11,7 +11,8 @@ export const OverlaySideBar = styled.div`
 `;
 export const DivSideBar = styled.div`
   position: fixed;
-  background-color: white;
+  background: ${({ theme }) => theme.variableColors.sideBar};
+  border-right: ${({ theme }) => theme.variableColors.borderColorSideBar};
 
   z-index: 1000;
   display: flex;
