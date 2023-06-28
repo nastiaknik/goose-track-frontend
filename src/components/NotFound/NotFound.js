@@ -1,12 +1,12 @@
-import { Text, Number, Wrapper } from "./NotFound.styled";
+import { Text, Number, Wrapper, Container } from "./NotFound.styled";
 
 import images from "./images";
 const { phone, tablet, desktop } = images;
 
 export const NotFound = () => {
   return (
-    <Wrapper>
-      <div>
+    <Container>
+      <Wrapper>
         <Number>4</Number>
         <picture>
           <source
@@ -45,11 +45,11 @@ export const NotFound = () => {
           />
         </picture>
         <Number>4</Number>
-      </div>
+      </Wrapper>
       <Text>
         We’re sorry, the page you requested could not be found. Please go back
         to the homepage.
       </Text>
-    </Wrapper>
+    </Container>
   );
 };
