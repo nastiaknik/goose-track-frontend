@@ -78,7 +78,7 @@ export const Title = styled.p`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-family: "Inter", sans-serif;
+  font-family: "InterMedium", sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 10px;

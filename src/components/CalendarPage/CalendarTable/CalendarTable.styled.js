@@ -5,6 +5,7 @@ export const Calendar = styled.ul.attrs((props) => ({
   style: {
     height: props.calendarHeight,
     gridAutoRows: `minmax(${props.minGridRowsHeight}, 1fr)`,
+    paddingLeft: 0,
   },
 }))`
   position: relative;
@@ -13,7 +14,7 @@ export const Calendar = styled.ul.attrs((props) => ({
 
   background: ${({ theme }) => theme.variableColors.backgroundCalendar};
   border-radius: 8px;
-  font-family: "Inter", sans-serif;
+  font-family: "InterBold", sans-serif;
   font-style: normal;
   font-weight: 700;
   font-size: 12px;
