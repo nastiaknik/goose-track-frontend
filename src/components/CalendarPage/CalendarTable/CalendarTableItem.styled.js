@@ -25,8 +25,8 @@ export const DaysOfMonth = styled.div`
 `;
 
 export const Today = styled(DaysOfMonth)`
-  background-color: var(--accent-background-color);
-  color: var(--btn-text-color);
+  background-color: var(--accent-bg-color);
+  color: var(--light-text-color);
 `;
 export const BoxTasks = styled.ul`
   width: 100%;
@@ -78,7 +78,7 @@ export const Title = styled.p`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-family: var(--primary-font);
+  font-family: "Inter", sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 10px;

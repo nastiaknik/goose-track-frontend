@@ -11,15 +11,15 @@ export const Calendar = styled.ul.attrs((props) => ({
   display: grid;
   grid-template-columns: repeat(7, 1fr);
 
-  background: var(--primary-background-color);
+  background: ${({ theme }) => theme.variableColors.backgroundCalendar};
   border-radius: 8px;
-  font-family: var(--primary-font);
+  font-family: "Inter", sans-serif;
   font-style: normal;
   font-weight: 700;
   font-size: 12px;
   line-height: 1.17px;
 
-  color: var(--calendar-digit-color);
+  color: ${({ theme }) => theme.variableColors.calendarTextColor};
   @media (min-width: 768px) {
     font-size: 16px;
     line-height: 1.12;
@@ -28,7 +28,7 @@ export const Calendar = styled.ul.attrs((props) => ({
 
 export const AllDays = styled.li`
   position: relative;
-  border: var(--border-calendar);
+  border: var(--border-auth);
 
   @media (min-width: 768px) {
     border: var(--border);
@@ -44,7 +44,7 @@ export const CurrentMonthDays = styled(AllDays)`
   :focus {
     box-shadow: 4px 2px 16px rgba(136, 165, 191, 1);
     transform: scale(1.05);
-    background-color: var(--primary-background-color);
+    background-color: ${({ theme }) => theme.variableColors.backgroundCalendar};
     z-index: 10;
   }
 `;
