@@ -23,7 +23,7 @@ import {
   Container,
   StyledH2,
   StyledNavigationContainer,
-  StyledBtnContainer,
+  StyledBtn,
   CardContainer,
   TopCardContent,
   NameCardContentContainer,
@@ -45,14 +45,15 @@ const customStyles = {
 
 export const ReviewsSlider = () => {
   const swiperRef = useRef(null);
-  const disbleBtnStyle = { opacity: 0.4, pointerEvents: "none" };
-  const activeBtnStyle = { opacity: 1, pointerEvents: "auto" };
-  const [prevBtnIsActive, setPrevBtnIsActive] = useState(false);
-  const [nextBtnIsActive, setNextBtnIsActive] = useState(true);
 
   // Reviews
   const dispatch = useDispatch();
   const reviews = useSelector(selectReviews);
+
+  const [prevBtnDisable, setPrevBtnDisable] = useState(true);
+  const [nextBtnDisable, setNextBtnDisable] = useState(
+    () => reviews.length < 2
+  );
 
   useEffect(() => {
     dispatch(getReviews());
@@ -62,27 +63,25 @@ export const ReviewsSlider = () => {
   SwiperCore.use([Autoplay]);
 
   const prevSlide = () => {
-    setNextBtnIsActive(true);
     if (!swiperRef.current?.swiper.isBeginning) {
-      setPrevBtnIsActive(true);
       swiperRef.current?.swiper.slidePrev();
-    } else {
-      setPrevBtnIsActive(false);
     }
   };
 
   const nextSlide = () => {
-    setPrevBtnIsActive(true);
     if (!swiperRef.current?.swiper.isEnd) {
-      setNextBtnIsActive(true);
       swiperRef.current?.swiper.slideNext();
-    } else {
-      setNextBtnIsActive(false);
     }
   };
-  if (reviews.length > 2) {
-    setTimeout(() => setPrevBtnIsActive(true), 7000);
-  }
+
+  swiperRef.current?.swiper.on("slideChange", () => {
+    swiperRef.current?.swiper.isBeginning
+      ? setPrevBtnDisable(true)
+      : setPrevBtnDisable(false);
+    swiperRef.current?.swiper.isEnd
+      ? setNextBtnDisable(true)
+      : setNextBtnDisable(false);
+  });
 
   return (
     <Container>
@@ -93,6 +92,7 @@ export const ReviewsSlider = () => {
           ref={swiperRef}
           autoplay={{ delay: 7000 }}
           spaceBetween={24}
+          grabCursor={true}
           className="mySwiper"
           breakpoints={{
             320: {
@@ -131,23 +131,17 @@ export const ReviewsSlider = () => {
                       </div>
                     </NameCardContentContainer>
                   </TopCardContent>
-                  <CardText>{slide?.comment || "User description"}</CardText>
+                  <CardText>{slide?.comment || "Stand with Ukraine"}</CardText>
                 </CardContainer>
               </SwiperSlide>
             ))}
           <StyledNavigationContainer className="swiper-nav-btns">
-            <StyledBtnContainer
-              onClick={prevSlide}
-              style={prevBtnIsActive ? activeBtnStyle : disbleBtnStyle}
-            >
+            <StyledBtn onClick={prevSlide} disabled={prevBtnDisable}>
               <LeftArrow />
-            </StyledBtnContainer>
-            <StyledBtnContainer
-              onClick={nextSlide}
-              style={nextBtnIsActive ? activeBtnStyle : disbleBtnStyle}
-            >
+            </StyledBtn>
+            <StyledBtn onClick={nextSlide} disabled={nextBtnDisable}>
               <RightArrow />
-            </StyledBtnContainer>
+            </StyledBtn>
           </StyledNavigationContainer>
         </Swiper>
       </StyledSwiperContainer>
