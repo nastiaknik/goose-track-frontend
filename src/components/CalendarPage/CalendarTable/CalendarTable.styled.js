@@ -29,10 +29,10 @@ export const Calendar = styled.ul.attrs((props) => ({
 
 export const AllDays = styled.li`
   position: relative;
-  border: var(--border-calendar);
+  border: ${({ theme }) => theme.variableColors.borderСalendarColor};
 
   @media (min-width: 768px) {
-    border: var(--border-calendar);
+    ${({ theme }) => theme.variableColors.borderСalendarColor};
   }
 `;
 
