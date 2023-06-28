@@ -90,7 +90,9 @@ export const refresh = createAsyncThunk(
         ? token.set(response.data.accessToken)
         : token.set(currentToken);
 
-      return response.data;
+      const correctedResponse = { ...response.data, isLoggedIn: true };
+
+      return correctedResponse;
     } catch (e) {
       return rejectWithValue(e.message);
     }
