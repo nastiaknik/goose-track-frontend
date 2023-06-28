@@ -8,6 +8,7 @@ export const ListContainer = styled.ul.attrs(props => ({
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  padding-left: 0px;
 
   min-height: 432px;
 

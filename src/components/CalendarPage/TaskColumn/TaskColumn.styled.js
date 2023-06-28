@@ -8,8 +8,8 @@ export const Container = styled.li`
   padding: 20px;
   gap: 14px;
 
-  background: var(--primary-bg-color);
-  border: var(--border-calendar);
+  background: ${({theme})=>theme.variableColors.secondaryBackground};
+  border: var(--border-calendar-dark-theme);
   border-radius: 8px;
 
   @media (max-width: 1130px) {

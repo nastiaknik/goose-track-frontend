@@ -5,6 +5,7 @@ export const TasksList = styled.ul`
   flex-direction: column;
   justify-content: space-between;
   overflow: auto;
+  padding-left: 0;
 
   gap: 14px;
   @media (min-width: 768px) {
