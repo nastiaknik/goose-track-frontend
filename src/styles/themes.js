@@ -22,6 +22,9 @@ const lightTheme = {
     text: "#111111", // колір тексту
     borderColor: "#E3F3FF", // колір рамки графіка
     arrowColor: "#343434", // колір стрілки
+    calendarTextColor: "#343434", // колір тексту календаря
+    backgroundCalendar: "#FFFFFF", // колір фону календаря
+    borderСalendarColor: "rgba(220,	227,	229, 0.80)", // колір рамки календаря
     activeArrowColor: "#dce3e5", // колір активної стрілки
   },
 };
@@ -41,6 +44,9 @@ const darkTheme = {
     text: "#FFFFFF", // колір тексту
     borderColor: "#e3f3ff26", // колір рамки графіка
     arrowColor: "#FFFFFF", // колір стрілки
+    calendarTextColor: "#FFFFFF", // колір тексту календаря
+    backgroundCalendar: "#21222C", // колір фону календаря
+    borderСalendarColor: "rgba(255, 255, 255, 0.15)", // колір рамки календаря
     activeArrowColor: "rgba(255, 255, 255, 0.15)", // колір активної стрілки
   },
 };
