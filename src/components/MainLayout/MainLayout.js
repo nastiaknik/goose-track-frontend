@@ -1,7 +1,7 @@
+import { useState } from "react";
 import Header from "./Header/Header";
 import { DivHeader, DivLayout } from "./MainLayout.styled";
 import { SideBar } from "./SideBar/SideBar";
-import { useState } from "react";
 
 export const MainLayout = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,7 +13,7 @@ export const MainLayout = ({ children }) => {
   };
   return (
     <DivLayout>
-      {(isOpen || !isMobile) && <SideBar toggleMenu={toggleMenu} />}
+      {(isOpen || !isMobile) && <SideBar toggleMenu={toggleMenu} isMobile={isMobile} />}
       <DivHeader>
         <Header toggleMenu={toggleMenu} />
         {children}

@@ -10,8 +10,8 @@ export const IconLogOut = styled(FiLogOut)`
 `;
 export const Button = styled.button`
   position: absolute;
-  bottom: 20px;
-  left: 24px;
+  bottom: 24px;
+  left: 20px;
   display: flex;
   font-family: "InterRegular";
   justify-content: center;
@@ -36,6 +36,12 @@ export const Button = styled.button`
     height: 56px;
     width: 141px;
     font-size: 18px;
+    left: 32px;
+
     line-height: 24px;
+  }
+  @media (min-width: 1024px) {
+    bottom: 24px;
+    left: 24px;
   }
 `;

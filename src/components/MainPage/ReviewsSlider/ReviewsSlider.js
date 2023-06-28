@@ -1,4 +1,4 @@
-import { useCallback, useRef } from "react";
+import { useRef, useState } from "react";
 
 // Redux
 import { selectReviews } from "redux/reviews/selectors";
@@ -44,6 +44,12 @@ const customStyles = {
 };
 
 export const ReviewsSlider = () => {
+  const swiperRef = useRef(null);
+  const disbleBtnStyle = { opacity: 0.4, pointerEvents: "none" };
+  const activeBtnStyle = { opacity: 1, pointerEvents: "auto" };
+  const [prevBtnIsActive, setPrevBtnIsActive] = useState(false);
+  const [nextBtnIsActive, setNextBtnIsActive] = useState(true);
+
   // Reviews
   const dispatch = useDispatch();
   const reviews = useSelector(selectReviews);
@@ -53,16 +59,30 @@ export const ReviewsSlider = () => {
   }, [dispatch]);
 
   // Swiper
-  const swiperRef = useRef(null);
   SwiperCore.use([Autoplay]);
 
-  const prevSlide = useCallback(() => {
-    swiperRef.current?.swiper.slidePrev();
-  }, [swiperRef]);
+  const prevSlide = () => {
+    setNextBtnIsActive(true);
+    if (!swiperRef.current?.swiper.isBeginning) {
+      setPrevBtnIsActive(true);
+      swiperRef.current?.swiper.slidePrev();
+    } else {
+      setPrevBtnIsActive(false);
+    }
+  };
 
-  const nextSlide = useCallback(() => {
-    swiperRef.current?.swiper.slideNext();
-  }, [swiperRef]);
+  const nextSlide = () => {
+    setPrevBtnIsActive(true);
+    if (!swiperRef.current?.swiper.isEnd) {
+      setNextBtnIsActive(true);
+      swiperRef.current?.swiper.slideNext();
+    } else {
+      setNextBtnIsActive(false);
+    }
+  };
+  if (reviews.length > 2) {
+    setTimeout(() => setPrevBtnIsActive(true), 7000);
+  }
 
   return (
     <Container>
@@ -87,7 +107,10 @@ export const ReviewsSlider = () => {
         >
           {reviews.length !== 0 &&
             reviews.map((slide, index) => (
-              <SwiperSlide key={slide.owner._id} virtualIndex={index}>
+              <SwiperSlide
+                key={slide?.owner?._id || index}
+                virtualIndex={index}
+              >
                 <CardContainer>
                   <TopCardContent>
                     <ImgThumbCard>
@@ -95,10 +118,12 @@ export const ReviewsSlider = () => {
                       {/* <img src={"#"} alt={`${slide.owner.username} avatar`} /> */}
                     </ImgThumbCard>
                     <NameCardContentContainer>
-                      <NameCard>{slide.owner.username}</NameCard>
+                      <NameCard>
+                        {slide?.owner?.username || "Username"}
+                      </NameCard>
                       <div>
                         <Rating
-                          value={slide.rating}
+                          value={slide?.rating || 5}
                           style={{ maxWidth: 110, gap: 5 }}
                           itemStyles={customStyles}
                           readOnly
@@ -106,15 +131,21 @@ export const ReviewsSlider = () => {
                       </div>
                     </NameCardContentContainer>
                   </TopCardContent>
-                  <CardText>{slide.comment}</CardText>
+                  <CardText>{slide?.comment || "User description"}</CardText>
                 </CardContainer>
               </SwiperSlide>
             ))}
           <StyledNavigationContainer className="swiper-nav-btns">
-            <StyledBtnContainer onClick={prevSlide}>
+            <StyledBtnContainer
+              onClick={prevSlide}
+              style={prevBtnIsActive ? activeBtnStyle : disbleBtnStyle}
+            >
               <LeftArrow />
             </StyledBtnContainer>
-            <StyledBtnContainer onClick={nextSlide}>
+            <StyledBtnContainer
+              onClick={nextSlide}
+              style={nextBtnIsActive ? activeBtnStyle : disbleBtnStyle}
+            >
               <RightArrow />
             </StyledBtnContainer>
           </StyledNavigationContainer>

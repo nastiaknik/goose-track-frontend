@@ -46,7 +46,7 @@ export const ResendEmailForm = () => {
         text="Email"
         name="email"
         type="email"
-        placeholder="Enter your email"
+        placeholder="Enter email"
         isSubmited={isSubmited}
         formik={formik}
       />

@@ -1,17 +1,21 @@
 import styled from "styled-components";
-import { GrClose } from "react-icons/gr";
+import { MdOutlineClose } from "react-icons/md";
 
 export const ButtonClose = styled.button`
-  background-color: white;
+  background-color: ${({ theme }) => theme.variableColors.backgroundColorClose};
   cursor: pointer;
+  padding: 0;
   @media (min-width: 1024px) {
     display: none;
   }
 `;
 
-export const GrCloseBtn = styled(GrClose)`
+export const GrCloseBtn = styled(MdOutlineClose)`
   width: 24px;
   height: 24px;
+  display: block;
+
+  color: ${({ theme }) => theme.variableColors.colorBtnClose};
   @media (min-width: 768px) {
     height: 33px;
     width: 33px;
@@ -49,7 +53,7 @@ export const Span = styled.span`
   font-weight: 400;
   line-height: 22px;
   text-align: left;
-  color: rgba(62, 133, 243, 1);
+  color: ${({ theme }) => theme.variableColors.gooseColor};
   @media (min-width: 1024px) {
     font-size: 24px;
     line-height: 24px;
