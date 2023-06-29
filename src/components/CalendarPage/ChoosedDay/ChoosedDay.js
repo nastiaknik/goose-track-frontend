@@ -31,7 +31,7 @@ export const ChoosedDay = () => {
   };
 
   const year = format(urlDate, "yyyy");
-  const month = format(urlDate, "MMMM").toLowerCase();
+  const month = format(urlDate, "MM");
   const day = format(urlDate, "dd");
 
   useEffect(() => {

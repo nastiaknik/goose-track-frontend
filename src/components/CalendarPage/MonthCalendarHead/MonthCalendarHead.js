@@ -1,7 +1,7 @@
 import { format, isWeekend } from "date-fns";
 import Media from "react-media";
 import { Days, DaysText, DaysTextWeekend } from "./MonthCalendarHead.styled";
-import { useDate } from "hooks/useDate";
+import { useDate } from "../../../hooks/useDate";
 
 export const MonthCalendarHead = ({ totalDays }) => {
   const urlDate = useDate();
