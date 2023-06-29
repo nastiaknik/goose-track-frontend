@@ -1,11 +1,10 @@
 import { useEffect } from "react";
-import { createPortal } from "react-dom";
-import { Overlay, MenuContent, ArrowSvg, List, Button } from "./Menu.styled";
+import { MenuContent, ArrowSvg, List, Button } from "./Menu.styled";
 // import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import { updateTask } from "redux/tasks/operations";
 
-const modalRoot = document.querySelector("#modal-root");
+// import { TASK_STATUS } from "../../../constants/Status";
 
 export const Menu = ({ task, toggleMenu }) => {
   useEffect(() => {
@@ -22,34 +21,38 @@ export const Menu = ({ task, toggleMenu }) => {
     }
   };
 
-  const handleBackdropClick = (evt) => {
-    if (evt.currentTarget === evt.target) {
-      toggleMenu();
-    }
-  };
   const dispatch = useDispatch();
   const onUpdateTaskStatus = () => dispatch(updateTask(task.id));
 
-  return createPortal(
-    <Overlay onClick={handleBackdropClick}>
-      <MenuContent>
-        <List>
-          <li>
+  // let otherStatusList = [];
+  // otherStatusList = TASK_STATUS.filter((status) => status.id !== task.status);
+
+  return (
+    <MenuContent>
+      <List>
+        {/* {otherStatusList.map((status) => (
+          <li key={status.id}>
             <Button type="button" onClick={onUpdateTaskStatus}>
-              In progress
+              {status.name}
               <ArrowSvg />
             </Button>
           </li>
-          <li>
-            <Button type="button" onClick={onUpdateTaskStatus}>
-              Done
-              <ArrowSvg />
-            </Button>
-          </li>
-        </List>
-      </MenuContent>
-    </Overlay>,
-    modalRoot
+        ))} */}
+
+        <li>
+          <Button type="button" onClick={onUpdateTaskStatus}>
+            In progress
+            <ArrowSvg />
+          </Button>
+        </li>
+        <li>
+          <Button type="button" onClick={onUpdateTaskStatus}>
+            Done
+            <ArrowSvg />
+          </Button>
+        </li>
+      </List>
+    </MenuContent>
   );
 };
 
