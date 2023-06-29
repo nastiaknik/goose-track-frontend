@@ -3,24 +3,37 @@ import {
   Button,
   PencilSvg,
   TrashSvg,
-  Wrapper,
+  List,
+  Item,
 } from "./TaskToolbar.styled";
 import { useDispatch } from "react-redux";
 import { deleteTask } from "redux/tasks/operations";
+import { Menu } from "components/CalendarPage/TaskToolbar/Menu";
+import { useState } from "react";
 // import PropTypes from "prop-types";
 
-export const TaskToolbar = ({ toggleMenu, toggleModal, task }) => {
-  const dispatch = useDispatch();
+export const TaskToolbar = ({ toggleModal, task }) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const dispatch = useDispatch();
   const onDelete = () => dispatch(deleteTask(task.id));
 
+  const toggleMenu = () => {
+    if (isMenuOpen) {
+      setIsMenuOpen(false);
+    } else {
+      setIsMenuOpen(true);
+    }
+  };
+
   return (
-    <Wrapper>
-      <li>
+    <List>
+      <Item>
         <Button type="button" onClick={toggleMenu}>
           <ArrowSvg />
         </Button>
-      </li>
+        {isMenuOpen && <Menu toggleMenu={toggleMenu} />}
+      </Item>
       <li>
         <Button type="button" onClick={toggleModal}>
           <PencilSvg />
@@ -31,7 +44,7 @@ export const TaskToolbar = ({ toggleMenu, toggleModal, task }) => {
           <TrashSvg />
         </Button>
       </li>
-    </Wrapper>
+    </List>
   );
 };
 

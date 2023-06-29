@@ -3,7 +3,11 @@ import { BsArrowRightCircle } from "react-icons/bs";
 import { BiPencil } from "react-icons/bi";
 import { CiTrash } from "react-icons/ci";
 
-export const Wrapper = styled.ul`
+export const Item = styled.div`
+  position: relative;
+`;
+
+export const List = styled.ul`
   display: flex;
   gap: 10px;
 `;
