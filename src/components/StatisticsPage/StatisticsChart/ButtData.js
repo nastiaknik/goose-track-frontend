@@ -12,7 +12,7 @@ import {
   PrevDayButton,
   NextDayButton,
 } from "./ButtData.styled";
-import { getTasksByMonth } from "redux/tasks/operations";
+import { getTasksByMonth, getTasksByDay } from "redux/tasks/operations";
 
 
 
@@ -32,17 +32,27 @@ const DateButton = () => {
   };
   const dispatch = useDispatch();
   
-  const params = useMemo(() =>
+  const paramsM = useMemo(() =>
   {
-    return {year: `${selectedDate.getFullYear()}`,
-    month: `${selectedDate.getMonth()+1}`.padStart(2, "0")}
+    return{
+      year: `${selectedDate.getFullYear()}`,
+      month: `${selectedDate.getMonth()+1}`.padStart(2, "0")}
   }, [selectedDate])
+
+   const paramsD = useMemo(() => {
+     return {
+       year: `${selectedDate.getFullYear()}`,
+       month: `${selectedDate.getMonth() + 1}`.padStart(2, "0"),
+       day: `${selectedDate.getDate() }`.padStart(2, "0")
+     };
+   }, [selectedDate]);
   
-  // console.log(params)
+  // console.log(paramsD)
 
   useEffect(() => {
-    dispatch(getTasksByMonth(params));
-  }, [params, selectedDate, dispatch]);
+    dispatch(getTasksByMonth(paramsM));
+    dispatch(getTasksByDay(paramsD));
+  }, [paramsD, paramsM, selectedDate, dispatch]);
 
   return (
     <DataContainer>
