@@ -1,23 +1,9 @@
 import styled from "styled-components";
 import { BsArrowRightCircle } from "react-icons/bs";
 
-// export const Overlay = styled.div`
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   width: 100vw;
-//   height: 100vh;
-//   padding: 20px;
-//   background-color: rgba(0, 0, 0, 0.1);
-//   z-index: 1000;
-// `;
-
 export const MenuContent = styled.div`
   position: absolute;
-  // top: 50%;
-  top: 190%;
-  // left: 0;
-  z-index: 10000;
+  top: 150%;
   right: -64px;
   width: 115px;
   height: 70px;
@@ -29,8 +15,6 @@ export const MenuContent = styled.div`
   box-shadow: var(--task-modal-shadow);
 
   @media screen and (min-width: 768px) {
-    // top: 405px;
-    // right: 305px;
     left: 0;
     width: 147px;
     height: 90px;

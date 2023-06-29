@@ -1,11 +1,7 @@
-import {
-  ArrowSvg,
-  Button,
-  PencilSvg,
-  TrashSvg,
-  List,
-  Item,
-} from "./TaskToolbar.styled";
+import { Button, List, Item } from "./TaskToolbar.styled";
+import { BsArrowRightCircle } from "react-icons/bs";
+import { BiPencil } from "react-icons/bi";
+import { CiTrash } from "react-icons/ci";
 import { useDispatch } from "react-redux";
 import { deleteTask } from "redux/tasks/operations";
 import { Menu } from "components/CalendarPage/TaskToolbar/Menu";
@@ -30,18 +26,18 @@ export const TaskToolbar = ({ toggleModal, task }) => {
     <List>
       <Item>
         <Button type="button" onClick={toggleMenu}>
-          <ArrowSvg />
+          <BsArrowRightCircle />
         </Button>
         {isMenuOpen && <Menu toggleMenu={toggleMenu} />}
       </Item>
       <li>
         <Button type="button" onClick={toggleModal}>
-          <PencilSvg />
+          <BiPencil />
         </Button>
       </li>
       <li>
         <Button type="button" onClick={onDelete}>
-          <TrashSvg />
+          <CiTrash />
         </Button>
       </li>
     </List>
