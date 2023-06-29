@@ -11,7 +11,7 @@ import { TasksColumnsList } from "../TaskColumnBoard/TaskColumnList";
 import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { getTasksByDay } from "redux/tasks/operations";
+import { getTasksByDay } from "../../../redux/tasks/operations";
 import { useDate } from "../../../hooks/useDate";
 
 export const ChoosedDay = () => {
