@@ -8,7 +8,7 @@ import {
 import { ThemeToggler } from "../ThemeToggler/ThemeToggler";
 import { useSelector } from "react-redux";
 import { selectUser } from "redux/auth/selectrors";
-const CLOUDINARY_BASE_URI = "http://res.cloudinary.com/dq02pfta7/";
+// const CLOUDINARY_BASE_URI = "http://res.cloudinary.com/dq02pfta7/";
 
 const UserInfo = () => {
   const user = useSelector(selectUser);
@@ -24,7 +24,8 @@ const UserInfo = () => {
 
       {imgURL ? (
         <AvatarImage
-          src={`${CLOUDINARY_BASE_URI}${imgURL}`}
+          src={imgURL}
+          // {`${CLOUDINARY_BASE_URI}${imgURL}`}
           alt="User Avatar"
         />
       ) : (
