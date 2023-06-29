@@ -1,11 +1,35 @@
 import { format, isSameDay, isThisMonth, isToday } from "date-fns";
 import { useParams } from "react-router-dom";
-import { DaysOfMonth, Today } from "./CalendarTableItem.styled";
-
+import {
+  DaysOfMonth,
+  Today,
+  BoxTasks,
+  Title,
+  Task,
+  MoreTasks,
+} from "./CalendarTableItem.styled";
+import { useMedia } from "react-use";
 import PropTypes from "prop-types";
 
-export const CalendarTableItem = ({ day, dayTasks }) => {
+export const CalendarTableItem = ({ day, dayTasks, gridRowHeight }) => {
   const DayOfMonth = useParams();
+  const isWide = useMedia("(min-width: 768px)");
+  const isWideSmaller = useMedia("(max-width: 374.98px)");
+
+  const borderHeight = 1;
+  let columnPaddingTop = 27;
+  let taskHeight = 20 + 2; // height + gap
+
+  if (isWide) {
+    columnPaddingTop = 36;
+    taskHeight = 24 + 4; // height + gap
+  }
+
+  const maxTasksInColumn = Math.floor(
+    (gridRowHeight + borderHeight * 2 - columnPaddingTop) / taskHeight
+  );
+
+  const countTasks = dayTasks?.length;
 
   const AllDays = isThisMonth(new Date(DayOfMonth.currentDate))
     ? isToday(day)
@@ -17,6 +41,21 @@ export const CalendarTableItem = ({ day, dayTasks }) => {
   return (
     <>
       <AllDays>{format(day, "d")}</AllDays>
+      <BoxTasks length={dayTasks?.length} columnPaddingTop={columnPaddingTop}>
+        <Task>
+          <Title>dfdfdf</Title>
+        </Task>
+        <Task>
+          <Title>dfgdfg</Title>
+        </Task>
+        {countTasks > maxTasksInColumn && isWideSmaller ? (
+          <MoreTasks>+ {countTasks - maxTasksInColumn + 1}</MoreTasks>
+        ) : (
+          countTasks > maxTasksInColumn && (
+            <MoreTasks>+{countTasks - maxTasksInColumn + 1} More</MoreTasks>
+          )
+        )}
+      </BoxTasks>
     </>
   );
 };
