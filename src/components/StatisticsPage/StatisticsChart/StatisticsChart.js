@@ -18,8 +18,25 @@ import {
   ChartHead,
   LegendList,
 } from "./StatisticsChart.styled";
-import { DatePicker } from "components/SharedComponents/DatePicker/DatePicker";
+
 import { TbPointFilled } from "react-icons/tb";
+
+import DateButton from "./ButtData";
+import { selectMonthTasks } from "redux/tasks/selectors";
+
+
+
+
+
+export const StatisticsChart = () => {
+  const currentTheme = useSelector((state) => state.theme.currentTheme);
+  const tasks = useSelector(selectMonthTasks);
+  // console.log(tasks);
+  const todoByM = tasks.filter((task) => task.category === "To do").length;
+  const inprogressByM = tasks.filter((task) => task.category === "In progress").length;
+  const doneByM = tasks.filter((task) => task.category === "Done").length;
+
+
 
 const todoByDay = 3;
 const inprogressByDay = 2;
@@ -28,14 +45,19 @@ const allTasksByDay = todoByDay + inprogressByDay + doneByDay;
 const todoByDayPer = Math.round((todoByDay / allTasksByDay) * 100);
 const inprogressByDayPer = Math.round((inprogressByDay / allTasksByDay) * 100);
 const doneByDayPer = Math.round((doneByDay / allTasksByDay) * 100);
-
-const todoByM = 30;
-const inprogressByM = 30;
-const doneByM = 40;
+  
+  // const todoByM = 30;
+// const inprogressByM = 30;
+// const doneByM = 40;
 const allTasksByM = todoByM + inprogressByM + doneByM;
 const todoByMPer = Math.round((todoByM / allTasksByM) * 100);
 const inprogressByMPer = Math.round((inprogressByM / allTasksByM) * 100);
-const doneByMPer = Math.round((doneByM / allTasksByM) * 100);
+  const doneByMPer = Math.round((doneByM / allTasksByM) * 100);
+  console.log(`todoByM ${todoByM}`);
+  console.log(`inprogressByM ${inprogressByM}`);
+  console.log(`doneByM ${doneByM}`);
+  console.log(`allTasksByM ${allTasksByM}`);
+
 
 const data = [
   {
@@ -58,8 +80,7 @@ const data = [
   },
 ];
 
-export const StatisticsChart = () => {
-  const currentTheme = useSelector((state) => state.theme.currentTheme);
+
 
   const renderCustomizedLabel = (props) => {
     const { x, y, width, value } = props;
@@ -95,22 +116,7 @@ export const StatisticsChart = () => {
   return (
     <Container>
       <ChartHead>
-        <DatePicker
-          // id="birthday"
-          // name="birthday"
-          // selected={new Date(formik.values.birthday)}
-          // onChange={(date) => {
-          //   formik.setFieldValue("birthday", date);
-          // }}
-          // onBlur={formik.handleBlur}
-          dateFormat="dd-MM-yyyy"
-          // maxDate={new Date()}
-          placeholderText="dd-MM-yyyy"
-          formatWeekDay={(day) => day.charAt(0)}
-          calendarStartDay={1}
-          // hasError={formik.touched.birthday && formik.errors.birthday}
-          // success={formik.touched.birthday}
-        />
+        <DateButton />
         <LegendList>
           <li>
             <TbPointFilled color="#FFD2DD" size={20} />
@@ -171,7 +177,7 @@ export const StatisticsChart = () => {
 
             <YAxis
               type="number"
-              domain={[0, allTasksByM]}
+              domain={[0, 100]}
               position="left"
               axisLine={false}
               tickLine={false}

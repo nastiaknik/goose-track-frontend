@@ -1,6 +1,7 @@
 import { TASK_PRIORITY } from "../../../constants/Priority";
 import { TaskToolbar } from "components/CalendarPage/TaskToolbar/TaskToolbar";
 import styled from "styled-components";
+import { RxAvatar } from "react-icons/rx";
 
 export const Container = styled.div`
   display: flex;
@@ -10,8 +11,8 @@ export const Container = styled.div`
 
   width: 100%;
 
-  background-color: var(--secondary-bg-color);
-  border: var(--border);
+  background-color:${({theme})=>theme.variableColors.primaryBackground};
+  border: var(--border-calendar-dark-theme);
   border-radius: 8px;
 
   @media (min-width: 1280px) {
@@ -31,6 +32,16 @@ export const TaskTitle = styled.h4`
   font-weight: 500;
   font-size: 14px;
   line-height: 1.29;
+  color:${({theme})=>theme.variableColors.calendarTextColor};
+`;
+
+export const SvgAvatar = styled(RxAvatar)`
+ width: 32px;
+  height: 32px;
+  color: ${({theme})=>theme.variableColors.colorBtnClose};
+  border:  2px solid;
+  border-radius: 60%;
+  border-color: var(--accent-bg-color);
 `;
 
 export const TaskAvatarWrapper = styled.div`

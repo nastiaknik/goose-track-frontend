@@ -5,11 +5,12 @@ import {
   Wrapper,
   TaskAvatarWrapper,
   Toolbar,
+  SvgAvatar,
 } from "./TaskColumnCard.styled";
 import { TASK_PRIORITY } from "../../../constants/Priority";
-import { RxAvatar } from "react-icons/rx";
 import { Modal } from "components/SharedComponents/Modal/Modal";
 import { useState } from "react";
+import { TaskModal } from "components/SharedComponents/TaskModal/TaskModal";
 
 export const TaskColumnCard = ({
   title = "Lorem ipsum dolor sit amet consectetur ",
@@ -31,13 +32,16 @@ export const TaskColumnCard = ({
       <Wrapper>
         <Wrapper>
           <TaskAvatarWrapper>
-            <RxAvatar />
+            <SvgAvatar />
           </TaskAvatarWrapper>
           <TaskPriority priority={priority}>{priority}</TaskPriority>
         </Wrapper>
-
         <Toolbar toggleModal={toggleModal} />
-        {isModalOpen && <Modal onClose={toggleModal} />}
+        {isModalOpen && (
+          <Modal onClose={toggleModal}>
+            <TaskModal editMode={true} />
+          </Modal>
+        )}
       </Wrapper>
     </Container>
   );

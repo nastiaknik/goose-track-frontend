@@ -90,7 +90,9 @@ export const refresh = createAsyncThunk(
         ? token.set(response.data.accessToken)
         : token.set(currentToken);
 
-      return response.data;
+      const correctedResponse = { ...response.data, isLoggedIn: true };
+
+      return correctedResponse;
     } catch (e) {
       return rejectWithValue(e.message);
     }
@@ -125,11 +127,12 @@ export const getUserInfo = createAsyncThunk(
 
 export const updateUserInfo = createAsyncThunk(
   "auth/updateUserInfo",
-  async (data, { rejectWithValue }) => {
+  async (userData, { rejectWithValue }) => {
     try {
-      await $api.patch("api/auth/user", data, {
+      /* const boundary = crypto.randomBytes(16).toString("hex");*/
+      const { data } = await $api.patch("api/auth/user", userData, {
         headers: {
-          "Content-Type": "multipart/form-data",
+          "Content-Type": `multipart/form-data; boundary=a1f8bdc2e9c7a5eef43d73e79fc8b2a1`,
         },
       });
       toast.success("User data updated");

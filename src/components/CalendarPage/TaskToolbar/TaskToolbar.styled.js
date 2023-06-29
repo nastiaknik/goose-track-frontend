@@ -20,8 +20,8 @@ export const Button = styled.button`
 `;
 
 export const ArrowSvg = styled(BsArrowRightCircle)`
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
   fill: ${({ theme }) => theme.variableColors.text};
 
   &:hover,
@@ -31,8 +31,8 @@ export const ArrowSvg = styled(BsArrowRightCircle)`
 `;
 
 export const PencilSvg = styled(BiPencil)`
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
   fill: ${({ theme }) => theme.variableColors.text};
 
   &:hover,
@@ -42,8 +42,8 @@ export const PencilSvg = styled(BiPencil)`
 `;
 
 export const TrashSvg = styled(CiTrash)`
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
   fill: ${({ theme }) => theme.variableColors.text};
 
   &:hover,

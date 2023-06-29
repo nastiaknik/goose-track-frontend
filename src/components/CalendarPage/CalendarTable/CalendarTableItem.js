@@ -1,35 +1,11 @@
-import { format, isSameDay, isThisMonth, isToday } from 'date-fns';
-import { useParams } from 'react-router-dom';
-import {
-  DaysOfMonth,
-  Today,
-  BoxTasks, Title,
-  Task,
-  MoreTasks,
-} from './CalendarTableItem.styled';
-import { useMedia } from 'react-use';
-import PropTypes from 'prop-types';
+import { format, isSameDay, isThisMonth, isToday } from "date-fns";
+import { useParams } from "react-router-dom";
+import { DaysOfMonth, Today } from "./CalendarTableItem.styled";
 
-export const CalendarTableItem = ({ day, dayTasks, gridRowHeight }) => {
+import PropTypes from "prop-types";
+
+export const CalendarTableItem = ({ day, dayTasks }) => {
   const DayOfMonth = useParams();
-  const isWide = useMedia('(min-width: 768px)');
-  const isWideSmaller = useMedia('(max-width: 374.98px)');
-
-  const borderHeight = 1;
-  let columnPaddingTop = 27;
-  let taskHeight = 20 + 2; // height + gap
-
-  if (isWide) {
-    columnPaddingTop = 36;
-    taskHeight = 24 + 4; // height + gap
-  }
-
-  const maxTasksInColumn = Math.floor(
-    (gridRowHeight + borderHeight * 2 - columnPaddingTop) / taskHeight
-  );
- 
-
-  const countTasks = dayTasks?.length;
 
   const AllDays = isThisMonth(new Date(DayOfMonth.currentDate))
     ? isToday(day)
@@ -40,37 +16,7 @@ export const CalendarTableItem = ({ day, dayTasks, gridRowHeight }) => {
     : DaysOfMonth;
   return (
     <>
-      <AllDays>{format(day, 'd')}</AllDays>
-      <BoxTasks length={dayTasks?.length} columnPaddingTop={columnPaddingTop}>
-        {countTasks > 0 &&
-          countTasks <= maxTasksInColumn &&
-          dayTasks?.map(task => {
-            return (
-              <Task key={task._id} priority={task.priority}>
-                <Title priority={task.priority}>{task.title}</Title>
-              </Task>
-            );
-          })}
-        {countTasks > 0 &&
-          countTasks > maxTasksInColumn &&
-          dayTasks?.map((task, idx) => {
-            if (idx < maxTasksInColumn - 1) {
-              return (
-                <Task key={task._id} priority={task.priority}>
-                  <Title priority={task.priority}>{task.title}</Title>
-                </Task>
-              );
-            }
-            return false;
-          })}
-        {countTasks > maxTasksInColumn && isWideSmaller ? (
-          <MoreTasks>+ {countTasks - maxTasksInColumn + 1}</MoreTasks>
-        ) : (
-          countTasks > maxTasksInColumn && (
-            <MoreTasks>+{countTasks - maxTasksInColumn + 1} More</MoreTasks>
-          )
-        )}
-      </BoxTasks>
+      <AllDays>{format(day, "d")}</AllDays>
     </>
   );
 };
@@ -91,5 +37,5 @@ CalendarTableItem.propTypes = {
         title: PropTypes.string.isRequired,
       })
     ) || undefined.isRequired,
-    gridRowHeight: PropTypes.number.isRequired,
+  gridRowHeight: PropTypes.number.isRequired,
 };

@@ -4,7 +4,6 @@ import { selectUser /* , selectIsUserLoading */ } from "redux/auth/selectrors";
 import { /* getUserInfo, */ updateUserInfo } from "redux/auth/operations";
 import { useFormik } from "formik";
 import { format } from "date-fns";
-import { toast } from "react-toastify";
 import { DatePicker } from "components/SharedComponents/DatePicker/DatePicker";
 import { UpdateInfoSchema } from "helpers/formValidationSchemas";
 import {
@@ -28,8 +27,6 @@ import {
   ArrowIcon,
   DefaultIcon,
 } from "./UserForm.styled";
-
-const CLOUDINARY_BASE_URI = "http://res.cloudinary.com/dq02pfta7/";
 
 export const UserForm = () => {
   const dispatch = useDispatch();
@@ -66,21 +63,20 @@ export const UserForm = () => {
     onSubmit: (values, { resetForm }) => {
       console.log(values);
       dispatch(updateUserInfo(values));
-      resetForm();
     },
   });
 
   const handleValidation = (e) => {
     e.preventDefault();
-    toast.success("Changes were saved successfully");
     formik.handleSubmit();
   };
 
   const handleAvatarChange = (event) => {
     const file = event.target.files[0];
     if (file) {
+      const imageURL = URL.createObjectURL(file);
+      setImage(imageURL);
       formik.setFieldValue("imgURL", file);
-      setImage(URL.createObjectURL(file));
     }
   };
 
@@ -88,10 +84,10 @@ export const UserForm = () => {
     <Form onSubmit={handleValidation}>
       <AvatarBlock>
         <LabelAvatar htmlFor="image">
-          {imgURL || image ? (
+          {image || imgURL ? (
             <LabelImg
               alt="Avatar"
-              src={imgURL ? `${CLOUDINARY_BASE_URI}${imgURL}` : image}
+              src={image || imgURL}
               width="48"
               height="48"
             />
@@ -104,7 +100,6 @@ export const UserForm = () => {
             name="image"
             accept="image/jpg, image/jpeg, image/png"
             onChange={handleAvatarChange}
-            /* value={formik.values.imgURL} */
           />
           <AddAvatarBtn>
             <PlusIcon />
@@ -187,7 +182,6 @@ export const UserForm = () => {
             calendarStartDay={1}
             hasError={formik.touched.birthday && formik.errors.birthday}
             success={formik.touched.birthday}
-            {...formik.getFieldProps("birthday")}
           />
           <Errors>{formik.touched.birthday && formik.errors.birthday}</Errors>
         </BirthdayContainer>
