@@ -1,16 +1,17 @@
 import React from "react";
+// import { NavLink } from "react-router-dom";
 import {
   UserInfoContainer,
   Username,
   Avatar,
   AvatarImage,
+  StyleNavLink,
 } from "./UserInfo.styled";
 import { ThemeToggler } from "../ThemeToggler/ThemeToggler";
 import { useSelector } from "react-redux";
 import { selectUser } from "redux/auth/selectrors";
-// const CLOUDINARY_BASE_URI = "http://res.cloudinary.com/dq02pfta7/";
 
-const UserInfo = () => {
+const UserInfo = ({ toggleMenu }) => {
   const user = useSelector(selectUser);
 
   const username = user?.username ?? "";
@@ -19,18 +20,14 @@ const UserInfo = () => {
   return (
     <UserInfoContainer>
       <ThemeToggler />
-
-      <Username>{username}</Username>
-
-      {imgURL ? (
-        <AvatarImage
-          src={imgURL}
-          // {`${CLOUDINARY_BASE_URI}${imgURL}`}
-          alt="User Avatar"
-        />
-      ) : (
-        <Avatar>{username.charAt(0).toUpperCase()}</Avatar>
-      )}
+      <StyleNavLink to="/account" onClick={toggleMenu}>
+        <Username>{username}</Username>
+        {imgURL ? (
+          <AvatarImage src={imgURL} alt="User Avatar" />
+        ) : (
+          <Avatar>{username.charAt(0).toUpperCase()}</Avatar>
+        )}
+      </StyleNavLink>
     </UserInfoContainer>
   );
 };

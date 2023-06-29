@@ -19,7 +19,7 @@ export const HeaderContainer = styled.header`
   justify-content: space-between;
   align-items: center;
   background-color: ${({ theme }) => theme.variableColors.primaryBackground};
-  
+
   padding: 20px;
   height: 116px;
   @media (min-width: 1024px) {
@@ -39,13 +39,14 @@ export const ContentContainer = styled.div`
 `;
 
 export const Title = styled.p`
-  font-family: Inter;
+  // font-family: Inter;
+  font-family: var(--primary-font-family);
   font-size: 32px;
   font-weight: 700;
   line-height: 32px;
   letter-spacing: 0em;
   text-align: left;
-  color:${({ theme }) => theme.variableColors.text};
+  color: ${({ theme }) => theme.variableColors.text};
   box-shadow: 0px 9.399999618530273px 57.6875px 0px #00000009;
   display: none;
 
