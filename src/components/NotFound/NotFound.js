@@ -1,4 +1,11 @@
-import { Text, Number, Wrapper, Container } from "./NotFound.styled";
+import {
+  Text,
+  Number,
+  Wrapper,
+  Container,
+  StyledPicture,
+  StyledLink,
+} from "./NotFound.styled";
 
 import images from "./images";
 const { phone, tablet, desktop } = images;
@@ -8,7 +15,7 @@ export const NotFound = () => {
     <Container>
       <Wrapper>
         <Number>4</Number>
-        <picture>
+        <StyledPicture>
           <source
             type="image/webp"
             media="(max-width: 767px)"
@@ -41,14 +48,14 @@ export const NotFound = () => {
           />
           <img
             src={`${phone.notFoundPhonepng}`}
-            alt="Rocket with the goose instead zero"
+            alt="A rocket with the goose instead zero"
           />
-        </picture>
+        </StyledPicture>
         <Number>4</Number>
       </Wrapper>
       <Text>
         We’re sorry, the page you requested could not be found. Please go back
-        to the homepage.
+        to the <StyledLink to={"/"}>homepage</StyledLink>.
       </Text>
     </Container>
   );

@@ -1,30 +1,29 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const Container = styled.div`
-  padding-top: 285px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding-left: 47px;
   padding-right: 47px;
   margin: 0 auto;
   width: 100%;
-  //   background-color: var(--secondary-bg-color);
   background-color: ${({ theme }) => theme.variableColors.primaryBackground};
   text-align: center;
   min-height: 100vh;
 
   @media screen and (min-width: 768px) {
-    padding-top: 364px;
     padding-left: 132px;
     padding-right: 132px;
   }
 
   @media screen and (min-width: 1024px) {
-    padding-top: 302px;
     padding-left: 261px;
     padding-right: 261px;
   }
 
   @media screen and (min-width: 1440px) {
-    padding-top: 302px;
     padding-left: 469px;
     padding-right: 469px;
   }
@@ -32,6 +31,20 @@ export const Container = styled.div`
 
 export const Wrapper = styled.div`
   display: flex;
+  align-items: center;
+  margin: 0 15px;
+
+  @media screen and (min-width: 768px) {
+    margin: 0;
+  }
+`;
+
+export const StyledPicture = styled.picture`
+  margin: 0 -30px;
+
+  @media screen and (min-width: 768px) {
+    margin: 0 -60px;
+  }
 `;
 
 export const Number = styled.span`
@@ -57,5 +70,15 @@ export const Text = styled.p`
 
   @media screen and (min-width: 768px) {
     max-width: 387px;
+  }
+`;
+
+export const StyledLink = styled(Link)`
+  color: var(--accent-text-color);
+  text-decoration-line: underline;
+
+  :hover,
+  :focus {
+    color: var(--heading-text-color);
   }
 `;
