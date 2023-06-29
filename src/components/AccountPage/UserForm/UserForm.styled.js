@@ -1,7 +1,6 @@
 import styled from "styled-components";
-import { AiOutlineUser } from "react-icons/ai";
-import { GrDown } from "react-icons/gr";
-import { AiOutlinePlus } from "react-icons/ai";
+import { AiOutlineUser, AiOutlinePlus } from "react-icons/ai";
+import { FaChevronDown } from "react-icons/fa";
 
 export const Form = styled.form`
   display: flex;
@@ -14,7 +13,7 @@ export const Form = styled.form`
   height: 100%;
   margin-top: 51px;
   padding: 40px 20px;
-  background-color: var(--primary-bg-color);
+  background-color: ${({ theme }) => theme.variableColors.secondaryBackground};
   border-radius: 16px;
 
   @media (min-width: 768px) {
@@ -50,12 +49,12 @@ export const FlexInput = styled.div`
 
 export const LabelSpan = styled.span`
   margin-bottom: 8px;
-  color: ${({ hasError, success }) =>
+  color: ${({ hasError, success, theme }) =>
     hasError
       ? "var(--error-text-color)"
       : success
       ? "var(--correct-text-color)"
-      : "var(--secondary-text-color)"};
+      : `${theme.variableColors.labelUserFormTextColor}`};
   transition: color var(--animation);
 `;
 
@@ -77,28 +76,28 @@ export const Input = styled.input`
   font-size: 14px;
   line-height: 1.3;
   outline: none;
-  border: ${({ hasError, success }) => {
+  border: ${({ hasError, success, theme }) => {
     if (hasError) {
       return "var(--border-auth-error)";
     }
     if (success) {
       return "var(--border-auth-correct)";
     }
-    return "var(--border)";
+    return `${theme.variableColors.borderUserForm}`;
   }};
   border-radius: var(--border-radius);
   height: 42px;
   padding: 12px 12px 12px 14px;
   box-sizing: border-box;
-  color: var(--primary-text-color);
-  background-color: var(--primary-bg-color);
+  color: ${({ theme }) => theme.variableColors.text};
+  background-color: ${({ theme }) => theme.variableColors.secondaryBackground};
   transition: border var(--animation);
 
   &::placeholder {
     font-family: "InterRegular";
     font-size: 14px;
     line-height: 1.29;
-    color: var(--auth-placeholder-color);
+    // color: var(--auth-placeholder-color);
   }
 
   @media (max-width: 374px) {
@@ -118,14 +117,14 @@ export const Input = styled.input`
 
   &:hover,
   :focus {
-    border: ${({ hasError, success }) => {
+    border: ${({ hasError, success, theme }) => {
       if (hasError) {
         return "var(--border-auth-error)";
       }
       if (success) {
         return "var(--border-auth-correct)";
       }
-      return "var(--border-input-hover)";
+      return `${theme.variableColors.borderInputHover}`;
     }};
   }
 `;
@@ -226,8 +225,8 @@ export const PlusIcon = styled(AiOutlinePlus)`
   }
 `;
 
-export const ArrowIcon = styled(GrDown)`
-  color: var(--primary-text-color);
+export const ArrowIcon = styled(FaChevronDown)`
+  color: ${({ theme }) => theme.variableColors.arrowIconColor};
   width: 12px;
   height: 12px;
 `;
@@ -266,13 +265,14 @@ export const Button = styled.button`
   }
 `;
 
-export const TitleAvatar = styled.h3`
+export const TitleAvatar = styled.p`
+  font-family: "InterBold";
   font-weight: 700;
   font-size: 18px;
   line-height: 1;
   margin: 14px 0 0 0;
   text-align: center;
-  color: var(--primary-text-color);
+  color: ${({ theme }) => theme.variableColors.titleAvatar};
 
   @media (min-width: 768px) {
     margin: 20px 0 0 0;
@@ -284,7 +284,7 @@ export const TextAvatar = styled.p`
   font-weight: 600;
   font-size: 14px;
   line-height: 18px;
-  color: var(--secondary-text-color);
+  color: ${({ theme }) => theme.variableColors.textAvatar};
   margin-top: 4px;
   text-align: center;
 
@@ -322,9 +322,10 @@ export const StyledIconContainer = styled.div`
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background-color: var(--primary-bg-color);
+  background-color: transparent;
   z-index: 1;
   cursor: pointer;
+
   @media screen and (min-width: 768px) {
     transform: translate(1045%, 108%);
   }

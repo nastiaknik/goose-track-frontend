@@ -32,6 +32,12 @@ const lightTheme = {
     gooseColor: "rgba(62, 133, 243, 1)", // колір тексту Goose
     backgroundColorClose: "white", // фон кнопки закриття SideBar
     colorBtnClose: "black", // фон кнопки закриття SideBar
+    labelUserFormTextColor: "#111111", // лейбл у юзер формі
+    borderUserForm: "1px solid #11111126", // бордер інпуту у юзер формі
+    borderInputHover: "1px solid #111111", // бордер при ховері
+    titleAvatar: "#343434", // колір ім'я користувача
+    textAvatar: "#343434", // текст юзер
+    arrowIconColor: "#111111", // колір стрілки вниз
   },
 };
 
@@ -60,6 +66,12 @@ const darkTheme = {
     gooseColor: "#E3F3FF", //колір тексту Goose
     backgroundColorClose: "#13151A", // фон кнопки закриття SideBar
     colorBtnClose: "white", // фон кнопки закриття SideBar
+    labelUserFormTextColor: "#FAFAFA4D", // лейбл у юзер формі
+    borderUserForm: "1px solid #FFFFFF26", // бордер інпуту у юзер формі
+    borderInputHover: "1px solid #ffffff", // бордер при ховері
+    titleAvatar: "#ffffff", // колір ім'я користувача
+    textAvatar: "rgba(250, 250, 250, 0.3)", // текст юзер
+    arrowIconColor: "#ffffff", // колір стрілки вниз
   },
 };
 
@@ -77,7 +89,9 @@ const otherColors = {
 export const Theme = ({ children }) => {
   const currentTheme = useSelector((state) => state.theme.currentTheme);
   const theme = (checkTheme = false) => {
-    return checkTheme ? { ...lightTheme, ...otherColors } : { ...darkTheme, ...otherColors };
+    return checkTheme
+      ? { ...lightTheme, ...otherColors }
+      : { ...darkTheme, ...otherColors };
   };
 
   return (

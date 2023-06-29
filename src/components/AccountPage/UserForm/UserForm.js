@@ -1,7 +1,7 @@
-import { useState /* , useEffect */ } from "react";
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { selectUser /* , selectIsUserLoading */ } from "redux/auth/selectrors";
-import { /* getUserInfo, */ updateUserInfo } from "redux/auth/operations";
+import { selectUser } from "redux/auth/selectrors";
+import { getUserInfo, updateUserInfo } from "redux/auth/operations";
 import { useFormik } from "formik";
 import { format } from "date-fns";
 import { DatePicker } from "components/SharedComponents/DatePicker/DatePicker";
@@ -30,48 +30,52 @@ import {
 
 export const UserForm = () => {
   const dispatch = useDispatch();
+  let user = useSelector(selectUser);
+  if (!user) {
+    const authData = localStorage.getItem("auth");
+    if (authData) {
+      const auth = JSON.parse(authData);
+      user = auth.user;
+    } else {
+      dispatch(getUserInfo());
+    }
+  }
 
-  /*   useEffect(() => {
-    const getUser = async () => {
-      await dispatch(getUserInfo());
-    };
-    getUser();
-  }, [dispatch]); */
-
-  const user = useSelector(selectUser);
-
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [image, setImage] = useState(null);
-  const username = user?.username ?? "";
-  const phone = user?.phone ?? "";
-  const birthday = user?.birthday ?? Date.now();
-  const skype = user?.skype ?? "";
-  const email = user?.email ?? "";
-  const imgURL = user?.imgURL ?? null;
-  /*   const isLoading = useSelector(selectIsUserLoading);*/
-
-  const initialValues = {
-    username,
-    phone,
-    birthday: format(new Date(birthday), "yyyy-MM-dd"),
-    skype,
-    email,
-  };
+  const [userData, setUserData] = useState({
+    username: user.username ?? "",
+    phone: user.phone ?? "",
+    birthday: format(new Date(user.birthday || Date.now()), "yyyy-MM-dd"),
+    skype: user.skype ?? "",
+    email: user.email ?? "",
+    imgURL: user.imgURL ?? null,
+  });
 
   const formik = useFormik({
-    initialValues,
+    initialValues: userData,
     validationSchema: UpdateInfoSchema,
-    onSubmit: (values, { resetForm }) => {
-      console.log(values);
+    onSubmit: (values) => {
+      setIsSubmitted(true);
       dispatch(updateUserInfo(values));
+      setUserData(values);
+      formik.setTouched({});
     },
   });
 
+  const handleChange = (e) => {
+    formik.handleChange(e);
+    setIsSubmitted(false);
+  };
+
   const handleValidation = (e) => {
+    setIsSubmitted(false);
     e.preventDefault();
     formik.handleSubmit();
   };
 
   const handleAvatarChange = (event) => {
+    setIsSubmitted(false);
     const file = event.target.files[0];
     if (file) {
       const imageURL = URL.createObjectURL(file);
@@ -84,10 +88,10 @@ export const UserForm = () => {
     <Form onSubmit={handleValidation}>
       <AvatarBlock>
         <LabelAvatar htmlFor="image">
-          {image || imgURL ? (
+          {image || userData.imgURL ? (
             <LabelImg
               alt="Avatar"
-              src={image || imgURL}
+              src={image || userData.imgURL}
               width="48"
               height="48"
             />
@@ -106,7 +110,7 @@ export const UserForm = () => {
           </AddAvatarBtn>
         </LabelAvatar>
 
-        <TitleAvatar>{username}</TitleAvatar>
+        <TitleAvatar>{userData.username}</TitleAvatar>
         <TextAvatar>User</TextAvatar>
       </AvatarBlock>
 
@@ -123,7 +127,7 @@ export const UserForm = () => {
             name="username"
             type="text"
             placeholder="username"
-            onChange={formik.handleChange}
+            onChange={handleChange}
             value={formik.values.username || ""}
             onBlur={formik.handleBlur}
             hasError={formik.touched.username && formik.errors.username}
@@ -144,13 +148,12 @@ export const UserForm = () => {
             id="phone"
             name="phone"
             type="phone"
-            onChange={formik.handleChange}
+            onChange={handleChange}
             onBlur={formik.handleBlur}
             placeholder="phone number"
             value={formik.values.phone || ""}
             hasError={formik.touched.phone && formik.errors.phone}
             success={formik.touched.phone && !formik.errors.phone}
-            {...formik.getFieldProps("phone")}
           />
           <Errors>{formik.touched.phone && formik.errors.phone}</Errors>
         </Label>
@@ -173,6 +176,7 @@ export const UserForm = () => {
             selected={new Date(formik.values.birthday)}
             onChange={(date) => {
               formik.setFieldValue("birthday", format(date, "yyyy-MM-dd"));
+              setIsSubmitted(false);
             }}
             onBlur={formik.handleBlur}
             dateFormat="dd-MM-yyyy"
@@ -197,13 +201,12 @@ export const UserForm = () => {
             id="skype"
             name="skype"
             type="text"
-            onChange={formik.handleChange}
+            onChange={handleChange}
             onBlur={formik.handleBlur}
             placeholder="skype"
             value={formik.values.skype || ""}
             hasError={formik.touched.skype && formik.errors.skype}
             success={formik.touched.skype && !formik.errors.skype}
-            {...formik.getFieldProps("skype")}
           />
           <Errors>{formik.touched.skype && formik.errors.skype}</Errors>
         </Label>
@@ -220,7 +223,7 @@ export const UserForm = () => {
             name="email"
             type="email"
             placeholder="email"
-            onChange={formik.handleChange}
+            onChange={handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.email || ""}
             hasError={formik.touched.email && formik.errors.email}
@@ -231,7 +234,10 @@ export const UserForm = () => {
         </Label>
       </FlexInput>
 
-      <Button type="submit" disabled={!(formik.isValid && formik.dirty)}>
+      <Button
+        type="submit"
+        disabled={isSubmitted || !(formik.isValid && formik.dirty)}
+      >
         Save changes
       </Button>
     </Form>

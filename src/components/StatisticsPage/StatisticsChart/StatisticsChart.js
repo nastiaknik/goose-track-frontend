@@ -22,7 +22,7 @@ import {
 import { TbPointFilled } from "react-icons/tb";
 
 import DateButton from "./ButtData";
-import { selectMonthTasks } from "redux/tasks/selectors";
+import { selectMonthTasks, selectDayTasks } from "redux/tasks/selectors";
 
 
 
@@ -30,17 +30,22 @@ import { selectMonthTasks } from "redux/tasks/selectors";
 
 export const StatisticsChart = () => {
   const currentTheme = useSelector((state) => state.theme.currentTheme);
-  const tasks = useSelector(selectMonthTasks);
+  const tasksM = useSelector(selectMonthTasks);
+  const tasksD = useSelector(selectDayTasks);
   // console.log(tasks);
-  const todoByM = tasks.filter((task) => task.category === "To do").length;
-  const inprogressByM = tasks.filter((task) => task.category === "In progress").length;
-  const doneByM = tasks.filter((task) => task.category === "Done").length;
+  const todoByM = tasksM.filter((task) => task.category === "To do").length;
+  const inprogressByM = tasksM.filter((task) => task.category === "In progress").length;
+  const doneByM = tasksM.filter((task) => task.category === "Done").length;
+
+  const todoByDay = tasksD.filter((task) => task.category === "To do").length;
+  const inprogressByDay = tasksD.filter((task) => task.category === "In progress").length;
+  const doneByDay = tasksD.filter((task) => task.category === "Done").length;
 
 
 
-const todoByDay = 3;
-const inprogressByDay = 2;
-const doneByDay = 4;
+// const todoByDay = 3;
+// const inprogressByDay = 2;
+// const doneByDay = 4;
 const allTasksByDay = todoByDay + inprogressByDay + doneByDay;
 const todoByDayPer = Math.round((todoByDay / allTasksByDay) * 100);
 const inprogressByDayPer = Math.round((inprogressByDay / allTasksByDay) * 100);
@@ -53,10 +58,10 @@ const allTasksByM = todoByM + inprogressByM + doneByM;
 const todoByMPer = Math.round((todoByM / allTasksByM) * 100);
 const inprogressByMPer = Math.round((inprogressByM / allTasksByM) * 100);
   const doneByMPer = Math.round((doneByM / allTasksByM) * 100);
-  console.log(`todoByM ${todoByM}`);
-  console.log(`inprogressByM ${inprogressByM}`);
-  console.log(`doneByM ${doneByM}`);
-  console.log(`allTasksByM ${allTasksByM}`);
+  // console.log(`todoByM ${todoByM}`);
+  // console.log(`inprogressByM ${inprogressByM}`);
+  // console.log(`doneByM ${doneByM}`);
+  // console.log(`allTasksByM ${allTasksByM}`);
 
 
 const data = [
