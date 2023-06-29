@@ -4,6 +4,7 @@ import {
   Wrapper,
   Container,
   StyledPicture,
+  StyledLink,
 } from "./NotFound.styled";
 
 import images from "./images";
@@ -54,7 +55,7 @@ export const NotFound = () => {
       </Wrapper>
       <Text>
         We’re sorry, the page you requested could not be found. Please go back
-        to the homepage.
+        to the <StyledLink to={"/"}>homepage</StyledLink>.
       </Text>
     </Container>
   );
