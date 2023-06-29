@@ -38,6 +38,7 @@ const lightTheme = {
     titleAvatar: "#343434", // колір ім'я користувача
     textAvatar: "#343434", // текст юзер
     arrowIconColor: "#111111", // колір стрілки вниз
+  },
 };
 
 const darkTheme = {
