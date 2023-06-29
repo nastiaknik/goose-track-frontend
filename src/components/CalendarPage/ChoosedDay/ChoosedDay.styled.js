@@ -17,7 +17,6 @@ export const Day = styled.div`
 
 export const SelectedDate = styled.span`
   font-family: "Inter";
-  font-style: normal;
   font-weight: 700;
   font-size: 12px;
   line-height: 1.17;
@@ -38,7 +37,6 @@ export const SelectedDay = styled.span`
   border-radius: 6px;
   padding: 4px 6px;
   font-family: "Inter";
-  font-style: normal;
   font-weight: 700;
   font-size: 12px;
   line-height: 1.17;
@@ -55,7 +53,6 @@ export const SelectedDay = styled.span`
 
 export const DayOfWeek = styled.span`
   font-family: "Inter";
-  font-style: normal;
   font-weight: 600;
   font-size: 14px;
   line-height: 1.12;

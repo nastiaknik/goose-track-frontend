@@ -26,7 +26,7 @@ export const ChoosedMonth = () => {
   const totalDays = eachDayOfInterval({ start: startDate, end: endDate });
 
   const year = format(urlDate, "yyyy");
-  const month = format(urlDate, "MMMM").toLowerCase();
+  const month = format(urlDate, "MM");
 
   useEffect(() => {
     const currentData = {
