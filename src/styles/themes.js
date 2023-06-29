@@ -25,6 +25,7 @@ const lightTheme = {
     borderColor: "#E3F3FF", // колір рамки графіка
     arrowColor: "#343434", // колір стрілки
     calendarTextColor: "#343434", // колір тексту календаря
+    weekendTextColor: "#3E85F3", // колір тексту вихідних днів календаря
     backgroundCalendar: "#FFFFFF", // колір фону календаря
     borderСalendarColor: "rgba(220,	227,	229, 0.80)", // колір рамки календаря
     activeArrowColor: "#dce3e5", // колір активної стрілки
@@ -38,6 +39,12 @@ const lightTheme = {
     titleAvatar: "#343434", // колір ім'я користувача
     textAvatar: "#343434", // текст юзер
     arrowIconColor: "#111111", // колір стрілки вниз
+    bgColorLowTask: "#CEEEFD", // колір фону Low такси
+    textColorLowTask: "#3E85F3", // колір фону Low такси
+    bgColorMediumTask: "#FCF0D4", // колір фону Medium такси
+    textColorMediumTask: "#F3B249", // колір фону Medium такси
+    bgColorHighTask: "#FFD2DD", // колір фону High такси
+    textColorHighTask: "#EA3D65", // колір фону High такси
   },
 };
 
@@ -60,6 +67,7 @@ const darkTheme = {
     borderColor: "#e3f3ff26", // колір рамки графіка
     arrowColor: "#FFFFFF", // колір стрілки
     calendarTextColor: "#FFFFFF", // колір тексту календаря
+    weekendTextColor: "#3E85F3", // колір тексту вихідних днів календаря
     backgroundCalendar: "#21222C", // колір фону календаря
     borderСalendarColor: "rgba(255, 255, 255, 0.15)", // колір рамки календаря
     activeArrowColor: "rgba(255, 255, 255, 0.15)", // колір активної стрілки
@@ -72,6 +80,12 @@ const darkTheme = {
     titleAvatar: "#ffffff", // колір ім'я користувача
     textAvatar: "rgba(250, 250, 250, 0.3)", // текст юзер
     arrowIconColor: "#ffffff", // колір стрілки вниз
+    bgColorLowTask: "#CEEEFD", // колір фону Low такси
+    textColorLowTask: "#3E85F3", // колір фону Low такси
+    bgColorMediumTask: "#FCF0D4", // колір фону Medium такси
+    textColorMediumTask: "#F3B249", // колір фону Medium такси
+    bgColorHighTask: "#FFD2DD", // колір фону High такси
+    textColorHighTask: "#EA3D65", // колір фону High такси
   },
 };
 
