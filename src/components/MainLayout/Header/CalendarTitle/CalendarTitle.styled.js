@@ -2,12 +2,12 @@ import styled from "styled-components";
 
 export const Calendar = styled.p`
   font-family: Inter;
+  color: ${({ theme }) => theme.variableColors.text};
   font-size: 32px;
   font-weight: 700;
   line-height: 32px;
   letter-spacing: 0em;
   text-align: left;
-  color: #111111;
   box-shadow: 0px 9.399999618530273px 57.6875px 0px #00000009;
   display: none;
   box-shadow: 0px 47px 355px 0px #00000012;
@@ -24,6 +24,7 @@ export const Div = styled.div`
 
 export const Span = styled.span`
   font-family: Inter;
+  color: ${({ theme }) => theme.variableColors.text};
   font-size: 14px;
   font-weight: 600;
   line-height: 18px;

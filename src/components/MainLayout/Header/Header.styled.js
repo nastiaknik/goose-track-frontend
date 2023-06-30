@@ -39,8 +39,7 @@ export const ContentContainer = styled.div`
 `;
 
 export const Title = styled.p`
-  // font-family: Inter;
-  font-family: var(--primary-font-family);
+  font-family: Inter;
   font-size: 32px;
   font-weight: 700;
   line-height: 32px;
@@ -63,7 +62,7 @@ export const TitleCalendar = styled.p`
   line-height: 32px;
   letter-spacing: 0em;
   text-align: left;
-  color: #111111;
+  color: var(--primary-text-color);
   box-shadow: 0px 9.399999618530273px 57.6875px 0px #00000009;
   display: none;
 
@@ -100,7 +99,7 @@ export const MotivationText = styled.p`
 
 export const ThemeTogglerText = styled.p`
   margin-right: 14px;
-  color: #3e85f3;
+  color: var(--secondary-text-color);
   font-family: Inter;
   font-size: 18px;
   font-weight: 700;

@@ -35,7 +35,7 @@ export const Avatar = styled.div`
   height: 32px;
   border-radius: 50%;
   background-color: #3e85f3;
-  color: #ffffff;
+  color: var(--light-text-color);
   display: flex;
   align-items: center;
   justify-content: center;
