@@ -1,96 +1,51 @@
-import { useSelector } from "react-redux";
 import {
   BarChart,
   Bar,
-  //   Cell,
   XAxis,
   YAxis,
   Label,
   CartesianGrid,
-  // Tooltip,
   LabelList,
-  // Legend,
   ResponsiveContainer,
 } from "recharts";
 import {
   Chart,
-  Container,
-  ChartHead,
-  LegendList,
 } from "./StatisticsChart.styled";
 
-import { TbPointFilled } from "react-icons/tb";
+export const StatisticsChart = ({
+  todoByDayPer,
+  inprogressByDayPer,
+  doneByDayPer,
+  todoByMPer,
+  inprogressByMPer,
+  doneByMPer,
+  currentTheme
+}) => {
+ 
+  const data = [
+    {
+      name: "To Do",
+      ByDay: todoByDayPer,
+      ByMonth: todoByMPer,
+      amt: 2400,
+    },
+    {
+      name: "In Progress",
+      ByDay: inprogressByDayPer,
+      ByMonth: inprogressByMPer,
+      amt: 2210,
+    },
+    {
+      name: "Done",
+      ByDay: doneByDayPer,
+      ByMonth: doneByMPer,
+      amt: 2290,
+    },
+  ];
 
-import DateButton from "./ButtData";
-import { selectMonthTasks, selectDayTasks } from "redux/tasks/selectors";
-
-
-
-
-
-export const StatisticsChart = () => {
-  const currentTheme = useSelector((state) => state.theme.currentTheme);
-  const tasksM = useSelector(selectMonthTasks);
-  const tasksD = useSelector(selectDayTasks);
-  // console.log(tasks);
-  const todoByM = tasksM.filter((task) => task.category === "To do").length;
-  const inprogressByM = tasksM.filter((task) => task.category === "In progress").length;
-  const doneByM = tasksM.filter((task) => task.category === "Done").length;
-
-  const todoByDay = tasksD.filter((task) => task.category === "To do").length;
-  const inprogressByDay = tasksD.filter((task) => task.category === "In progress").length;
-  const doneByDay = tasksD.filter((task) => task.category === "Done").length;
-
-
-
-// const todoByDay = 3;
-// const inprogressByDay = 2;
-// const doneByDay = 4;
-const allTasksByDay = todoByDay + inprogressByDay + doneByDay;
-const todoByDayPer = Math.round((todoByDay / allTasksByDay) * 100);
-const inprogressByDayPer = Math.round((inprogressByDay / allTasksByDay) * 100);
-const doneByDayPer = Math.round((doneByDay / allTasksByDay) * 100);
-  
-  // const todoByM = 30;
-// const inprogressByM = 30;
-// const doneByM = 40;
-const allTasksByM = todoByM + inprogressByM + doneByM;
-const todoByMPer = Math.round((todoByM / allTasksByM) * 100);
-const inprogressByMPer = Math.round((inprogressByM / allTasksByM) * 100);
-  const doneByMPer = Math.round((doneByM / allTasksByM) * 100);
-  // console.log(`todoByM ${todoByM}`);
-  // console.log(`inprogressByM ${inprogressByM}`);
-  // console.log(`doneByM ${doneByM}`);
-  // console.log(`allTasksByM ${allTasksByM}`);
-
-
-const data = [
-  {
-    name: "To Do",
-    ByDay: todoByDayPer,
-    ByMonth: todoByMPer,
-    amt: 2400,
-  },
-  {
-    name: "In Progress",
-    ByDay: inprogressByDayPer,
-    ByMonth: inprogressByMPer,
-    amt: 2210,
-  },
-  {
-    name: "Done",
-    ByDay: doneByDayPer,
-    ByMonth: doneByMPer,
-    amt: 2290,
-  },
-];
-
-
-
-  const renderCustomizedLabel = (props) => {
-    const { x, y, width, value } = props;
+  const  renderCustomizedLabel =  (props) => {
+    const { x, y, width, value } =  props;
     const radius = 15;
-
     return currentTheme ? (
       <g>
         <text
@@ -119,20 +74,8 @@ const data = [
   };
 
   return (
-    <Container>
-      <ChartHead>
-        <DateButton />
-        <LegendList>
-          <li>
-            <TbPointFilled color="#FFD2DD" size={20} />
-            <span>By Day</span>
-          </li>
-          <li>
-            <TbPointFilled color="#3E85F3" size={20} />
-            <span>By Month</span>
-          </li>
-        </LegendList>
-      </ChartHead>
+    <>
+    
       <Chart>
         <ResponsiveContainer width={800} height="80%">
           <BarChart
@@ -190,8 +133,6 @@ const data = [
             >
               <Label value="Task" position="top" offset={-8} />
             </YAxis>
-            {/* <Tooltip /> */}
-            {/* <Legend /> */}
             <Bar
               dataKey="ByDay"
               fill="url(#colorUv)"
@@ -206,7 +147,6 @@ const data = [
             </Bar>
             <Bar
               dataKey="ByMonth"
-              // ${({theme})=>theme.testcolor1}
               fill="url(#colorUv1)"
               radius={[0, 0, 10, 10]}
               // maxBarSize={27}
@@ -220,6 +160,7 @@ const data = [
           </BarChart>
         </ResponsiveContainer>
       </Chart>
-    </Container>
+    </>
+    
   );
 };
