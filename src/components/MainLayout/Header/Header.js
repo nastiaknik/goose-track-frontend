@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation, NavLink } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import AddFeedbackBtn from "../AddFeedbackBtn/AddFeedbackBtn";
 
 import {
@@ -37,9 +37,9 @@ export const Header = ({ toggleMenu }) => {
       {page === "Calendar" ? <CalendarTitle /> : <Title>{page}</Title>}
       <ContentContainer>
         <AddFeedbackBtn />
-        <NavLink to="/account" onClick={toggleMenu}>
-          <UserInfo />
-        </NavLink>
+        {/* <NavLink to="/account" onClick={toggleMenu}> */}
+        <UserInfo />
+        {/* </NavLink> */}
       </ContentContainer>
     </HeaderContainer>
   );

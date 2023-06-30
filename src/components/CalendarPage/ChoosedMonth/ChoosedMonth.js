@@ -12,7 +12,7 @@ import { MonthCalendarHead } from "../MonthCalendarHead/MonthCalendarHead";
 import { CalendarTable } from "../CalendarTable/CalendarTable";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { getTasksByMonth } from "redux/tasks/operations";
+import { getTasksByMonth } from "../../../redux/tasks/operations";
 
 export const ChoosedMonth = () => {
   const dispatch = useDispatch();

@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 export const FeedbackButton = styled.button`
-  background-color: #3e85f3;
+  background-color: var(--accent-bg-color);
   font-size: 12px;
-  color: #ffffff;
+  color: var(--light-text-color);
   width: 97px;
   height: 32px;
   font-family: InterSemiBold;

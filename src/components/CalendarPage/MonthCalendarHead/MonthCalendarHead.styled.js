@@ -32,5 +32,5 @@ export const DaysTextWeekend = styled.p`
   font-weight: 600;
   font-size: 16px;
   line-height: 1.12;
-  color: ${({ theme }) => theme.variableColors.backgroundButton};
+  color: ${({ theme }) => theme.variableColors.weekendTextColor};
 `;

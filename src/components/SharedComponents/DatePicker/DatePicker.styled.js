@@ -16,6 +16,8 @@ export const DatePickerWrapper = styled.div`
     padding: 12px;
     border-radius: 16px;
     background-color: var(--accent-bg-color);
+    border: none;
+    margin-bottom: 20px;
 
     @media (min-width: 768px) {
       padding: 18px;
@@ -220,14 +222,14 @@ export const StyledDatePicker = styled(DatePicker)`
   position: relative;
   width: 299px;
   height: 42px;
-  border: ${({ hasError, success }) => {
+  border: ${({ hasError, success, theme }) => {
     if (hasError) {
       return "var(--border-auth-error)";
     }
     if (success) {
       return "var(--border-auth-correct)";
     }
-    return "var(--border)";
+    return `${theme.variableColors.borderUserForm}`;
   }};
   border-radius: 8px;
   font-family: "InterSemiBold";
@@ -238,12 +240,12 @@ export const StyledDatePicker = styled(DatePicker)`
   outline: none;
   padding: 12px 12px 12px 14px;
   box-sizing: border-box;
-  color: var(--primary-text-color);
-  background-color: var(--primary-bg-color);
+  color: ${({ theme }) => theme.variableColors.text};
+  background-color: ${({ theme }) => theme.variableColors.secondaryBackground};
 
   :focus-visible {
     outline: none;
-    border: var(--border-input-hover);
+    border: ${({ theme }) => theme.variableColors.borderInputHover};
     border-radius: 8px;
   }
 
@@ -258,14 +260,14 @@ export const StyledDatePicker = styled(DatePicker)`
 
   :hover,
   :focus {
-    border: ${({ hasError, success }) => {
+    border: ${({ hasError, success, theme }) => {
       if (hasError) {
         return "var(--border-auth-error)";
       }
       if (success) {
         return "var(--border-auth-correct)";
       }
-      return "var(--border-input-hover)";
+      return `${theme.variableColors.borderInputHover}`;
     }};
   }
 `;
