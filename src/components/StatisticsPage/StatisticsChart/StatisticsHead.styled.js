@@ -1,6 +1,22 @@
 import styled from "styled-components";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+export const LegendList = styled.ul`
+  display: flex;
+  gap: 30px;
+  /* list-style: disc; */
+  color: ${({ theme }) => theme.variableColors.text};
+  li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+`;
+export const ChartHead = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+`;
 export const PrevDayButton = styled.button`
   width: 38px;
   height: 34px;
