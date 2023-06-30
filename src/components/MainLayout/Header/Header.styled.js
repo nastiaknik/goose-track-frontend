@@ -19,7 +19,7 @@ export const HeaderContainer = styled.header`
   justify-content: space-between;
   align-items: center;
   background-color: ${({ theme }) => theme.variableColors.primaryBackground};
-  
+
   padding: 20px;
   height: 116px;
   @media (min-width: 1024px) {
@@ -45,7 +45,7 @@ export const Title = styled.p`
   line-height: 32px;
   letter-spacing: 0em;
   text-align: left;
-  color:${({ theme }) => theme.variableColors.text};
+  color: ${({ theme }) => theme.variableColors.text};
   box-shadow: 0px 9.399999618530273px 57.6875px 0px #00000009;
   display: none;
 
@@ -62,7 +62,7 @@ export const TitleCalendar = styled.p`
   line-height: 32px;
   letter-spacing: 0em;
   text-align: left;
-  color: #111111;
+  color: var(--primary-text-color);
   box-shadow: 0px 9.399999618530273px 57.6875px 0px #00000009;
   display: none;
 
@@ -99,7 +99,7 @@ export const MotivationText = styled.p`
 
 export const ThemeTogglerText = styled.p`
   margin-right: 14px;
-  color: #3e85f3;
+  color: var(--secondary-text-color);
   font-family: Inter;
   font-size: 18px;
   font-weight: 700;
