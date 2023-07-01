@@ -8,18 +8,16 @@ import {
   SvgAvatar,
   AvatarImg,
 } from "./TaskColumnCard.styled";
-import { TASK_PRIORITY } from "../../../constants/Priority";
 import { Modal } from "components/SharedComponents/Modal/Modal";
 import { useState } from "react";
 import { TaskModal } from "components/SharedComponents/TaskModal/TaskModal";
 import { useSelector } from "react-redux";
 import { selectUser } from "redux/auth/selectrors";
 
-export const TaskColumnCard = ({ title, priority = TASK_PRIORITY.low }) => {
+export const TaskColumnCard = ({ task }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const user = useSelector(selectUser);
-  const avatarUrl = user?.imgURL;
 
   const toggleModal = () => {
     if (isModalOpen) {
@@ -31,19 +29,19 @@ export const TaskColumnCard = ({ title, priority = TASK_PRIORITY.low }) => {
 
   return (
     <Container>
-      <TaskTitle>{title}</TaskTitle>
+      <TaskTitle>{task.title}</TaskTitle>
       <Wrapper>
         <Wrapper>
           <TaskAvatarWrapper>
-            {avatarUrl ? (
-              <AvatarImg src={avatarUrl} alt={user.username} />
+            {user.imgURL ? (
+              <AvatarImg src={user.imgURL} alt={user.username} />
             ) : (
               <SvgAvatar />
             )}
           </TaskAvatarWrapper>
-          <TaskPriority priority={priority}>{priority}</TaskPriority>
+          <TaskPriority priority={task.priority}>{task.priority}</TaskPriority>
         </Wrapper>
-        <Toolbar toggleModal={toggleModal} />
+        <Toolbar toggleModal={toggleModal} task={task} />
         {isModalOpen && (
           <Modal onClose={toggleModal}>
             <TaskModal editMode={true} />

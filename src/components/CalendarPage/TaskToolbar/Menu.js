@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { MenuContent, ArrowSvg, List, Button } from "./Menu.styled";
 // import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
-import { updateTask } from "redux/tasks/operations";
+import { changeCategory } from "redux/tasks/operations";
 import { TASK_STATUS } from "../../../constants/Status";
 
 export const Menu = ({ task, toggleMenu }) => {
@@ -21,38 +21,32 @@ export const Menu = ({ task, toggleMenu }) => {
   };
 
   const dispatch = useDispatch();
-  const onUpdateTaskStatus = () => dispatch(updateTask(task.id));
 
-  let otherStatusList = TASK_STATUS.map(
+  let otherStatusList = TASK_STATUS.filter(
     (status) => status.name !== task.category
   );
-
-  console.log(otherStatusList);
 
   return (
     <MenuContent>
       <List>
         {otherStatusList.map((status) => (
           <li key={status.id}>
-            <Button type="button" onClick={onUpdateTaskStatus}>
+            <Button
+              type="button"
+              onClick={() =>
+                dispatch(
+                  changeCategory({
+                    id: task._id,
+                    categoryData: { category: status.name },
+                  })
+                )
+              }
+            >
               {status.name}
               <ArrowSvg />
             </Button>
           </li>
         ))}
-
-        {/* <li>
-          <Button type="button" onClick={onUpdateTaskStatus}>
-            In progress
-            <ArrowSvg />
-          </Button>
-        </li>
-        <li>
-          <Button type="button" onClick={onUpdateTaskStatus}>
-            Done
-            <ArrowSvg />
-          </Button>
-        </li> */}
       </List>
     </MenuContent>
   );

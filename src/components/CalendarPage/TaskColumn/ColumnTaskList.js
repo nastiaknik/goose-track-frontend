@@ -16,11 +16,7 @@ export const ColumnsTasksList = ({ status = "To do" }) => {
       <TasksList>
         {filteredDayTasks &&
           filteredDayTasks.map((task) => (
-            <TaskColumnCard
-              key={task._id}
-              title={task.title}
-              priority={task.priority}
-            />
+            <TaskColumnCard task={task} key={task._id} />
           ))}
       </TasksList>
     </>

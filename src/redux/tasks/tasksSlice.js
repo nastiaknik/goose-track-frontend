@@ -41,13 +41,15 @@ export const tasksSlice = createSlice({
         state.dayTasks = state.dayTasks.map((task) =>
           task._id === payload._id ? payload : task
         );
-        state.monthTasks = state.monthTasks.map((task) =>
-          task._id === payload._id ? payload : task
-        );
       })
       .addCase(logout.fulfilled, (state) => {
         state.monthTasks = [];
         state.dayTasks = [];
+      })
+      .addCase(changeCategory.fulfilled, (state, { payload }) => {
+        state.dayTasks = state.dayTasks.map((task) =>
+          task._id === payload._id ? payload : task
+        );
       })
       .addMatcher(
         isAnyOf(

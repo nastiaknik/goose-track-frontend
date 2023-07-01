@@ -22,7 +22,7 @@ export const AddFeedbackModal = ({ onCloseModal }) => {
 
   useEffect(() => {
     dispatch(getOwnReview(user._id));
-  }, []);
+  }, [dispatch, user._id]);
 
   const onSave = async (review) => {
     if (ownReview) {
