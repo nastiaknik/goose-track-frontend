@@ -13,9 +13,9 @@ export const PeriodTypeSelect = ({ activePage }) => {
   const urlDate = useDate();
   const today = new Date();
 
-  const currentDate = format(urlDate, "MMMMyyyy");
-  const currentDay = format(urlDate, "ddMMMMyyyy");
-  const formattedToday = format(today, "ddMMMMyyyy");
+  const currentDate = format(urlDate, "yyyy-MM");
+  const currentDay = format(urlDate, "yyyy-MM-dd");
+  const formattedToday = format(today, "yyyy-MM-dd");
 
   const isToday = isSameMonth(urlDate, today);
 

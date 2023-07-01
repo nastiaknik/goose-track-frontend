@@ -57,7 +57,7 @@ export const ChoosedDay = () => {
   const handleDayClick = (date) => {
     setSelectedDay(date);
     date = new Date(date);
-    const formattedDate = format(date, "ddMMMMyyyy");
+    const formattedDate = format(date, "yyyy-MM-dd");
     const result = formattedDate.charAt(0) + formattedDate.slice(1);
     navigate(`/calendar/day/${result}`);
   };

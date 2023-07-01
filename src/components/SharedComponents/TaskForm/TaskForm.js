@@ -1,37 +1,50 @@
-import { Formik } from 'formik';
-import { RadioButtonInput, Wrapper, Button, ButtonCancel, Span, Label, Form, Errors, RadioButtonGroup, RadioButtonLabel, Input } from './TaskForm.styled';
-import { useDispatch } from 'react-redux';
-import { BiPlus } from 'react-icons/bi';
-import { VscEdit } from 'react-icons/vsc';
+import { Formik } from "formik";
 import {
-  addTask,
-  updateTask,
-} from '../../../redux/tasks/operations';
-import { validationTaskSchema } from 'helpers/formValidationSchemas';
+  RadioButtonInput,
+  Wrapper,
+  Button,
+  ButtonCancel,
+  Span,
+  Label,
+  Form,
+  Errors,
+  RadioButtonGroup,
+  RadioButtonLabel,
+  Input,
+} from "./TaskForm.styled";
+import { useDispatch } from "react-redux";
+import { BiPlus } from "react-icons/bi";
+import { VscEdit } from "react-icons/vsc";
+import { addTask, updateTask } from "../../../redux/tasks/operations";
+import { validationTaskSchema } from "helpers/formValidationSchemas";
+import { useParams } from "react-router-dom";
+import { format } from "date-fns";
 
 export const TaskForm = ({ onClose, ...props }) => {
-const dispatch = useDispatch();
-const editMode = props?.editMode || false;
-const status = props?.status || 'To do';
-  
+  const dispatch = useDispatch();
+  const editMode = props?.editMode || false;
+  const status = props?.status || "To do";
+
+  const { currentDate } = useParams();
+
   const initialValues = {
-    title: props?.title || '',
-    start: props?.start || '',
-    end: props?.end || '',
-    priority: props?.priority || 'Low',
+    title: props?.title || "",
+    start: props?.start || "",
+    end: props?.end || "",
+    priority: props?.priority || "Low",
   };
 
-  const handleAdd = values => {
+  const handleAdd = (values) => {
     if (!editMode) {
-      dispatch(addTask({ ...values, status }));
+      dispatch(
+        addTask({ ...values, status, date: format(currentDate, "yyyy-MM-dd") })
+      );
       onClose();
     } else {
       dispatch(updateTask({ ...values, status, _id: props._id }));
       onClose();
     }
   };
-
-  
 
   return (
     <>
@@ -41,7 +54,7 @@ const status = props?.status || 'To do';
         validateOnChange={true}
         validationSchema={validationTaskSchema}
         onSubmit={(values, { setSubmitting }) => {
-        handleAdd(values);
+          handleAdd(values);
           setSubmitting(false);
         }}
       >
@@ -54,7 +67,6 @@ const status = props?.status || 'To do';
           handleSubmit,
           isSubmitting,
           setFieldValue,
-          
         }) => (
           <Form onSubmit={handleSubmit}>
             <Label htmlFor="title">
@@ -68,9 +80,7 @@ const status = props?.status || 'To do';
                 value={values.title}
                 placeholder="Enter text"
               />
-              <Errors>
-                {errors.title && touched.title && errors.title}
-              </Errors>
+              <Errors>{errors.title && touched.title && errors.title}</Errors>
             </Label>
 
             <Wrapper>
@@ -86,9 +96,7 @@ const status = props?.status || 'To do';
                   value={values.start}
                   placeholder="Select time"
                 />
-                <Errors>
-                  {errors.start && touched.start && errors.start}
-                </Errors>
+                <Errors>{errors.start && touched.start && errors.start}</Errors>
               </Label>
 
               <Label htmlFor="end">
@@ -103,14 +111,12 @@ const status = props?.status || 'To do';
                   value={values.end}
                   placeholder="Select time"
                 />
-                <Errors>
-                  {errors.end && touched.end && errors.end}
-                </Errors>
+                <Errors>{errors.end && touched.end && errors.end}</Errors>
               </Label>
             </Wrapper>
 
             <RadioButtonGroup>
-              {['Low', 'Medium', 'High'].map(priority => (
+              {["Low", "Medium", "High"].map((priority) => (
                 <RadioButtonLabel key={priority}>
                   <RadioButtonInput
                     type="radio"
@@ -118,7 +124,7 @@ const status = props?.status || 'To do';
                     name="priority"
                     checked={values.priority === priority}
                     onChange={() => {
-                      setFieldValue('priority', priority);
+                      setFieldValue("priority", priority);
                     }}
                   />
                   {priority}
@@ -129,16 +135,14 @@ const status = props?.status || 'To do';
             <Wrapper>
               {!editMode ? (
                 <>
-                  <Button type="submit">                  
+                  <Button type="submit">
                     <BiPlus />
                     Add
                   </Button>
                   <ButtonCancel
                     type="button"
                     disabled={isSubmitting}
-                    onClick={
-                      onClose
-                    }
+                    onClick={onClose}
                   >
                     Cancel
                   </ButtonCancel>

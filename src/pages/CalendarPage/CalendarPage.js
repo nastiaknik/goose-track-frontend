@@ -10,7 +10,7 @@ const CalendarPage = () => {
   const navigate = useNavigate();
   const urlDate = useDate();
   const location = useLocation();
-  const formattedCurrentDate = format(urlDate, "MMMMu");
+  const formattedCurrentDate = format(urlDate, "yyyy-MM");
 
   useEffect(() => {
     if (location.pathname === "/calendar") {

@@ -25,28 +25,28 @@ export const PeriodPaginator = ({ activePage }) => {
     setActiveBtn("next");
 
     const date = addDays(urlDate, 1);
-    navigate(`/calendar/day/${format(date, "ddMMMyyyy")}`);
+    navigate(`/calendar/day/${format(date, "yyyy-MM-dd")}`);
   };
 
   const handlePrevDay = () => {
     setActiveBtn("prev");
 
     const date = subDays(urlDate, 1);
-    navigate(`/calendar/day/${format(date, "ddMMMyyyy")}`);
+    navigate(`/calendar/day/${format(date, "yyyy-MM-dd")}`);
   };
 
   const handleNextMonth = () => {
     setActiveBtn("next");
 
     const date = addMonths(urlDate, 1);
-    navigate(`/calendar/month/${format(date, "MMMMyyyy")}`);
+    navigate(`/calendar/month/${format(date, "yyyy-MM")}`);
   };
 
   const handlePrevMonth = () => {
     setActiveBtn("prev");
 
     const date = subMonths(urlDate, 1);
-    navigate(`/calendar/month/${format(date, "MMMMyyyy")}`);
+    navigate(`/calendar/month/${format(date, "yyyy-MM")}`);
   };
 
   return (
@@ -54,7 +54,7 @@ export const PeriodPaginator = ({ activePage }) => {
       {activePage === "month" && (
         <>
           <TitleContainer>
-            <Name>{format(urlDate, " MMM yyyy")}</Name>
+            <Name>{format(urlDate, "MMM yyyy")}</Name>
           </TitleContainer>
           <ButtonsContainer>
             <ButtonLeft type="button" onClick={handlePrevMonth}>
