@@ -5,6 +5,7 @@ import {
   updateTask,
   getTasksByMonth,
   getTasksByDay,
+  changeCategory,
 } from "./operations";
 import { logout } from "../auth/operations";
 
@@ -54,7 +55,8 @@ export const tasksSlice = createSlice({
           deleteTask.pending,
           updateTask.pending,
           getTasksByMonth.pending,
-          getTasksByDay.pending
+          getTasksByDay.pending,
+          changeCategory.pending
         ),
         (state) => {
           state.isLoading = false;
@@ -67,7 +69,8 @@ export const tasksSlice = createSlice({
           deleteTask.rejected,
           updateTask.rejected,
           getTasksByMonth.rejected,
-          getTasksByDay.rejected
+          getTasksByDay.rejected,
+          changeCategory.rejected
         ),
         (state, { payload }) => {
           state.isLoading = false;
@@ -80,7 +83,8 @@ export const tasksSlice = createSlice({
           deleteTask.fulfilled,
           updateTask.fulfilled,
           getTasksByMonth.fulfilled,
-          getTasksByDay.fulfilled
+          getTasksByDay.fulfilled,
+          changeCategory.fulfilled
         ),
         (state) => {
           state.isLoading = false;

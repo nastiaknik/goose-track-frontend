@@ -18,7 +18,7 @@ export const getOwnReview = createAsyncThunk(
   "reviews/getOwnReview",
   async (userId, { rejectedWithValue }) => {
     try {
-      const { data } = await $api.get(`/api/reviews/${userId}`);
+      const { data } = await $api.get(`/api/reviews/my-review/${userId}`);
       return data;
     } catch (error) {
       return rejectedWithValue(error.message);
@@ -42,7 +42,7 @@ export const deleteReview = createAsyncThunk(
   "reviews/deleteReview",
   async (userId, { rejectedWithValue }) => {
     try {
-      const { data } = await $api.delete(`/api/reviews/${userId}`);
+      const { data } = await $api.delete(`/api/reviews/my-review/${userId}`);
       return data;
     } catch (error) {
       return rejectedWithValue(error.message);
@@ -54,7 +54,10 @@ export const updateReview = createAsyncThunk(
   "reviews/updateReview",
   async ({ userId, review }, { rejectedWithValue }) => {
     try {
-      const { data } = await $api.patch(`/api/reviews/${userId}`, review);
+      const { data } = await $api.patch(
+        `/api/reviews/my-review/${userId}`,
+        review
+      );
       return data;
     } catch (error) {
       return rejectedWithValue(error.message);

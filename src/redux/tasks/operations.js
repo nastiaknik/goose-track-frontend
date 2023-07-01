@@ -60,3 +60,15 @@ export const updateTask = createAsyncThunk(
     }
   }
 );
+
+export const changeCategory = createAsyncThunk(
+  "tasks/changeCategory",
+  async ({ id, categoryData }, thunkAPI) => {
+    try {
+      const response = await $api.patch(`/category/${id}`, categoryData);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

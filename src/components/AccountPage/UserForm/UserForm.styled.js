@@ -176,7 +176,7 @@ export const LabelAvatar = styled.label`
   border: 2px solid var(--accent-bg-color);
   width: 72px;
   height: 72px;
-  background-color: var(--avatar-bg-color);
+  background-color: ${({ theme }) => theme.variableColors.avatarBgColor};
   cursor: pointer;
 
   @media (min-width: 768px) {

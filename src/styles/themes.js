@@ -45,6 +45,7 @@ const lightTheme = {
     textColorMediumTask: "#F3B249", // колір фону Medium такси
     bgColorHighTask: "#FFD2DD", // колір фону High такси
     textColorHighTask: "#EA3D65", // колір фону High такси
+    avatarBgColor: "#f8f8f8", // колір фону дефолтного зображення
   },
 };
 
@@ -86,6 +87,7 @@ const darkTheme = {
     textColorMediumTask: "#F3B249", // колір фону Medium такси
     bgColorHighTask: "#FFD2DD", // колір фону High такси
     textColorHighTask: "#EA3D65", // колір фону High такси
+    avatarBgColor: "#171820", // колір фону дефолтного зображення
   },
 };
 
