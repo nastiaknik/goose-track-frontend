@@ -21,7 +21,8 @@ import {selectUser } from 'redux/auth/selectrors';
   }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
   
-    const avatarUrl = useSelector(selectUser);
+    const user = useSelector(selectUser);
+    const avatarUrl = user?.imgURL;
 
     const toggleModal = () => {
       if (isModalOpen) {
@@ -41,7 +42,7 @@ import {selectUser } from 'redux/auth/selectrors';
         <Wrapper>
           <TaskAvatarWrapper>
           {avatarUrl ? (
-        <AvatarImg src={avatarUrl} alt="avatarUrl" />
+        <AvatarImg src={avatarUrl} alt=".imgURL" />
           ) : (
             <SvgAvatar />
           )}
