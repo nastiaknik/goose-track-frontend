@@ -1,11 +1,10 @@
-import { useState } from 'react';
-import { ColumnHeadBar } from '../ColumnHeadBar/ColumnHeadBar';
-import { ColumnsTasksList } from './ColumnTaskList';
-import { Container } from './TaskColumn.styled';
-import { TaskModal } from 'components/SharedComponents/TaskModal/TaskModal';
-import { Modal } from 'components/SharedComponents/Modal/Modal';
-import { AddTaskBtn } from '../AddTaskBtn/AddTaskBtn';
-
+import { useState } from "react";
+import { ColumnHeadBar } from "../ColumnHeadBar/ColumnHeadBar";
+import { ColumnsTasksList } from "./ColumnTaskList";
+import { Container } from "./TaskColumn.styled";
+import { TaskModal } from "components/SharedComponents/TaskModal/TaskModal";
+import { Modal } from "components/SharedComponents/Modal/Modal";
+import { AddTaskBtn } from "../AddTaskBtn/AddTaskBtn";
 
 export const TasksColumn = ({ status = "To do" }) => {
   const [showModal, setShowModal] = useState(false);
@@ -25,14 +24,14 @@ export const TasksColumn = ({ status = "To do" }) => {
         <ColumnsTasksList status={status} />
         <AddTaskBtn onClick={handleShowModal} />
       </Container>
-      {showModal &&
-      <Modal onClose={handleCloseModal}> 
-      <TaskModal 
-        handleCloseModal={handleCloseModal} 
-        status={status.name} 
-      /> 
-  </Modal> 
-    } 
-</> 
-); 
+      {showModal && (
+        <Modal onClose={handleCloseModal}>
+          <TaskModal
+            handleCloseModal={handleCloseModal}
+            status={status?.name}
+          />
+        </Modal>
+      )}
+    </>
+  );
 };

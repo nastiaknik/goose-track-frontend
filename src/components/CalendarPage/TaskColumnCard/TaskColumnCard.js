@@ -6,34 +6,28 @@ import {
   TaskAvatarWrapper,
   Toolbar,
   SvgAvatar,
-  AvatarImg
+  AvatarImg,
 } from "./TaskColumnCard.styled";
 import { TASK_PRIORITY } from "../../../constants/Priority";
 import { Modal } from "components/SharedComponents/Modal/Modal";
 import { useState } from "react";
 import { TaskModal } from "components/SharedComponents/TaskModal/TaskModal";
-import { useSelector } from 'react-redux';
-import {selectUser } from 'redux/auth/selectrors';
+import { useSelector } from "react-redux";
+import { selectUser } from "redux/auth/selectrors";
 
-  export const TaskColumnCard = ({
-    title = "Lorem ipsum dolor sit amet consectetur ",
-    priority = TASK_PRIORITY.low,
-  }) => {
-    const [isModalOpen, setIsModalOpen] = useState(false);
-  
-    const user = useSelector(selectUser);
-    const avatarUrl = user?.imgURL;
+export const TaskColumnCard = ({ title, priority = TASK_PRIORITY.low }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const toggleModal = () => {
-      if (isModalOpen) {
-        setIsModalOpen(false);
-      } else {
-        setIsModalOpen(true);
-      }
-    };
+  const user = useSelector(selectUser);
+  const avatarUrl = user?.imgURL;
 
-  
-     
+  const toggleModal = () => {
+    if (isModalOpen) {
+      setIsModalOpen(false);
+    } else {
+      setIsModalOpen(true);
+    }
+  };
 
   return (
     <Container>
@@ -41,17 +35,17 @@ import {selectUser } from 'redux/auth/selectrors';
       <Wrapper>
         <Wrapper>
           <TaskAvatarWrapper>
-          {avatarUrl ? (
-        <AvatarImg src={avatarUrl} alt=".imgURL" />
-          ) : (
-            <SvgAvatar />
-          )}
+            {avatarUrl ? (
+              <AvatarImg src={avatarUrl} alt={user.username} />
+            ) : (
+              <SvgAvatar />
+            )}
           </TaskAvatarWrapper>
           <TaskPriority priority={priority}>{priority}</TaskPriority>
         </Wrapper>
         <Toolbar toggleModal={toggleModal} />
         {isModalOpen && (
-          <Modal onClose={toggleModal}> 
+          <Modal onClose={toggleModal}>
             <TaskModal editMode={true} />
           </Modal>
         )}

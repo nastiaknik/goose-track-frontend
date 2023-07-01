@@ -15,7 +15,7 @@ const UserInfo = ({ toggleMenu }) => {
 
   const username = user?.username ?? "";
   const imgURL = user?.imgURL ?? null;
-  console.log(user);
+
   return (
     <UserInfoContainer>
       <ThemeToggler />

@@ -28,7 +28,7 @@ export const TaskToolbar = ({ toggleModal, task }) => {
         <Button type="button" onClick={toggleMenu}>
           <BsArrowRightCircle />
         </Button>
-        {isMenuOpen && <Menu toggleMenu={toggleMenu} />}
+        {isMenuOpen && <Menu task={task} toggleMenu={toggleMenu} />}
       </Item>
       <li>
         <Button type="button" onClick={toggleModal}>

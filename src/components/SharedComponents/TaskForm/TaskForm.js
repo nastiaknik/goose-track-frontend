@@ -18,12 +18,11 @@ import { VscEdit } from "react-icons/vsc";
 import { addTask, updateTask } from "../../../redux/tasks/operations";
 import { validationTaskSchema } from "helpers/formValidationSchemas";
 import { useParams } from "react-router-dom";
-import { format } from "date-fns";
 
 export const TaskForm = ({ onClose, ...props }) => {
   const dispatch = useDispatch();
   const editMode = props?.editMode || false;
-  const status = props?.status || "To do";
+  const category = props?.category || "To do";
 
   const { currentDate } = useParams();
 
@@ -36,12 +35,10 @@ export const TaskForm = ({ onClose, ...props }) => {
 
   const handleAdd = (values) => {
     if (!editMode) {
-      dispatch(
-        addTask({ ...values, status, date: format(currentDate, "yyyy-MM-dd") })
-      );
+      dispatch(addTask({ ...values, category, date: currentDate }));
       onClose();
     } else {
-      dispatch(updateTask({ ...values, status, _id: props._id }));
+      dispatch(updateTask({ ...values, category, _id: props._id }));
       onClose();
     }
   };
