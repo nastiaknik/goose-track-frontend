@@ -2,15 +2,22 @@ import { useFormik } from "formik";
 import { FeedbackSchema } from "../../../helpers/formValidationSchemas";
 import { Rating } from "@smastrom/react-rating";
 import {
+  ActionBtnDelete,
+  ActionBtnEdit,
+  Actions,
   ButtonsCont,
   CancelButton,
+  DeleteIcon,
+  EditIcon,
   Label,
   LabelReview,
   ReviewText,
   SaveButton,
   StyledForm,
+  Top,
 } from "./FeedbackForm.styled";
 import "@smastrom/react-rating/style.css";
+import { useState } from "react";
 
 const customStar = (
   <path
@@ -28,20 +35,27 @@ const starStyles = {
   inactiveStrokeColor: "#CEC9C1",
 };
 
-export const FeedbackForm = ({ onClose }) => {
+export const FeedbackForm = ({ reviewText, onSave, onDelete, onClose }) => {
+  const isEditModal = !!reviewText;
+  const [editReview, setEditReview] = useState(false);
+
   const formik = useFormik({
     initialValues: {
       rating: 0,
-      name: "",
-      avatar: "",
-      review: "",
+      //    name: name || "",
+      //    avatar: "",
+      comment: reviewText || "",
     },
     validationSchema: FeedbackSchema,
     onSubmit: (values) => {
-      console.log("send values to backend:", values);
+      onSave(values);
       onClose();
     },
   });
+
+  const toggleEditReview = () => {
+    setEditReview((prev) => !prev);
+  };
 
   return (
     <StyledForm onSubmit={formik.handleSubmit}>
@@ -49,33 +63,53 @@ export const FeedbackForm = ({ onClose }) => {
 
       <Rating
         value={formik.values.rating}
-        onChange={(value) => formik.setValues({ rating: value })}
+        onChange={(value) =>
+          formik.setValues({ ...formik.values, rating: value })
+        }
         style={{ maxWidth: 128 }}
         itemStyles={starStyles}
       />
 
-      <LabelReview htmlFor="review">Review</LabelReview>
+      <Top>
+        <LabelReview htmlFor="review">Review</LabelReview>
+        {isEditModal && (
+          <Actions>
+            <ActionBtnEdit
+              active={editReview}
+              onClick={() => toggleEditReview()}
+            >
+              <EditIcon />
+            </ActionBtnEdit>
+            <ActionBtnDelete onClick={onDelete}>
+              <DeleteIcon />
+            </ActionBtnDelete>
+          </Actions>
+        )}
+      </Top>
       <ReviewText
-        id="review"
-        name="review"
+        id="comment"
+        name="comment"
         placeholder="Enter text"
-        value={formik.values.review}
+        value={formik.values.comment}
         onChange={formik.handleChange}
+        readOnly={isEditModal && !editReview}
       />
 
-      <ButtonsCont>
-        <SaveButton type="submit" disabled={formik.isSubmitting}>
-          Save
-        </SaveButton>
-        <CancelButton
-          type="button"
-          className="outline"
-          onClick={() => onClose()}
-          disabled={formik.isSubmitting}
-        >
-          Cancel
-        </CancelButton>
-      </ButtonsCont>
+      {(!isEditModal || (isEditModal && editReview)) && (
+        <ButtonsCont>
+          <SaveButton type="submit" disabled={formik.isSubmitting}>
+            {isEditModal ? "Edit" : "Save"}
+          </SaveButton>
+          <CancelButton
+            type="button"
+            className="outline"
+            onClick={() => onClose()}
+            disabled={formik.isSubmitting}
+          >
+            Cancel
+          </CancelButton>
+        </ButtonsCont>
+      )}
     </StyledForm>
   );
 };

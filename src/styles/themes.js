@@ -46,6 +46,9 @@ const lightTheme = {
     bgColorHighTask: "#FFD2DD", // колір фону High такси
     textColorHighTask: "#EA3D65", // колір фону High такси
     avatarBgColor: "#f8f8f8", // колір фону дефолтного зображення
+	modalReviewLabel: "rgba(52, 52, 52, 0.80)",
+    modalReviewBorder: "#F6F6F6",
+    modalReviewTextBg: "#F6F6F6",
   },
 };
 
@@ -88,6 +91,9 @@ const darkTheme = {
     bgColorHighTask: "#FFD2DD", // колір фону High такси
     textColorHighTask: "#EA3D65", // колір фону High такси
     avatarBgColor: "#171820", // колір фону дефолтного зображення
+	modalReviewLabel: "rgba(250, 250, 250, 0.30)",
+    modalReviewBorder: "rgba(255, 255, 255, 0.15)",
+    modalReviewTextBg: "#21222C",
   },
 };
 
