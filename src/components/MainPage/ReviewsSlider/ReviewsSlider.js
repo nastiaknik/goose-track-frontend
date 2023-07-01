@@ -49,6 +49,7 @@ export const ReviewsSlider = () => {
   // Reviews
   const dispatch = useDispatch();
   const reviews = useSelector(selectReviews);
+  console.log(reviews);
 
   const [prevBtnDisable, setPrevBtnDisable] = useState(true);
   const [nextBtnDisable, setNextBtnDisable] = useState(
@@ -113,9 +114,17 @@ export const ReviewsSlider = () => {
               >
                 <CardContainer>
                   <TopCardContent>
-                    <ImgThumbCard>
-                      <LuUser size={18} color="rgba(62, 133, 243, .18)" />
-                      {/* <img src={"#"} alt={`${slide.owner.username} avatar`} /> */}
+                    <ImgThumbCard
+                      style={slide.owner?.imgURL && { border: "none" }}
+                    >
+                      {slide.owner?.imgURL ? (
+                        <img
+                          src={`${slide.owner.imgURL}`}
+                          alt={`${slide.owner?.username} avatar`}
+                        />
+                      ) : (
+                        <LuUser size={18} color="rgba(62, 133, 243, .18)" />
+                      )}
                     </ImgThumbCard>
                     <NameCardContentContainer>
                       <NameCard>
