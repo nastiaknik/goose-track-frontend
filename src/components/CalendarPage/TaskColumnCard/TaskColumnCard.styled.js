@@ -77,3 +77,9 @@ export const TaskPriority = styled.p`
 export const Toolbar = styled(TaskToolbar)`
   margin-left: auto;
 `;
+export const AvatarImg = styled.img`
+  width: inherit;
+  height: 100%;
+  border-radius: 50%;
+  border: solid 1px var(--accent-background-color);
+`;

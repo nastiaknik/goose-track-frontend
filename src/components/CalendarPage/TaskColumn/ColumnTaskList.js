@@ -1,27 +1,33 @@
-/* import { useSelector } from 'react-redux';
- */import { TaskColumnCard } from 'components/CalendarPage/TaskColumnCard/TaskColumnCard';
+import { TaskColumnCard } from 'components/CalendarPage/TaskColumnCard/TaskColumnCard';
 import { TasksList } from './ColumnTaskList.styled';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectDayTasks } from '../../../redux/tasks/selectors';
+import { getTasksByDay } from 'redux/tasks/operations';
+import { useEffect } from 'react';
 
 export const ColumnsTasksList = ({ status }) => {
-/*   const tasks = useSelector(state => state.calendar.tasks); */
-/* 
-  const indexCurrentDay = useSelector(state => state.calendar.indexCurrentDay);
-  const dayTasks = tasks[indexCurrentDay]; */
+  const dispatch = useDispatch();
+  const dayTasks = useSelector(selectDayTasks);
 
-/*   let filteredDayTasks;
+  useEffect(() => {
+    const getData = async () => {
+      await dispatch(getTasksByDay());
+    };
+    getData();
+  }, [dispatch]);
+
+  let filteredDayTasks;
   if (dayTasks?.length > 0) {
     filteredDayTasks = dayTasks.filter(task => task.status === status.name);
-  } */
+  }
 
   return (
     <>
       <TasksList>
-       {/*  {filteredDayTasks &&
-          filteredDayTasks.map(task => ( */}
-           {/*  <li key={task._id}> */}
-              <TaskColumnCard /* {...task} */ />
-            {/* </li> */}
-         {/*  ))} */}
+        {filteredDayTasks &&
+          filteredDayTasks.map(task => (
+            <TaskColumnCard key={task._id} title={task.title} priority={task.priority} />
+          ))}
       </TasksList>
     </>
   );
