@@ -12,7 +12,7 @@ export const TaskToolbar = ({ toggleModal, task }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const dispatch = useDispatch();
-  const onDelete = () => dispatch(deleteTask(task.id));
+  const onDelete = () => dispatch(deleteTask(task._id));
 
   const toggleMenu = () => {
     if (isMenuOpen) {
