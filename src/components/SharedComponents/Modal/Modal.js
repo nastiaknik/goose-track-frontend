@@ -5,7 +5,7 @@ import { Overlay, ModalContent, Button, CloseSvg } from "./Modal.styled";
 
 const modalRoot = document.querySelector("#modal-root");
 
-const scrollController = {
+export const scrollController = {
   scrollPosition: 0,
   disabledScroll() {
     scrollController.scrollPosition = window.scrollY; //щоб не підскакувало вверх при закритті модалки

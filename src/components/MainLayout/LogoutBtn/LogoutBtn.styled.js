@@ -9,7 +9,6 @@ export const IconLogOut = styled(FiLogOut)`
   }
 `;
 export const Button = styled.button`
-  position: absolute;
   bottom: 24px;
   left: 20px;
   display: flex;
