@@ -10,6 +10,7 @@ import {
   REGISTER,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+import { injectStore } from "./auth/operations";
 import { authReducer } from "./auth/authSlice";
 import { persistedThemeReducer } from "./theme/themeSlice";
 import { reviewsReducer } from "./reviews/reviewsSlice";
@@ -35,5 +36,7 @@ export const store = configureStore({
       },
     }),
 });
+
+injectStore(store);
 
 export const persistor = persistStore(store);
