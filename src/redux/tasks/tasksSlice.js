@@ -32,9 +32,11 @@ export const tasksSlice = createSlice({
         state.monthTasks.push(payload);
       })
       .addCase(deleteTask.fulfilled, (state, { payload }) => {
-        state.dayTasks = state.dayTasks.filter((task) => task._id !== payload);
+        state.dayTasks = state.dayTasks.filter(
+          (task) => task._id !== payload.id
+        );
         state.monthTasks = state.monthTasks.filter(
-          (task) => task._id !== payload
+          (task) => task._id !== payload.id
         );
       })
       .addCase(updateTask.fulfilled, (state, { payload }) => {
