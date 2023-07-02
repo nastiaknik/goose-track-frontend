@@ -49,12 +49,9 @@ export const ReviewsSlider = () => {
   // Reviews
   const dispatch = useDispatch();
   const reviews = useSelector(selectReviews);
-  console.log(reviews);
 
   const [prevBtnDisable, setPrevBtnDisable] = useState(true);
-  const [nextBtnDisable, setNextBtnDisable] = useState(
-    () => reviews.length < 2
-  );
+  const [nextBtnDisable, setNextBtnDisable] = useState(false);
 
   useEffect(() => {
     dispatch(getReviews());
