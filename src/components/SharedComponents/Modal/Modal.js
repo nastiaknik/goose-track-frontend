@@ -32,11 +32,11 @@ const scrollController = {
 export const Modal = ({ children, onClose }) => {
   useEffect(() => {
     window.addEventListener("keydown", handleKeyDown);
-
     scrollController.disabledScroll();
 
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
+      scrollController.enabledScroll();
     };
   });
 
