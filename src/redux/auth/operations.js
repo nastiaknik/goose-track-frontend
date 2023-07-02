@@ -10,6 +10,8 @@ export const injectStore = (_store) => {
 
 axios.defaults.baseURL = "https://goose-track-backend-i4mr.onrender.com";
 
+// const localToken = getState().auth.accessToken
+
 const $api = axios.create({
   baseURL: "https://goose-track-backend-i4mr.onrender.com",
 });
@@ -22,6 +24,22 @@ const token = {
     $api.defaults.headers.common.Authorization = "";
   },
 };
+
+$api.interceptors.request.use(
+  function (config) {
+    if (!config.headers["Authorization"]) {
+      const token = store.getState().auth.accessToken;
+
+      config.headers["Authorization"] = "Bearer " + token;
+    }
+
+    return config;
+  },
+  function (error) {
+    // Do something with request error
+    return Promise.reject(error);
+  }
+);
 
 $api.interceptors.response.use(
   async function (response) {
