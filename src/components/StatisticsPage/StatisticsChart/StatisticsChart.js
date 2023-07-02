@@ -1,3 +1,4 @@
+// https://chat.openai.com/
 import {
   BarChart,
   Bar,
@@ -21,6 +22,12 @@ export const StatisticsChart = ({
   doneByMPer,
   currentTheme
 }) => {
+  // console.log(`принял todoByDayPer ${todoByDayPer}`);
+  // console.log(`принял inprogressByDayPer${inprogressByDayPer}`);
+  // console.log(`принял doneByDayPer${doneByDayPer}`);
+  // console.log(`принял todoByMPer${todoByMPer}`);
+  // console.log(`принял inprogressByMPer${inprogressByMPer}`);
+  //  console.log(`принял doneByMPer${doneByMPer}`);
  
   const data = [
     {
@@ -73,9 +80,11 @@ export const StatisticsChart = ({
     );
   };
 
+
   return (
     <>
-    
+      {data &&
+        
       <Chart>
         <ResponsiveContainer width={800} height="80%">
           <BarChart
@@ -143,6 +152,7 @@ export const StatisticsChart = ({
                 dataKey="ByDay"
                 position="top"
                 content={renderCustomizedLabel}
+                // formatter={(value) => `${value}%`}
               />
             </Bar>
             <Bar
@@ -155,12 +165,13 @@ export const StatisticsChart = ({
                 dataKey="ByMonth"
                 position="top"
                 content={renderCustomizedLabel}
+                // formatter={(value) => `${value}%`}
               />
             </Bar>
           </BarChart>
         </ResponsiveContainer>
       </Chart>
+      }
     </>
-    
   );
 };
