@@ -5,7 +5,7 @@ export const ButtonClose = styled.button`
   background-color: ${({ theme }) => theme.variableColors.backgroundColorClose};
   cursor: pointer;
   padding: 0;
-  @media (min-width: 1024px) {
+  @media (min-width: 1440px) {
     display: none;
   }
 `;

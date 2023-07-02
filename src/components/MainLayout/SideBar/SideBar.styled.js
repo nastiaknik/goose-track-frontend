@@ -40,28 +40,3 @@ export const DivNavBurger = styled.div`
   flex-direction: column;
   gap: 32px;
 `;
-
-//   width: 100%;
-//   padding-right: 32px;
-//   padding-left: 32px;
-//   margin-right: auto;
-//   margin-left: auto;
-
-//   @media screen and (min-width: 320px) {
-//     max-width: 320px;
-//     padding-right: 20px;
-//     padding-left: 20px;
-//   }
-
-//   @media screen and (min-width: 768px) {
-//     max-width: 768px;
-//     padding-right: 32px;
-//     padding-left: 32px;
-//   }
-
-//   @media screen and (min-width: 1280px) {
-//     max-width: 1280px;
-//     padding-right: 32px;
-//     padding-left: 32px;
-//   }
-// }

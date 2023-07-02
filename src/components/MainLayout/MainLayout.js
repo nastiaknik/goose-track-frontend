@@ -6,7 +6,7 @@ import { SideBar } from "./SideBar/SideBar";
 export const MainLayout = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const isMobile = window.matchMedia("(max-width: 1023px)").matches;
+  const isMobile = window.matchMedia("(max-width: 1439px)").matches;
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);

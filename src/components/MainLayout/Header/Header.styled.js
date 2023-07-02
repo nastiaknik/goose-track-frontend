@@ -10,7 +10,7 @@ export const HamburgerMenu = styled(RxHamburgerMenu)`
     width: 34px;
     height: 34px;
   }
-  @media (min-width: 1024px) {
+  @media (min-width: 1440px) {
     display: none;
   }
 `;
