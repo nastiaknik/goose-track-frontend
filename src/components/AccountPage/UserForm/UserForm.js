@@ -2,14 +2,15 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { selectUser } from "redux/auth/selectrors";
 import { getUserInfo, updateUserInfo } from "redux/auth/operations";
+
 import { useFormik } from "formik";
-import { format } from "date-fns";
-import { DatePicker } from "components/SharedComponents/DatePicker/DatePicker";
 import { UpdateInfoSchema } from "helpers/formValidationSchemas";
+import { format } from "date-fns";
+
+import { FormInput } from "components/FormElements/FormInput/FormInput";
+import { DataInput } from "components/FormElements/DataInput/DataInput";
 import {
   Form,
-  Input,
-  Label,
   Button,
   InputAvatar,
   AddAvatarBtn,
@@ -19,12 +20,8 @@ import {
   TextAvatar,
   FlexInput,
   AvatarBlock,
-  Errors,
-  LabelSpan,
-  StyledIconContainer,
   PlusIcon,
   BirthdayContainer,
-  ArrowIcon,
   DefaultIcon,
 } from "./UserForm.styled";
 
@@ -41,7 +38,8 @@ export const UserForm = () => {
     }
   }
 
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmited, setIsSubmited] = useState(false);
+  const [allowSubmit, setAllowSubmit] = useState(false);
   const [image, setImage] = useState(null);
   const [userData, setUserData] = useState({
     username: user.username ?? "",
@@ -56,26 +54,22 @@ export const UserForm = () => {
     initialValues: userData,
     validationSchema: UpdateInfoSchema,
     onSubmit: (values) => {
-      setIsSubmitted(true);
+      setIsSubmited(true);
       dispatch(updateUserInfo(values));
       setUserData(values);
       formik.setTouched({});
+      setAllowSubmit(false);
     },
   });
 
-  const handleChange = (e) => {
-    formik.handleChange(e);
-    setIsSubmitted(false);
-  };
-
   const handleValidation = (e) => {
-    setIsSubmitted(false);
     e.preventDefault();
+    setIsSubmited(true);
     formik.handleSubmit();
   };
 
   const handleAvatarChange = (event) => {
-    setIsSubmitted(false);
+    setIsSubmited(false);
     const file = event.target.files[0];
     if (file) {
       const imageURL = URL.createObjectURL(file);
@@ -115,129 +109,62 @@ export const UserForm = () => {
       </AvatarBlock>
 
       <FlexInput>
-        <Label htmlFor="username">
-          <LabelSpan
-            hasError={formik.touched.username && formik.errors.username}
-            success={formik.touched.username && !formik.errors.username}
-          >
-            User Name
-          </LabelSpan>
-          <Input
-            id="username"
-            name="username"
-            type="text"
-            placeholder="username"
-            onChange={handleChange}
-            value={formik.values.username || ""}
-            onBlur={formik.handleBlur}
-            hasError={formik.touched.username && formik.errors.username}
-            success={formik.touched.username && !formik.errors.username}
-            {...formik.getFieldProps("username")}
-          />
-          <Errors>{formik.touched.username && formik.errors.username}</Errors>
-        </Label>
+        <FormInput
+          text="User Name"
+          name="username"
+          type="text"
+          placeholder="Username"
+          formik={formik}
+          isSubmited={isSubmited}
+          setAllowSubmit={setAllowSubmit}
+          user={user}
+        />
 
-        <Label htmlFor="phone">
-          <LabelSpan
-            hasError={formik.touched.phone && formik.errors.phone}
-            success={formik.touched.phone && !formik.errors.phone}
-          >
-            Phone
-          </LabelSpan>
-          <Input
-            id="phone"
-            name="phone"
-            type="phone"
-            onChange={handleChange}
-            onBlur={formik.handleBlur}
-            placeholder="phone number"
-            value={formik.values.phone || ""}
-            hasError={formik.touched.phone && formik.errors.phone}
-            success={formik.touched.phone && !formik.errors.phone}
-          />
-          <Errors>{formik.touched.phone && formik.errors.phone}</Errors>
-        </Label>
+        <FormInput
+          text="Phone"
+          name="phone"
+          type="phone"
+          placeholder="Enter phone number"
+          formik={formik}
+          isSubmited={isSubmited}
+          setAllowSubmit={setAllowSubmit}
+          user={user}
+        />
 
         <BirthdayContainer>
-          <Label htmlFor="birthday">
-            <LabelSpan
-              hasError={formik.errors.birthday}
-              success={formik.touched.birthday}
-            >
-              Birthday
-            </LabelSpan>
-            <StyledIconContainer>
-              <ArrowIcon />
-            </StyledIconContainer>
-          </Label>
-          <DatePicker
-            id="birthday"
+          <DataInput
+            text="Birthday"
             name="birthday"
-            selected={new Date(formik.values.birthday)}
-            onChange={(date) => {
-              formik.setFieldValue("birthday", format(date, "yyyy-MM-dd"));
-              setIsSubmitted(false);
-            }}
-            onBlur={formik.handleBlur}
-            dateFormat="dd-MM-yyyy"
-            maxDate={new Date()}
-            placeholderText="dd-MM-yyyy"
-            formatWeekDay={(day) => day.charAt(0)}
-            calendarStartDay={1}
-            hasError={formik.touched.birthday && formik.errors.birthday}
-            success={formik.touched.birthday}
+            formik={formik}
+            isSubmited={isSubmited}
+            setAllowSubmit={setAllowSubmit}
           />
-          <Errors>{formik.touched.birthday && formik.errors.birthday}</Errors>
         </BirthdayContainer>
 
-        <Label htmlFor="skype">
-          <LabelSpan
-            hasError={formik.touched.skype && formik.errors.skype}
-            success={formik.touched.skype && !formik.errors.skype}
-          >
-            Skype
-          </LabelSpan>
-          <Input
-            id="skype"
-            name="skype"
-            type="text"
-            onChange={handleChange}
-            onBlur={formik.handleBlur}
-            placeholder="skype"
-            value={formik.values.skype || ""}
-            hasError={formik.touched.skype && formik.errors.skype}
-            success={formik.touched.skype && !formik.errors.skype}
-          />
-          <Errors>{formik.touched.skype && formik.errors.skype}</Errors>
-        </Label>
+        <FormInput
+          text="Skype"
+          name="skype"
+          type="text"
+          placeholder="Enter skype number"
+          formik={formik}
+          isSubmited={isSubmited}
+          setAllowSubmit={setAllowSubmit}
+          user={user}
+        />
 
-        <Label htmlFor="email">
-          <LabelSpan
-            hasError={formik.touched.email && formik.errors.email}
-            success={formik.touched.email && !formik.errors.email}
-          >
-            Email
-          </LabelSpan>
-          <Input
-            id="email"
-            name="email"
-            type="email"
-            placeholder="email"
-            onChange={handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.email || ""}
-            hasError={formik.touched.email && formik.errors.email}
-            success={formik.touched.email && !formik.errors.email}
-            {...formik.getFieldProps("email")}
-          />
-          <Errors>{formik.touched.email && formik.errors.email}</Errors>
-        </Label>
+        <FormInput
+          text="Email"
+          name="email"
+          type="email"
+          placeholder="Enter email"
+          formik={formik}
+          isSubmited={isSubmited}
+          setAllowSubmit={setAllowSubmit}
+          user={user}
+        />
       </FlexInput>
 
-      <Button
-        type="submit"
-        disabled={isSubmitted || !(formik.isValid && formik.dirty)}
-      >
+      <Button type="submit" disabled={!allowSubmit}>
         Save changes
       </Button>
     </Form>

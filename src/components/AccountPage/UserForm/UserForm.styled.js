@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { AiOutlineUser, AiOutlinePlus } from "react-icons/ai";
-import { FaChevronDown } from "react-icons/fa";
 
 export const Form = styled.form`
   display: flex;
@@ -34,98 +33,23 @@ export const FlexInput = styled.div`
   flex-direction: column;
   justify-content: center;
   gap: 18px;
+  width: 100%;
 
-  @media (min-width: 768px) {
-    gap: 24px;
-    flex-direction: row;
-    flex-wrap: wrap;
-    max-width: 732px;
-  }
-
-  @media (min-width: 876px) {
-    justify-content: space-between;
-  }
-`;
-
-export const LabelSpan = styled.span`
-  margin-bottom: 8px;
-  color: ${({ hasError, success, theme }) =>
-    hasError
-      ? "var(--error-text-color)"
-      : success
-      ? "var(--correct-text-color)"
-      : `${theme.variableColors.labelUserFormTextColor}`};
-  transition: color var(--animation);
-`;
-
-export const Label = styled.label`
-  font-family: "InterRegular";
-  font-size: 12px;
-  line-height: 1.2;
-  display: flex;
-  flex-direction: column;
-
-  @media (min-width: 768px) {
-    font-size: 14px;
-  }
-`;
-
-export const Input = styled.input`
-  font-family: "InterSemiBold";
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 1.3;
-  outline: none;
-  border: ${({ hasError, success, theme }) => {
-    if (hasError) {
-      return "var(--border-auth-error)";
-    }
-    if (success) {
-      return "var(--border-auth-correct)";
-    }
-    return `${theme.variableColors.borderUserForm}`;
-  }};
-  border-radius: var(--border-radius);
-  height: 42px;
-  padding: 12px 12px 12px 14px;
-  box-sizing: border-box;
-  color: ${({ theme }) => theme.variableColors.text};
-  background-color: ${({ theme }) => theme.variableColors.secondaryBackground};
-  transition: border var(--animation);
-
-  &::placeholder {
-    font-family: "InterRegular";
-    font-size: 14px;
-    line-height: 1.29;
-    // color: var(--auth-placeholder-color);
-  }
-
-  @media (max-width: 374px) {
-    max-width: 298px;
-  }
-
-  @media (min-width: 375px) {
+  @media (min-width: 480px) {
     width: 299px;
   }
 
   @media (min-width: 768px) {
     width: 354px;
-    height: 46px;
-    padding: 14px 14px 14px 18px;
-    font-size: 16px;
   }
 
-  &:hover,
-  :focus {
-    border: ${({ hasError, success, theme }) => {
-      if (hasError) {
-        return "var(--border-auth-error)";
-      }
-      if (success) {
-        return "var(--border-auth-correct)";
-      }
-      return `${theme.variableColors.borderInputHover}`;
-    }};
+  @media (min-width: 1200px) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    column-gap: 50px;
+    row-gap: 24px;
+    width: 758px;
   }
 `;
 
@@ -225,12 +149,6 @@ export const PlusIcon = styled(AiOutlinePlus)`
   }
 `;
 
-export const ArrowIcon = styled(FaChevronDown)`
-  color: ${({ theme }) => theme.variableColors.arrowIconColor};
-  width: 12px;
-  height: 12px;
-`;
-
 export const Button = styled.button`
   font-family: "InterRegular";
   display: block;
@@ -293,16 +211,6 @@ export const TextAvatar = styled.p`
   }
 `;
 
-export const Errors = styled.div`
-  color: var(--error-text-color);
-  font-size: 12px;
-  height: 14px;
-
-  @media (min-width: 768px) {
-    font-size: 14px;
-  }
-`;
-
 export const Success = styled.div`
   color: var(--correct-text-color);
   font-size: 12px;
@@ -310,24 +218,6 @@ export const Success = styled.div`
 
   @media (min-width: 768px) {
     font-size: 14px;
-  }
-`;
-
-export const StyledIconContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  transform: translate(875%, 95%);
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background-color: transparent;
-  z-index: 1;
-  cursor: pointer;
-
-  @media screen and (min-width: 768px) {
-    transform: translate(1045%, 108%);
   }
 `;
 
