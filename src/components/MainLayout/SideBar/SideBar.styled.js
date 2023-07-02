@@ -34,6 +34,10 @@ export const DivSideBar = styled.div`
   @media (min-width: 1024px) {
     position: relative;
   }
+  @media (max-height: 400px) {
+    height: auto;
+    overflow-y: auto;
+  }
 `;
 export const DivNavBurger = styled.div`
   display: flex;
