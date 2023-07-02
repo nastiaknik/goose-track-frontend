@@ -24,7 +24,10 @@ function StatisticsPage() {
  };
 
  const dispatch = useDispatch();
-
+ 
+//   const paramsM={ year: `${selectedDate.getFullYear()}`,
+//      month: `${selectedDate.getMonth() + 1}`.padStart(2, "0"),}
+  
  const paramsM = useMemo(() => {
    return {
      year: `${selectedDate.getFullYear()}`,
@@ -32,6 +35,12 @@ function StatisticsPage() {
    };
  }, [selectedDate]);
 
+  // const paramsD = {
+  //   year: `${selectedDate.getFullYear()}`,
+  //   month: `${selectedDate.getMonth() + 1}`.padStart(2, "0"),
+  //   day: `${selectedDate.getDate()}`.padStart(2, "0"),
+  // };
+  
  const paramsD = useMemo(() => {
    return {
      year: `${selectedDate.getFullYear()}`,
@@ -42,43 +51,59 @@ function StatisticsPage() {
 
 
  useEffect(() => {
-   dispatch(getTasksByMonth(paramsM));
+  
    dispatch(getTasksByDay(paramsD));
- }, [paramsD, paramsM, dispatch]);
+ }, [paramsD, dispatch]);
+   useEffect(() => {
+     dispatch(getTasksByMonth(paramsM));
+    
+   }, [paramsM, dispatch]);
 
 
   const currentTheme = useSelector((state) => state.theme.currentTheme);
   const tasksM = useSelector(selectMonthTasks);
   const tasksD = useSelector(selectDayTasks);
 
-const todoByM = tasksM.filter((task) => task.category === "To do").length;
+  const todoByM = tasksM.filter((task) => task.category === "To do").length ;
 const inprogressByM = tasksM.filter((task) => task.category === "In progress").length;
 const doneByM = tasksM.filter((task) => task.category === "Done").length;
 
 const todoByDay = tasksD.filter((task) => task.category === "To do").length;
 const inprogressByDay = tasksD.filter((task) => task.category === "In progress").length;
-const doneByDay = tasksD.filter((task) => task.category === "Done").length;
+  const doneByDay = tasksD.filter((task) => task.category === "Done").length;
+  
 
+  // ФУНКЦІЯ ДЛЯ ПЕРЕВІРКИ КОМПОНЕНТА STATISTICS CHART БЕЗ ДАННИХ ЗІ СТОРА
 
+// function getRandomInt(min, max) {
+//   min = Math.ceil(min);
+//   max = Math.floor(max);
+//   return Math.floor(Math.random() * (max - min)) + min; //Максимум не включается, минимум включается
+// }
 
-  // const todoByDay = 3;
-  // const inprogressByDay = 2;
-  // const doneByDay = 4;
+  // const todoByDay = getRandomInt(0,11);
+  // const inprogressByDay = getRandomInt(0, 11);
+  // const doneByDay = getRandomInt(0, 11);
   const allTasksByDay = todoByDay + inprogressByDay + doneByDay;
-  const todoByDayPer = Math.round((todoByDay / allTasksByDay) * 100);
-  const inprogressByDayPer = Math.round(
-    (inprogressByDay / allTasksByDay) * 100
-  );
-  const doneByDayPer = Math.round((doneByDay / allTasksByDay) * 100);
+  const todoByDayPer = Math.round((todoByDay / allTasksByDay) * 100) || 0;
+  const inprogressByDayPer =
+    Math.round((inprogressByDay / allTasksByDay) * 100) || 0;
+  const doneByDayPer = Math.round((doneByDay / allTasksByDay) * 100) || 0;
 
-  //   const todoByM = 30;
-  // const inprogressByM = 30;
-  // const doneByM = 40;
+  //   const todoByM = getRandomInt(11, 30);
+  // const inprogressByM = getRandomInt(11, 30);
+  // const doneByM = getRandomInt(11, 30);
   const allTasksByM = todoByM + inprogressByM + doneByM;
-  const todoByMPer = Math.round((todoByM / allTasksByM) * 100);
-  const inprogressByMPer = Math.round((inprogressByM / allTasksByM) * 100);
-  const doneByMPer = Math.round((doneByM / allTasksByM) * 100);
+  const todoByMPer = Math.round((todoByM / allTasksByM) * 100) || 0;
+  const inprogressByMPer = Math.round((inprogressByM / allTasksByM) * 100) || 0;
+  const doneByMPer = Math.round((doneByM / allTasksByM) * 100) || 0;
 
+//  console.log(`отправил todoByDayPer ${todoByDayPer}`);
+//  console.log(`отправил inprogressByDayPer${inprogressByDayPer}`);
+//  console.log(`отправил doneByDayPer${doneByDayPer}`);
+//  console.log(`отправил todoByMPer${todoByMPer}`);
+//  console.log(`отправил inprogressByMPer${inprogressByMPer}`);
+//  console.log(`отправил doneByMPer${doneByMPer}`);
 
   return (
     <>
