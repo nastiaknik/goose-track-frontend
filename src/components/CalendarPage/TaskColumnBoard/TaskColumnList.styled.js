@@ -5,6 +5,8 @@ export const ListContainer = styled.ul.attrs((props) => ({
     height: props.tasksColumnsListHeight,
   },
 }))`
+  overflow-x: scroll;
+  overscroll-behavior: auto;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;

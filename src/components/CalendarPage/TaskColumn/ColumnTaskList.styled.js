@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 export const TasksList = styled.ul`
   display: flex;
+  overflow-x: scroll;
+  overscroll-behavior: auto;
   flex-direction: column;
   justify-content: space-between;
   /* overflow-x: auto;
