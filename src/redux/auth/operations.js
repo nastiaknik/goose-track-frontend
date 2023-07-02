@@ -2,6 +2,12 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { toast } from "react-toastify";
 
+let store;
+
+export const injectStore = (_store) => {
+  store = _store;
+};
+
 axios.defaults.baseURL = "https://goose-track-backend-i4mr.onrender.com";
 
 const $api = axios.create({
@@ -18,11 +24,13 @@ const token = {
 };
 
 $api.interceptors.response.use(
-  function (response) {
+  async function (response) {
     const keys = Object.keys(response.data);
     const originalRequest = response.config;
 
     if (keys.includes("accessToken") && !originalRequest._retry) {
+      store.dispatch(refresh(response.data));
+
       originalRequest._retry = true;
       token.set(response.data.accessToken);
 
@@ -70,29 +78,33 @@ export const login = createAsyncThunk(
 
 export const refresh = createAsyncThunk(
   "auth/refresh",
-  async (_, { getState, rejectWithValue }) => {
+  async (interceptoreResponse, { getState, rejectWithValue }) => {
     try {
-      const state = getState();
-      const currentToken = state.auth.accessToken;
+      if (interceptoreResponse) {
+        return interceptoreResponse;
+      } else {
+        const state = getState();
+        const currentToken = state.auth.accessToken;
 
-      if (!currentToken) {
-        return rejectWithValue();
+        if (!currentToken) {
+          return rejectWithValue();
+        }
+
+        const response = await axios.get("api/auth/refresh", {
+          headers: {
+            Authorization: `Bearer ${currentToken}`,
+          },
+        });
+
+        const keys = Object.keys(response.data);
+        keys.includes("accessToken")
+          ? token.set(response.data.accessToken)
+          : token.set(currentToken);
+
+        const correctedResponse = { ...response.data, isLoggedIn: true };
+
+        return correctedResponse;
       }
-
-      const response = await axios.get("api/auth/refresh", {
-        headers: {
-          Authorization: `Bearer ${currentToken}`,
-        },
-      });
-
-      const keys = Object.keys(response.data);
-      keys.includes("accessToken")
-        ? token.set(response.data.accessToken)
-        : token.set(currentToken);
-
-      const correctedResponse = { ...response.data, isLoggedIn: true };
-
-      return correctedResponse;
     } catch (e) {
       return rejectWithValue(e.message);
     }
