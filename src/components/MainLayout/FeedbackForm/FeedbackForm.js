@@ -35,16 +35,16 @@ const starStyles = {
   inactiveStrokeColor: "#CEC9C1",
 };
 
-export const FeedbackForm = ({ reviewText, onSave, onDelete, onClose }) => {
-  const isEditModal = !!reviewText;
+export const FeedbackForm = ({ reviewData, onSave, onDelete, onClose }) => {
+  const isEditModal = !!reviewData?.comment;
   const [editReview, setEditReview] = useState(false);
 
   const formik = useFormik({
     initialValues: {
-      rating: 0,
+      rating: reviewData?.rating || 0,
       //    name: name || "",
       //    avatar: "",
-      comment: reviewText || "",
+      comment: reviewData?.comment || "",
     },
     validationSchema: FeedbackSchema,
     onSubmit: (values) => {
