@@ -5,9 +5,35 @@ import { Overlay, ModalContent, Button, CloseSvg } from "./Modal.styled";
 
 const modalRoot = document.querySelector("#modal-root");
 
+const scrollController = {
+  scrollPosition: 0,
+  disabledScroll() {
+    scrollController.scrollPosition = window.scrollY; //щоб не підскакувало вверх при закритті модалки
+
+    // забороняємо скрол
+    document.body.style.cssText = `
+      overflow: hidden;
+      position: fixed;
+      top: -${scrollController.scrollPosition}px;
+      left: 0;
+      height: 100vh;
+      width: 100vw;
+      padding-right: ${window.innerWidth - document.body.offsetWidth}px
+    `;
+    document.documentElement.style.scrollBehavior = "unset";
+  },
+  enabledScroll() {
+    document.body.style.cssText = ""; //----Дозволяємо скрол
+    window.scroll({ top: scrollController.scrollPosition });
+    document.documentElement.style.scrollBehavior = "";
+  },
+};
+
 export const Modal = ({ children, onClose }) => {
   useEffect(() => {
     window.addEventListener("keydown", handleKeyDown);
+
+    scrollController.disabledScroll();
 
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
