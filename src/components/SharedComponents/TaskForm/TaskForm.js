@@ -19,18 +19,18 @@ import { addTask, updateTask } from "../../../redux/tasks/operations";
 import { validationTaskSchema } from "helpers/formValidationSchemas";
 import { useParams } from "react-router-dom";
 
-export const TaskForm = ({ onClose, ...props }) => {
+export const TaskForm = ({ onClose, task, status, ...props }) => {
   const dispatch = useDispatch();
   const editMode = props?.editMode || false;
-  const category = props?.category || "To do";
+  const category = status || "To do";
 
   const { currentDate } = useParams();
 
   const initialValues = {
-    title: props?.title || "",
-    start: props?.start || "",
-    end: props?.end || "",
-    priority: props?.priority || "Low",
+    title: task?.title || "",
+    start: task?.start || "",
+    end: task?.end || "",
+    priority: task?.priority || "Low",
   };
 
   const handleAdd = (values) => {
@@ -38,7 +38,12 @@ export const TaskForm = ({ onClose, ...props }) => {
       dispatch(addTask({ ...values, category, date: currentDate }));
       onClose();
     } else {
-      dispatch(updateTask({ ...values, category, _id: props._id }));
+      dispatch(
+        updateTask({
+          id: task._id,
+          task: { date: task.date, ...values, category },
+        })
+      );
       onClose();
     }
   };

@@ -44,7 +44,7 @@ export const TaskColumnCard = ({ task }) => {
         <Toolbar toggleModal={toggleModal} task={task} />
         {isModalOpen && (
           <Modal onClose={toggleModal}>
-            <TaskModal editMode={true} />
+            <TaskModal editMode={true} task={task} onClose={toggleModal} />
           </Modal>
         )}
       </Wrapper>

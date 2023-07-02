@@ -6,7 +6,7 @@ import { TaskModal } from "components/SharedComponents/TaskModal/TaskModal";
 import { Modal } from "components/SharedComponents/Modal/Modal";
 import { AddTaskBtn } from "../AddTaskBtn/AddTaskBtn";
 
-export const TasksColumn = ({ status = "To do" }) => {
+export const TasksColumn = ({ status }) => {
   const [showModal, setShowModal] = useState(false);
 
   const handleShowModal = () => {
@@ -20,16 +20,13 @@ export const TasksColumn = ({ status = "To do" }) => {
   return (
     <>
       <Container>
-        <ColumnHeadBar title={status?.name} handleShowModal={handleShowModal} />
+        <ColumnHeadBar title={status.name} handleShowModal={handleShowModal} />
         <ColumnsTasksList status={status} />
         <AddTaskBtn onClick={handleShowModal} />
       </Container>
       {showModal && (
         <Modal onClose={handleCloseModal}>
-          <TaskModal
-            handleCloseModal={handleCloseModal}
-            status={status?.name}
-          />
+          <TaskModal onClose={handleCloseModal} status={status.name} />
         </Modal>
       )}
     </>
