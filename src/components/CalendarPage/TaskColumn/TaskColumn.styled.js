@@ -1,14 +1,16 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Container = styled.li`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   max-height: 100%;
+
+  overscroll-behavior: auto;
   padding: 20px;
   gap: 14px;
 
-  background: ${({theme})=>theme.variableColors.secondaryBackground};
+  background: ${({ theme }) => theme.variableColors.secondaryBackground};
   border: var(--border-calendar-dark-theme);
   border-radius: 8px;
 

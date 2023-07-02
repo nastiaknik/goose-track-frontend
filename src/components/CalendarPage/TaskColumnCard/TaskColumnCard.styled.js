@@ -11,7 +11,7 @@ export const Container = styled.div`
 
   width: 100%;
 
-  background-color:${({theme})=>theme.variableColors.primaryBackground};
+  background-color: ${({ theme }) => theme.variableColors.primaryBackground};
   border: var(--border-calendar-dark-theme);
   border-radius: 8px;
 
@@ -31,15 +31,19 @@ export const Wrapper = styled.div`
 export const TaskTitle = styled.h4`
   font-weight: 500;
   font-size: 14px;
+  width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   line-height: 1.29;
-  color:${({theme})=>theme.variableColors.calendarTextColor};
+  color: ${({ theme }) => theme.variableColors.calendarTextColor};
 `;
 
 export const SvgAvatar = styled(RxAvatar)`
- width: 32px;
+  width: 32px;
   height: 32px;
-  color: ${({theme})=>theme.variableColors.colorBtnClose};
-  border:  2px solid;
+  color: ${({ theme }) => theme.variableColors.colorBtnClose};
+  border: 2px solid;
   border-radius: 60%;
   border-color: var(--accent-bg-color);
 `;
