@@ -12,7 +12,6 @@ export const StyledLabel = styled.label`
   position: relative;
   display: inline-block;
   width: 100%;
-  margin-top: 24px;
 
   font-size: 12px;
   color: ${({ error, isSubmited }) =>
@@ -20,15 +19,6 @@ export const StyledLabel = styled.label`
 
   @media screen and (min-width: 768px) {
     font-size: 14px;
-    margin-top: 18px;
-  }
-
-  :nth-child(2) {
-    margin-top: 32px;
-
-    @media screen and (min-width: 768px) {
-      margin-top: 40px;
-    }
   }
 `;
 
@@ -49,10 +39,14 @@ export const InputThumb = styled.span`
 
   > svg {
     position: absolute;
-    bottom: 18px;
+    bottom: 14px;
     right: 8px;
     width: 24px;
     height: 24px;
+
+    @media screen and (min-width: 768px) {
+      bottom: 18px;
+    }
   }
 
   > button {
@@ -83,13 +77,13 @@ export const StyledInput = styled.input`
   padding: 14px;
   border-radius: 8px;
   border: 1px solid rgba(220, 227, 229, 0.6);
-  background: var(--primary-bg-color);
+  background-color: ${({ theme }) => theme.variableColors.secondaryBackground};
   outline: 2px solid transparent;
   outline-color: ${({ error, isSubmited }) =>
     validateColor(error, isSubmited, "transparent")};
   transition: outline var(--animation);
 
-  color: var(--primary-text-color);
+  color: ${({ theme }) => theme.variableColors.text};
   font-size: 14px;
   line-height: 18px;
 

@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { register } from "redux/auth/operations";
 
 import { LuLogIn } from "react-icons/lu";
-import { FormInput } from "components/FormInput/FormInput";
+import { FormInput } from "components/FormElements/FormInput/FormInput";
 import { StyledForm, Title, SubmitBtn } from "./RegisterForm.styled";
 
 export const RegisterForm = () => {

@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { login } from "redux/auth/operations";
 
 import { LuLogIn } from "react-icons/lu";
-import { FormInput } from "components/FormInput/FormInput";
+import { FormInput } from "components/FormElements/FormInput/FormInput";
 import {
   StyledLoginForm,
   LoginTitle,

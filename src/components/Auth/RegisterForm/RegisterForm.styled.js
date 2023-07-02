@@ -12,6 +12,22 @@ export const StyledForm = styled.form`
   @media screen and (min-width: 768px) {
     padding: 40px;
   }
+
+  > label {
+    margin-top: 24px;
+
+    @media screen and (min-width: 768px) {
+      margin-top: 18px;
+    }
+
+    :nth-child(2) {
+      margin-top: 32px;
+
+      @media screen and (min-width: 768px) {
+        margin-top: 40px;
+      }
+    }
+  }
 `;
 
 export const Title = styled.h2`

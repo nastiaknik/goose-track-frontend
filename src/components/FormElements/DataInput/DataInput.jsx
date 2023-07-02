@@ -1,33 +1,25 @@
-import { useState } from "react";
-
-import { LuEye, LuEyeOff } from "react-icons/lu";
 import {
   AiOutlineExclamationCircle,
   AiOutlineCheckCircle,
 } from "react-icons/ai";
 
+import { DatePicker } from "components/SharedComponents/DatePicker/DatePicker";
+import { format } from "date-fns";
 import {
   StyledLabel,
   InputThumb,
-  StyledInput,
   StyledValidation,
-} from "./FormInput.styled";
+  StyledIconContainer,
+  ArrowIcon,
+} from "./DataInput.styled";
 
-export const FormInput = ({
+export const DataInput = ({
   text,
   name,
-  type,
-  placeholder,
   isSubmited,
   formik,
-  children,
+  setAllowSubmit,
 }) => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  const handleClick = () => {
-    setIsVisible((prevState) => !prevState);
-  };
-
   const handleIcon = (error) => {
     if (!isSubmited) {
       return;
@@ -38,13 +30,25 @@ export const FormInput = ({
 
   return (
     <StyledLabel isSubmited={isSubmited} error={formik.errors[`${name}`]}>
+      {!isSubmited && (
+        <StyledIconContainer>
+          <ArrowIcon />
+        </StyledIconContainer>
+      )}
       {text}
-      <StyledInput
-        type={isVisible ? "text" : type}
-        name={name}
-        placeholder={placeholder}
-        onChange={formik.handleChange}
-        value={formik.values[`${name}`]}
+      <DatePicker
+        name="birthday"
+        selected={new Date(formik?.values.birthday)}
+        onChange={async (date) => {
+          formik.setFieldValue("birthday", format(date, "yyyy-MM-dd"));
+          await Promise.resolve();
+          setAllowSubmit(true);
+        }}
+        dateFormat="dd-MM-yyyy"
+        maxDate={new Date()}
+        placeholderText="dd-MM-yyyy"
+        formatWeekDay={(day) => day.charAt(0)}
+        calendarStartDay={1}
         isSubmited={isSubmited}
         error={formik.errors[`${name}`]}
       />
@@ -58,14 +62,7 @@ export const FormInput = ({
             : `This is an CORRECT ${name}`}
         </StyledValidation>
       )}
-      <InputThumb>
-        {handleIcon(formik.errors[`${name}`])}
-        {name === "password" && (
-          <button type="button" onClick={handleClick}>
-            {isVisible ? <LuEye /> : <LuEyeOff />}
-          </button>
-        )}
-      </InputThumb>
+      <InputThumb>{handleIcon(formik.errors[`${name}`])}</InputThumb>
     </StyledLabel>
   );
 };

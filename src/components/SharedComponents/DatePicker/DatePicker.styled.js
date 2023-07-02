@@ -2,9 +2,27 @@ import styled from "styled-components";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
+const validateColor = (error, isSubmited, color) => {
+  if (!isSubmited) {
+    return color;
+  } else {
+    return error ? "var(--error-text-color)" : "var(--correct-text-color)";
+  }
+};
+
 export const DatePickerWrapper = styled.div`
   .react-datepicker__wrapper {
     position: relative;
+  }
+
+  .react-datepicker-wrapper {
+    width: 100%;
+  }
+
+  .react-datepicker__input-container {
+    > input {
+      width: 100%;
+    }
   }
 
   .react-datepicker {
@@ -220,26 +238,21 @@ export const DatePickerWrapper = styled.div`
 
 export const StyledDatePicker = styled(DatePicker)`
   position: relative;
-  width: 299px;
-  height: 42px;
-  border: ${({ hasError, success, theme }) => {
-    if (hasError) {
-      return "var(--border-auth-error)";
-    }
-    if (success) {
-      return "var(--border-auth-correct)";
-    }
-    return `${theme.variableColors.borderUserForm}`;
-  }};
+  width: 100%;
+  margin-top: 8px;
+  padding: 14px 14px 12px;
+
   border-radius: 8px;
-  font-family: "InterSemiBold";
-  font-style: normal;
-  font-weight: 600;
+  border: 1px solid rgba(220, 227, 229, 0.6);
+  outline: 2px solid transparent;
+  outline-color: ${({ error, isSubmited }) =>
+    validateColor(error, isSubmited, "transparent")};
+  transition: outline var(--animation);
+
+  font-family: var(--primary-font);
   font-size: 14px;
   line-height: 1.3;
-  outline: none;
-  padding: 12px 12px 12px 14px;
-  box-sizing: border-box;
+
   color: ${({ theme }) => theme.variableColors.text};
   background-color: ${({ theme }) => theme.variableColors.secondaryBackground};
 
@@ -250,24 +263,13 @@ export const StyledDatePicker = styled(DatePicker)`
   }
 
   @media screen and (min-width: 768px) {
-    width: 354px;
-    height: 46px;
     font-size: 16px;
     line-height: 1.2;
-    padding: 14px 14px 14px 18px;
+    padding: 18px 18px 16px;
   }
-  transition: border var(--animation);
 
   :hover,
   :focus {
-    border: ${({ hasError, success, theme }) => {
-      if (hasError) {
-        return "var(--border-auth-error)";
-      }
-      if (success) {
-        return "var(--border-auth-correct)";
-      }
-      return `${theme.variableColors.borderInputHover}`;
-    }};
+    outline: 2px solid var(--primary-text-color);
   }
 `;
