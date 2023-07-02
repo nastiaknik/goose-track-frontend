@@ -4,7 +4,7 @@ import { useFormik } from "formik";
 import { EmailSchema } from "../../../helpers/formValidationSchemas";
 import { toast } from "react-toastify";
 
-import { FormInput } from "components/FormInput/FormInput";
+import { FormInput } from "components/FormElements/FormInput/FormInput";
 import {
   EmailForm,
   EmailTitle,

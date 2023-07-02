@@ -42,7 +42,7 @@ export const AddFeedbackModal = ({ onCloseModal }) => {
   return (
     <Modal onClose={onCloseModal}>
       <FeedbackForm
-        reviewText={ownReview?.comment}
+        reviewData={ownReview?.comment ? ownReview : null}
         name={user.username}
         onSave={onSave}
         onDelete={onDelete}
