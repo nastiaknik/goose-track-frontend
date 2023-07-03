@@ -120,17 +120,6 @@ export const UserForm = () => {
           user={user}
         />
 
-        <FormInput
-          text="Phone"
-          name="phone"
-          type="phone"
-          placeholder="Enter phone number"
-          formik={formik}
-          isSubmited={isSubmited}
-          setAllowSubmit={setAllowSubmit}
-          user={user}
-        />
-
         <BirthdayContainer>
           <DataInput
             text="Birthday"
@@ -142,10 +131,10 @@ export const UserForm = () => {
         </BirthdayContainer>
 
         <FormInput
-          text="Skype"
-          name="skype"
-          type="text"
-          placeholder="Enter skype number"
+          text="Email"
+          name="email"
+          type="email"
+          placeholder="Enter email"
           formik={formik}
           isSubmited={isSubmited}
           setAllowSubmit={setAllowSubmit}
@@ -153,10 +142,21 @@ export const UserForm = () => {
         />
 
         <FormInput
-          text="Email"
-          name="email"
-          type="email"
-          placeholder="Enter email"
+          text="Phone"
+          name="phone"
+          type="phone"
+          placeholder="Enter phone number"
+          formik={formik}
+          isSubmited={isSubmited}
+          setAllowSubmit={setAllowSubmit}
+          user={user}
+        />
+
+        <FormInput
+          text="Skype"
+          name="skype"
+          type="text"
+          placeholder="Enter skype number"
           formik={formik}
           isSubmited={isSubmited}
           setAllowSubmit={setAllowSubmit}
@@ -170,3 +170,96 @@ export const UserForm = () => {
     </Form>
   );
 };
+
+// return (
+//     <Form onSubmit={handleValidation}>
+//       <AvatarBlock>
+//         <LabelAvatar htmlFor="image">
+//           {image || userData.imgURL ? (
+//             <LabelImg
+//               alt="Avatar"
+//               src={image || userData.imgURL}
+//               width="48"
+//               height="48"
+//             />
+//           ) : (
+//             <DefaultIcon />
+//           )}
+//           <InputAvatar
+//             type="file"
+//             id="image"
+//             name="image"
+//             accept="image/jpg, image/jpeg, image/png"
+//             onChange={handleAvatarChange}
+//           />
+//           <AddAvatarBtn>
+//             <PlusIcon />
+//           </AddAvatarBtn>
+//         </LabelAvatar>
+
+//         <TitleAvatar>{userData.username}</TitleAvatar>
+//         <TextAvatar>User</TextAvatar>
+//       </AvatarBlock>
+
+//       <FlexInput>
+//         <FormInput
+//           text="User Name"
+//           name="username"
+//           type="text"
+//           placeholder="Username"
+//           formik={formik}
+//           isSubmited={isSubmited}
+//           setAllowSubmit={setAllowSubmit}
+//           user={user}
+//         />
+
+//         <BirthdayContainer>
+//           <DataInput
+//             text="Birthday"
+//             name="birthday"
+//             formik={formik}
+//             isSubmited={isSubmited}
+//             setAllowSubmit={setAllowSubmit}
+//           />
+//         </BirthdayContainer>
+
+//         <FormInput
+//           text="Email"
+//           name="email"
+//           type="email"
+//           placeholder="Enter email"
+//           formik={formik}
+//           isSubmited={isSubmited}
+//           setAllowSubmit={setAllowSubmit}
+//           user={user}
+//         />
+
+//         <FormInput
+//           text="Phone"
+//           name="phone"
+//           type="phone"
+//           placeholder="Enter phone number"
+//           formik={formik}
+//           isSubmited={isSubmited}
+//           setAllowSubmit={setAllowSubmit}
+//           user={user}
+//         />
+
+//         <FormInput
+//           text="Skype"
+//           name="skype"
+//           type="text"
+//           placeholder="Enter skype number"
+//           formik={formik}
+//           isSubmited={isSubmited}
+//           setAllowSubmit={setAllowSubmit}
+//           user={user}
+//         />
+//       </FlexInput>
+
+//       <Button type="submit" disabled={!allowSubmit}>
+//         Save changes
+//       </Button>
+//     </Form>
+//   );
+// };
