@@ -4,21 +4,26 @@ import { LogOut } from "../LogoutBtn/LogoutBtn";
 import { Navigation } from "./Navigation/Navigation";
 import { DivNavBurger, DivSideBar, OverlaySideBar } from "./SideBar.styled";
 import { scrollController } from "components/SharedComponents/Modal/Modal";
+
 export const SideBar = ({ toggleMenu, isMobile }) => {
   useEffect(() => {
-    window.addEventListener("keydown", closeOnEsc);
-    scrollController.disabledScroll();
-
-    return () => {
-      scrollController.enabledScroll();
-      window.removeEventListener("keydown", closeOnEsc);
+    const closeOnEsc = (evt) => {
+      if (evt.code === "Escape") {
+        toggleMenu();
+      }
     };
-  });
-  const closeOnEsc = (evt) => {
-    if (evt.code === "Escape") {
-      toggleMenu();
+
+    if (isMobile) {
+      window.addEventListener("keydown", closeOnEsc);
+      scrollController.disabledScroll();
+
+      return () => {
+        scrollController.enabledScroll();
+        window.removeEventListener("keydown", closeOnEsc);
+      };
     }
-  };
+  }, [isMobile, toggleMenu]);
+
   const closeOnBackdrop = (evt) => {
     if (evt.currentTarget === evt.target) {
       toggleMenu();
