@@ -56,6 +56,26 @@ export const FlexInput = styled.div`
     width: 758px;
     margin-bottom: 84px;
     margin-top: 44px;
+
+    & label:nth-child(1) {
+      grid-column: 1 / 2;
+      grid-row: 1 / 2;
+    }
+
+    & label:nth-child(3) {
+      grid-column: 1 / 2;
+      grid-row: 3 / 4;
+    }
+
+    & label:nth-child(4) {
+      grid-column: 2 / 3;
+      grid-row: 1 / 2;
+    }
+
+    & label:nth-child(5) {
+      grid-column: 2 / 3;
+      grid-row: 2 / 3;
+    }
   }
 `;
 
