@@ -58,7 +58,7 @@ export const UpdateInfoSchema = object().shape({
       message: "Invalid email",
       excludeEmptyString: true,
     }),
-  birthday: date().nullable(),
+  birthday: date().nullable().max(new Date()),
   phone: string()
     .matches(
       /^(\+)?[\d\s-]+$/,
@@ -72,18 +72,20 @@ export const UpdateInfoSchema = object().shape({
     )
     .max(16, "Skype should not exceed 16 characters")
     .nullable(),
-  avatar: mixed()
+  imgURL: mixed()
     .test("fileSize", "File too large", (value) => {
-      if (!value) {
+      if (!value || typeof value !== "object") {
         return true;
       }
+
       const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2MB
       return value.size <= MAX_FILE_SIZE;
     })
     .test("fileFormat", "Unsupported format", (value) => {
-      if (!value) {
+      if (!value || typeof value !== "object") {
         return true;
       }
+
       const supportedFormats = ["image/jpg", "image/jpeg", "image/png"];
       return supportedFormats.includes(value.type);
     }),
