@@ -129,17 +129,4 @@ button {
     outline: none;
   }
 }
-
-html {
-  scroll-behavior: smooth;
-
-  overflow: auto;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-html::-webkit-scrollbar {
-  width: 0;
-  height: 0;
-}
 `;
