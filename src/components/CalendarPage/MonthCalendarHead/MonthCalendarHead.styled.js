@@ -20,7 +20,8 @@ export const Days = styled.div`
 `;
 
 export const DaysText = styled.p`
-  font-family: "Inter";
+  text-transform: uppercase;
+  font-family: "InterSemiBold";
   font-weight: 600;
   font-size: 16px;
   line-height: 1.12;
@@ -28,7 +29,8 @@ export const DaysText = styled.p`
 `;
 
 export const DaysTextWeekend = styled.p`
-  font-family: "Inter";
+  text-transform: uppercase;
+  font-family: "InterSemiBold";
   font-weight: 600;
   font-size: 16px;
   line-height: 1.12;
