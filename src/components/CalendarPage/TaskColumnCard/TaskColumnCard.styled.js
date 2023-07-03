@@ -32,7 +32,7 @@ export const TaskTitle = styled.h4`
   font-weight: 500;
   font-size: 14px;
   width: 200px;
-  overflow: hidden;
+  // overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   line-height: 1.29;

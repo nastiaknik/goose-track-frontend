@@ -4,8 +4,7 @@ export const Container = styled.li`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  max-height: 100%;
-
+  max-height: 432px;
   overscroll-behavior: auto;
   padding: 20px;
   gap: 14px;
@@ -32,5 +31,9 @@ export const Container = styled.li`
 
   @media (min-width: 1280px) {
     flex-basis: calc((100% - 24px * 2) / 3);
+  }
+
+  @media (min-width: 486px) {
+    max-height: 568px;
   }
 `;

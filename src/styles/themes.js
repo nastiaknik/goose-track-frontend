@@ -46,9 +46,13 @@ const lightTheme = {
     bgColorHighTask: "#FFD2DD", // колір фону High такси
     textColorHighTask: "#EA3D65", // колір фону High такси
     avatarBgColor: "#f8f8f8", // колір фону дефолтного зображення
-	modalReviewLabel: "rgba(52, 52, 52, 0.80)",
+    modalReviewLabel: "rgba(52, 52, 52, 0.80)",
     modalReviewBorder: "#F6F6F6",
     modalReviewTextBg: "#F6F6F6",
+    scrollbarThumbColor: "#e7e5e5", // колір скролу таски
+    scrollbarTrackColor: "#f2f2f2", // фон скролу
+    columnScrollbarThumbColor: "rgba(231, 229, 229, 1)", // колір скролу колонки
+    columnScrollbarTrackColor: "rgba(242, 242, 242, 1)",
   },
 };
 
@@ -91,9 +95,13 @@ const darkTheme = {
     bgColorHighTask: "#FFD2DD", // колір фону High такси
     textColorHighTask: "#EA3D65", // колір фону High такси
     avatarBgColor: "#171820", // колір фону дефолтного зображення
-	modalReviewLabel: "rgba(250, 250, 250, 0.30)",
+    modalReviewLabel: "rgba(250, 250, 250, 0.30)",
     modalReviewBorder: "rgba(255, 255, 255, 0.15)",
     modalReviewTextBg: "#21222C",
+    scrollbarThumbColor: "#171820", // колір скролу таски
+    scrollbarTrackColor: "#2d3037", // фон скролу
+    columnScrollbarThumbColor: "rgba(45, 48, 55, 1)", // колір скролу колонки
+    columnScrollbarTrackColor: "rgba(33, 34, 44, 1)",
   },
 };
 
