@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useFormik } from "formik";
 import { EmailSchema } from "../../../helpers/formValidationSchemas";
 import { toast } from "react-toastify";
@@ -13,6 +13,16 @@ import {
 
 export const ResendEmailForm = () => {
   const [isSubmited, setIsSubmited] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(false);
+  const [seconds, setSeconds] = useState(0);
+
+  useEffect(() => {
+    if (seconds === 0) {
+      setIsDisabled(false);
+    }
+
+    seconds > 0 && setTimeout(() => setSeconds(seconds - 1), 1000);
+  }, [seconds]);
 
   const formik = useFormik({
     initialValues: {
@@ -30,6 +40,8 @@ export const ResendEmailForm = () => {
 
       resetForm();
       setIsSubmited(false);
+      setIsDisabled(true);
+      setSeconds(60);
     },
   });
 
@@ -51,8 +63,12 @@ export const ResendEmailForm = () => {
         formik={formik}
       />
 
-      <EmailSubmitBtn type="submit" onClick={handleValidation}>
-        Resend email
+      <EmailSubmitBtn
+        type="submit"
+        disabled={isDisabled}
+        onClick={handleValidation}
+      >
+        {isDisabled ? `Resend email in ${seconds} sec` : "Resend email"}
       </EmailSubmitBtn>
     </EmailForm>
   );

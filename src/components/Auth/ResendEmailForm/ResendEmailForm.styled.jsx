@@ -9,4 +9,8 @@ export const EmailForm = styled(StyledForm)``;
 
 export const EmailTitle = styled(Title)``;
 
-export const EmailSubmitBtn = styled(SubmitBtn)``;
+export const EmailSubmitBtn = styled(SubmitBtn)`
+  :disabled {
+    background-color: var(--inactive-nav-text-color);
+  }
+`;
