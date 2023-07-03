@@ -37,9 +37,7 @@ export const Header = ({ toggleMenu }) => {
       {page === "Calendar" ? <CalendarTitle /> : <Title>{page}</Title>}
       <ContentContainer>
         <AddFeedbackBtn />
-        {/* <NavLink to="/account" onClick={toggleMenu}> */}
         <UserInfo />
-        {/* </NavLink> */}
       </ContentContainer>
     </HeaderContainer>
   );
