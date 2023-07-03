@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import AddFeedbackBtn from "../AddFeedbackBtn/AddFeedbackBtn";
+import { selectDayTasks } from "redux/tasks/selectors";
+import { useSelector } from "react-redux";
 
 import {
   HeaderContainer,
@@ -15,10 +17,13 @@ export const Header = ({ toggleMenu }) => {
   const location = useLocation();
   const [page, setPage] = useState("");
 
+  const dayTasks = useSelector(selectDayTasks);
+
   useEffect(() => {
     const calendarPage =
       location.pathname === "/calendar" ||
       location.pathname.startsWith("/calendar/day");
+
     if (location.pathname === "/account") {
       setPage("User Menu");
       return;
@@ -34,7 +39,7 @@ export const Header = ({ toggleMenu }) => {
   return (
     <HeaderContainer>
       <HamburgerMenu onClick={toggleMenu} />
-      {page === "Calendar" ? <CalendarTitle /> : <Title>{page}</Title>}
+      {dayTasks.length !== 0 ? <CalendarTitle /> : <Title>{page}</Title>}
       <ContentContainer>
         <AddFeedbackBtn />
         <UserInfo />

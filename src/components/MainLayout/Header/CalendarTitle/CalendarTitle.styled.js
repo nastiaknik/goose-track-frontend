@@ -7,10 +7,9 @@ export const Calendar = styled.p`
   line-height: 32px;
   letter-spacing: 0em;
   text-align: left;
-  box-shadow: 0px 9.399999618530273px 57.6875px 0px #00000009;
   display: none;
   box-shadow: 0px 47px 355px 0px #00000012;
-  @media (min-width: 1024px) {
+  @media (min-width: 1440px) {
     display: block;
   }
 `;
@@ -39,7 +38,7 @@ export const DivCalendar = styled.div`
   @media (min-width: 1024px) {
     display: flex;
     align-items: center;
-    margin-left: 20px;
+    // margin-left: 20px;
     gap: 8px;
   }
 `;
