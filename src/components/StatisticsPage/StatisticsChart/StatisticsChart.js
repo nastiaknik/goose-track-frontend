@@ -95,10 +95,8 @@ export const StatisticsChart = ({
     <>
       {data.length > 0 && (
         <Chart>
-          <ResponsiveContainer width={800} height="80%">
+          <ResponsiveContainer height="90%">
             <BarChart
-              width={780}
-              height={400}
               data={data}
               margin={{
                 top: 5,
@@ -106,7 +104,7 @@ export const StatisticsChart = ({
                 left: 20,
                 bottom: 5,
               }}
-              barCategoryGap={75}
+              // barCategoryGap={75}
               barGap={10}
               barSize={27}
             >
@@ -139,42 +137,35 @@ export const StatisticsChart = ({
                 </linearGradient>
               </defs>
               <CartesianGrid vertical={false} />
-              <XAxis dataKey="name" tickLine={false} tickMargin={16} />
+              <XAxis dataKey="name" tickLine={false} tickMargin={14} />
 
               <YAxis
+                width={50}
                 type="number"
                 domain={[0, 100]}
                 position="left"
                 axisLine={false}
                 tickLine={false}
-                tickMargin={50}
+                tickMargin={40}
               >
-                <Label value="Task" position="top" offset={-8} />
+                <Label value="Task" position="top" offset={-9} />
               </YAxis>
-              <Bar
-                dataKey="ByDay"
-                fill="url(#colorUv)"
-                radius={[0, 0, 10, 10]}
-                // maxBarSize={27}
-              >
+              <Bar dataKey="ByDay" fill="url(#colorUv)" radius={[0, 0, 10, 10]}>
                 <LabelList
                   dataKey="ByDay"
                   position="top"
                   content={renderCustomizedLabel}
-                  // formatter={(value) => `${value}%`}
                 />
               </Bar>
               <Bar
                 dataKey="ByMonth"
                 fill="url(#colorUv1)"
                 radius={[0, 0, 10, 10]}
-                // maxBarSize={27}
               >
                 <LabelList
                   dataKey="ByMonth"
                   position="top"
                   content={renderCustomizedLabel}
-                  // formatter={(value) => `${value}%`}
                 />
               </Bar>
             </BarChart>

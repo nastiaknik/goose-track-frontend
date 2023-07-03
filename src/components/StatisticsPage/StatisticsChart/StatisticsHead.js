@@ -12,6 +12,7 @@ import {
   NextDayButton,
   LegendList,
   ChartHead,
+  ButtDiv,
 } from "./StatisticsHead.styled";
 import { TbPointFilled } from "react-icons/tb";
 
@@ -33,12 +34,14 @@ export const StatisticsHead = ({
             dateFormat="d MMMM yyyy "
           />
         </DatePickerWrapper>
-        <PrevDayButton onClick={handlePreviousDay}>
-          <MdOutlineKeyboardArrowLeft />
-        </PrevDayButton>
-        <NextDayButton onClick={handleNextDay}>
-          <MdOutlineKeyboardArrowRight />
-        </NextDayButton>
+        <ButtDiv>
+          <PrevDayButton onClick={handlePreviousDay}>
+            <MdOutlineKeyboardArrowLeft />
+          </PrevDayButton>
+          <NextDayButton onClick={handleNextDay}>
+            <MdOutlineKeyboardArrowRight />
+          </NextDayButton>
+        </ButtDiv>
       </DataContainer>
       <LegendList>
         <li>

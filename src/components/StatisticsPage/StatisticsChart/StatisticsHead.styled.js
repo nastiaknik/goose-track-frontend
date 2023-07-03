@@ -4,9 +4,9 @@ import "react-datepicker/dist/react-datepicker.css";
 export const LegendList = styled.ul`
   display: flex;
   gap: 30px;
-  /* list-style: disc; */
   color: ${({ theme }) => theme.variableColors.text};
-  li {
+  padding-inline-start: 0px;
+   li {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,8 +14,18 @@ export const LegendList = styled.ul`
 `;
 export const ChartHead = styled.div`
   display: flex;
+  flex-wrap: wrap;
+  max-width: 307px;
   justify-content: space-between;
   margin-bottom: 40px;
+  max-width: 640px;
+  @media (min-width: 768px) {
+    max-width: 640px;
+  }
+
+  @media (min-width: 1440px) {
+    max-width: 860px;
+  }
 `;
 export const PrevDayButton = styled.button`
   width: 38px;
@@ -38,11 +48,25 @@ export const NextDayButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  /* :hover,
+  :focus {
+    fill: ${({ theme }) => theme.variableColors.tex};
+  } */
 `;
 
 export const DataContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  @media (max-width: 767.9px) {
+    width: 100%;
+  }
+`;
+export const ButtDiv = styled.div`
+  display: flex;
+  @media (min-width: 768px) {
+    margin-left: 8px;
+  }
 `;
 export const DatePickerWrapper = styled.div`
   .react-datepicker__wrapper {
@@ -260,9 +284,8 @@ export const DatePickerWrapper = styled.div`
 
 export const StyledDatePicker = styled(DatePicker)`
   position: relative;
-  width: 134px;
-  height: 42px;
-  margin-right:8px;
+  width: 121px;
+  height: 30px;
   border: ${({ hasError, success }) => {
     if (hasError) {
       return "var(--border-auth-error)";
@@ -275,28 +298,30 @@ export const StyledDatePicker = styled(DatePicker)`
   border-radius: 8px;
   font-family: "InterSemiBold";
   font-style: normal;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 14px;
   line-height: 1.3;
   outline: none;
-  padding: 12px 12px 12px 14px;
+  padding: 6px 12px 6px 12px;
   box-sizing: border-box;
   color: white;
   background-color: #3e85f3;
+  text-align: center;
 
-  :focus-visible {
+  /* :focus-visible {
     outline: none;
     border: var(--border-input-hover);
     border-radius: 8px;
-  }
+  } */
 
   @media screen and (min-width: 768px) {
     width: 145px;
     height: 34px;
     font-size: 16px;
     line-height: 1.2;
-    padding: 14px 14px 14px 18px;
+    padding: 8px 12px 8px 12px;
   }
+
   transition: border var(--animation);
 
   :hover,
