@@ -120,17 +120,6 @@ export const UserForm = () => {
           user={user}
         />
 
-        <FormInput
-          text="Phone"
-          name="phone"
-          type="phone"
-          placeholder="Enter phone number"
-          formik={formik}
-          isSubmited={isSubmited}
-          setAllowSubmit={setAllowSubmit}
-          user={user}
-        />
-
         <BirthdayContainer>
           <DataInput
             text="Birthday"
@@ -142,10 +131,10 @@ export const UserForm = () => {
         </BirthdayContainer>
 
         <FormInput
-          text="Skype"
-          name="skype"
-          type="text"
-          placeholder="Enter skype number"
+          text="Email"
+          name="email"
+          type="email"
+          placeholder="Enter email"
           formik={formik}
           isSubmited={isSubmited}
           setAllowSubmit={setAllowSubmit}
@@ -153,10 +142,21 @@ export const UserForm = () => {
         />
 
         <FormInput
-          text="Email"
-          name="email"
-          type="email"
-          placeholder="Enter email"
+          text="Phone"
+          name="phone"
+          type="phone"
+          placeholder="Enter phone number"
+          formik={formik}
+          isSubmited={isSubmited}
+          setAllowSubmit={setAllowSubmit}
+          user={user}
+        />
+
+        <FormInput
+          text="Skype"
+          name="skype"
+          type="text"
+          placeholder="Enter skype number"
           formik={formik}
           isSubmited={isSubmited}
           setAllowSubmit={setAllowSubmit}
