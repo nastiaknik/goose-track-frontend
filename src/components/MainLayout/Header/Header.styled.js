@@ -45,10 +45,10 @@ export const Title = styled.p`
   letter-spacing: 0em;
   text-align: left;
   color: ${({ theme }) => theme.variableColors.text};
-  box-shadow: 0px 9.399999618530273px 57.6875px 0px #00000009;
+  // box-shadow: 0px 9.399999618530273px 57.6875px 0px #00000009;
   display: none;
+  // box-shadow: 0px 47px 355px 0px #00000012;
 
-  box-shadow: 0px 47px 355px 0px #00000012;
   @media (min-width: 765px) {
     display: block;
   }
