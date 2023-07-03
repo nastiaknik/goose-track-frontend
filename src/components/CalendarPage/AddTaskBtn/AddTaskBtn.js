@@ -1,7 +1,7 @@
 import { Button, PlusSvg, Wrapper } from "./AddTaskBtn.styled";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 
-export const AddTaskBtn = ({ id, onClick }) => {
+export const AddTaskBtn = ({ onClick }) => {
   return (
     <Button type="button" onClick={onClick}>
       <Wrapper>
@@ -12,7 +12,6 @@ export const AddTaskBtn = ({ id, onClick }) => {
   );
 };
 
-// AddTaskBtn.propTypes = {
-//   id: PropTypes.string.isRequired,
-//   onClick: PropTypes.func.isRequired,
-// };
+AddTaskBtn.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};

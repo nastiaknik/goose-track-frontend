@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { MenuContent, ArrowSvg, List, Button } from "./Menu.styled";
-// import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import { changeCategory } from "redux/tasks/operations";
 import { TASK_STATUS } from "../../../constants/Status";
+import PropTypes from "prop-types";
 
 export const Menu = ({ task, toggleMenu }) => {
   useEffect(() => {
@@ -52,6 +52,10 @@ export const Menu = ({ task, toggleMenu }) => {
   );
 };
 
-// Menu.propTypes = {
-//   toggleMenu: PropTypes.func.isRequired,
-// };
+Menu.propTypes = {
+  toggleMenu: PropTypes.func.isRequired,
+  task: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired,
+  }).isRequired,
+};

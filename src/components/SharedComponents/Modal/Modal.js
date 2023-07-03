@@ -1,16 +1,15 @@
 import { useEffect } from "react";
 import { createPortal } from "react-dom";
 import { Overlay, ModalContent, Button, CloseSvg } from "./Modal.styled";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 
 const modalRoot = document.querySelector("#modal-root");
 
 export const scrollController = {
   scrollPosition: 0,
   disabledScroll() {
-    scrollController.scrollPosition = window.scrollY; //щоб не підскакувало вверх при закритті модалки
+    scrollController.scrollPosition = window.scrollY;
 
-    // забороняємо скрол
     document.body.style.cssText = `
       overflow: hidden;
       position: fixed;
@@ -23,7 +22,7 @@ export const scrollController = {
     document.documentElement.style.scrollBehavior = "unset";
   },
   enabledScroll() {
-    document.body.style.cssText = ""; //----Дозволяємо скрол
+    document.body.style.cssText = "";
     window.scroll({ top: scrollController.scrollPosition });
     document.documentElement.style.scrollBehavior = "";
   },
@@ -65,7 +64,7 @@ export const Modal = ({ children, onClose }) => {
   );
 };
 
-// Modal.propTypes = {
-//   children: PropTypes.element.isRequired,
-//   onClose: PropTypes.func.isRequired,
-// };
+Modal.propTypes = {
+  children: PropTypes.element.isRequired,
+  onClose: PropTypes.func.isRequired,
+};
