@@ -49,6 +49,7 @@ export const ReviewText = styled.textarea`
   min-height: 127px;
   min-width: 100%;
   max-width: 100%;
+  resize: none;
 
   &:hover,
   :focus {
