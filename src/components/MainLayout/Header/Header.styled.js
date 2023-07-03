@@ -6,6 +6,7 @@ export const HamburgerMenu = styled(RxHamburgerMenu)`
   height: 24px;
   display: block;
   cursor: pointer;
+  color: ${({ theme }) => theme.variableColors.text};
   @media (min-width: 768px) {
     width: 34px;
     height: 34px;
@@ -19,12 +20,10 @@ export const HeaderContainer = styled.header`
   justify-content: space-between;
   align-items: center;
   background-color: ${({ theme }) => theme.variableColors.primaryBackground};
+  padding-bottom: 64px;
 
-  padding: 20px;
-  height: 116px;
   @media (min-width: 1024px) {
-    padding-top: 44px;
-    padding-bottom: 44px;
+    padding-bottom: 32px;
   }
 `;
 
@@ -33,7 +32,7 @@ export const ContentContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   gap: 18px;
-  @media (min-width: 768px) {
+  @media (min-width: 376px) {
     gap: 24px;
   }
 `;
@@ -46,13 +45,12 @@ export const Title = styled.p`
   letter-spacing: 0em;
   text-align: left;
   color: ${({ theme }) => theme.variableColors.text};
-  box-shadow: 0px 9.399999618530273px 57.6875px 0px #00000009;
+  // box-shadow: 0px 9.399999618530273px 57.6875px 0px #00000009;
   display: none;
+  // box-shadow: 0px 47px 355px 0px #00000012;
 
-  box-shadow: 0px 47px 355px 0px #00000012;
-  @media (min-width: 1024px) {
+  @media (min-width: 765px) {
     display: block;
-    margin-left: 20px;
   }
 `;
 export const TitleCalendar = styled.p`

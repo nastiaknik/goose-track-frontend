@@ -1,10 +1,9 @@
 import styled from "styled-components";
 
 export const Calendar = styled.p`
-  font-family: Inter;
+  font-family: InterBold;
   color: ${({ theme }) => theme.variableColors.text};
   font-size: 32px;
-  font-weight: 700;
   line-height: 32px;
   letter-spacing: 0em;
   text-align: left;

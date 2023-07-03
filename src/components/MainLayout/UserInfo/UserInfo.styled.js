@@ -4,8 +4,8 @@ import { NavLink } from "react-router-dom";
 export const StyleNavLink = styled(NavLink)`
   display: flex;
   align-items: center;
-  gap: 10px;
-  @media (min-width: 768px) {
+  gap: 8px;
+  @media (min-width: 376px) {
     gap: 14px;
   }
 `;
@@ -13,8 +13,8 @@ export const StyleNavLink = styled(NavLink)`
 export const UserInfoContainer = styled.div`
   display: flex;
   align-items: center;
-  gap: 10px;
-  @media (min-width: 768px) {
+  gap: 8px;
+  @media (min-width: 376px) {
     gap: 14px;
   }
 `;
