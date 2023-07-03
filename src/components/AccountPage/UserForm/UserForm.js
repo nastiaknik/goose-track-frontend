@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { selectUser } from "redux/auth/selectrors";
 import { getUserInfo, updateUserInfo } from "redux/auth/operations";
@@ -7,6 +7,7 @@ import { useFormik } from "formik";
 import { UpdateInfoSchema } from "helpers/formValidationSchemas";
 import { format } from "date-fns";
 
+import { toast } from "react-toastify";
 import { FormInput } from "components/FormElements/FormInput/FormInput";
 import { DataInput } from "components/FormElements/DataInput/DataInput";
 import {
@@ -62,19 +63,27 @@ export const UserForm = () => {
     },
   });
 
+  useEffect(() => {
+    if (formik.errors.imgURL) {
+      toast.error(`${formik.errors.imgURL}`);
+    }
+  }, [formik.errors.imgURL]);
+
   const handleValidation = (e) => {
     e.preventDefault();
     setIsSubmited(true);
     formik.handleSubmit();
   };
 
-  const handleAvatarChange = (event) => {
+  const handleAvatarChange = async (event) => {
     setIsSubmited(false);
     const file = event.target.files[0];
     if (file) {
       const imageURL = URL.createObjectURL(file);
       setImage(imageURL);
-      formik.setFieldValue("imgURL", file);
+      await formik.setFieldValue("imgURL", file);
+      await Promise.resolve();
+      setAllowSubmit(true);
     }
   };
 
