@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { deleteTask } from "redux/tasks/operations";
 import { Menu } from "components/CalendarPage/TaskToolbar/Menu";
 import { useState } from "react";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 
 export const TaskToolbar = ({ toggleModal, task }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -44,4 +44,9 @@ export const TaskToolbar = ({ toggleModal, task }) => {
   );
 };
 
-/* TaskToolbar.propTypes={}; */
+TaskToolbar.propTypes = {
+  toggleModal: PropTypes.func.isRequired,
+  task: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+  }).isRequired,
+};
