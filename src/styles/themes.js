@@ -53,6 +53,8 @@ const lightTheme = {
     scrollbarTrackColor: "#f2f2f2", // фон скролу
     columnScrollbarThumbColor: "rgba(231, 229, 229, 1)", // колір скролу колонки
     columnScrollbarTrackColor: "rgba(242, 242, 242, 1)",
+    notActiveCalendarLinkColor: "#E3F3FF",
+    activeCalendarLinkColor: "#CAE8FF",
   },
 };
 
@@ -102,6 +104,8 @@ const darkTheme = {
     scrollbarTrackColor: "#2d3037", // фон скролу
     columnScrollbarThumbColor: "rgba(45, 48, 55, 1)", // колір скролу колонки
     columnScrollbarTrackColor: "rgba(33, 34, 44, 1)",
+    notActiveCalendarLinkColor: "#21222C",
+    activeCalendarLinkColor: "#3E85F3",
   },
 };
 
