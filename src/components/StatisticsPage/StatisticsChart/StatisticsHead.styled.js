@@ -1,12 +1,20 @@
 import styled from "styled-components";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+
+import {
+  MdOutlineKeyboardArrowLeft,
+  MdOutlineKeyboardArrowRight,
+} from "react-icons/md";
+
 export const LegendList = styled.ul`
+  font-family: "InterRegular";
+  font-weight: 400;
   display: flex;
   gap: 30px;
   color: ${({ theme }) => theme.variableColors.text};
   padding-inline-start: 0px;
-   li {
+  li {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,7 +27,7 @@ export const ChartHead = styled.div`
   justify-content: space-between;
   margin-bottom: 40px;
   max-width: 640px;
-  margin-left:auto;
+  margin-left: auto;
   margin-right: auto;
   @media (min-width: 768px) {
     max-width: 860px;
@@ -342,4 +350,12 @@ export const StyledDatePicker = styled(DatePicker)`
       return "var(--border-input-hover)";
     }};
   }
+`;
+
+export const LeftArrow = styled(MdOutlineKeyboardArrowLeft)`
+  fill: ${({ theme }) => theme.variableColors.arrowColor};
+`;
+
+export const RightArrow = styled(MdOutlineKeyboardArrowRight)`
+  fill: ${({ theme }) => theme.variableColors.arrowColor};
 `;

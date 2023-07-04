@@ -42,6 +42,8 @@ const customStyles = {
   activeFillColor: "#FFAC33",
   inactiveFillColor: "#CEC9C1",
 };
+const p = "This is an awesome app! Thanks for all the GooseTrack Serv";
+console.log(p.length);
 
 export const ReviewsSlider = () => {
   const swiperRef = useRef(null);
@@ -137,7 +139,12 @@ export const ReviewsSlider = () => {
                       </div>
                     </NameCardContentContainer>
                   </TopCardContent>
-                  <CardText>{slide?.comment || "Stand with Ukraine"}</CardText>
+                  {/* <CardText>{slide?.comment || "Stand with Ukraine"}</CardText> */}
+                  <CardText title={slide?.comment}>
+                    {slide?.comment.length > 58
+                      ? `${slide?.comment.slice(0, 59)}...`
+                      : slide?.comment}
+                  </CardText>
                 </CardContainer>
               </SwiperSlide>
             ))}

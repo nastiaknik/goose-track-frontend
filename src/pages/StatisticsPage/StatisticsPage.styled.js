@@ -21,7 +21,7 @@ export const Container = styled.section`
   }
 
   @media (min-width: 1440px) {
-    max-width: 1087px;
+    max-width: 100vw;
     height: 752px;
     padding-left: 113px;
     padding-right: 114px;
@@ -31,5 +31,5 @@ export const Container = styled.section`
 `;
 
 export const Title = styled.h1`
-display:none;
-`
+  display: none;
+`;

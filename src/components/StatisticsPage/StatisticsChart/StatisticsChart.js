@@ -23,7 +23,7 @@ export const StatisticsChart = ({
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    const qwe = [
+    const chartElements = [
       {
         name: "To Do",
         ByDay: todoByDayPer,
@@ -43,7 +43,7 @@ export const StatisticsChart = ({
         amt: 2290,
       },
     ];
-    setData(qwe);
+    setData(chartElements);
   }, [
     todoByDayPer,
     todoByMPer,
@@ -138,7 +138,7 @@ export const StatisticsChart = ({
                 </linearGradient>
               </defs>
               <CartesianGrid vertical={false} />
-              <XAxis dataKey="name" tickLine={false} tickMargin={14}  />
+              <XAxis dataKey="name" tickLine={false} tickMargin={14} />
 
               <YAxis
                 width={25}
@@ -149,7 +149,12 @@ export const StatisticsChart = ({
                 tickLine={false}
                 tickMargin={8}
               >
-                <Label value="Tasks" position="left"  angle={-90} offset={14} />
+                <Label
+                  position="insideTopRight"
+                  value="Tasks"
+                  dx={-5}
+                  dy={-40}
+                />
               </YAxis>
               <Bar dataKey="ByDay" fill="url(#colorUv)" radius={[0, 0, 10, 10]}>
                 <LabelList
