@@ -7,7 +7,7 @@ export const Container = styled.li`
   display: flex;
   flex-direction: column;
   gap: 28px;
-  padding: 14px 15px 18px 14px;
+  padding:14px;
 
   width: 100%;
 
@@ -16,8 +16,10 @@ export const Container = styled.li`
   border-radius: 8px;
 
   @media (min-width: 1280px) {
-    min-height: 100px;
-    padding-top: 8px;
+    min-height: 110px;
+    padding-top: 14px;
+    padding-right: 10px;
+    padding-bottom: 18px;
   }
 `;
 
@@ -32,6 +34,7 @@ export const TaskTitle = styled(Truncate)`
   font-weight: 500;
   font-size: 14px;
   width: 200px;
+  font-family: 'InterMedium';
   // overflow: hidden;
   position: relative;
   text-overflow: ellipsis;
