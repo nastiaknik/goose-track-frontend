@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { useState } from "react";
 
 import { LuEye, LuEyeOff } from "react-icons/lu";
@@ -82,4 +83,23 @@ export const FormInput = ({
       </InputThumb>
     </StyledLabel>
   );
+};
+
+FormInput.propTypes = {
+  text: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  type: PropTypes.string,
+  placeholder: PropTypes.string,
+  isSubmited: PropTypes.bool.isRequired,
+  formik: PropTypes.object.isRequired,
+  setAllowSubmit: PropTypes.func,
+  user: PropTypes.shape({
+    username: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    birthday: PropTypes.string,
+    phone: PropTypes.string,
+    skype: PropTypes.string,
+    imgURL: PropTypes.string,
+    updatedEmail: PropTypes.string,
+  }),
 };
