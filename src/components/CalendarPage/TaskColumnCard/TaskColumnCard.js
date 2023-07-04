@@ -22,18 +22,19 @@ export const TaskColumnCard = ({ task }) => {
   const toggleModal = () => {
     setIsModalOpen((prev) => !prev);
   };
-
+  // <Truncate
+  //   line={1}
+  //   element="p"
+  //   truncateText="..."
+  //   text="This is the long text that needs to be truncated if it exceeds the container size."
+  // />;
   return (
     <Container>
-      <TaskTitle>{task.title}</TaskTitle>
+      <TaskTitle line={1} element="h4" truncateText="..." text={task.title} />
       <Wrapper>
         <Wrapper>
           <TaskAvatarWrapper>
-            {user.imgURL ? (
-              <AvatarImg src={user.imgURL} alt={user.username} />
-            ) : (
-              <SvgAvatar />
-            )}
+            {user.imgURL ? <AvatarImg src={user.imgURL} alt={user.username} /> : <SvgAvatar />}
           </TaskAvatarWrapper>
           <TaskPriority priority={task.priority}>{task.priority}</TaskPriority>
         </Wrapper>

@@ -2,8 +2,8 @@ import { TASK_PRIORITY } from "../../../constants/Priority";
 import { TaskToolbar } from "components/CalendarPage/TaskToolbar/TaskToolbar";
 import styled from "styled-components";
 import { AiOutlineUser } from "react-icons/ai";
-
-export const Container = styled.div`
+import Truncate from "react-text-truncate";
+export const Container = styled.li`
   display: flex;
   flex-direction: column;
   gap: 28px;
@@ -28,11 +28,12 @@ export const Wrapper = styled.div`
   gap: 8px;
 `;
 
-export const TaskTitle = styled.h4`
+export const TaskTitle = styled(Truncate)`
   font-weight: 500;
   font-size: 14px;
   width: 200px;
   // overflow: hidden;
+  position: relative;
   text-overflow: ellipsis;
   white-space: nowrap;
   line-height: 1.29;

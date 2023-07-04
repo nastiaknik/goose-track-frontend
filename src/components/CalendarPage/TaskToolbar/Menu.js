@@ -22,9 +22,7 @@ export const Menu = ({ task, toggleMenu }) => {
 
   const dispatch = useDispatch();
 
-  let otherStatusList = TASK_STATUS.filter(
-    (status) => status.name !== task.category
-  );
+  let otherStatusList = TASK_STATUS.filter((status) => status.name !== task.category);
 
   return (
     <MenuContent>
