@@ -1,8 +1,9 @@
 import { StatisticsChart } from "components/StatisticsPage/StatisticsChart/StatisticsChart";
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect, useMemo } from "react";
+import PropTypes from "prop-types";
 import { selectMonthTasks, selectDayTasks } from "redux/tasks/selectors";
-import { Container } from "./StatisticsPage.styled";
+import { Container, Title } from "./StatisticsPage.styled";
 import { StatisticsHead } from "components/StatisticsPage/StatisticsChart/StatisticsHead";
 import { getTasksByMonth, getTasksByDay } from "redux/tasks/operations";
 
@@ -80,6 +81,7 @@ const inprogressByDay = tasksD.filter((task) => task.category === "In progress")
   return (
     <>
       <Container>
+      <Title>Statistics</Title>
         <StatisticsHead
          selectedDate={selectedDate}
          setSelectedDate={setSelectedDate}
@@ -99,5 +101,21 @@ const inprogressByDay = tasksD.filter((task) => task.category === "In progress")
     </>
   );
 }
+
+StatisticsHead.propTypes = {
+  selectedDate: PropTypes.any,
+  setSelectedDate: PropTypes.func,
+  handlePreviousDay: PropTypes.func,
+  handleNextDay: PropTypes.func,
+};
+StatisticsChart.propTypes = {
+  todoByDayPer: PropTypes.number,
+  inprogressByDayPer: PropTypes.number,
+  doneByDayPer: PropTypes.number,
+  todoByMPer: PropTypes.number,
+  inprogressByMPer: PropTypes.number,
+  doneByMPer: PropTypes.number,
+  currentTheme: PropTypes.bool,
+};
 
 export default StatisticsPage;

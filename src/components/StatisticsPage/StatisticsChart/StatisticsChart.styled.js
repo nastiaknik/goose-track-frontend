@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Chart = styled.div`
-  max-width: 307px;
+  max-width: 640px;
   height: 413px;
   display: flex;
   justify-content: center;
@@ -9,11 +9,14 @@ export const Chart = styled.div`
   flex-direction: column;
   background-color: ${({ theme }) => theme.variableColors.secondaryBackground};
   padding: 40px 14px 30px 14px;
+  margin-left: auto;
+  margin-right: auto;
 
   border-radius: 29px;
   border: 0.8px solid ${({ theme }) => theme.variableColors.borderColor};
+  font-size:14px;
   @media (min-width: 768px) {
-    max-width: 640px;
+    max-width: 860px;
     height: 424px;
     padding: 32px 32px 10px 32px;
   }
