@@ -87,6 +87,7 @@ export const StyledLink = styled(Link)`
   text-shadow: 0px 47px 355px rgba(0, 0, 0, 0.07),
     0px 9.4px 57.6875px rgba(0, 0, 0, 0.035);
 
+  transition: color var(--animation);
   :hover,
   :focus {
     color: var(--hover-btn-bg-color);
@@ -101,7 +102,9 @@ export const StyledLink = styled(Link)`
 `;
 
 export const StyledDetails = styled.details`
+  position: relative;
   margin-top: 10px;
+  margin-bottom: 20px;
   font-family: var(--primary-font);
   font-weight: 600;
   color: var(--accent-bg-color);
@@ -116,17 +119,30 @@ export const StyledDetails = styled.details`
     ::-webkit-details-marker {
       display: none;
     }
+
+    transition: color var(--animation);
+    :hover,
+    :focus {
+      color: var(--hover-btn-bg-color);
+    }
   }
 `;
 
 export const StyledOption = styled.li`
-  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  width: 100%;
   font-size: 14px;
+  display: inline-block;
+  margin-top: 10px;
 
   ::before {
     position: absolute;
-    top: 0;
-    left: 90px;
+    top: 50%;
+    left: 25%;
+    transform: translate(50%, -50%);
 
     content: " ";
     display: inline-block;
@@ -141,10 +157,49 @@ export const StyledOption = styled.li`
     transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
+  ::after {
+    position: absolute;
+    top: 50%;
+    right: 25%;
+
+    content: " ";
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+    background-image: url(${arrowSvg.default});
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform: rotate(180deg) translate(0, 50%);
+
+    opacity: 0;
+    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  transition: color var(--animation);
   :hover,
   :focus {
+    color: var(--hover-btn-bg-color);
     ::before {
       opacity: 1;
+    }
+    ::after {
+      opacity: 1;
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    ::before {
+      position: absolute;
+      top: 50%;
+      left: 10%;
+      transform: translate(50%, -50%);
+    }
+    ::after {
+      position: absolute;
+      top: 50%;
+      right: 15%;
+      transform: rotate(180deg) translate(-50%, 50%);
     }
   }
 `;

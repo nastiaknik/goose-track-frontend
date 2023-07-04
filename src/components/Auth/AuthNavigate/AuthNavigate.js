@@ -37,7 +37,7 @@ export const AuthNavigate = ({ linkPath, linktext, children }) => {
             )}
             <StyledDetails>
               <summary>Have some problems?</summary>
-              <ul>
+              <ul style={{ margin: 0, padding: 0 }}>
                 <StyledOption onClick={handleEmailResend}>
                   Resend verification email
                 </StyledOption>
