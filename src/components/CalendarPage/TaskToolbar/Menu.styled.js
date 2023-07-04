@@ -50,6 +50,7 @@ export const Button = styled.button`
   &:hover > svg,
   &:focus > svg {
     fill: currentColor;
+    transition: fill var(--animation);
   }
 
   @media screen and (min-width: 768px) {
@@ -62,11 +63,6 @@ export const ArrowSvg = styled(BsArrowRightCircle)`
   height: 14px;
   margin-left: 10px;
   fill: ${({ theme }) => theme.variableColors.text};
-
-  &:hover,
-  &:focus {
-    fill: currentColor;
-  }
 
   @media screen and (min-width: 768px) {
     width: 16px;

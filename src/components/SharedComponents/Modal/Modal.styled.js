@@ -56,6 +56,7 @@ export const CloseSvg = styled(IoMdClose)`
   width: 24px;
   height: 24px;
   fill: ${({ theme }) => theme.variableColors.text};
+  transition: fill var(--animation);
 
   &:hover,
   &:focus {
