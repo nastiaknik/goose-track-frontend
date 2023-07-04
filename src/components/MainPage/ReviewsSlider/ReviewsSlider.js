@@ -140,7 +140,9 @@ export const ReviewsSlider = () => {
                     </NameCardContentContainer>
                   </TopCardContent>
                   {/* <CardText>{slide?.comment || "Stand with Ukraine"}</CardText> */}
-                  <CardText title={slide?.comment}>
+                  <CardText
+                    title={slide?.comment.length > 58 ? slide?.comment : ""}
+                  >
                     {slide?.comment.length > 58
                       ? `${slide?.comment.slice(0, 59)}...`
                       : slide?.comment}
