@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { useState } from "react";
 import { ColumnHeadBar } from "../ColumnHeadBar/ColumnHeadBar";
 import { ColumnsTasksList } from "./ColumnTaskList";
@@ -31,4 +32,10 @@ export const TasksColumn = ({ status }) => {
       )}
     </>
   );
+};
+
+TasksColumn.propTypes = {
+  status: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+  }).isRequired,
 };

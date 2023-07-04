@@ -1,6 +1,6 @@
-import React from 'react';
-import { Wrapper, Title, Button,} from './ColumnHeadBar.styled';
-import {AiOutlinePlus} from 'react-icons/ai';
+import PropTypes from 'prop-types';
+import { Wrapper, Title, Button, } from './ColumnHeadBar.styled';
+import { AiOutlinePlus } from 'react-icons/ai';
 
 export const ColumnHeadBar = ({ title = "Lorem", handleShowModal }) => {
   return (
@@ -11,4 +11,9 @@ export const ColumnHeadBar = ({ title = "Lorem", handleShowModal }) => {
       </Button>
     </Wrapper>
   );
+};
+
+ColumnHeadBar.propTypes = {
+  title: PropTypes.string, 
+  handleShowModal: PropTypes.func.isRequired, 
 };
