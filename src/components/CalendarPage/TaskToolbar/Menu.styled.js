@@ -3,19 +3,20 @@ import { BsArrowRightCircle } from "react-icons/bs";
 
 export const MenuContent = styled.div`
   position: absolute;
-  top: 150%;
+  top: 12px;
   right: -64px;
   width: 115px;
   height: 70px;
   padding: 12px;
 
   background-color: ${({ theme }) => theme.variableColors.secondaryBackground};
-  border: var(--border-modal);
+  border: ${({ theme }) => theme.variableColors.borderCalendar};
   border-radius: var(--border-radius);
   box-shadow: var(--task-modal-shadow);
 
   @media screen and (min-width: 768px) {
-    left: 0;
+    top: 10px;
+    left: -8px;
     width: 147px;
     height: 90px;
     padding: 20px;
@@ -44,6 +45,11 @@ export const Button = styled.button`
   &:hover,
   &:focus {
     color: var(--accent-text-color);
+  }
+
+  &:hover > svg,
+  &:focus > svg {
+    fill: currentColor;
   }
 
   @media screen and (min-width: 768px) {

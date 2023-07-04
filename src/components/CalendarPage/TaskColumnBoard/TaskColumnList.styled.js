@@ -6,9 +6,8 @@ export const ListContainer = styled.ul`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding-left: 0px;
+  padding: 0;
   gap: 14px;
-  padding-bottom: 34px;
   margin: 0;
 
   scrollbar-width: thin;

@@ -41,6 +41,7 @@ export const Avatar = styled.div`
   justify-content: center;
   font-weight: bold;
   font-size: 20px;
+
   @media (min-width: 768px) {
     width: 44px;
     height: 44px;
@@ -50,6 +51,7 @@ export const Avatar = styled.div`
 export const AvatarImage = styled.img`
   width: 32px;
   height: 32px;
+  object-fit: cover;
   border-radius: 50%;
   border: 2px solid var(--accent-bg-color);
   @media (min-width: 768px) {

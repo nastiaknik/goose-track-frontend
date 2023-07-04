@@ -1,7 +1,7 @@
 import { TASK_PRIORITY } from "../../../constants/Priority";
 import { TaskToolbar } from "components/CalendarPage/TaskToolbar/TaskToolbar";
 import styled from "styled-components";
-import { RxAvatar } from "react-icons/rx";
+import { AiOutlineUser } from "react-icons/ai";
 
 export const Container = styled.div`
   display: flex;
@@ -39,13 +39,15 @@ export const TaskTitle = styled.h4`
   color: ${({ theme }) => theme.variableColors.calendarTextColor};
 `;
 
-export const SvgAvatar = styled(RxAvatar)`
+export const SvgAvatar = styled(AiOutlineUser)`
   width: 32px;
   height: 32px;
   color: ${({ theme }) => theme.variableColors.colorBtnClose};
   border: 2px solid;
   border-radius: 60%;
   border-color: var(--accent-bg-color);
+  object-fit: cover;
+  color: var(--auth-bg-color);
 `;
 
 export const TaskAvatarWrapper = styled.div`
@@ -86,4 +88,5 @@ export const AvatarImg = styled.img`
   height: 100%;
   border-radius: 50%;
   border: solid 1px var(--accent-background-color);
+  object-fit: cover;
 `;

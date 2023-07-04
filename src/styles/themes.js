@@ -55,6 +55,7 @@ const lightTheme = {
     columnScrollbarTrackColor: "rgba(242, 242, 242, 1)",
     notActiveCalendarLinkColor: "#E3F3FF",
     activeCalendarLinkColor: "#CAE8FF",
+    borderCalendar: "1px solid background: rgb(255, 255, 255)",
   },
 };
 
@@ -106,6 +107,7 @@ const darkTheme = {
     columnScrollbarTrackColor: "rgba(33, 34, 44, 1)",
     notActiveCalendarLinkColor: "#21222C",
     activeCalendarLinkColor: "#3E85F3",
+    borderCalendar: "1px solid rgba(255, 255, 255, 0.15)",
   },
 };
 
