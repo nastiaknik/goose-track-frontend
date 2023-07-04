@@ -3,9 +3,7 @@ import {
   login,
   register,
   refresh,
-  logout,
-  getUserInfo,
-  updateUserInfo,
+  logout,  updateUserInfo,
 } from "./operations";
 
 const initialState = {
@@ -62,11 +60,6 @@ const authSlice = createSlice({
         state.isRefreshingUser = false;
         state.error = null;
       })
-      .addCase(getUserInfo.fulfilled, (state, { payload }) => {
-        state.user = payload;
-        state.isLoading = false;
-        state.error = null;
-      })
       .addCase(updateUserInfo.fulfilled, (state, { payload }) => {
         state.user = { ...state.user, ...payload };
         state.isLoading = false;
@@ -78,7 +71,6 @@ const authSlice = createSlice({
           login.pending,
           refresh.pending,
           logout.pending,
-          getUserInfo.pending,
           updateUserInfo.pending
         ),
         (state) => {
@@ -91,7 +83,6 @@ const authSlice = createSlice({
           register.rejected,
           login.rejected,
           logout.rejected,
-          getUserInfo.rejected,
           updateUserInfo.rejected
         ),
         (state, action) => {

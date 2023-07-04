@@ -141,19 +141,6 @@ export const logout = createAsyncThunk(
   }
 );
 
-export const getUserInfo = createAsyncThunk(
-  "auth/getUserInfo",
-  async (_, { rejectWithValue }) => {
-    try {
-      const { data } = await $api.get("api/auth/current");
-      return data;
-    } catch (e) {
-      toast.error(e.response.data.message);
-      return rejectWithValue(e.message);
-    }
-  }
-);
-
 export const updateUserInfo = createAsyncThunk(
   "auth/updateUserInfo",
   async (userData, { rejectWithValue }) => {

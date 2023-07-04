@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { selectUser } from "redux/auth/selectrors";
-import { getUserInfo, updateUserInfo } from "redux/auth/operations";
+import { updateUserInfo } from "redux/auth/operations";
 
 import { useFormik } from "formik";
 import { UpdateInfoSchema } from "helpers/formValidationSchemas";
@@ -34,8 +34,6 @@ export const UserForm = () => {
     if (authData) {
       const auth = JSON.parse(authData);
       user = auth.user;
-    } else {
-      dispatch(getUserInfo());
     }
   }
 

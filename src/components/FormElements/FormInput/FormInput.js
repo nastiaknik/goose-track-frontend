@@ -76,7 +76,7 @@ export const FormInput = ({
         >
           {formik.errors[`${name}`]
             ? formik.errors[`${name}`]
-            : `This is an CORRECT ${name}`}
+            : `This is a CORRECT ${name}`}
         </StyledValidation>
       )}
       <InputThumb>
