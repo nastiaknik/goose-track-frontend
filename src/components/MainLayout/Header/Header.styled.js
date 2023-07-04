@@ -11,7 +11,7 @@ export const HamburgerMenu = styled(RxHamburgerMenu)`
     width: 34px;
     height: 34px;
   }
-  @media (min-width: 1440px) {
+  @media (min-width: 1439px) {
     display: none;
   }
 `;
@@ -24,7 +24,7 @@ export const HeaderContainer = styled.header`
   padding-bottom: 64px;
 
   @media (min-width: 1024px) {
-    padding-top: 40px;
+    padding-top: 0px;
     padding-bottom: 32px;
   }
 `;

@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import AddFeedbackBtn from "../AddFeedbackBtn/AddFeedbackBtn";
 import { selectDayTasks } from "redux/tasks/selectors";
 import { useSelector } from "react-redux";
+import PropTypes from "prop-types";
 
 import {
   HeaderContainer,
@@ -18,6 +19,10 @@ export const Header = ({ toggleMenu }) => {
   const [page, setPage] = useState("");
 
   const dayTasks = useSelector(selectDayTasks);
+
+  const hasToDoOrInProgress = dayTasks.some(
+    (item) => item.category === "To do" || item.category === "In progress"
+  );
 
   useEffect(() => {
     const calendarPage =
@@ -39,13 +44,21 @@ export const Header = ({ toggleMenu }) => {
   return (
     <HeaderContainer>
       <HamburgerMenu onClick={toggleMenu} />
-      {dayTasks.length !== 0 ? <CalendarTitle /> : <Title>{page}</Title>}
+      {dayTasks.length !== 0 && hasToDoOrInProgress ? (
+        <CalendarTitle />
+      ) : (
+        <Title>{page}</Title>
+      )}
       <ContentContainer>
         <AddFeedbackBtn />
         <UserInfo />
       </ContentContainer>
     </HeaderContainer>
   );
+};
+
+Header.propTypes = {
+  toggleMenu: PropTypes.func.isRequired,
 };
 
 export default Header;

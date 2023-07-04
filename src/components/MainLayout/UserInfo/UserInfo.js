@@ -10,7 +10,7 @@ import { ThemeToggler } from "../ThemeToggler/ThemeToggler";
 import { useSelector } from "react-redux";
 import { selectUser } from "redux/auth/selectrors";
 
-const UserInfo = ({ toggleMenu }) => {
+const UserInfo = () => {
   const user = useSelector(selectUser);
 
   const username = user?.username ?? "";
@@ -19,7 +19,7 @@ const UserInfo = ({ toggleMenu }) => {
   return (
     <UserInfoContainer>
       <ThemeToggler />
-      <StyleNavLink to="/account" onClick={toggleMenu}>
+      <StyleNavLink to="/account">
         <Username>{username}</Username>
         {imgURL ? (
           <AvatarImage src={imgURL} alt="User Avatar" />
