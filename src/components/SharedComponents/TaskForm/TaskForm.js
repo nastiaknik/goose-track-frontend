@@ -18,6 +18,7 @@ import { VscEdit } from "react-icons/vsc";
 import { addTask, updateTask } from "../../../redux/tasks/operations";
 import { validationTaskSchema } from "helpers/formValidationSchemas";
 import { useParams } from "react-router-dom";
+import PropTypes from "prop-types";
 
 export const TaskForm = ({ onClose, task, status, ...props }) => {
   const dispatch = useDispatch();
@@ -161,4 +162,16 @@ export const TaskForm = ({ onClose, task, status, ...props }) => {
       </Formik>
     </>
   );
+};
+
+
+TaskForm.propTypes = {
+  onClose: PropTypes.func.isRequired,
+  task: PropTypes.shape({
+    title: PropTypes.string,
+    start: PropTypes.string,
+    end: PropTypes.string,
+    priority: PropTypes.string,
+  }),
+  status: PropTypes.string,
 };
