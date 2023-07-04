@@ -18,6 +18,8 @@ export const Container = styled.li`
   @media (min-width: 1280px) {
     min-height: 110px;
     padding-top: 14px;
+    padding-right: 10px;
+    padding-bottom: 18px;
   }
 `;
 
