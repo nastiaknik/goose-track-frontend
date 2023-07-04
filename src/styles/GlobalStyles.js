@@ -129,4 +129,33 @@ button {
     outline: none;
   }
 }
+
+html {
+  scroll-behavior: smooth; 
+  scrollbar-width: thin;
+  scrollbar-color: ${({ theme }) =>
+    theme.variableColors.columnScrollbarThumbColor};
+  ${({ theme }) => theme.variableColors.columnScrollbarTrackColor};
+
+  &::-webkit-scrollbar {
+    width: 14px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: ${({ theme }) =>
+      theme.variableColors.columnScrollbarThumbColor};
+    border-radius: 12px;
+    transition: background-color 0.3s;
+  }
+
+   &::-webkit-scrollbar-thumb:hover {
+    background-color: ${({ theme }) =>
+      theme.variableColors.columnScrollbarThumbHoverColor};
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: ${({ theme }) =>
+      theme.variableColors.columnScrollbarTrackColor};
+  }
+}
 `;

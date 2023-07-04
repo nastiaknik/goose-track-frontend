@@ -15,8 +15,12 @@ export const StyledLabel = styled.label`
   width: 100%;
 
   font-size: 12px;
-  color: ${({ error, isSubmited }) =>
-    validateColor(error, isSubmited, "var(--primary-text-color)")};
+  color: ${({ error, isSubmited, theme }) =>
+    validateColor(
+      error,
+      isSubmited,
+      theme.variableColors.labelUserFormTextColor
+    )};
 
   @media screen and (min-width: 768px) {
     font-size: 14px;
