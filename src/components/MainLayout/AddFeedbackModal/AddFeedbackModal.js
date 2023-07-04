@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { Modal } from "../../SharedComponents/Modal/Modal";
 import { FeedbackForm } from "../FeedbackForm/FeedbackForm";
 import {
@@ -50,4 +51,8 @@ export const AddFeedbackModal = ({ onCloseModal }) => {
       />
     </Modal>
   );
+};
+
+AddFeedbackModal.propTypes = {
+  onCloseModal: PropTypes.func.isRequired,
 };
