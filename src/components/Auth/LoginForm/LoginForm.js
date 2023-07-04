@@ -46,6 +46,7 @@ export const LoginForm = () => {
         placeholder="Enter email"
         isSubmited={isSubmited}
         formik={formik}
+        auth={true}
       />
       <FormInput
         text="Password"
@@ -54,6 +55,7 @@ export const LoginForm = () => {
         placeholder="Enter password"
         isSubmited={isSubmited}
         formik={formik}
+        auth={true}
       />
       <LoginSubmitBtn type="submit" onClick={handleValidation}>
         Log In <LuLogIn />

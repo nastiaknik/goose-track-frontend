@@ -23,6 +23,7 @@ export const FormInput = ({
   formik,
   setAllowSubmit,
   user,
+  auth,
 }) => {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -52,7 +53,11 @@ export const FormInput = ({
   };
 
   return (
-    <StyledLabel isSubmited={isSubmited} error={formik.errors[`${name}`]}>
+    <StyledLabel
+      auth={auth}
+      isSubmited={isSubmited}
+      error={formik.errors[`${name}`]}
+    >
       {text}
       <StyledInput
         type={isVisible ? "text" : type}
@@ -62,6 +67,7 @@ export const FormInput = ({
         value={formik.values[`${name}`]}
         isSubmited={isSubmited}
         error={formik.errors[`${name}`]}
+        auth={auth}
       />
       {formik.touched[`${name}`] && (
         <StyledValidation
