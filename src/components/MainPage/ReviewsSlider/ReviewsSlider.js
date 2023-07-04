@@ -42,8 +42,6 @@ const customStyles = {
   activeFillColor: "#FFAC33",
   inactiveFillColor: "#CEC9C1",
 };
-const p = "This is an awesome app! Thanks for all the GooseTrack Serv";
-console.log(p.length);
 
 export const ReviewsSlider = () => {
   const swiperRef = useRef(null);
