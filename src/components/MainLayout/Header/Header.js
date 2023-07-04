@@ -44,7 +44,9 @@ export const Header = ({ toggleMenu }) => {
   return (
     <HeaderContainer>
       <HamburgerMenu onClick={toggleMenu} />
-      {dayTasks.length !== 0 && hasToDoOrInProgress ? (
+      {dayTasks.length !== 0 &&
+      hasToDoOrInProgress &&
+      location.pathname.startsWith("/calendar/day") ? (
         <CalendarTitle />
       ) : (
         <Title>{page}</Title>
