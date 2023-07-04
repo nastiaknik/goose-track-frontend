@@ -1,12 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+
 export const themeSlice = createSlice({
   name: "currentTheme",
-  initialState: {currentTheme: true},
+  initialState: { currentTheme: true },
   reducers: {
     toggleTheme: (state) => {
-     state.currentTheme= !state.currentTheme;
+      state.currentTheme = !state.currentTheme;
     },
   },
 });

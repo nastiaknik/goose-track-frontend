@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import {
   AiOutlineExclamationCircle,
   AiOutlineCheckCircle,
@@ -65,4 +66,12 @@ export const DataInput = ({
       <InputThumb>{handleIcon(formik.errors[`${name}`])}</InputThumb>
     </StyledLabel>
   );
+};
+
+DataInput.propTypes = {
+  text: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  isSubmited: PropTypes.bool.isRequired,
+  formik: PropTypes.object.isRequired,
+  setAllowSubmit: PropTypes.func,
 };

@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { useState } from "react";
 
 import { LuEye, LuEyeOff } from "react-icons/lu";
@@ -22,6 +23,7 @@ export const FormInput = ({
   formik,
   setAllowSubmit,
   user,
+  auth,
 }) => {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -51,7 +53,11 @@ export const FormInput = ({
   };
 
   return (
-    <StyledLabel isSubmited={isSubmited} error={formik.errors[`${name}`]}>
+    <StyledLabel
+      auth={auth}
+      isSubmited={isSubmited}
+      error={formik.errors[`${name}`]}
+    >
       {text}
       <StyledInput
         type={isVisible ? "text" : type}
@@ -61,6 +67,7 @@ export const FormInput = ({
         value={formik.values[`${name}`]}
         isSubmited={isSubmited}
         error={formik.errors[`${name}`]}
+        auth={auth}
       />
       {formik.touched[`${name}`] && (
         <StyledValidation
@@ -82,4 +89,23 @@ export const FormInput = ({
       </InputThumb>
     </StyledLabel>
   );
+};
+
+FormInput.propTypes = {
+  text: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  type: PropTypes.string,
+  placeholder: PropTypes.string,
+  isSubmited: PropTypes.bool.isRequired,
+  formik: PropTypes.object.isRequired,
+  setAllowSubmit: PropTypes.func,
+  user: PropTypes.shape({
+    username: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    birthday: PropTypes.string,
+    phone: PropTypes.string,
+    skype: PropTypes.string,
+    imgURL: PropTypes.string,
+    updatedEmail: PropTypes.string,
+  }),
 };
