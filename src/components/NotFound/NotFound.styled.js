@@ -76,6 +76,7 @@ export const Text = styled.p`
 export const StyledLink = styled(Link)`
   color: var(--accent-text-color);
   text-decoration-line: underline;
+  transition: color var(--animation);
 
   :hover,
   :focus {
