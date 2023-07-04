@@ -137,7 +137,6 @@ export const ReviewsSlider = () => {
                       </div>
                     </NameCardContentContainer>
                   </TopCardContent>
-                  {/* <CardText>{slide?.comment || "Stand with Ukraine"}</CardText> */}
                   <CardText
                     title={slide?.comment.length > 58 ? slide?.comment : ""}
                   >
