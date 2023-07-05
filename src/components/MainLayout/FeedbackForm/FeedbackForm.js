@@ -146,7 +146,7 @@ FeedbackForm.propTypes = {
   reviewData: PropTypes.shape({
     rating: PropTypes.number.isRequired,
     comment: PropTypes.string.isRequired,
-  }).isRequired,
+  }),
   onSave: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
