@@ -19,7 +19,6 @@ export const DivLayout = styled.div`
   display: flex;
   background: ${({ theme }) => theme.variableColors.primaryBackground};
   min-height: 100vh;
-  min-width: 100vh;
 `;
 
 export const DivHeader = styled.div`
