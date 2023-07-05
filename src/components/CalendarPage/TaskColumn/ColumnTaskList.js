@@ -26,5 +26,5 @@ export const ColumnsTasksList = ({ status = "To do" }) => {
 };
 
 ColumnsTasksList.propTypes = {
-  status: PropTypes.string, 
+  status: PropTypes.object,
 };
