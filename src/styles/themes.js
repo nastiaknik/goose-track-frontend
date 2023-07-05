@@ -57,6 +57,7 @@ const lightTheme = {
     notActiveCalendarLinkColor: "#E3F3FF",
     activeCalendarLinkColor: "#CAE8FF",
     borderCalendar: "1px solid background: rgb(255, 255, 255)",
+    backgroundColorTaskModal: "#FFFFFF",
     backgroundTaskFormInput: "#F6F6F6",
   },
 };
@@ -111,7 +112,8 @@ const darkTheme = {
     notActiveCalendarLinkColor: "#21222C",
     activeCalendarLinkColor: "#3E85F3",
     borderCalendar: "1px solid rgba(255, 255, 255, 0.15)",
-    backgroundTaskFormInput: "rgb(33, 34, 44)",
+    backgroundColorTaskModal: "#171820",
+    backgroundTaskFormInput: "#171820",
   },
 };
 

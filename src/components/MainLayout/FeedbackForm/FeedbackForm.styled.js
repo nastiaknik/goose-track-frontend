@@ -11,7 +11,7 @@ const validateColor = (error, isSubmited, color) => {
 };
 
 export const StyledForm = styled.form`
-  background-color: ${({ theme }) => theme.variableColors.secondaryBackground};
+  background-color: ${({ theme }) => theme.variableColors.backgroundColorTaskModal};
   display: flex;
   flex-direction: column;
   width: 295px;
@@ -50,7 +50,7 @@ export const Top = styled.div`
 export const ReviewText = styled.textarea`
   font-family: "InterBold", sans-serif;
   color: ${({ theme }) => theme.variableColors.calendarTextColor};
-  background-color: ${({ theme }) => theme.variableColors.modalReviewTextBg};
+  background-color: ${({ theme }) => theme.variableColors.backgroundTaskFormInput};
   border-width: 1px;
   border-color: ${({ theme }) => theme.variableColors.modalReviewBorder};
   width: 100%;
@@ -65,6 +65,10 @@ export const ReviewText = styled.textarea`
   &:hover,
   :focus {
     outline: none;
+  }
+
+  &::placeholder {
+    color:${({theme})=>theme.variableColors.calendarTextColor};
   }
 `;
 
