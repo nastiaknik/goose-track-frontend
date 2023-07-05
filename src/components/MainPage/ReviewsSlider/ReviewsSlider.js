@@ -118,6 +118,8 @@ export const ReviewsSlider = () => {
                         <img
                           src={`${slide.owner.imgURL}`}
                           alt={`${slide.owner?.username} avatar`}
+                          width="50"
+                          height="50"
                         />
                       ) : (
                         <LuUser size={18} color="rgba(62, 133, 243, .18)" />

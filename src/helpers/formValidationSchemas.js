@@ -72,7 +72,7 @@ export const UpdateInfoSchema = object().shape({
     )
     .max(16, "Skype should not exceed 16 characters")
     .nullable(),
-  imgURL: mixed()
+  photo: mixed()
     .test("fileSize", "File too large", (value) => {
       if (!value || typeof value !== "object") {
         return true;

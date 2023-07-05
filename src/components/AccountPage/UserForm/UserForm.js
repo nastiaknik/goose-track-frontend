@@ -28,14 +28,7 @@ import {
 
 export const UserForm = () => {
   const dispatch = useDispatch();
-  let user = useSelector(selectUser);
-  if (!user) {
-    const authData = localStorage.getItem("auth");
-    if (authData) {
-      const auth = JSON.parse(authData);
-      user = auth.user;
-    }
-  }
+  const user = useSelector(selectUser);
 
   const [isSubmited, setIsSubmited] = useState(false);
   const [allowSubmit, setAllowSubmit] = useState(false);
@@ -46,7 +39,7 @@ export const UserForm = () => {
     birthday: format(new Date(user.birthday || Date.now()), "yyyy-MM-dd"),
     skype: user.skype ?? "",
     email: user.email ?? "",
-    imgURL: user.imgURL ?? null,
+    photo: user.imgURL ?? null,
   });
 
   const formik = useFormik({
@@ -56,16 +49,15 @@ export const UserForm = () => {
       setIsSubmited(true);
       dispatch(updateUserInfo(values));
       setUserData(values);
-      formik.setTouched({});
       setAllowSubmit(false);
     },
   });
 
   useEffect(() => {
-    if (formik.errors.imgURL) {
-      toast.error(`${formik.errors.imgURL}`);
+    if (formik.errors.photo) {
+      toast.error(`${formik.errors.photo}`);
     }
-  }, [formik.errors.imgURL]);
+  }, [formik.errors.photo]);
 
   const handleValidation = (e) => {
     e.preventDefault();
@@ -79,7 +71,7 @@ export const UserForm = () => {
     if (file) {
       const imageURL = URL.createObjectURL(file);
       setImage(imageURL);
-      await formik.setFieldValue("imgURL", file);
+      await formik.setFieldValue("photo", file);
       await Promise.resolve();
       setAllowSubmit(true);
     }
@@ -89,10 +81,10 @@ export const UserForm = () => {
     <Form onSubmit={handleValidation}>
       <AvatarBlock>
         <LabelAvatar htmlFor="image">
-          {image || userData.imgURL ? (
+          {image || userData?.photo ? (
             <LabelImg
               alt="Avatar"
-              src={image || userData.imgURL}
+              src={image || userData.photo}
               width="48"
               height="48"
             />

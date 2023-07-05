@@ -41,7 +41,10 @@ export const DataInput = ({
         name="birthday"
         selected={new Date(formik?.values.birthday)}
         onChange={async (date) => {
-          formik.setFieldValue("birthday", format(date, "yyyy-MM-dd"));
+          formik.setFieldValue(
+            "birthday",
+            date ? format(date, "yyyy-MM-dd") : null
+          );
           await Promise.resolve();
           setAllowSubmit(true);
         }}
