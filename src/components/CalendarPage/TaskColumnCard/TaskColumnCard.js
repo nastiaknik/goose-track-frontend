@@ -34,7 +34,11 @@ export const TaskColumnCard = ({ task }) => {
       <Wrapper>
         <Wrapper>
           <TaskAvatarWrapper>
-            {user.imgURL ? <AvatarImg src={user.imgURL} alt={user.username} /> : <SvgAvatar />}
+            {user.imgURL ? (
+              <AvatarImg src={user.imgURL} alt={user.username} />
+            ) : (
+              <SvgAvatar />
+            )}
           </TaskAvatarWrapper>
           <TaskPriority priority={task.priority}>{task.priority}</TaskPriority>
         </Wrapper>
@@ -53,11 +57,11 @@ TaskColumnCard.propTypes = {
   task: PropTypes.shape({
     title: PropTypes.string.isRequired,
     priority: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    dueDate: PropTypes.string.isRequired,
+    description: PropTypes.string,
+    dueDate: PropTypes.string,
     assignee: PropTypes.shape({
       id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired,
-    }).isRequired,
+    }),
   }).isRequired,
 };
