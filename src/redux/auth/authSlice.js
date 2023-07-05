@@ -1,12 +1,5 @@
 import { createSlice, isAnyOf } from "@reduxjs/toolkit";
-import {
-  login,
-  register,
-  refresh,
-  logout,
-  getUserInfo,
-  updateUserInfo,
-} from "./operations";
+import { login, register, refresh, logout, updateUserInfo } from "./operations";
 
 const initialState = {
   user: null,
@@ -62,13 +55,8 @@ const authSlice = createSlice({
         state.isRefreshingUser = false;
         state.error = null;
       })
-      .addCase(getUserInfo.fulfilled, (state, { payload }) => {
-        state.user = payload;
-        state.isLoading = false;
-        state.error = null;
-      })
       .addCase(updateUserInfo.fulfilled, (state, { payload }) => {
-        state.user = { ...state.user, ...payload };
+        state.user = payload.user;
         state.isLoading = false;
         state.error = null;
       })
@@ -78,7 +66,6 @@ const authSlice = createSlice({
           login.pending,
           refresh.pending,
           logout.pending,
-          getUserInfo.pending,
           updateUserInfo.pending
         ),
         (state) => {
@@ -91,7 +78,6 @@ const authSlice = createSlice({
           register.rejected,
           login.rejected,
           logout.rejected,
-          getUserInfo.rejected,
           updateUserInfo.rejected
         ),
         (state, action) => {

@@ -63,6 +63,12 @@ export const SubmitBtn = styled.button`
   line-height: 1.3;
   letter-spacing: -0.36px;
 
+  transition: background var(--animation);
+  :hover,
+  :focus {
+    background: var(--hover-btn-bg-color);
+  }
+
   > svg {
     width: 18px;
     height: 18px;

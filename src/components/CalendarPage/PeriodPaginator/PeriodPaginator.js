@@ -7,13 +7,15 @@ import {
   ButtonsContainer,
   ButtonRight,
   ButtonLeft,
-  TitleContainer,
-  Name,
   IconRight,
   IconRightActive,
   IconLeft,
   IconLeftActive,
 } from "./PeriodPaginator.styled.js";
+import {
+  StyledDatePicker,
+  DatePickerWrapper,
+} from "../../StatisticsPage/StatisticsChart/StatisticsHead.styled";
 
 export const PeriodPaginator = ({ activePage }) => {
   const [activeBtn, setActiveBtn] = useState("");
@@ -49,13 +51,24 @@ export const PeriodPaginator = ({ activePage }) => {
     navigate(`/calendar/month/${format(date, "yyyy-MM")}`);
   };
 
+  const handleClick = (date) => {
+    date = new Date(date);
+    const formattedDate = format(date, "yyyy-MM-dd");
+    navigate(`/calendar/day/${formattedDate}`);
+  };
+
   return (
     <Wrapper>
       {activePage === "month" && (
         <>
-          <TitleContainer>
-            <Name>{format(urlDate, "MMM yyyy")}</Name>
-          </TitleContainer>
+          <DatePickerWrapper>
+            <StyledDatePicker
+              selected={new Date(urlDate)}
+              onChange={(date) => handleClick(date)}
+              dateFormat="MMM yyyy"
+              // showMonthYearPicker
+            />
+          </DatePickerWrapper>
           <ButtonsContainer>
             <ButtonLeft type="button" onClick={handlePrevMonth}>
               {activeBtn === "prev" ? <IconLeftActive /> : <IconLeft />}
@@ -69,9 +82,13 @@ export const PeriodPaginator = ({ activePage }) => {
 
       {activePage === "day" && (
         <>
-          <TitleContainer>
-            <Name>{format(urlDate, "d MMM yyyy")}</Name>
-          </TitleContainer>
+          <DatePickerWrapper>
+            <StyledDatePicker
+              selected={new Date(urlDate)}
+              onChange={(date) => handleClick(date)}
+              dateFormat="d MMM yyyy"
+            />
+          </DatePickerWrapper>
           <ButtonsContainer>
             <ButtonLeft type="button" onClick={handlePrevDay}>
               {activeBtn === "prev" ? <IconLeftActive /> : <IconLeft />}

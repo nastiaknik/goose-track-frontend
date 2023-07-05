@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { useFormik } from "formik";
 import { FeedbackSchema } from "../../../helpers/formValidationSchemas";
 import { Rating } from "@smastrom/react-rating";
@@ -9,12 +10,13 @@ import {
   CancelButton,
   DeleteIcon,
   EditIcon,
-  Label,
   LabelReview,
   ReviewText,
   SaveButton,
   StyledForm,
+  TextLabel,
   Top,
+  StyledValidation,
 } from "./FeedbackForm.styled";
 import "@smastrom/react-rating/style.css";
 import { useState } from "react";
@@ -38,6 +40,7 @@ const starStyles = {
 export const FeedbackForm = ({ reviewData, onSave, onDelete, onClose }) => {
   const isEditModal = !!reviewData?.comment;
   const [editReview, setEditReview] = useState(false);
+  const [isSubmited, setIsSubmited] = useState(false);
 
   const formik = useFormik({
     initialValues: {
@@ -58,10 +61,19 @@ export const FeedbackForm = ({ reviewData, onSave, onDelete, onClose }) => {
   };
 
   return (
-    <StyledForm onSubmit={formik.handleSubmit}>
-      <Label htmlFor="rating">Rating</Label>
+    <StyledForm
+      onSubmit={(e) => {
+        e.preventDefault();
+        setIsSubmited(true);
+        formik.handleSubmit();
+      }}
+    >
+      <TextLabel isSubmited={isSubmited} error={formik.errors?.rating}>
+        Rating
+      </TextLabel>
 
       <Rating
+        id="rating"
         value={formik.values.rating}
         onChange={(value) =>
           formik.setValues({ ...formik.values, rating: value })
@@ -71,7 +83,13 @@ export const FeedbackForm = ({ reviewData, onSave, onDelete, onClose }) => {
       />
 
       <Top>
-        <LabelReview htmlFor="review">Review</LabelReview>
+        <LabelReview
+          isSubmited={isSubmited}
+          error={formik.errors?.comment}
+          htmlFor="comment"
+        >
+          Review
+        </LabelReview>
         {isEditModal && (
           <Actions>
             <ActionBtnEdit
@@ -94,6 +112,16 @@ export const FeedbackForm = ({ reviewData, onSave, onDelete, onClose }) => {
         onChange={formik.handleChange}
         readOnly={isEditModal && !editReview}
       />
+      {formik.touched.comment && (
+        <StyledValidation
+          isSubmited={isSubmited}
+          error={formik.errors?.comment}
+        >
+          {formik.errors?.comment
+            ? formik.errors?.comment
+            : `This is a CORRECT comment`}
+        </StyledValidation>
+      )}
 
       {(!isEditModal || (isEditModal && editReview)) && (
         <ButtonsCont>
@@ -112,4 +140,14 @@ export const FeedbackForm = ({ reviewData, onSave, onDelete, onClose }) => {
       )}
     </StyledForm>
   );
+};
+
+FeedbackForm.propTypes = {
+  reviewData: PropTypes.shape({
+    rating: PropTypes.number.isRequired,
+    comment: PropTypes.string.isRequired,
+  }),
+  onSave: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired,
 };

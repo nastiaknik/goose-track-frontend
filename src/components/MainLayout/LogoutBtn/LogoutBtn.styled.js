@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import { FiLogOut } from "react-icons/fi";
+
 export const IconLogOut = styled(FiLogOut)`
   width: 20px;
   height: 20px;
-  @meda (min-width: 768px) {
+  @media (min-width: 768px) {
     width: 22px;
     height: 22px;
   }
@@ -19,8 +20,9 @@ export const Button = styled.button`
   line-height: 18px;
   align-items: center;
   gap: 11px;
-  height: 46px;
+  min-height: 46px;
   width: 131px;
+  margin-top: 24px;
   color: white;
   border-radius: 16px;
   box-shadow: 4px 2px 16px 0px rgba(136, 165, 191, 0.48);

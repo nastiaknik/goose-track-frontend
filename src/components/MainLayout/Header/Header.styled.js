@@ -11,7 +11,7 @@ export const HamburgerMenu = styled(RxHamburgerMenu)`
     width: 34px;
     height: 34px;
   }
-  @media (min-width: 1440px) {
+  @media (min-width: 1439px) {
     display: none;
   }
 `;
@@ -20,9 +20,11 @@ export const HeaderContainer = styled.header`
   justify-content: space-between;
   align-items: center;
   background-color: ${({ theme }) => theme.variableColors.primaryBackground};
+  padding-top: 24px;
   padding-bottom: 64px;
 
   @media (min-width: 1024px) {
+    padding-top: 0px;
     padding-bottom: 32px;
   }
 `;
@@ -38,60 +40,17 @@ export const ContentContainer = styled.div`
 `;
 
 export const Title = styled.p`
-  font-family: Inter;
+  font-family: InterBold;
   font-size: 32px;
-  font-weight: 700;
   line-height: 32px;
   letter-spacing: 0em;
   text-align: left;
   color: ${({ theme }) => theme.variableColors.text};
-  // box-shadow: 0px 9.399999618530273px 57.6875px 0px #00000009;
   display: none;
-  // box-shadow: 0px 47px 355px 0px #00000012;
-
-  @media (min-width: 765px) {
-    display: block;
-  }
-`;
-export const TitleCalendar = styled.p`
-  font-family: Inter;
-  font-size: 32px;
-  font-weight: 700;
-  line-height: 32px;
-  letter-spacing: 0em;
-  text-align: left;
-  color: var(--primary-text-color);
-  box-shadow: 0px 9.399999618530273px 57.6875px 0px #00000009;
-  display: none;
-
   box-shadow: 0px 47px 355px 0px #00000012;
-  @media (min-width: 1024px) {
+
+  @media (min-width: 1440px) {
     display: block;
-    margin-left: 20px;
-  }
-`;
-
-export const MotivationContainer = styled.div`
-  display: none;
-
-  @media (min-width: 1024px) {
-    display: flex;
-    gap: 10px;
-  }
-`;
-
-export const MotivationImage = styled.img`
-  width: 50px;
-  height: 50px;
-`;
-export const NameOfPage = styled.span``;
-export const MotivationText = styled.p`
-  font-size: 16px;
-  font-weight: bold;
-  color: #555555;
-
-  span {
-    color: blue;
   }
 `;
 

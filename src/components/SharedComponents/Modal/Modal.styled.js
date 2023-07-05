@@ -18,27 +18,18 @@ export const ModalContent = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   max-width: 335px;
-  //   max-width: 303px;  for task modal
   min-height: 290px;
-  //   min-height: 336px;  for task modal
   width: 100%;
   padding: 20px;
-  //   padding: 18px;  for task modal
-  background-color: ${({ theme }) => theme.variableColors.secondaryBackground};
+  background-color: ${({ theme }) => theme.variableColors.backgroundColorTaskModal};
   border: var(--border-modal);
   border-radius: var(--border-radius);
   box-shadow: var(--review-modal-shadow);
-  //   box-shadow: var(--task-modal-shadow);  for task modal
 
   @media screen and (min-width: 768px) {
     max-width: 468px;
     min-height: 299px;
     padding: 32px;
-
-    // for task modal
-    // max-width: 396px;
-    // min-height: 360px;
-    // padding: 28px;
   }
 `;
 
@@ -56,7 +47,9 @@ export const CloseSvg = styled(IoMdClose)`
   width: 24px;
   height: 24px;
   fill: ${({ theme }) => theme.variableColors.text};
-
+  transition: fill var(--animation);
+  background-color:${({theme})=>theme.variableColors.backgroundColorTaskModal};
+  
   &:hover,
   &:focus {
     fill: var(--accent-text-color);

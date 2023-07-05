@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import {
   Container,
   TaskPriority,
@@ -16,20 +17,20 @@ import { selectUser } from "redux/auth/selectrors";
 
 export const TaskColumnCard = ({ task }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
   const user = useSelector(selectUser);
 
   const toggleModal = () => {
-    if (isModalOpen) {
-      setIsModalOpen(false);
-    } else {
-      setIsModalOpen(true);
-    }
+    setIsModalOpen((prev) => !prev);
   };
-
+  // <Truncate
+  //   line={1}
+  //   element="p"
+  //   truncateText="..."
+  //   text="This is the long text that needs to be truncated if it exceeds the container size."
+  // />;
   return (
     <Container>
-      <TaskTitle>{task.title}</TaskTitle>
+      <TaskTitle line={1} element="h4" truncateText="..." text={task.title} />
       <Wrapper>
         <Wrapper>
           <TaskAvatarWrapper>
@@ -50,4 +51,17 @@ export const TaskColumnCard = ({ task }) => {
       </Wrapper>
     </Container>
   );
+};
+
+TaskColumnCard.propTypes = {
+  task: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    priority: PropTypes.string.isRequired,
+    description: PropTypes.string,
+    dueDate: PropTypes.string,
+    assignee: PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+    }),
+  }).isRequired,
 };

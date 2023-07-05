@@ -1,9 +1,3 @@
-
-import {
-  MdOutlineKeyboardArrowLeft,
-  MdOutlineKeyboardArrowRight,
-} from "react-icons/md";
-
 import {
   StyledDatePicker,
   DatePickerWrapper,
@@ -13,9 +7,10 @@ import {
   LegendList,
   ChartHead,
   ButtDiv,
+  LeftArrow,
+  RightArrow,
 } from "./StatisticsHead.styled";
 import { TbPointFilled } from "react-icons/tb";
-
 
 export const StatisticsHead = ({
   selectedDate,
@@ -23,7 +18,6 @@ export const StatisticsHead = ({
   handlePreviousDay,
   handleNextDay,
 }) => {
-
   return (
     <ChartHead>
       <DataContainer>
@@ -36,10 +30,10 @@ export const StatisticsHead = ({
         </DatePickerWrapper>
         <ButtDiv>
           <PrevDayButton onClick={handlePreviousDay}>
-            <MdOutlineKeyboardArrowLeft />
+            <LeftArrow />
           </PrevDayButton>
           <NextDayButton onClick={handleNextDay}>
-            <MdOutlineKeyboardArrowRight />
+            <RightArrow />
           </NextDayButton>
         </ButtDiv>
       </DataContainer>
@@ -56,4 +50,3 @@ export const StatisticsHead = ({
     </ChartHead>
   );
 };
-

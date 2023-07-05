@@ -33,24 +33,6 @@ export const ButtonRight = styled(ButtonBase)`
   border-radius: 0 8px 8px 0;
 `;
 
-export const TitleContainer = styled.div`
-  padding: 8px 12px;
-  background-color: ${({ theme }) => theme.variableColors.backgroundButton};
-  border-radius: 8px;
-  min-width: 135px;
-`;
-
-export const Name = styled.h1`
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 1.12;
-  text-align: center;
-  text-transform: uppercase;
-  color: ${({ theme }) => theme.variableColors.textButton};
-`;
-
 export const IconRight = styled(IconArrowRight)`
   stroke: ${({ theme }) => theme.variableColors.arrowColor};
 `;

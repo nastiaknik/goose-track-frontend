@@ -12,7 +12,7 @@ export const Container = styled.div`
 `;
 
 const NavLinkBase = styled(NavLink)`
-  font-family: "Inter";
+  font-family: "InterMedium";
   font-weight: 500;
   font-size: 14px;
   line-height: 18px;
@@ -33,17 +33,20 @@ const NavLinkBase = styled(NavLink)`
 
 export const NavLinkDay = styled(NavLinkBase)`
   color: ${({ theme }) => theme.variableColors.activeTextColorBtn};
-  background-color: ${({ theme }) => theme.variableColors.buttonBlue};
+  background-color: ${({ theme }) =>
+    theme.variableColors.notActiveCalendarLinkColor};
 `;
 
 export const ActiveLinkDay = styled(NavLinkBase)`
   color: ${({ theme }) => theme.variableColors.activeTextColorBtn};
-  background-color: ${({ theme }) => theme.variableColors.activeButtonBlue};
+  background-color: ${({ theme }) =>
+    theme.variableColors.activeCalendarLinkColor};
 `;
 
 export const NavLinkMonth = styled(NavLinkBase)`
   color: ${({ theme }) => theme.variableColors.activeTextColorBtn};
-  background-color: ${({ theme }) => theme.variableColors.buttonBlue};
+  background-color: ${({ theme }) =>
+    theme.variableColors.notActiveCalendarLinkColor};
   padding: 8px 16px;
   border-right: 1px solid rgba(62, 133, 243, 0.2);
   border-radius: 8px 0px 0px 8px;
@@ -51,7 +54,8 @@ export const NavLinkMonth = styled(NavLinkBase)`
 
 export const ActiveLinkMonth = styled(NavLinkBase)`
   color: ${({ theme }) => theme.variableColors.activeTextColorBtn};
-  background-color: ${({ theme }) => theme.variableColors.activeButtonBlue};
+  background-color: ${({ theme }) =>
+    theme.variableColors.activeCalendarLinkColor};
   padding: 8px 16px;
   border-right: 1px solid rgba(62, 133, 243, 0.2);
   border-radius: 8px 0px 0px 8px;

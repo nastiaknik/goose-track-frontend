@@ -7,22 +7,25 @@ export const Form = styled.form`
   align-items: center;
   justify-content: flex-start;
   position: relative;
-  gap: 40px;
+
+  gap: 34px;
   width: 100%;
   height: 100%;
   margin-top: 51px;
+  // margin-top: 95px;
   padding: 40px 20px;
   background-color: ${({ theme }) => theme.variableColors.secondaryBackground};
   border-radius: 16px;
 
   @media (min-width: 768px) {
     margin-top: 0;
+    // margin-top: 64px;
     padding: 40px;
     position: static;
   }
 
   @media (min-width: 1440px) {
-    gap: 60px;
+    gap: 0;
     padding-top: 60px;
     padding-bottom: 60px;
   }
@@ -41,6 +44,7 @@ export const FlexInput = styled.div`
 
   @media (min-width: 768px) {
     width: 354px;
+    gap: 22px;
   }
 
   @media (min-width: 1200px) {
@@ -48,8 +52,30 @@ export const FlexInput = styled.div`
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(3, 1fr);
     column-gap: 50px;
-    row-gap: 24px;
+    row-gap: 20px;
     width: 758px;
+    margin-bottom: 84px;
+    margin-top: 44px;
+
+    & label:nth-child(1) {
+      grid-column: 1 / 2;
+      grid-row: 1 / 2;
+    }
+
+    & label:nth-child(3) {
+      grid-column: 1 / 2;
+      grid-row: 3 / 4;
+    }
+
+    & label:nth-child(4) {
+      grid-column: 2 / 3;
+      grid-row: 1 / 2;
+    }
+
+    & label:nth-child(5) {
+      grid-column: 2 / 3;
+      grid-row: 2 / 3;
+    }
   }
 `;
 
@@ -150,7 +176,7 @@ export const PlusIcon = styled(AiOutlinePlus)`
 `;
 
 export const Button = styled.button`
-  font-family: "InterRegular";
+  font-family: "InterSemiBold";
   display: block;
   width: 100%;
   max-width: 195px;
@@ -186,28 +212,36 @@ export const Button = styled.button`
 export const TitleAvatar = styled.p`
   font-family: "InterBold";
   font-weight: 700;
-  font-size: 18px;
-  line-height: 1;
+  font-size: 14px;
+  line-height: 1.3;
   margin: 14px 0 0 0;
   text-align: center;
   color: ${({ theme }) => theme.variableColors.titleAvatar};
 
   @media (min-width: 768px) {
     margin: 20px 0 0 0;
+    font-size: 18px;
+    line-height: 1;
   }
 `;
 
 export const TextAvatar = styled.p`
   font-family: "InterSemiBold";
   font-weight: 600;
-  font-size: 14px;
-  line-height: 18px;
+  font-size: 12px;
+  line-height: 1.2;
   color: ${({ theme }) => theme.variableColors.textAvatar};
   margin-top: 4px;
   text-align: center;
 
   @media (min-width: 768px) {
     margin-top: 8px;
+    font-size: 14px;
+    line-height: 1.3;
+  }
+
+  @media (min-width: 1440px) {
+    line-height: 1.3;
   }
 `;
 

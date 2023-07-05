@@ -5,7 +5,6 @@ export const Container = styled.li`
   flex-direction: column;
   justify-content: space-between;
   max-height: 432px;
-  overscroll-behavior: auto;
   padding: 20px;
   gap: 14px;
 

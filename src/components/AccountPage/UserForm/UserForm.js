@@ -1,12 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { selectUser } from "redux/auth/selectrors";
-import { getUserInfo, updateUserInfo } from "redux/auth/operations";
+import { updateUserInfo } from "redux/auth/operations";
 
 import { useFormik } from "formik";
 import { UpdateInfoSchema } from "helpers/formValidationSchemas";
 import { format } from "date-fns";
 
+import { toast } from "react-toastify";
 import { FormInput } from "components/FormElements/FormInput/FormInput";
 import { DataInput } from "components/FormElements/DataInput/DataInput";
 import {
@@ -27,16 +28,7 @@ import {
 
 export const UserForm = () => {
   const dispatch = useDispatch();
-  let user = useSelector(selectUser);
-  if (!user) {
-    const authData = localStorage.getItem("auth");
-    if (authData) {
-      const auth = JSON.parse(authData);
-      user = auth.user;
-    } else {
-      dispatch(getUserInfo());
-    }
-  }
+  const user = useSelector(selectUser);
 
   const [isSubmited, setIsSubmited] = useState(false);
   const [allowSubmit, setAllowSubmit] = useState(false);
@@ -47,7 +39,7 @@ export const UserForm = () => {
     birthday: format(new Date(user.birthday || Date.now()), "yyyy-MM-dd"),
     skype: user.skype ?? "",
     email: user.email ?? "",
-    imgURL: user.imgURL ?? null,
+    photo: user.imgURL ?? null,
   });
 
   const formik = useFormik({
@@ -57,10 +49,15 @@ export const UserForm = () => {
       setIsSubmited(true);
       dispatch(updateUserInfo(values));
       setUserData(values);
-      formik.setTouched({});
       setAllowSubmit(false);
     },
   });
+
+  useEffect(() => {
+    if (formik.errors.photo) {
+      toast.error(`${formik.errors.photo}`);
+    }
+  }, [formik.errors.photo]);
 
   const handleValidation = (e) => {
     e.preventDefault();
@@ -68,13 +65,15 @@ export const UserForm = () => {
     formik.handleSubmit();
   };
 
-  const handleAvatarChange = (event) => {
+  const handleAvatarChange = async (event) => {
     setIsSubmited(false);
     const file = event.target.files[0];
     if (file) {
       const imageURL = URL.createObjectURL(file);
       setImage(imageURL);
-      formik.setFieldValue("imgURL", file);
+      await formik.setFieldValue("photo", file);
+      await Promise.resolve();
+      setAllowSubmit(true);
     }
   };
 
@@ -82,10 +81,10 @@ export const UserForm = () => {
     <Form onSubmit={handleValidation}>
       <AvatarBlock>
         <LabelAvatar htmlFor="image">
-          {image || userData.imgURL ? (
+          {image || userData?.photo ? (
             <LabelImg
               alt="Avatar"
-              src={image || userData.imgURL}
+              src={image || userData.photo}
               width="48"
               height="48"
             />
@@ -120,17 +119,6 @@ export const UserForm = () => {
           user={user}
         />
 
-        <FormInput
-          text="Phone"
-          name="phone"
-          type="phone"
-          placeholder="Enter phone number"
-          formik={formik}
-          isSubmited={isSubmited}
-          setAllowSubmit={setAllowSubmit}
-          user={user}
-        />
-
         <BirthdayContainer>
           <DataInput
             text="Birthday"
@@ -142,10 +130,10 @@ export const UserForm = () => {
         </BirthdayContainer>
 
         <FormInput
-          text="Skype"
-          name="skype"
-          type="text"
-          placeholder="Enter skype number"
+          text="Email"
+          name="email"
+          type="email"
+          placeholder="Enter email"
           formik={formik}
           isSubmited={isSubmited}
           setAllowSubmit={setAllowSubmit}
@@ -153,10 +141,21 @@ export const UserForm = () => {
         />
 
         <FormInput
-          text="Email"
-          name="email"
-          type="email"
-          placeholder="Enter email"
+          text="Phone"
+          name="phone"
+          type="phone"
+          placeholder="Enter phone number"
+          formik={formik}
+          isSubmited={isSubmited}
+          setAllowSubmit={setAllowSubmit}
+          user={user}
+        />
+
+        <FormInput
+          text="Skype"
+          name="skype"
+          type="text"
+          placeholder="Enter skype number"
           formik={formik}
           isSubmited={isSubmited}
           setAllowSubmit={setAllowSubmit}

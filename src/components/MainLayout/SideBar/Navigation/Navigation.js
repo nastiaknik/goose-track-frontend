@@ -1,4 +1,12 @@
-import { Container, Nav, StyleNavLink, Statistscs, Span, Calendar, User } from "./NavigationNav.styled";
+import {
+  Container,
+  Nav,
+  StyleNavLink,
+  Statistics,
+  Span,
+  Calendar,
+  User,
+} from "./NavigationNav.styled";
 export const Navigation = ({ toggleMenu }) => {
   return (
     <Nav>
@@ -13,8 +21,8 @@ export const Navigation = ({ toggleMenu }) => {
           Calendar
         </StyleNavLink>
         <StyleNavLink to="/statistics" onClick={toggleMenu}>
-          <Statistscs />
-          Statistscs
+          <Statistics />
+          Statistics
         </StyleNavLink>
       </Container>
     </Nav>

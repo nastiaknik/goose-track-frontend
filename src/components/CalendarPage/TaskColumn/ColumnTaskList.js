@@ -1,3 +1,5 @@
+import React from "react";
+import PropTypes from "prop-types";
 import { TaskColumnCard } from "components/CalendarPage/TaskColumnCard/TaskColumnCard";
 import { TasksList } from "./ColumnTaskList.styled";
 import { useSelector } from "react-redux";
@@ -21,4 +23,8 @@ export const ColumnsTasksList = ({ status = "To do" }) => {
       </TasksList>
     </>
   );
+};
+
+ColumnsTasksList.propTypes = {
+  status: PropTypes.object,
 };

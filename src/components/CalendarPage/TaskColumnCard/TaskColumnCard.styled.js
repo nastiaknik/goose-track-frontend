@@ -1,13 +1,13 @@
 import { TASK_PRIORITY } from "../../../constants/Priority";
 import { TaskToolbar } from "components/CalendarPage/TaskToolbar/TaskToolbar";
 import styled from "styled-components";
-import { RxAvatar } from "react-icons/rx";
-
-export const Container = styled.div`
+import { AiOutlineUser } from "react-icons/ai";
+import Truncate from "react-text-truncate";
+export const Container = styled.li`
   display: flex;
   flex-direction: column;
   gap: 28px;
-  padding: 14px 15px 18px 14px;
+  padding:14px;
 
   width: 100%;
 
@@ -16,8 +16,10 @@ export const Container = styled.div`
   border-radius: 8px;
 
   @media (min-width: 1280px) {
-    min-height: 100px;
-    padding-top: 8px;
+    min-height: 110px;
+    padding-top: 14px;
+    padding-right: 10px;
+    padding-bottom: 18px;
   }
 `;
 
@@ -28,24 +30,28 @@ export const Wrapper = styled.div`
   gap: 8px;
 `;
 
-export const TaskTitle = styled.h4`
+export const TaskTitle = styled(Truncate)`
   font-weight: 500;
   font-size: 14px;
   width: 200px;
+  font-family: 'InterMedium';
   // overflow: hidden;
+  position: relative;
   text-overflow: ellipsis;
   white-space: nowrap;
   line-height: 1.29;
   color: ${({ theme }) => theme.variableColors.calendarTextColor};
 `;
 
-export const SvgAvatar = styled(RxAvatar)`
+export const SvgAvatar = styled(AiOutlineUser)`
   width: 32px;
   height: 32px;
   color: ${({ theme }) => theme.variableColors.colorBtnClose};
   border: 2px solid;
   border-radius: 60%;
   border-color: var(--accent-bg-color);
+  object-fit: cover;
+  color: var(--auth-bg-color);
 `;
 
 export const TaskAvatarWrapper = styled.div`
@@ -86,4 +92,5 @@ export const AvatarImg = styled.img`
   height: 100%;
   border-radius: 50%;
   border: solid 1px var(--accent-background-color);
+  object-fit: cover;
 `;

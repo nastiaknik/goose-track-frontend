@@ -2,8 +2,16 @@ import styled, { css } from "styled-components";
 import { ReactComponent as pencilSVG } from "../../../assets/images/svg/pencil.svg";
 import { ReactComponent as trashSVG } from "../../../assets/images/svg/trash.svg";
 
+const validateColor = (error, isSubmited, color) => {
+  if (!isSubmited) {
+    return color;
+  } else {
+    return error ? "var(--error-text-color)" : "var(--correct-text-color)";
+  }
+};
+
 export const StyledForm = styled.form`
-  background-color: ${({ theme }) => theme.variableColors.secondaryBackground};
+  background-color: ${({ theme }) => theme.variableColors.backgroundColorTaskModal};
   display: flex;
   flex-direction: column;
   width: 295px;
@@ -13,19 +21,22 @@ export const StyledForm = styled.form`
   }
 `;
 
-export const Label = styled.label`
+export const TextLabel = styled.p`
   font-family: "InterMedium", sans-serif;
   font-size: 12px;
   font-weight: 500;
   margin-bottom: 8px;
-  color: ${({ theme }) => theme.variableColors.calendarTextColor};
+  color: ${({ error, isSubmited, theme }) =>
+    validateColor(error, isSubmited, theme.variableColors.calendarTextColor)};
 `;
 
 export const LabelReview = styled.label`
   font-family: "InterMedium", sans-serif;
   font-size: 12px;
   font-weight: 500;
-  color: ${({ theme }) => theme.variableColors.calendarTextColor};
+
+  color: ${({ error, isSubmited, theme }) =>
+    validateColor(error, isSubmited, theme.variableColors.calendarTextColor)};
 `;
 
 export const Top = styled.div`
@@ -39,7 +50,7 @@ export const Top = styled.div`
 export const ReviewText = styled.textarea`
   font-family: "InterBold", sans-serif;
   color: ${({ theme }) => theme.variableColors.calendarTextColor};
-  background-color: ${({ theme }) => theme.variableColors.modalReviewTextBg};
+  background-color: ${({ theme }) => theme.variableColors.backgroundTaskFormInput};
   border-width: 1px;
   border-color: ${({ theme }) => theme.variableColors.modalReviewBorder};
   width: 100%;
@@ -54,6 +65,10 @@ export const ReviewText = styled.textarea`
   &:hover,
   :focus {
     outline: none;
+  }
+
+  &::placeholder {
+    color:${({theme})=>theme.variableColors.calendarTextColor};
   }
 `;
 
@@ -76,6 +91,11 @@ export const SaveButton = styled.button`
   font-weight: 600;
   cursor: pointer;
   flex-basis: 100%;
+
+  &:hover,
+  :focus {
+    background-color: var(--hover-btn-bg-color);
+  }
 `;
 
 export const CancelButton = styled.button`
@@ -135,4 +155,17 @@ export const ActionBtnDelete = styled.div`
   border-radius: 36px;
   background-color: var(--delete-review-btn-bg-color);
   cursor: pointer;
+`;
+
+export const StyledValidation = styled.p`
+  margin-top: 8px;
+  margin-left: 14px;
+  font-size: 12px;
+  line-height: 1.16;
+  color: ${({ error, isSubmited }) =>
+    validateColor(error, isSubmited, "var(--primary-text-color)")};
+
+  @media screen and (min-width: 768px) {
+    margin-left: 18px;
+  }
 `;

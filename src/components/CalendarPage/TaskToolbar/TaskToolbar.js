@@ -5,30 +5,29 @@ import { CiTrash } from "react-icons/ci";
 import { useDispatch } from "react-redux";
 import { deleteTask } from "redux/tasks/operations";
 import { Menu } from "components/CalendarPage/TaskToolbar/Menu";
-import { useState } from "react";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
+import { Popup } from "reactjs-popup";
 
 export const TaskToolbar = ({ toggleModal, task }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   const dispatch = useDispatch();
   const onDelete = () => dispatch(deleteTask(task._id));
-
-  const toggleMenu = () => {
-    if (isMenuOpen) {
-      setIsMenuOpen(false);
-    } else {
-      setIsMenuOpen(true);
-    }
-  };
 
   return (
     <List>
       <Item>
-        <Button type="button" onClick={toggleMenu}>
-          <BsArrowRightCircle />
-        </Button>
-        {isMenuOpen && <Menu task={task} toggleMenu={toggleMenu} />}
+        <Popup
+          arrow={false}
+          trigger={
+            <Button type="button" autoFocus={false}>
+              <BsArrowRightCircle />
+            </Button>
+          }
+          position="bottom center"
+          on="click"
+          closeOnDocumentClick
+        >
+          {(close) => <Menu task={task} toggleMenu={close} />}
+        </Popup>
       </Item>
       <li>
         <Button type="button" onClick={toggleModal}>
@@ -44,4 +43,9 @@ export const TaskToolbar = ({ toggleModal, task }) => {
   );
 };
 
-/* TaskToolbar.propTypes={}; */
+TaskToolbar.propTypes = {
+  toggleModal: PropTypes.func.isRequired,
+  task: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+  }).isRequired,
+};

@@ -1,12 +1,20 @@
 import styled from "styled-components";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+
+import {
+  MdOutlineKeyboardArrowLeft,
+  MdOutlineKeyboardArrowRight,
+} from "react-icons/md";
+
 export const LegendList = styled.ul`
+  font-family: "InterRegular";
+  font-weight: 400;
   display: flex;
   gap: 30px;
   color: ${({ theme }) => theme.variableColors.text};
   padding-inline-start: 0px;
-   li {
+  li {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,12 +23,14 @@ export const LegendList = styled.ul`
 export const ChartHead = styled.div`
   display: flex;
   flex-wrap: wrap;
-  max-width: 307px;
+  /* max-width: 307px; */
   justify-content: space-between;
   margin-bottom: 40px;
   max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
   @media (min-width: 768px) {
-    max-width: 640px;
+    max-width: 860px;
   }
 
   @media (min-width: 1440px) {
@@ -31,27 +41,31 @@ export const PrevDayButton = styled.button`
   width: 38px;
   height: 34px;
   border: 0.8px solid ${({ theme }) => theme.variableColors.borderColor};
-  background: transparent;
+  background-color: ${({ theme }) => theme.variableColors.secondaryBackground};
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
   display: flex;
   justify-content: center;
   align-items: center;
+  :hover,
+  :focus {
+    background-color: ${({ theme }) => theme.variableColors.buttonBlue};
+  }
 `;
 export const NextDayButton = styled.button`
   width: 38px;
   height: 34px;
   border: 0.8px solid ${({ theme }) => theme.variableColors.borderColor};
-  background: transparent;
+  background-color: ${({ theme }) => theme.variableColors.secondaryBackground};
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
   display: flex;
   justify-content: center;
   align-items: center;
-  /* :hover,
+  :hover,
   :focus {
-    fill: ${({ theme }) => theme.variableColors.tex};
-  } */
+    background-color: ${({ theme }) => theme.variableColors.buttonBlue};
+  }
 `;
 
 export const DataContainer = styled.div`
@@ -74,6 +88,7 @@ export const DatePickerWrapper = styled.div`
   }
 
   .react-datepicker {
+    border: none;
     position: absolute;
     left: 50%;
     top: 50%;
@@ -82,7 +97,6 @@ export const DatePickerWrapper = styled.div`
     padding: 12px;
     border-radius: 16px;
     background-color: var(--accent-bg-color);
-
     @media (min-width: 768px) {
       padding: 18px;
       transform: translate(-8%, 0%);
@@ -286,15 +300,6 @@ export const StyledDatePicker = styled(DatePicker)`
   position: relative;
   width: 121px;
   height: 30px;
-  border: ${({ hasError, success }) => {
-    if (hasError) {
-      return "var(--border-auth-error)";
-    }
-    if (success) {
-      return "var(--border-auth-correct)";
-    }
-    return "var(--border)";
-  }};
   border-radius: 8px;
   font-family: "InterSemiBold";
   font-style: normal;
@@ -307,12 +312,9 @@ export const StyledDatePicker = styled(DatePicker)`
   color: white;
   background-color: #3e85f3;
   text-align: center;
-
-  /* :focus-visible {
-    outline: none;
-    border: var(--border-input-hover);
-    border-radius: 8px;
-  } */
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
 
   @media screen and (min-width: 768px) {
     width: 145px;
@@ -322,18 +324,17 @@ export const StyledDatePicker = styled(DatePicker)`
     padding: 8px 12px 8px 12px;
   }
 
-  transition: border var(--animation);
-
   :hover,
   :focus {
-    border: ${({ hasError, success }) => {
-      if (hasError) {
-        return "var(--border-auth-error)";
-      }
-      if (success) {
-        return "var(--border-auth-correct)";
-      }
-      return "var(--border-input-hover)";
-    }};
+    background-color: var(--hover-btn-bg-color);
   }
+  transition: background-color var(--animation);
+`;
+
+export const LeftArrow = styled(MdOutlineKeyboardArrowLeft)`
+  fill: ${({ theme }) => theme.variableColors.arrowColor};
+`;
+
+export const RightArrow = styled(MdOutlineKeyboardArrowRight)`
+  fill: ${({ theme }) => theme.variableColors.arrowColor};
 `;

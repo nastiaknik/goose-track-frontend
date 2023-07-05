@@ -53,6 +53,12 @@ const lightTheme = {
     scrollbarTrackColor: "#f2f2f2", // фон скролу
     columnScrollbarThumbColor: "rgba(231, 229, 229, 1)", // колір скролу колонки
     columnScrollbarTrackColor: "rgba(242, 242, 242, 1)",
+    columnScrollbarThumbHoverColor: "#c0c0c0",
+    notActiveCalendarLinkColor: "#E3F3FF",
+    activeCalendarLinkColor: "#CAE8FF",
+    borderCalendar: "1px solid background: rgb(255, 255, 255)",
+    backgroundColorTaskModal: "#FFFFFF",
+    backgroundTaskFormInput: "#F6F6F6",
   },
 };
 
@@ -102,6 +108,12 @@ const darkTheme = {
     scrollbarTrackColor: "#2d3037", // фон скролу
     columnScrollbarThumbColor: "rgba(45, 48, 55, 1)", // колір скролу колонки
     columnScrollbarTrackColor: "rgba(33, 34, 44, 1)",
+    columnScrollbarThumbHoverColor: "#444444",
+    notActiveCalendarLinkColor: "#21222C",
+    activeCalendarLinkColor: "#3E85F3",
+    borderCalendar: "1px solid rgba(255, 255, 255, 0.15)",
+    backgroundColorTaskModal: "#171820",
+    backgroundTaskFormInput: "#171820",
   },
 };
 

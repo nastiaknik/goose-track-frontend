@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import {
   AiOutlineExclamationCircle,
   AiOutlineCheckCircle,
@@ -40,7 +41,10 @@ export const DataInput = ({
         name="birthday"
         selected={new Date(formik?.values.birthday)}
         onChange={async (date) => {
-          formik.setFieldValue("birthday", format(date, "yyyy-MM-dd"));
+          formik.setFieldValue(
+            "birthday",
+            date ? format(date, "yyyy-MM-dd") : null
+          );
           await Promise.resolve();
           setAllowSubmit(true);
         }}
@@ -59,10 +63,18 @@ export const DataInput = ({
         >
           {formik.errors[`${name}`]
             ? formik.errors[`${name}`]
-            : `This is an CORRECT ${name}`}
+            : `This is a CORRECT ${name}`}
         </StyledValidation>
       )}
       <InputThumb>{handleIcon(formik.errors[`${name}`])}</InputThumb>
     </StyledLabel>
   );
+};
+
+DataInput.propTypes = {
+  text: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  isSubmited: PropTypes.bool.isRequired,
+  formik: PropTypes.object.isRequired,
+  setAllowSubmit: PropTypes.func,
 };

@@ -25,7 +25,7 @@ export const Calendar = styled(LuCalendarCheck2)`
     height: 24px;
   }
 `;
-export const Statistscs = styled(BsBarChart)`
+export const Statistics = styled(BsBarChart)`
   width: 20px;
   height: 20px;
   @media (min-width: 768px) {

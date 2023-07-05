@@ -1,6 +1,6 @@
 import styled from "styled-components";
 export const Container = styled.section`
-  max-width: 335px;
+  max-width: 704px;
   height: 864px;
   margin-left: auto;
   margin-right: auto;
@@ -12,7 +12,7 @@ export const Container = styled.section`
   padding-bottom: 135px;
 
   @media (min-width: 768px) {
-    max-width: 704px;
+    max-width: 1087px;
     height: 854px;
     padding-left: 32px;
     padding-right: 32px;
@@ -21,11 +21,15 @@ export const Container = styled.section`
   }
 
   @media (min-width: 1440px) {
-    max-width: 1087px;
+    max-width: 100vw;
     height: 752px;
     padding-left: 113px;
     padding-right: 114px;
     padding-top: 134px;
     padding-bottom: 104px;
   }
+`;
+
+export const Title = styled.h1`
+  display: none;
 `;

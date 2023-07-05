@@ -8,6 +8,16 @@ const validateColor = (error, isSubmited, color) => {
   }
 };
 
+const validateBgColor = (auth, theme) =>
+  auth
+    ? `var(--primary-bg-color)`
+    : `${theme.variableColors.secondaryBackground}`;
+
+const validateLabelColor = (auth, theme) =>
+  auth
+    ? `var(--primary-text-color)`
+    : `${theme.variableColors.labelUserFormTextColor}`;
+
 export const StyledLabel = styled.label`
   position: relative;
   display: inline-block;
@@ -16,8 +26,8 @@ export const StyledLabel = styled.label`
   font-size: 12px;
   font-family: "InterSemiBold";
 
-  color: ${({ error, isSubmited }) =>
-    validateColor(error, isSubmited, "var(--primary-text-color)")};
+  color: ${({ error, isSubmited, theme, auth }) =>
+    validateColor(error, isSubmited, validateLabelColor(auth, theme))};
 
   @media screen and (min-width: 768px) {
     font-size: 14px;
@@ -81,13 +91,13 @@ export const StyledInput = styled.input`
   padding: 14px;
   border-radius: 8px;
   border: 1px solid rgba(220, 227, 229, 0.6);
-  background-color: ${({ theme }) => theme.variableColors.secondaryBackground};
+  background-color: ${({ auth, theme }) => validateBgColor(auth, theme)};
   outline: 2px solid transparent;
   outline-color: ${({ error, isSubmited }) =>
     validateColor(error, isSubmited, "transparent")};
   transition: outline var(--animation);
 
-  color: ${({ theme }) => theme.variableColors.text};
+  color: ${({ theme, auth }) => validateLabelColor(auth, theme)};
   font-size: 14px;
   line-height: 18px;
 
