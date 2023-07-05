@@ -14,6 +14,8 @@ export const StyledLabel = styled.label`
   width: 100%;
 
   font-size: 12px;
+  font-family: "InterSemiBold";
+
   color: ${({ error, isSubmited }) =>
     validateColor(error, isSubmited, "var(--primary-text-color)")};
 
@@ -72,6 +74,8 @@ export const InputThumb = styled.span`
 `;
 
 export const StyledInput = styled.input`
+  font-family: "InterRegular";
+
   width: 100%;
   margin-top: 8px;
   padding: 14px;

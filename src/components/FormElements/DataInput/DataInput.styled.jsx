@@ -15,6 +15,7 @@ export const StyledLabel = styled.label`
   width: 100%;
 
   font-size: 12px;
+  font-family: "InterSemiBold";
   color: ${({ error, isSubmited }) =>
     validateColor(error, isSubmited, "var(--primary-text-color)")};
 
