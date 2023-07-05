@@ -50,8 +50,8 @@ export const Input = styled.input`
   padding: 14px;
   width: 100%;
   outline: none;
-  background-color: rgba(255, 255, 255, 0);
-  border: var(--border-auth);
+  background-color:${({theme})=>theme.variableColors.backgroundTaskFormInput};
+  border: var(--border-dark-theme);
   border-radius: 8px;
   font-family: 'InterSemiBold'; 
   color:${({theme})=>theme.variableColors.calendarTextColor};
@@ -88,7 +88,6 @@ export const Errors = styled.span`
 export const Button = styled.button`
   width: 100%;
   height: 42px;
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -120,9 +119,6 @@ export const Button = styled.button`
 `;
 
 export const ButtonCancel = styled.button`
-  /* display: flex;
-  align-items: center;
-  justify-content: center; */
   width: 100%;
   height: 42px;
   padding: 12px;
@@ -137,7 +133,6 @@ export const ButtonCancel = styled.button`
   font-size: 14px;
   line-height: 1.29;
   letter-spacing: -0.02em;
-
   transition: box-shadow var(--animation);
   &:hover,
   :focus {
