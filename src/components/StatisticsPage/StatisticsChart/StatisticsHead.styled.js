@@ -88,6 +88,7 @@ export const DatePickerWrapper = styled.div`
   }
 
   .react-datepicker {
+    border: none;
     position: absolute;
     left: 50%;
     top: 50%;
@@ -96,7 +97,6 @@ export const DatePickerWrapper = styled.div`
     padding: 12px;
     border-radius: 16px;
     background-color: var(--accent-bg-color);
-
     @media (min-width: 768px) {
       padding: 18px;
       transform: translate(-8%, 0%);
@@ -300,15 +300,6 @@ export const StyledDatePicker = styled(DatePicker)`
   position: relative;
   width: 121px;
   height: 30px;
-  border: ${({ hasError, success }) => {
-    if (hasError) {
-      return "var(--border-auth-error)";
-    }
-    if (success) {
-      return "var(--border-auth-correct)";
-    }
-    return "var(--border)";
-  }};
   border-radius: 8px;
   font-family: "InterSemiBold";
   font-style: normal;
@@ -321,12 +312,9 @@ export const StyledDatePicker = styled(DatePicker)`
   color: white;
   background-color: #3e85f3;
   text-align: center;
-
-  /* :focus-visible {
-    outline: none;
-    border: var(--border-input-hover);
-    border-radius: 8px;
-  } */
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
 
   @media screen and (min-width: 768px) {
     width: 145px;
@@ -336,20 +324,11 @@ export const StyledDatePicker = styled(DatePicker)`
     padding: 8px 12px 8px 12px;
   }
 
-  transition: border var(--animation);
-
   :hover,
   :focus {
-    border: ${({ hasError, success }) => {
-      if (hasError) {
-        return "var(--border-auth-error)";
-      }
-      if (success) {
-        return "var(--border-auth-correct)";
-      }
-      return "var(--border-input-hover)";
-    }};
+    background-color: var(--hover-btn-bg-color);
   }
+  transition: background-color var(--animation);
 `;
 
 export const LeftArrow = styled(MdOutlineKeyboardArrowLeft)`
