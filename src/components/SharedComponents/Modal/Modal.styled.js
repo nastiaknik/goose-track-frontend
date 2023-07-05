@@ -21,7 +21,7 @@ export const ModalContent = styled.div`
   min-height: 290px;
   width: 100%;
   padding: 20px;
-  background-color: ${({ theme }) => theme.variableColors.secondaryBackground};
+  background-color: ${({ theme }) => theme.variableColors.backgroundColorTaskModal};
   border: var(--border-modal);
   border-radius: var(--border-radius);
   box-shadow: var(--review-modal-shadow);
@@ -48,7 +48,8 @@ export const CloseSvg = styled(IoMdClose)`
   height: 24px;
   fill: ${({ theme }) => theme.variableColors.text};
   transition: fill var(--animation);
-
+  background-color:${({theme})=>theme.variableColors.backgroundColorTaskModal};
+  
   &:hover,
   &:focus {
     fill: var(--accent-text-color);
