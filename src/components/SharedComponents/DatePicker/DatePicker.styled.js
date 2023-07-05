@@ -249,7 +249,7 @@ export const StyledDatePicker = styled(DatePicker)`
     validateColor(error, isSubmited, "transparent")};
   transition: outline var(--animation);
 
-  font-family: var(--primary-font);
+  font-family: "InterRegular";
   font-size: 14px;
   line-height: 1.3;
 

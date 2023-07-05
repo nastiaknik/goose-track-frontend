@@ -133,7 +133,7 @@ export const ActionBtnEdit = styled.div`
   width: 30px;
   height: 30px;
   border-radius: 36px;
-  background-color: var(--light-btn-bg-color);
+  background-color: rgba(62, 133, 243, 0.2);
   cursor: pointer;
 
   ${(props) =>

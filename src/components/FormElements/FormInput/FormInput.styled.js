@@ -24,8 +24,11 @@ export const StyledLabel = styled.label`
   width: 100%;
 
   font-size: 12px;
+  font-family: "InterSemiBold";
+
   color: ${({ error, isSubmited, theme, auth }) =>
     validateColor(error, isSubmited, validateLabelColor(auth, theme))};
+
   @media screen and (min-width: 768px) {
     font-size: 14px;
   }
@@ -81,6 +84,8 @@ export const InputThumb = styled.span`
 `;
 
 export const StyledInput = styled.input`
+  font-family: "InterRegular";
+
   width: 100%;
   margin-top: 8px;
   padding: 14px;
