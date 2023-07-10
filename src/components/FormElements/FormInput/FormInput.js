@@ -7,6 +7,7 @@ import {
   AiOutlineCheckCircle,
 } from "react-icons/ai";
 
+import { PasswordStrengthIndicator } from "../../Auth/PasswordStrangthIndicator/PasswordStrengthIndicator";
 import {
   StyledLabel,
   InputThumb,
@@ -73,6 +74,7 @@ export const FormInput = ({
         <StyledValidation
           isSubmited={isSubmited}
           error={formik.errors[`${name}`]}
+          type={type}
         >
           {formik.errors[`${name}`]
             ? formik.errors[`${name}`]
@@ -82,9 +84,12 @@ export const FormInput = ({
       <InputThumb>
         {handleIcon(formik.errors[`${name}`])}
         {name === "password" && (
-          <button type="button" onClick={handleClick}>
-            {isVisible ? <LuEye /> : <LuEyeOff />}
-          </button>
+          <>
+            <button type="button" onClick={handleClick}>
+              {isVisible ? <LuEye /> : <LuEyeOff />}
+            </button>
+            <PasswordStrengthIndicator password={formik.values[`${name}`]} />
+          </>
         )}
       </InputThumb>
     </StyledLabel>
