@@ -25,6 +25,7 @@ export const FormInput = ({
   setAllowSubmit,
   user,
   auth,
+  validation,
 }) => {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -75,6 +76,7 @@ export const FormInput = ({
           isSubmited={isSubmited}
           error={formik.errors[`${name}`]}
           type={type}
+          validation={validation}
         >
           {formik.errors[`${name}`]
             ? formik.errors[`${name}`]
@@ -88,7 +90,9 @@ export const FormInput = ({
             <button type="button" onClick={handleClick}>
               {isVisible ? <LuEye /> : <LuEyeOff />}
             </button>
-            <PasswordStrengthIndicator password={formik.values[`${name}`]} />
+            {validation && formik.values[`${name}`].length > 0 && (
+              <PasswordStrengthIndicator password={formik.values[`${name}`]} />
+            )}
           </>
         )}
       </InputThumb>

@@ -62,6 +62,7 @@ export const RegisterForm = () => {
         isSubmited={isSubmited}
         formik={formik}
         auth={true}
+        validation
       />
       <SubmitBtn type="submit" onClick={handleValidation}>
         Sign Up <LuLogIn />
