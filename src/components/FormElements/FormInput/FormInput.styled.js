@@ -124,7 +124,7 @@ export const StyledInput = styled.input`
 `;
 
 export const StyledValidation = styled.p`
-  margin-top: 8px;
+  margin-top: ${({ type }) => (type === "password" ? "18px" : "8px")};
   margin-left: 14px;
   font-size: 12px;
   line-height: 1.16;
