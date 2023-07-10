@@ -14,42 +14,58 @@ import { useState } from "react";
 import { TaskModal } from "components/SharedComponents/TaskModal/TaskModal";
 import { useSelector } from "react-redux";
 import { selectUser } from "redux/auth/selectrors";
+import { Draggable } from "react-beautiful-dnd";
 
-export const TaskColumnCard = ({ task }) => {
+export const TaskColumnCard = ({ task, index }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const user = useSelector(selectUser);
 
   const toggleModal = () => {
     setIsModalOpen((prev) => !prev);
   };
-  // <Truncate
-  //   line={1}
-  //   element="p"
-  //   truncateText="..."
-  //   text="This is the long text that needs to be truncated if it exceeds the container size."
-  // />;
+
   return (
-    <Container>
-      <TaskTitle line={1} element="h4" truncateText="..." text={task.title} />
-      <Wrapper>
-        <Wrapper>
-          <TaskAvatarWrapper>
-            {user.imgURL ? (
-              <AvatarImg src={user.imgURL} alt={user.username} />
-            ) : (
-              <SvgAvatar />
+    <Draggable
+      draggableId={`card-${task._id}`}
+      index={index}
+      key={task._id}
+      type="TASK"
+    >
+      {(provided) => (
+        <Container
+          ref={provided.innerRef}
+          {...provided.draggableProps}
+          {...provided.dragHandleProps}
+        >
+          <TaskTitle
+            line={1}
+            element="h4"
+            truncateText="..."
+            text={task.title}
+          />
+          <Wrapper>
+            <Wrapper>
+              <TaskAvatarWrapper>
+                {user.imgURL ? (
+                  <AvatarImg src={user.imgURL} alt={user.username} />
+                ) : (
+                  <SvgAvatar />
+                )}
+              </TaskAvatarWrapper>
+              <TaskPriority priority={task.priority}>
+                {task.priority}
+              </TaskPriority>
+            </Wrapper>
+            <Toolbar toggleModal={toggleModal} task={task} />
+            {isModalOpen && (
+              <Modal onClose={toggleModal}>
+                <TaskModal editMode={true} task={task} onClose={toggleModal} />
+              </Modal>
             )}
-          </TaskAvatarWrapper>
-          <TaskPriority priority={task.priority}>{task.priority}</TaskPriority>
-        </Wrapper>
-        <Toolbar toggleModal={toggleModal} task={task} />
-        {isModalOpen && (
-          <Modal onClose={toggleModal}>
-            <TaskModal editMode={true} task={task} onClose={toggleModal} />
-          </Modal>
-        )}
-      </Wrapper>
-    </Container>
+          </Wrapper>
+        </Container>
+      )}
+    </Draggable>
   );
 };
 
@@ -64,4 +80,5 @@ TaskColumnCard.propTypes = {
       name: PropTypes.string.isRequired,
     }),
   }).isRequired,
+  index: PropTypes.number.isRequired,
 };

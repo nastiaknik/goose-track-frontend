@@ -7,7 +7,7 @@ import { TaskModal } from "components/SharedComponents/TaskModal/TaskModal";
 import { Modal } from "components/SharedComponents/Modal/Modal";
 import { AddTaskBtn } from "../AddTaskBtn/AddTaskBtn";
 
-export const TasksColumn = ({ status }) => {
+export const TasksColumn = ({ status, filteredTasks }) => {
   const [showModal, setShowModal] = useState(false);
 
   const handleShowModal = () => {
@@ -18,11 +18,25 @@ export const TasksColumn = ({ status }) => {
     setShowModal(false);
   };
 
+  const sortTasksByPriority = (tasks) => {
+    const priorityOrder = {
+      High: 0,
+      Medium: 1,
+      Low: 2,
+    };
+
+    return tasks.sort(
+      (a, b) => priorityOrder[a.priority] - priorityOrder[b.priority]
+    );
+  };
+
+  const sortedTasks = sortTasksByPriority(filteredTasks);
+
   return (
     <>
       <Container>
         <ColumnHeadBar title={status.name} handleShowModal={handleShowModal} />
-        <ColumnsTasksList status={status} />
+        <ColumnsTasksList status={status} filteredDayTasks={sortedTasks} />
         <AddTaskBtn onClick={handleShowModal} />
       </Container>
       {showModal && (

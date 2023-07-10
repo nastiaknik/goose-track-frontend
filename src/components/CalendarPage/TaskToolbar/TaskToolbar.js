@@ -18,13 +18,15 @@ export const TaskToolbar = ({ toggleModal, task }) => {
         <Popup
           arrow={false}
           trigger={
-            <Button type="button" autoFocus={false}>
+            <Button type="button">
               <BsArrowRightCircle />
             </Button>
           }
           position="bottom center"
           on="click"
           closeOnDocumentClick
+          closeOnEscape
+          lockScroll
         >
           {(close) => <Menu task={task} toggleMenu={close} />}
         </Popup>

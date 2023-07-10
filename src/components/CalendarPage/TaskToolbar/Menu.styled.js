@@ -45,6 +45,7 @@ export const Button = styled.button`
   &:hover,
   &:focus {
     color: var(--accent-text-color);
+    transition: color var(--animation);
   }
 
   &:hover > svg,

@@ -2,29 +2,34 @@ import React from "react";
 import PropTypes from "prop-types";
 import { TaskColumnCard } from "components/CalendarPage/TaskColumnCard/TaskColumnCard";
 import { TasksList } from "./ColumnTaskList.styled";
-import { useSelector } from "react-redux";
-import { selectDayTasks } from "../../../redux/tasks/selectors";
+import { Droppable } from "react-beautiful-dnd";
 
-export const ColumnsTasksList = ({ status = "To do" }) => {
-  const dayTasks = useSelector(selectDayTasks);
-
-  let filteredDayTasks;
-  if (dayTasks?.length > 0) {
-    filteredDayTasks = dayTasks.filter((task) => task.category === status.name);
-  }
-
+export const ColumnsTasksList = ({ status, filteredDayTasks }) => {
   return (
     <>
-      <TasksList>
-        {filteredDayTasks &&
-          filteredDayTasks.map((task) => (
-            <TaskColumnCard task={task} key={task._id} />
-          ))}
-      </TasksList>
+      <Droppable
+        droppableId={`column-${status.name}`}
+        key={status.id}
+        type="TASK"
+        isCombineEnabled={true}
+      >
+        {(provided) => (
+          <div ref={provided.innerRef} {...provided.droppableProps}>
+            <TasksList>
+              {filteredDayTasks &&
+                filteredDayTasks.map((task, index) => (
+                  <TaskColumnCard task={task} key={task._id} index={index} />
+                ))}
+              {provided.placeholder}
+            </TasksList>
+          </div>
+        )}
+      </Droppable>
     </>
   );
 };
 
 ColumnsTasksList.propTypes = {
   status: PropTypes.object,
+  filteredDayTasks: PropTypes.arrayOf(PropTypes.object).isRequired,
 };

@@ -3,14 +3,15 @@ import styled from "styled-components";
 export const TasksList = styled.ul`
   display: flex;
   overflow-y: auto;
+  overflow-x: hidden;
   overscroll-behavior: auto;
   flex-direction: column;
   justify-content: space-between;
   padding-left: 0;
   gap: 14px;
-
+  max-height: 301px;
   padding-right: 6px;
-
+  min-height: 1px;
   scrollbar-width: thin;
   scrollbar-color: ${({ theme }) => theme.variableColors.scrollbarThumbColor};
   ${({ theme }) => theme.variableColors.scrollbarTrackColor};
