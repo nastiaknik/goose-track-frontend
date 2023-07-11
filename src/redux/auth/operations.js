@@ -30,7 +30,16 @@ $api.interceptors.request.use(
     if (!config.headers["Authorization"]) {
       const token = store.getState().auth.accessToken;
 
-      config.headers["Authorization"] = "Bearer " + token;
+      if (token) {
+        config.headers["Authorization"] = "Bearer " + token;
+      } else {
+        const cookie = document.cookie
+          .split(";")
+          .find((item) => item.includes("access_token"));
+
+        const cookieToken = cookie.split("=");
+        config.headers["Authorization"] = "Bearer " + cookieToken[1];
+      }
     }
 
     return config;
@@ -102,21 +111,40 @@ export const refresh = createAsyncThunk(
       } else {
         const state = getState();
         const currentToken = state.auth.accessToken;
+        let response;
+        let cookieToken;
 
         if (!currentToken) {
-          return rejectWithValue();
+          const cookie = document.cookie
+            .split(";")
+            .find((item) => item.includes("access_token"));
+
+          cookieToken = cookie.split("=");
+
+          if (!cookieToken) {
+            return rejectWithValue();
+          }
+
+          response = await axios.get("api/auth/refresh", {
+            headers: {
+              Authorization: `Bearer ${cookieToken[1]}`,
+            },
+          });
+        } else {
+          response = await axios.get("api/auth/refresh", {
+            headers: {
+              Authorization: `Bearer ${currentToken}`,
+            },
+          });
         }
 
-        const response = await axios.get("api/auth/refresh", {
-          headers: {
-            Authorization: `Bearer ${currentToken}`,
-          },
-        });
-
         const keys = Object.keys(response.data);
-        keys.includes("accessToken")
-          ? token.set(response.data.accessToken)
-          : token.set(currentToken);
+
+        if (keys.includes("accessToken")) {
+          token.set(response.data.accessToken);
+        } else {
+          currentToken ? token.set(currentToken) : token.set(cookieToken[1]);
+        }
 
         const correctedResponse = { ...response.data, isLoggedIn: true };
 
