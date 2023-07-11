@@ -113,21 +113,7 @@ export const refresh = createAsyncThunk(
         let cookieToken;
 
         if (!currentToken) {
-          const cookie = document.cookie
-            .split(";")
-            .find((item) => item.includes("access_token"));
-
-          cookieToken = cookie.split("=");
-
-          if (!cookieToken) {
-            return rejectWithValue();
-          }
-
-          response = await axios.get("api/auth/refresh", {
-            headers: {
-              Authorization: `Bearer ${cookieToken[1]}`,
-            },
-          });
+          return rejectWithValue();
         } else {
           response = await axios.get("api/auth/refresh", {
             headers: {
