@@ -112,6 +112,7 @@ export const refresh = createAsyncThunk(
         let response;
         let cookieToken;
 
+        //automatic login after email verification
         if (!currentToken) {
           const cookie = document.cookie
             .split(";")
