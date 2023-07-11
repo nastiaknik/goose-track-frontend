@@ -7,7 +7,7 @@ export const Container = styled.li`
   display: flex;
   flex-direction: column;
   gap: 28px;
-  padding:14px;
+  padding: 14px;
 
   width: 100%;
 
@@ -34,8 +34,7 @@ export const TaskTitle = styled(Truncate)`
   font-weight: 500;
   font-size: 14px;
   width: 200px;
-  font-family: 'InterMedium';
-  // overflow: hidden;
+  font-family: "InterMedium";
   position: relative;
   text-overflow: ellipsis;
   white-space: nowrap;

@@ -2,9 +2,6 @@ import styled from "styled-components";
 import {
   StyledForm,
   Title,
-  //   StyledLabel,
-  //   InputThumb,
-  //   StyledInput,
   SubmitBtn,
 } from "../RegisterForm/RegisterForm.styled";
 
