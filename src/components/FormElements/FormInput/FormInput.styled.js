@@ -131,7 +131,6 @@ export const StyledInput = styled.input`
 export const StyledValidation = styled.p`
   margin-top: ${({ type, validation }) => {
     if (type === "password" && validation) {
-      console.log("Hello!");
       return "18px";
     }
     return "8px";
