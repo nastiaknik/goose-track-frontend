@@ -45,8 +45,6 @@ export const FeedbackForm = ({ reviewData, onSave, onDelete, onClose }) => {
   const formik = useFormik({
     initialValues: {
       rating: reviewData?.rating || 0,
-      //    name: name || "",
-      //    avatar: "",
       comment: reviewData?.comment || "",
     },
     validationSchema: FeedbackSchema,

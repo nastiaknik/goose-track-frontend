@@ -49,9 +49,6 @@ export const reviewsSlice = createSlice({
         state.items = [];
         state.ownReview = null;
       })
-      .addCase(getReviews.rejected, (state) => {
-        console.log("rejected");
-      })
       .addMatcher(
         isAnyOf(
           getReviews.pending,

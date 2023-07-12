@@ -3,7 +3,6 @@ import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "./GlobalStyles";
 import { StyleVariables } from "./StyleVariables";
 
-// *** ТІЛЬКИ ДЛЯ ТИХ ЄЛЕМЕНТІВ ЩО ЗМІНЮЮТЬ КОЛІР ***
 // ПРИКЛАД ЯК ОБРАТИ ПОТРІБНИЙ КОЛІР У КОМПОНЕНТІ
 // color:${({theme})=>theme.variableColors.primaryBackground}
 
@@ -117,7 +116,6 @@ const darkTheme = {
   },
 };
 
-// *** ВСІ ІНШІ КОЛЬОРИ *** ДОДАВАТИ СЮДИ
 // ПРИКЛАД ЯК ОБРАТИ ПОТРІБНИЙ КОЛІР У КОМПОНЕНТІ
 // color:${({theme})=>theme.testcolor1}
 
@@ -125,7 +123,6 @@ const otherColors = {
   testcolor1: "#ff0000",
   testcolor2: "#ff00ff",
   accsentBlue: "#3E85F3",
-  // gradPink: `linear-gradient(${90}deg, ${"#FFD2DD"}, ${"#FFD2DD99"})`,
 };
 
 export const Theme = ({ children }) => {

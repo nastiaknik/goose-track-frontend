@@ -41,8 +41,6 @@ export const EmailSchema = object().shape({
 });
 
 export const FeedbackSchema = object().shape({
-  // username: string().max(32, "Maximum 32 letters").required("Required"),
-  // avatar: string().url().required(),
   comment: string().max(300, "Maximum 300 letters").required("Required"),
   rating: number().required("Required"),
 });

@@ -12,14 +12,12 @@ export const Form = styled.form`
   width: 100%;
   height: 100%;
   margin-top: 51px;
-  // margin-top: 95px;
   padding: 40px 20px;
   background-color: ${({ theme }) => theme.variableColors.secondaryBackground};
   border-radius: 16px;
 
   @media (min-width: 768px) {
     margin-top: 0;
-    // margin-top: 64px;
     padding: 40px;
     position: static;
   }
