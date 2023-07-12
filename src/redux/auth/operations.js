@@ -10,7 +10,7 @@ export const injectStore = (_store) => {
 
 axios.defaults.baseURL = "https://goose-track-backend-i4mr.onrender.com";
 
-// const localToken = getState().auth.accessToken
+console.log(document.cookie);
 
 const $api = axios.create({
   baseURL: "https://goose-track-backend-i4mr.onrender.com",
