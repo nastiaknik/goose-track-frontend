@@ -40,6 +40,16 @@ export const EmailSchema = object().shape({
     .required("Email is required"),
 });
 
+export const PasswordSchema = object().shape({
+  id: string().required("Id is required"),
+  password: string()
+    .min(6, "Password is too short")
+    .required("Password is required"),
+  passwordRepeat: string()
+    .min(6, "Password is too short")
+    .required("Password is required"),
+});
+
 export const FeedbackSchema = object().shape({
   comment: string().max(300, "Maximum 300 letters").required("Required"),
   rating: number().required("Required"),

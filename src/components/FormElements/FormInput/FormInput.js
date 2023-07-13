@@ -29,6 +29,16 @@ export const FormInput = ({
 }) => {
   const [isVisible, setIsVisible] = useState(false);
 
+  const checkInputName = () => {
+    if (name === "password") {
+      return true;
+    } else if (name === "passwordRepeat") {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
   const handleClick = () => {
     setIsVisible((prevState) => !prevState);
   };
@@ -85,7 +95,7 @@ export const FormInput = ({
       )}
       <InputThumb>
         {handleIcon(formik.errors[`${name}`])}
-        {name === "password" && (
+        {checkInputName() && (
           <>
             <button type="button" onClick={handleClick}>
               {isVisible ? <LuEye /> : <LuEyeOff />}
