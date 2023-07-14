@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 import { useFormik } from "formik";
+import axios from "axios";
 import { PasswordSchema } from "helpers/formValidationSchemas";
 import { toast } from "react-toastify";
 
@@ -15,6 +16,7 @@ import {
 export const PasswordRecoveryForm = () => {
   const [isSubmited, setIsSubmited] = useState(false);
   const { verificationId } = useParams();
+  const navigate = useNavigate();
 
   const formik = useFormik({
     initialValues: {
@@ -24,7 +26,17 @@ export const PasswordRecoveryForm = () => {
     },
     validationSchema: PasswordSchema,
     onSubmit: (values, { resetForm }) => {
-      console.log(values);
+      axios
+        .patch(
+          `https://goose-track-backend-i4mr.onrender.com/api/auth/recovery`,
+          { id: values.id, password: values.password }
+        )
+        .then((response) => {
+          toast.success(response.data.message);
+          navigate("/login", { replace: true });
+        })
+        .catch((err) => toast.error(err.response.data.message));
+
       resetForm();
       setIsSubmited(false);
     },

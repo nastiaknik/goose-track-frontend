@@ -32,9 +32,11 @@ export const ResendEmailForm = ({ userProblems }) => {
     },
     validationSchema: EmailSchema,
     onSubmit: (values, { resetForm }) => {
+      const endpoint = userProblems === "email" ? "activate" : "recovery";
+
       axios
         .post(
-          "https://goose-track-backend-i4mr.onrender.com/api/auth/activate",
+          `https://goose-track-backend-i4mr.onrender.com/api/auth/${endpoint}`,
           values
         )
         .then((response) => toast.success(response.data.message))
