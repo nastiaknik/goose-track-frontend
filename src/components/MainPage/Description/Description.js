@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 import {
   Container,
   HiddenH2,
@@ -14,21 +16,20 @@ import images from "../images";
 const { phone, tablet, desktop } = images;
 
 export const Description = () => {
+  const { t } = useTranslation();
+
   return (
     <Container>
-      <HiddenH2>Description</HiddenH2>
+      <HiddenH2>{t("Description")}</HiddenH2>
       <StyledUl>
         <StyledLi>
           <div>
             <StyledH3>
               <StyledNumberSpan>1.</StyledNumberSpan>
-              <StyledAccentH3>Calendar</StyledAccentH3>View
+              <StyledAccentH3>{t("Calendar")}</StyledAccentH3>
+              {t("View")}
             </StyledH3>
-            <StyledTextP>
-              GooseTrack's Calendar view provides a comprehensive overview of
-              your schedule, displaying all your tasks, events, and appointments
-              in a visually appealing and intuitive layout.
-            </StyledTextP>
+            <StyledTextP>{t("GooseTrack's Calendar view")}</StyledTextP>
           </div>
           <StyledThumbDiv>
             <picture>
@@ -69,14 +70,10 @@ export const Description = () => {
         <StyledLi>
           <div>
             <StyledH3>
-              <StyledNumberSpan>2.</StyledNumberSpan>sidebar
+              <StyledNumberSpan>2.</StyledNumberSpan>
+              {t("Sidebar")}
             </StyledH3>
-            <StyledTextP>
-              GooseTrack offers easy access to your account settings, calendar,
-              and filters. The "My Account" section allows you to manage your
-              profile information and preferences, while the calendar provides a
-              quick and convenient way to view your upcoming events and tasks.
-            </StyledTextP>
+            <StyledTextP>{t("GooseTrack offers easy access")}</StyledTextP>
           </div>
           <StyledThumbDiv>
             <picture>
@@ -118,14 +115,10 @@ export const Description = () => {
           <div>
             <StyledH3>
               <StyledNumberSpan>3.</StyledNumberSpan>
-              <StyledAccentH3>all in</StyledAccentH3>one
+              <StyledAccentH3>{t("All in")}</StyledAccentH3>
+              {t("One")}
             </StyledH3>
-            <StyledTextP>
-              GooseTrack is an all-in-one productivity tool that helps you stay
-              on top of your tasks, events, and deadlines. Say goodbye to
-              scattered to-do lists and hello to streamlined productivity with
-              GooseTrack.
-            </StyledTextP>
+            <StyledTextP>{t("GooseTrack is an all-in-one")}</StyledTextP>
           </div>
           <StyledThumbDiv>
             <picture>

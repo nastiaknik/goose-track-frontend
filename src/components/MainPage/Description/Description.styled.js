@@ -38,7 +38,6 @@ export const StyledUl = styled.ul`
 export const StyledLi = styled.li`
   display: inline-flex;
   flex-direction: column;
-
   :nth-child(2n) {
     align-items: flex-end;
   }
@@ -102,6 +101,7 @@ export const StyledAccentH3 = styled.span`
   border-radius: 44px;
   background: var(--auth-bg-color);
   margin-bottom: 8px;
+  overflow: hidden;
 
   @media screen and (min-width: 768px) {
     font-size: 40px;

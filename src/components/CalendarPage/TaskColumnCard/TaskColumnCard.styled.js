@@ -3,12 +3,12 @@ import { TaskToolbar } from "components/CalendarPage/TaskToolbar/TaskToolbar";
 import styled from "styled-components";
 import { AiOutlineUser } from "react-icons/ai";
 import Truncate from "react-text-truncate";
+
 export const Container = styled.li`
   display: flex;
   flex-direction: column;
   gap: 28px;
   padding: 14px;
-
   width: 100%;
 
   background-color: ${({ theme }) => theme.variableColors.primaryBackground};
@@ -86,6 +86,7 @@ export const TaskPriority = styled.p`
 export const Toolbar = styled(TaskToolbar)`
   margin-left: auto;
 `;
+
 export const AvatarImg = styled.img`
   width: inherit;
   height: 100%;

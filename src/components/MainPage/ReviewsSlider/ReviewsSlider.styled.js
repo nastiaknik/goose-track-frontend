@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Truncate from "react-text-truncate";
 
 export const Container = styled.section`
   margin: 0 auto;
@@ -10,6 +11,7 @@ export const Container = styled.section`
     max-width: 580px;
     padding-bottom: 100px;
   }
+
   @media screen and (min-width: 1024px) {
     max-width: 1184px;
     padding-bottom: 118px;
@@ -27,11 +29,6 @@ export const StyledH2 = styled.h2`
   margin-bottom: 40px;
   @media screen and (min-width: 768px) {
     margin-bottom: 50px;
-  }
-`;
-
-export const StyledSwiperContainer = styled.div`
-  @media screen and (min-width: 768px) {
   }
 `;
 
@@ -92,9 +89,14 @@ export const ImgThumbCard = styled.div`
 
   display: flex;
   justify-content: center;
-  align-items: center;
+
   > img {
     display: block;
+    object-fit: cover;
+  }
+
+  svg {
+    margin: auto;
   }
 `;
 
@@ -113,13 +115,15 @@ export const NameCard = styled.h4`
   text-transform: capitalize;
 `;
 
-export const CardText = styled.p`
+export const CardText = styled(Truncate)`
   color: var(--review-text-color);
   font-family: "InterMedium";
   font-weight: 500;
   font-size: 14px;
   line-height: 1.29;
+`;
 
+export const CardTextContainer = styled.div`
   @media screen and (min-width: 768px) {
     padding-left: 68px;
   }

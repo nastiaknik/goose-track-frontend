@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-
 import styled from "styled-components";
 
 export const Container = styled.section`
@@ -29,6 +28,7 @@ export const LogoDiv = styled.div`
   flex-direction: column;
   gap: 2px;
   flex: 2;
+  width: 100%;
 
   @media screen and (min-width: 768px) {
     flex: 0;
@@ -100,6 +100,7 @@ export const LinkLogin = styled(Link)`
 
   transition: color var(--animation), background-color var(--animation),
     border-color var(--animation), box-shadow var(--animation);
+
   :hover,
   :focus {
     color: var(--light-text-color);
@@ -127,6 +128,7 @@ export const LinkSingup = styled(Link)`
 
   transition: color var(--animation), background-color var(--animation),
     border-color var(--animation), box-shadow var(--animation);
+
   :hover,
   :focus {
     color: var(--light-text-color);
@@ -138,5 +140,19 @@ export const LinkSingup = styled(Link)`
   @media screen and (min-width: 768px) {
     font-size: 14px;
     line-height: 1.29;
+  }
+`;
+
+export const Wrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  > a {
+    margin: 0 auto;
+  }
+
+  @media screen and (min-width: 768px) {
+    align-items: flex-start;
   }
 `;

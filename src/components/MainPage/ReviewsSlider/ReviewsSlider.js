@@ -1,24 +1,21 @@
 import { useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 
-// Redux
 import { selectReviews } from "redux/reviews/selectors";
 import { useSelector, useDispatch } from "react-redux";
 import { getReviews } from "redux/reviews/operations";
 import { useEffect } from "react";
 
-// Swiper
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Autoplay } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/virtual";
 
-// Icons
 import { ReactComponent as LeftArrow } from "assets/images/landing/icons/leftArrow.svg";
 import { ReactComponent as RightArrow } from "assets/images/landing/icons/rightArrow.svg";
 import { LuUser } from "react-icons/lu";
 
-// Styles
 import {
   Container,
   StyledH2,
@@ -30,10 +27,9 @@ import {
   ImgThumbCard,
   NameCard,
   CardText,
-  StyledSwiperContainer,
+  CardTextContainer,
 } from "./ReviewsSlider.styled";
 
-// Rating
 import { Rating, ThinRoundedStar } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
 
@@ -45,8 +41,8 @@ const customStyles = {
 
 export const ReviewsSlider = () => {
   const swiperRef = useRef(null);
+  const { t } = useTranslation();
 
-  // Reviews
   const dispatch = useDispatch();
   const reviews = useSelector(selectReviews);
 
@@ -57,7 +53,6 @@ export const ReviewsSlider = () => {
     dispatch(getReviews());
   }, [dispatch]);
 
-  // Swiper
   SwiperCore.use([Autoplay]);
 
   const prevSlide = () => {
@@ -83,8 +78,8 @@ export const ReviewsSlider = () => {
 
   return (
     <Container>
-      <StyledH2>Reviews</StyledH2>
-      <StyledSwiperContainer>
+      <StyledH2>{t("Reviews")}</StyledH2>
+      <>
         <Swiper
           autoHeight={true}
           ref={swiperRef}
@@ -139,13 +134,14 @@ export const ReviewsSlider = () => {
                       </div>
                     </NameCardContentContainer>
                   </TopCardContent>
-                  <CardText
-                    title={slide?.comment.length > 58 ? slide?.comment : ""}
-                  >
-                    {slide?.comment.length > 58
-                      ? `${slide?.comment.slice(0, 59)}...`
-                      : slide?.comment}
-                  </CardText>
+                  <CardTextContainer>
+                    <CardText
+                      title={slide?.comment}
+                      element="p"
+                      truncateText="..."
+                      text={slide?.comment}
+                    />
+                  </CardTextContainer>
                 </CardContainer>
               </SwiperSlide>
             ))}
@@ -158,7 +154,7 @@ export const ReviewsSlider = () => {
             </StyledBtn>
           </StyledNavigationContainer>
         </Swiper>
-      </StyledSwiperContainer>
+      </>
     </Container>
   );
 };

@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { IoIosArrowUp } from "react-icons/io";
-
 import { StyledBtnUp } from "./ScrollUp.styled";
 
 export const ScrollUp = () => {
