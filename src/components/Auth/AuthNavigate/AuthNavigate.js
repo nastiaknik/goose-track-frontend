@@ -10,6 +10,7 @@ import {
   ContentThumb,
   StyledLink,
   StyledDetails,
+  DetailsList,
   StyledOption,
 } from "./AuthNavigate.styled";
 
@@ -19,6 +20,10 @@ export const AuthNavigate = ({ linkPath, linktext, children }) => {
 
   const handleEmailResend = () => {
     setUserPrioblems("email");
+  };
+
+  const handleForgotPassword = () => {
+    setUserPrioblems("password");
   };
 
   const handleGoBack = () => {
@@ -37,17 +42,22 @@ export const AuthNavigate = ({ linkPath, linktext, children }) => {
             )}
             <StyledDetails>
               <summary>Have some problems?</summary>
-              <ul style={{ margin: 0, padding: 0 }}>
+              <DetailsList>
+                {location.pathname !== "/register" && (
+                  <StyledOption onClick={handleForgotPassword}>
+                    Forgot password
+                  </StyledOption>
+                )}
                 <StyledOption onClick={handleEmailResend}>
                   Resend verification email
                 </StyledOption>
-              </ul>
+              </DetailsList>
             </StyledDetails>
             <StyledLink to={linkPath}>{linktext}</StyledLink>
           </>
         ) : (
           <>
-            <ResendEmailForm />
+            <ResendEmailForm userProblems={userProblems} />
             <StyledLink onClick={handleGoBack}>
               Back to {location.pathname.slice(1)}
             </StyledLink>

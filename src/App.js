@@ -16,6 +16,9 @@ import { PrivateRoute } from "components/SharedComponents/PrivateRoute";
 const MainPage = lazy(() => import("pages/MainPage/MainPage"));
 const LoginPage = lazy(() => import("pages/LoginPage/LoginPage"));
 const RegisterPage = lazy(() => import("pages/RegisterPage/RegisterPage"));
+const PasswordRecoveryPage = lazy(() =>
+  import("pages/PasswordRecoveryPage/PasswordRecoveryPage")
+);
 const AccountPage = lazy(() => import("pages/AccountPage/AccountPage"));
 const CalendarPage = lazy(() => import("pages/CalendarPage/CalendarPage"));
 const NotFoundPage = lazy(() => import("pages/NotFoundPage/NotFoundPage"));
@@ -60,6 +63,15 @@ function App() {
               <RestrictedRoute
                 redirectTo="/calendar"
                 component={<RegisterPage />}
+              />
+            }
+          />
+          <Route
+            path="/recovery/:verificationId"
+            element={
+              <RestrictedRoute
+                redirectTo="/calendar"
+                component={<PasswordRecoveryPage />}
               />
             }
           />

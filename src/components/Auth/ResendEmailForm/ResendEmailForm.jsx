@@ -1,5 +1,7 @@
+import PropTypes from "prop-types";
 import axios from "axios";
 import { useState, useEffect } from "react";
+
 import { useFormik } from "formik";
 import { EmailSchema } from "../../../helpers/formValidationSchemas";
 import { toast } from "react-toastify";
@@ -11,7 +13,7 @@ import {
   EmailSubmitBtn,
 } from "./ResendEmailForm.styled";
 
-export const ResendEmailForm = () => {
+export const ResendEmailForm = ({ userProblems }) => {
   const [isSubmited, setIsSubmited] = useState(false);
   const [isDisabled, setIsDisabled] = useState(false);
   const [seconds, setSeconds] = useState(0);
@@ -30,9 +32,11 @@ export const ResendEmailForm = () => {
     },
     validationSchema: EmailSchema,
     onSubmit: (values, { resetForm }) => {
+      const endpoint = userProblems === "email" ? "activate" : "recovery";
+
       axios
         .post(
-          "https://goose-track-backend-i4mr.onrender.com/api/auth/activate",
+          `https://goose-track-backend-i4mr.onrender.com/api/auth/${endpoint}`,
           values
         )
         .then((response) => toast.success(response.data.message))
@@ -53,7 +57,11 @@ export const ResendEmailForm = () => {
 
   return (
     <EmailForm>
-      <EmailTitle>Email verification resend</EmailTitle>
+      <EmailTitle>
+        {userProblems === "email"
+          ? "Email verification resend"
+          : "Enter your email"}
+      </EmailTitle>
       <FormInput
         text="Email"
         name="email"
@@ -68,8 +76,18 @@ export const ResendEmailForm = () => {
         disabled={isDisabled}
         onClick={handleValidation}
       >
-        {isDisabled ? `Resend email in ${seconds} sec` : "Resend email"}
+        {userProblems === "email"
+          ? isDisabled
+            ? `Resend email in ${seconds} sec`
+            : "Resend email"
+          : isDisabled
+          ? `Resend recovery email in ${seconds} sec`
+          : "Send recovery email"}
       </EmailSubmitBtn>
     </EmailForm>
   );
+};
+
+ResendEmailForm.propTypes = {
+  userProblems: PropTypes.string.isRequired,
 };

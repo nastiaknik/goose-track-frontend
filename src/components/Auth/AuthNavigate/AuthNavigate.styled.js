@@ -128,11 +128,13 @@ export const StyledDetails = styled.details`
   }
 `;
 
+export const DetailsList = styled.ul`
+  margin: 0;
+  padding: 0;
+`;
+
 export const StyledOption = styled.li`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, 50%);
+  position: relative;
   width: 100%;
   font-size: 14px;
   display: inline-block;
