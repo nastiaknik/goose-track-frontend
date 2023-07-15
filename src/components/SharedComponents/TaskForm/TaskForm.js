@@ -19,11 +19,14 @@ import { addTask, updateTask } from "../../../redux/tasks/operations";
 import { validationTaskSchema } from "helpers/formValidationSchemas";
 import { useParams } from "react-router-dom";
 import PropTypes from "prop-types";
+import { useTranslation } from "react-i18next";
 
 export const TaskForm = ({ onClose, task, status, ...props }) => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
+
   const editMode = props?.editMode || false;
-  const category = status || "To do";
+  const category = status || t("To do");
 
   const { currentDate } = useParams();
 
@@ -31,7 +34,7 @@ export const TaskForm = ({ onClose, task, status, ...props }) => {
     title: task?.title || "",
     start: task?.start || "",
     end: task?.end || "",
-    priority: task?.priority || "Low",
+    priority: task?.priority || t("Low"),
   };
 
   const handleAdd = (values) => {
@@ -48,6 +51,21 @@ export const TaskForm = ({ onClose, task, status, ...props }) => {
       onClose();
     }
   };
+
+  const PRIORITIES = [
+    {
+      value: t("Low"),
+      name: "Low",
+    },
+    {
+      value: t("Medium"),
+      name: "Medium",
+    },
+    {
+      value: t("High"),
+      name: "High",
+    },
+  ];
 
   return (
     <>
@@ -73,7 +91,7 @@ export const TaskForm = ({ onClose, task, status, ...props }) => {
         }) => (
           <Form onSubmit={handleSubmit}>
             <Label htmlFor="title">
-              <Span>Title</Span>
+              <Span>{t("Title")}</Span>
               <Input
                 type="text"
                 name="title"
@@ -81,14 +99,14 @@ export const TaskForm = ({ onClose, task, status, ...props }) => {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.title}
-                placeholder="Enter text"
+                placeholder={t("Enter text")}
               />
               <Errors>{errors.title && touched.title && errors.title}</Errors>
             </Label>
 
             <Wrapper>
               <Label htmlFor="start">
-                <Span>Start</Span>
+                <Span>{t("Start")}</Span>
                 <Input
                   type="time"
                   step="60"
@@ -97,13 +115,13 @@ export const TaskForm = ({ onClose, task, status, ...props }) => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.start}
-                  placeholder="Select time"
+                  placeholder={t("Select time")}
                 />
                 <Errors>{errors.start && touched.start && errors.start}</Errors>
               </Label>
 
               <Label htmlFor="end">
-                <Span>End</Span>
+                <Span>{t("End")}</Span>
                 <Input
                   type="time"
                   step="60"
@@ -112,50 +130,49 @@ export const TaskForm = ({ onClose, task, status, ...props }) => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.end}
-                  placeholder="Select time"
+                  placeholder={t("Select time")}
                 />
                 <Errors>{errors.end && touched.end && errors.end}</Errors>
               </Label>
             </Wrapper>
 
             <RadioButtonGroup>
-              {["Low", "Medium", "High"].map((priority) => (
-                <RadioButtonLabel key={priority}>
+              {PRIORITIES.map((priority) => (
+                <RadioButtonLabel key={priority.value}>
                   <RadioButtonInput
                     type="radio"
-                    value={priority}
+                    value={priority.name}
                     name="priority"
-                    checked={values.priority === priority}
+                    priority={priority.name}
+                    checked={values.priority === priority.name}
                     onChange={() => {
-                      setFieldValue("priority", priority);
+                      setFieldValue("priority", priority.name);
                     }}
                   />
-                  {priority}
+                  {priority.value}
                 </RadioButtonLabel>
               ))}
             </RadioButtonGroup>
 
             <Wrapper>
               {!editMode ? (
-                <>
-                  <Button type="submit">
-                    <BiPlus />
-                    Add
-                  </Button>
-                  <ButtonCancel
-                    type="button"
-                    disabled={isSubmitting}
-                    onClick={onClose}
-                  >
-                    Cancel
-                  </ButtonCancel>
-                </>
+                <Button type="submit">
+                  <BiPlus />
+                  {t("Add")}
+                </Button>
               ) : (
                 <Button type="submit" disabled={isSubmitting}>
                   <VscEdit />
-                  Edit
+                  {t("Edit")}
                 </Button>
               )}
+              <ButtonCancel
+                type="button"
+                disabled={isSubmitting}
+                onClick={onClose}
+              >
+                {t("Cancel")}
+              </ButtonCancel>
             </Wrapper>
           </Form>
         )}
@@ -163,7 +180,6 @@ export const TaskForm = ({ onClose, task, status, ...props }) => {
     </>
   );
 };
-
 
 TaskForm.propTypes = {
   onClose: PropTypes.func.isRequired,

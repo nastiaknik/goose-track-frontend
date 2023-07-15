@@ -33,5 +33,31 @@
   "My account": "My account",
   "Statistics": "Statistics",
   "Log Out": "Log Out",
-  "User Profile": "User Profile"
+  "User Profile": "User Profile",
+
+  "We're sorry, the page": "We're sorry, the page you requested could not be found. Please go back to the",
+  "homepage": "homepage",
+
+  "User": "User",
+  "User Name": "User Name",
+  "Birthday": "Birthday",
+  "Email": "Email",
+  "Phone": "Phone",
+  "Skype": "Skype",
+  "Save changes": "Save changes",
+  "Enter username": "Enter username",
+  "Enter email": "Enter email",
+  "Enter phone number": "Enter phone number",
+  "Enter skype number": "Enter skype number",
+  "Enter birthday": "Enter birthday",
+
+  "To do": "To do",
+  "Title": "Title",
+  "Start": "Start",
+  "Select time": "Select time",
+  "End": "End",
+  "Low": "Low",
+  "Medium": "Medium",
+  "High": "High",
+  "Add": "Add"
 }

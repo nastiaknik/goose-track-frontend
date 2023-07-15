@@ -6,11 +6,14 @@ import {
   StyledPicture,
   StyledLink,
 } from "./NotFound.styled";
-
 import images from "./images";
+import { useTranslation } from "react-i18next";
+
 const { phone, tablet, desktop } = images;
 
 export const NotFound = () => {
+  const { t } = useTranslation();
+
   return (
     <Container>
       <Wrapper>
@@ -54,8 +57,8 @@ export const NotFound = () => {
         <Number>4</Number>
       </Wrapper>
       <Text>
-        We’re sorry, the page you requested could not be found. Please go back
-        to the <StyledLink to={"/"}>homepage</StyledLink>.
+        {t("We're sorry, the page")}{" "}
+        <StyledLink to={"/"}>{t("homepage")}</StyledLink>.
       </Text>
     </Container>
   );

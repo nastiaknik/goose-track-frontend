@@ -6,6 +6,7 @@ import { updateUserInfo } from "redux/auth/operations";
 import { useFormik } from "formik";
 import { UpdateInfoSchema } from "helpers/formValidationSchemas";
 import { format } from "date-fns";
+import { useTranslation } from "react-i18next";
 
 import { toast } from "react-toastify";
 import { FormInput } from "components/FormElements/FormInput/FormInput";
@@ -27,6 +28,7 @@ import {
 } from "./UserForm.styled";
 
 export const UserForm = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
 
@@ -104,15 +106,15 @@ export const UserForm = () => {
         </LabelAvatar>
 
         <TitleAvatar>{userData.username}</TitleAvatar>
-        <TextAvatar>User</TextAvatar>
+        <TextAvatar>{t("User")}</TextAvatar>
       </AvatarBlock>
 
       <FlexInput>
         <FormInput
-          text="User Name"
+          text={t("User Name")}
           name="username"
           type="text"
-          placeholder="Username"
+          placeholder={t("Enter username")}
           formik={formik}
           isSubmited={isSubmited}
           setAllowSubmit={setAllowSubmit}
@@ -121,8 +123,9 @@ export const UserForm = () => {
 
         <BirthdayContainer>
           <DataInput
-            text="Birthday"
+            text={t("Birthday")}
             name="birthday"
+            placeholder={t("Enter birthday")}
             formik={formik}
             isSubmited={isSubmited}
             setAllowSubmit={setAllowSubmit}
@@ -130,10 +133,10 @@ export const UserForm = () => {
         </BirthdayContainer>
 
         <FormInput
-          text="Email"
+          text={t("Email")}
           name="email"
           type="email"
-          placeholder="Enter email"
+          placeholder={t("Enter email")}
           formik={formik}
           isSubmited={isSubmited}
           setAllowSubmit={setAllowSubmit}
@@ -141,10 +144,10 @@ export const UserForm = () => {
         />
 
         <FormInput
-          text="Phone"
+          text={t("Phone")}
           name="phone"
           type="phone"
-          placeholder="Enter phone number"
+          placeholder={t("Enter phone number")}
           formik={formik}
           isSubmited={isSubmited}
           setAllowSubmit={setAllowSubmit}
@@ -152,10 +155,10 @@ export const UserForm = () => {
         />
 
         <FormInput
-          text="Skype"
+          text={t("Skype")}
           name="skype"
           type="text"
-          placeholder="Enter skype number"
+          placeholder={t("Enter skype number")}
           formik={formik}
           isSubmited={isSubmited}
           setAllowSubmit={setAllowSubmit}
@@ -164,7 +167,7 @@ export const UserForm = () => {
       </FlexInput>
 
       <Button type="submit" disabled={!allowSubmit}>
-        Save changes
+        {t("Save changes")}
       </Button>
     </Form>
   );

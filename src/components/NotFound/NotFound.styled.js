@@ -32,11 +32,7 @@ export const Container = styled.div`
 export const Wrapper = styled.div`
   display: flex;
   align-items: center;
-  margin: 0 15px;
-
-  @media screen and (min-width: 768px) {
-    margin: 0;
-  }
+  margin: 0 auto;
 `;
 
 export const StyledPicture = styled.picture`
@@ -61,7 +57,7 @@ export const Number = styled.span`
 
 export const Text = styled.p`
   margin: 0 auto;
-  color: var(--review-text-color);
+  color: ${({ theme }) => theme.variableColors.calendarTextColor};
   font-size: 14px;
   line-height: 1.29;
   font-family: "InterMedium";
@@ -80,6 +76,6 @@ export const StyledLink = styled(Link)`
 
   :hover,
   :focus {
-    color: var(--heading-text-color);
+    color: var(--hover-btn-bg-color);
   }
 `;

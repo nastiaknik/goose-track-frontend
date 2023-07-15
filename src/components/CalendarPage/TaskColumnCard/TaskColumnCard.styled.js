@@ -21,6 +21,10 @@ export const Container = styled.li`
     padding-right: 10px;
     padding-bottom: 18px;
   }
+
+  > h4 {
+    overflow: visible !important;
+  }
 `;
 
 export const Wrapper = styled.div`
@@ -72,14 +76,11 @@ export const TaskPriority = styled.p`
     }}
   );
   border-radius: 4px;
-
   font-style: normal;
   font-weight: 600;
   font-size: 10px;
   line-height: 1.2;
-
   text-align: center;
-
   color: var(--light-text-color);
 `;
 

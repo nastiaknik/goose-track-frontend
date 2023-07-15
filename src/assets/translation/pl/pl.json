@@ -33,5 +33,31 @@
   "My account": "Moje konto",
   "Statistics": "Statystyki",
   "Log Out": "Wyloguj",
-  "User Profile": "Profil użytkownika"
+  "User Profile": "Profil użytkownika",
+
+  "We're sorry, the page": "Przepraszamy, żądana strona nie została znaleziona. Proszę wrócić na",
+  "homepage": "stronę główną",
+
+  "User": "Użytkownik",
+  "User Name": "Nazwa użytkownika",
+  "Birthday": "Data urodzenia",
+  "Email": "Email",
+  "Phone": "Telefon",
+  "Skype": "Skype",
+  "Save changes": "Zapisz zmiany",
+  "Enter username": "Wpisz nazwę użytkownika",
+  "Enter email": "Wpisz adres email",
+  "Enter phone number": "Wpisz numer telefonu",
+  "Enter skype number": "Wpisz numer Skype",
+  "Enter birthday": "Wpisz datę urodzenia",
+
+  "To do": "Do zrobienia",
+  "Title": "Tytuł",
+  "Start": "Początek",
+  "Select time": "Wybierz czas",
+  "End": "Koniec",
+  "Low": "Niski",
+  "Medium": "Średni",
+  "High": "Wysoki",
+  "Add": "Dodaj"
 }

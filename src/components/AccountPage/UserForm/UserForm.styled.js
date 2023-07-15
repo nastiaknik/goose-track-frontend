@@ -155,6 +155,7 @@ export const AddAvatarBtn = styled.div`
   }
 
   transition: background-color var(--animation);
+
   &:hover,
   :focus {
     background-color: var(--hover-btn-bg-color);
@@ -200,6 +201,7 @@ export const Button = styled.button`
   }
 
   transition: background-color var(--animation), box-shadow var(--animation);
+
   &:hover,
   :focus {
     box-shadow: 4px 2px 16px rgba(136, 165, 191, 1);
