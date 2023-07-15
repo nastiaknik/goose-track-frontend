@@ -16,37 +16,38 @@ import {
   StyledDatePicker,
   DatePickerWrapper,
 } from "../../StatisticsPage/StatisticsChart/StatisticsHead.styled";
+import { useTranslation } from "react-i18next";
+import { enUS as en, uk as ua, pl, es } from "date-fns/locale";
 
 export const PeriodPaginator = ({ activePage }) => {
+  const { i18n, t } = useTranslation();
+  const currentLanguage = i18n.language;
   const [activeBtn, setActiveBtn] = useState("");
-
   const navigate = useNavigate();
   const urlDate = useDate();
 
+  const locale = { en, ua, pl, es };
+
   const handleNextDay = () => {
     setActiveBtn("next");
-
     const date = addDays(urlDate, 1);
     navigate(`/calendar/day/${format(date, "yyyy-MM-dd")}`);
   };
 
   const handlePrevDay = () => {
     setActiveBtn("prev");
-
     const date = subDays(urlDate, 1);
     navigate(`/calendar/day/${format(date, "yyyy-MM-dd")}`);
   };
 
   const handleNextMonth = () => {
     setActiveBtn("next");
-
     const date = addMonths(urlDate, 1);
     navigate(`/calendar/month/${format(date, "yyyy-MM")}`);
   };
 
   const handlePrevMonth = () => {
     setActiveBtn("prev");
-
     const date = subMonths(urlDate, 1);
     navigate(`/calendar/month/${format(date, "yyyy-MM")}`);
   };
@@ -63,10 +64,10 @@ export const PeriodPaginator = ({ activePage }) => {
         <>
           <DatePickerWrapper>
             <StyledDatePicker
-              selected={new Date(urlDate)}
+              selected={new Date(t(urlDate))}
               onChange={(date) => handleClick(date)}
               dateFormat="MMM yyyy"
-              // showMonthYearPicker
+              locale={locale[currentLanguage]}
             />
           </DatePickerWrapper>
           <ButtonsContainer>
@@ -87,6 +88,7 @@ export const PeriodPaginator = ({ activePage }) => {
               selected={new Date(urlDate)}
               onChange={(date) => handleClick(date)}
               dateFormat="d MMM yyyy"
+              locale={locale[currentLanguage]}
             />
           </DatePickerWrapper>
           <ButtonsContainer>

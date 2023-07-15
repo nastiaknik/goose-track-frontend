@@ -2,9 +2,12 @@ import { format, isWeekend } from "date-fns";
 import Media from "react-media";
 import { Days, DaysText, DaysTextWeekend } from "./MonthCalendarHead.styled";
 import { useDate } from "../../../hooks/useDate";
+import { useTranslation } from "react-i18next";
 
 export const MonthCalendarHead = ({ totalDays }) => {
+  const { t } = useTranslation();
   const urlDate = useDate();
+
   const weeks = ((date) => {
     const weeks = [];
     for (let day = 0; day < 7; day++) {
@@ -20,7 +23,9 @@ export const MonthCalendarHead = ({ totalDays }) => {
           <DaysTextWeekend key={week}>
             <Media query="(min-width: 768px)">
               {(matches) => {
-                return matches ? format(week, "eee") : format(week, "eeeee");
+                return matches
+                  ? t(format(week, "eee"))
+                  : t(format(week, "eeeee"));
               }}
             </Media>
           </DaysTextWeekend>
@@ -28,7 +33,9 @@ export const MonthCalendarHead = ({ totalDays }) => {
           <DaysText key={week}>
             <Media query="(min-width: 768px)">
               {(matches) => {
-                return matches ? format(week, "eee") : format(week, "eeeee");
+                return matches
+                  ? t(format(week, "eee"))
+                  : t(format(week, "eeeee"));
               }}
             </Media>
           </DaysText>

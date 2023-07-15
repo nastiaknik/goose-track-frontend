@@ -26,7 +26,7 @@ export const TaskForm = ({ onClose, task, status, ...props }) => {
   const dispatch = useDispatch();
 
   const editMode = props?.editMode || false;
-  const category = status || t("To do");
+  const category = status || "To do";
 
   const { currentDate } = useParams();
 
@@ -34,7 +34,7 @@ export const TaskForm = ({ onClose, task, status, ...props }) => {
     title: task?.title || "",
     start: task?.start || "",
     end: task?.end || "",
-    priority: task?.priority || t("Low"),
+    priority: task?.priority || "Low",
   };
 
   const handleAdd = (values) => {

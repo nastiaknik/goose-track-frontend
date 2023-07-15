@@ -4,8 +4,11 @@ import { useDispatch } from "react-redux";
 import { changeCategory } from "redux/tasks/operations";
 import { TASK_STATUS } from "../../../constants/Status";
 import PropTypes from "prop-types";
+import { useTranslation } from "react-i18next";
 
 export const Menu = ({ task, toggleMenu }) => {
+  const { t } = useTranslation();
+
   useEffect(() => {
     window.addEventListener("keydown", handleKeyDown);
 
@@ -22,7 +25,9 @@ export const Menu = ({ task, toggleMenu }) => {
 
   const dispatch = useDispatch();
 
-  let otherStatusList = TASK_STATUS.filter((status) => status.name !== task.category);
+  let otherStatusList = TASK_STATUS.filter(
+    (status) => status.name !== task.category
+  );
 
   return (
     <MenuContent>
@@ -40,7 +45,7 @@ export const Menu = ({ task, toggleMenu }) => {
                 )
               }
             >
-              {status.name}
+              {t(status.name)}
               <ArrowSvg />
             </Button>
           </li>

@@ -8,8 +8,10 @@ import {
   NavLinkMonth,
   ActiveLinkMonth,
 } from "./PeriodTypeSelect.styled.js";
+import { useTranslation } from "react-i18next";
 
 export const PeriodTypeSelect = ({ activePage }) => {
+  const { t } = useTranslation();
   const urlDate = useDate();
   const today = new Date();
 
@@ -23,10 +25,12 @@ export const PeriodTypeSelect = ({ activePage }) => {
     <Container>
       {activePage === "month" ? (
         <ActiveLinkMonth to={`/calendar/month/${currentDate}`}>
-          Month
+          {t("Month")}
         </ActiveLinkMonth>
       ) : (
-        <NavLinkMonth to={`/calendar/month/${currentDate}`}>Month</NavLinkMonth>
+        <NavLinkMonth to={`/calendar/month/${currentDate}`}>
+          {t("Month")}
+        </NavLinkMonth>
       )}
 
       {activePage === "day" ? (
@@ -37,7 +41,7 @@ export const PeriodTypeSelect = ({ activePage }) => {
               : `/calendar/day/${currentDay}`
           }
         >
-          Day
+          {t("Day")}
         </ActiveLinkDay>
       ) : (
         <NavLinkDay
@@ -47,7 +51,7 @@ export const PeriodTypeSelect = ({ activePage }) => {
               : `/calendar/day/${currentDay}`
           }
         >
-          Day
+          {t("Day")}
         </NavLinkDay>
       )}
     </Container>

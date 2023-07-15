@@ -6,12 +6,13 @@ export const FeedbackButton = styled.button`
   line-height: 16px;
   color: var(--light-text-color);
   padding: 0;
-  width: 97px;
+  padding: 0 20px;
   height: 32px;
   font-family: InterSemiBold;
   border-radius: 10px;
-  @media (min-width: 378px) {
-    width: 130px;
+
+  @media (min-width: 430px) {
+    padding: 0 32px;
     height: 42px;
     font-size: 14px;
     line-height: 18px;

@@ -7,14 +7,17 @@ export const HamburgerMenu = styled(RxHamburgerMenu)`
   display: block;
   cursor: pointer;
   color: ${({ theme }) => theme.variableColors.text};
+
   @media (min-width: 768px) {
     width: 34px;
     height: 34px;
   }
+
   @media (min-width: 1439px) {
     display: none;
   }
 `;
+
 export const HeaderContainer = styled.header`
   display: flex;
   justify-content: space-between;
@@ -33,7 +36,8 @@ export const ContentContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 18px;
+  gap: 15px;
+
   @media (min-width: 376px) {
     gap: 24px;
   }

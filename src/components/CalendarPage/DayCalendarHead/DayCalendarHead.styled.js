@@ -5,15 +5,11 @@ export const List = styled.ul`
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 19px;
-
   justify-content: center;
   align-items: center;
-
   border: 1px solid ${({ theme }) => theme.variableColors.borderСalendarColor};
   border-radius: 8px;
-
   background-color: ${({ theme }) => theme.variableColors.backgroundCalendar};
-
   margin-bottom: 14px;
   padding: 14px 19px 14px 19px;
 
@@ -29,6 +25,7 @@ export const List = styled.ul`
     margin-bottom: 16px;
   }
 `;
+
 export const Item = styled.li`
   margin: 0;
   cursor: pointer;

@@ -6,6 +6,9 @@ import {
 
 import { DatePicker } from "components/SharedComponents/DatePicker/DatePicker";
 import { format } from "date-fns";
+import { useTranslation } from "react-i18next";
+import { enUS as en, uk as ua, pl, es } from "date-fns/locale";
+
 import {
   StyledLabel,
   InputThumb,
@@ -21,11 +24,14 @@ export const DataInput = ({
   formik,
   setAllowSubmit,
 }) => {
+  const { i18n } = useTranslation();
+  const currentLanguage = i18n.language;
+  const locale = { en, ua, pl, es };
+
   const handleIcon = (error) => {
     if (!isSubmited) {
       return;
     }
-
     return error ? <AiOutlineExclamationCircle /> : <AiOutlineCheckCircle />;
   };
 
@@ -55,6 +61,7 @@ export const DataInput = ({
         calendarStartDay={1}
         isSubmited={isSubmited}
         error={formik.errors[`${name}`]}
+        locale={locale[currentLanguage]}
       />
       {formik.touched[`${name}`] && (
         <StyledValidation

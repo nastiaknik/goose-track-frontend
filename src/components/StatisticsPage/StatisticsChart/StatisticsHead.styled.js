@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-
 import {
   MdOutlineKeyboardArrowLeft,
   MdOutlineKeyboardArrowRight,
@@ -20,6 +19,7 @@ export const LegendList = styled.ul`
     align-items: center;
   }
 `;
+
 export const ChartHead = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -37,6 +37,7 @@ export const ChartHead = styled.div`
     max-width: 860px;
   }
 `;
+
 export const PrevDayButton = styled.button`
   width: 38px;
   height: 34px;
@@ -52,6 +53,7 @@ export const PrevDayButton = styled.button`
     background-color: ${({ theme }) => theme.variableColors.buttonBlue};
   }
 `;
+
 export const NextDayButton = styled.button`
   width: 38px;
   height: 34px;
@@ -72,16 +74,19 @@ export const DataContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   @media (max-width: 767.9px) {
     width: 100%;
   }
 `;
+
 export const ButtDiv = styled.div`
   display: flex;
   @media (min-width: 768px) {
     margin-left: 8px;
   }
 `;
+
 export const DatePickerWrapper = styled.div`
   .react-datepicker__wrapper {
     position: relative;

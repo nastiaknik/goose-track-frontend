@@ -4,11 +4,13 @@ import { FiLogOut } from "react-icons/fi";
 export const IconLogOut = styled(FiLogOut)`
   width: 20px;
   height: 20px;
+
   @media (min-width: 768px) {
     width: 22px;
     height: 22px;
   }
 `;
+
 export const Button = styled.button`
   bottom: 24px;
   left: 20px;
@@ -39,7 +41,6 @@ export const Button = styled.button`
 
   @media (min-width: 768px) {
     height: 56px;
-    width: 141px;
     font-size: 18px;
     left: 32px;
     line-height: 24px;

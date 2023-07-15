@@ -51,13 +51,37 @@
   "Enter skype number": "Enter skype number",
   "Enter birthday": "Enter birthday",
 
-  "To do": "To do",
   "Title": "Title",
   "Start": "Start",
   "Select time": "Select time",
   "End": "End",
+
   "Low": "Low",
   "Medium": "Medium",
   "High": "High",
-  "Add": "Add"
+
+  "Add": "Add",
+  "Add task": "Add task",
+
+  "Sun": "Sun",
+  "Mon": "Mon",
+  "Tue": "Tue",
+  "Wed": "Wed",
+  "Thu": "Thu",
+  "Fri": "Fri",
+  "Sat": "Sat",
+  "Sn": "S",
+  "M": "M",
+  "Tu": "T",
+  "W": "W",
+  "Th": "T",
+  "F": "F",
+  "St": "S",
+
+  "Month": "Month",
+  "Day": "Day",
+
+  "To do": "To do",
+  "In progress": "In progress",
+  "Done": "Done"
 }

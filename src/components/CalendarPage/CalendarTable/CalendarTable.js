@@ -44,17 +44,15 @@ export const CalendarTable = ({ totalDays }) => {
 
         return (
           <Cell key={index} onClick={() => handleClick(date)}>
-            <div>
-              {isWeekend(date, urlDate) ? (
-                <DayWeekend>{format(date, "d")}</DayWeekend>
-              ) : !isSameMonth(date, urlDate) ? (
-                <DayNumberSpecial>{format(date, "d")}</DayNumberSpecial>
-              ) : isToday(date, urlDate) ? (
-                <DayToday>{format(date, "d")}</DayToday>
-              ) : (
-                <DayNumber>{format(date, "d")}</DayNumber>
-              )}
-            </div>
+            {isToday(date, urlDate) ? (
+              <DayToday>{format(date, "d")}</DayToday>
+            ) : isWeekend(date, urlDate) ? (
+              <DayWeekend>{format(date, "d")}</DayWeekend>
+            ) : !isSameMonth(date, urlDate) ? (
+              <DayNumberSpecial>{format(date, "d")}</DayNumberSpecial>
+            ) : (
+              <DayNumber>{format(date, "d")}</DayNumber>
+            )}
             <TaskWrapper>
               {tasks.length <= 2 && (
                 <li>

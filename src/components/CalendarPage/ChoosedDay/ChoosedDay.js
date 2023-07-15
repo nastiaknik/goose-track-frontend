@@ -13,8 +13,10 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getTasksByDay } from "../../../redux/tasks/operations";
 import { useDate } from "../../../hooks/useDate";
+import { useTranslation } from "react-i18next";
 
 export const ChoosedDay = () => {
+  const { t } = useTranslation();
   const formattedDate = useDate();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -78,7 +80,7 @@ export const ChoosedDay = () => {
 
     days.push(
       <Day key={i} onClick={() => handleDayClick(date)}>
-        <DayOfWeek>{getDaysOfWeek()[date.getDay()]}</DayOfWeek>
+        <DayOfWeek>{t(getDaysOfWeek()[date.getDay()])}</DayOfWeek>
         {isDaySelected ? (
           <SelectedDay>{date.getDate()}</SelectedDay>
         ) : (

@@ -15,8 +15,10 @@ import { TaskModal } from "components/SharedComponents/TaskModal/TaskModal";
 import { useSelector } from "react-redux";
 import { selectUser } from "redux/auth/selectrors";
 import { Draggable } from "react-beautiful-dnd";
+import { useTranslation } from "react-i18next";
 
 export const TaskColumnCard = ({ task, index }) => {
+  const { t } = useTranslation();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const user = useSelector(selectUser);
 
@@ -53,7 +55,7 @@ export const TaskColumnCard = ({ task, index }) => {
                 )}
               </TaskAvatarWrapper>
               <TaskPriority priority={task.priority}>
-                {task.priority}
+                {t(task.priority)}
               </TaskPriority>
             </Wrapper>
             <Toolbar toggleModal={toggleModal} task={task} />

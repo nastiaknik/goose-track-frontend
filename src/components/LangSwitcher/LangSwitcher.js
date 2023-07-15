@@ -13,9 +13,8 @@ import {
 } from "./LangSwitcher.styled";
 
 const LangSwitcher = () => {
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
   const currentLanguage = i18n.language;
-  const { t } = useTranslation();
 
   const LANGUAGES = [
     {

@@ -6,8 +6,10 @@ import { Container } from "./TaskColumn.styled";
 import { TaskModal } from "components/SharedComponents/TaskModal/TaskModal";
 import { Modal } from "components/SharedComponents/Modal/Modal";
 import { AddTaskBtn } from "../AddTaskBtn/AddTaskBtn";
+import { useTranslation } from "react-i18next";
 
 export const TasksColumn = ({ status, filteredTasks }) => {
+  const { t } = useTranslation();
   const [showModal, setShowModal] = useState(false);
 
   const handleShowModal = () => {
@@ -35,7 +37,10 @@ export const TasksColumn = ({ status, filteredTasks }) => {
   return (
     <>
       <Container>
-        <ColumnHeadBar title={status.name} handleShowModal={handleShowModal} />
+        <ColumnHeadBar
+          title={t(status.name)}
+          handleShowModal={handleShowModal}
+        />
         <ColumnsTasksList status={status} filteredDayTasks={sortedTasks} />
         <AddTaskBtn onClick={handleShowModal} />
       </Container>

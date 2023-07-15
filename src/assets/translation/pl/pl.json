@@ -51,13 +51,37 @@
   "Enter skype number": "Wpisz numer Skype",
   "Enter birthday": "Wpisz datę urodzenia",
 
-  "To do": "Do zrobienia",
   "Title": "Tytuł",
   "Start": "Początek",
   "Select time": "Wybierz czas",
   "End": "Koniec",
+
   "Low": "Niski",
   "Medium": "Średni",
   "High": "Wysoki",
-  "Add": "Dodaj"
+
+  "Add": "Dodaj",
+  "Add task": "Dodaj zadanie",
+
+  "Sun": "Nie",
+  "Mon": "Pon",
+  "Tue": "Wt",
+  "Wed": "Śr",
+  "Thu": "Czw",
+  "Fri": "Pt",
+  "Sat": "Sob",
+  "Sn": "N",
+  "M": "P",
+  "Tu": "W",
+  "W": "Ś",
+  "Th": "C",
+  "F": "P",
+  "St": "S",
+
+  "Month": "Miesiąc",
+  "Day": "Dzień",
+
+  "To do": "Do zrobienia",
+  "In progress": "W trakcie",
+  "Done": "Gotowe"
 }
