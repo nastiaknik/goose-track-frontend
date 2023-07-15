@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { AddFeedbackModal } from "../AddFeedbackModal/AddFeedbackModal";
 import { FeedbackButton } from "./AddFeedbackBtn.styled";
+import { useTranslation } from "react-i18next";
 
 const AddFeedbackBtn = () => {
+  const { t } = useTranslation();
   const [isModalOpen, setModalOpen] = useState(false);
 
   const handleButtonClick = () => {
@@ -15,7 +17,9 @@ const AddFeedbackBtn = () => {
 
   return (
     <div>
-      <FeedbackButton onClick={handleButtonClick}>Feedback</FeedbackButton>
+      <FeedbackButton onClick={handleButtonClick}>
+        {t("Feedback")}
+      </FeedbackButton>
       {isModalOpen && <AddFeedbackModal onCloseModal={handleCloseModal} />}
     </div>
   );

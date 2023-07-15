@@ -4,7 +4,7 @@ import AddFeedbackBtn from "../AddFeedbackBtn/AddFeedbackBtn";
 import { selectDayTasks } from "redux/tasks/selectors";
 import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
-
+import { useTranslation } from "react-i18next";
 import {
   HeaderContainer,
   ContentContainer,
@@ -13,8 +13,10 @@ import {
 } from "./Header.styled";
 import { CalendarTitle } from "./CalendarTitle/CalendarTitle";
 import UserInfo from "../UserInfo/UserInfo";
+import LangSwitcher from "components/LangSwitcher/LangSwitcher";
 
 export const Header = ({ toggleMenu }) => {
+  const { t } = useTranslation();
   const location = useLocation();
   const [page, setPage] = useState("");
 
@@ -30,16 +32,16 @@ export const Header = ({ toggleMenu }) => {
       location.pathname.startsWith("/calendar/day");
 
     if (location.pathname === "/account") {
-      setPage("User Menu");
+      setPage(t("User Profile"));
       return;
     } else if (calendarPage) {
-      setPage("Calendar");
+      setPage(t("Calendar"));
       return;
     } else if (location.pathname === "/statistics") {
-      setPage("Statistics");
+      setPage(t("Statistics"));
       return;
     }
-  }, [setPage, page, location.pathname]);
+  }, [setPage, page, location.pathname, t]);
 
   return (
     <HeaderContainer>
@@ -52,6 +54,7 @@ export const Header = ({ toggleMenu }) => {
         <Title>{page}</Title>
       )}
       <ContentContainer>
+        <LangSwitcher />
         <AddFeedbackBtn />
         <UserInfo />
       </ContentContainer>

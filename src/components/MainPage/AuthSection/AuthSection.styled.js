@@ -156,3 +156,10 @@ export const Wrapper = styled.div`
     align-items: flex-start;
   }
 `;
+
+export const LangContainer = styled.div`
+  @media screen and (min-width: 768px) {
+    padding-top: 25px;
+    padding-right: 20px;
+  }
+`;

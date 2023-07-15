@@ -9,12 +9,16 @@ export const MainLayout = ({ children }) => {
 
   const isMobile = window.matchMedia("(max-width: 1439px)").matches;
   const windowSize = useWindowSize();
+
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+
   return (
     <DivLayout>
-      {(isOpen || windowSize.width >= 1440) && <SideBar toggleMenu={toggleMenu} isMobile={isMobile} />}
+      {(isOpen || windowSize.width >= 1440) && (
+        <SideBar toggleMenu={toggleMenu} isMobile={isMobile} />
+      )}
       <DivHeader>
         <Header toggleMenu={toggleMenu} />
         {children}

@@ -17,6 +17,7 @@ import {
   LinkLogin,
   LinkSingup,
   Wrapper,
+  LangContainer,
 } from "./AuthSection.styled";
 
 export const AuthSection = () => {
@@ -33,7 +34,9 @@ export const AuthSection = () => {
               alt="Logo"
             />
           </Link>
-          <LangSwitcher />
+          <LangContainer>
+            <LangSwitcher />
+          </LangContainer>
         </Wrapper>
         <LogoH1>
           G<LogoSpan>oo</LogoSpan>seTrack

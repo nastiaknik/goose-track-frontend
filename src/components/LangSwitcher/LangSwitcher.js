@@ -10,7 +10,6 @@ import {
   LangBtn,
   CurrentLangBtn,
   LangName,
-  Container,
 } from "./LangSwitcher.styled";
 
 const LangSwitcher = () => {
@@ -57,40 +56,38 @@ const LangSwitcher = () => {
   );
 
   return (
-    <Container>
-      <Popup
-        trigger={
-          <CurrentLangBtn type="button" tabIndex="-1">
-            {handleLangIcon(currentLanguage)}
-          </CurrentLangBtn>
-        }
-        position="bottom right"
-        on={["click", "hover"]}
-        mouseLeaveDelay={200}
-        mouseEnterDelay={0}
-        contentStyle={{ padding: "0px", border: "none" }}
-        arrow={false}
-        closeOnDocumentClick
-        closeOnEscape
-        initialFocus={false}
-      >
-        <List>
-          {otherLanguages.map((lang) => (
-            <Option key={lang.code}>
-              <LangBtn
-                type="button"
-                onClick={() => {
-                  i18n.changeLanguage(lang.code);
-                }}
-              >
-                {handleLangIcon(lang.code)}
-                <LangName>{lang.name}</LangName>
-              </LangBtn>
-            </Option>
-          ))}
-        </List>
-      </Popup>
-    </Container>
+    <Popup
+      trigger={
+        <CurrentLangBtn type="button" tabIndex="-1">
+          {handleLangIcon(currentLanguage)}
+        </CurrentLangBtn>
+      }
+      position="bottom right"
+      on={["click", "hover"]}
+      mouseLeaveDelay={200}
+      mouseEnterDelay={0}
+      contentStyle={{ padding: "0px", border: "none" }}
+      arrow={false}
+      closeOnDocumentClick
+      closeOnEscape
+      initialFocus={false}
+    >
+      <List>
+        {otherLanguages.map((lang) => (
+          <Option key={lang.code}>
+            <LangBtn
+              type="button"
+              onClick={() => {
+                i18n.changeLanguage(lang.code);
+              }}
+            >
+              {handleLangIcon(lang.code)}
+              <LangName>{lang.name}</LangName>
+            </LangBtn>
+          </Option>
+        ))}
+      </List>
+    </Popup>
   );
 };
 

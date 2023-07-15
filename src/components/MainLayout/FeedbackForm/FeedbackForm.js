@@ -20,6 +20,7 @@ import {
 } from "./FeedbackForm.styled";
 import "@smastrom/react-rating/style.css";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const customStar = (
   <path
@@ -38,6 +39,7 @@ const starStyles = {
 };
 
 export const FeedbackForm = ({ reviewData, onSave, onDelete, onClose }) => {
+  const { t } = useTranslation();
   const isEditModal = !!reviewData?.comment;
   const [editReview, setEditReview] = useState(false);
   const [isSubmited, setIsSubmited] = useState(false);
@@ -67,7 +69,7 @@ export const FeedbackForm = ({ reviewData, onSave, onDelete, onClose }) => {
       }}
     >
       <TextLabel isSubmited={isSubmited} error={formik.errors?.rating}>
-        Rating
+        {t("Rating")}
       </TextLabel>
 
       <Rating
@@ -86,7 +88,7 @@ export const FeedbackForm = ({ reviewData, onSave, onDelete, onClose }) => {
           error={formik.errors?.comment}
           htmlFor="comment"
         >
-          Review
+          {t("Review")}
         </LabelReview>
         {isEditModal && (
           <Actions>
@@ -105,7 +107,7 @@ export const FeedbackForm = ({ reviewData, onSave, onDelete, onClose }) => {
       <ReviewText
         id="comment"
         name="comment"
-        placeholder="Enter text"
+        placeholder={t("Enter text")}
         value={formik.values.comment}
         onChange={formik.handleChange}
         readOnly={isEditModal && !editReview}
@@ -117,14 +119,14 @@ export const FeedbackForm = ({ reviewData, onSave, onDelete, onClose }) => {
         >
           {formik.errors?.comment
             ? formik.errors?.comment
-            : `This is a CORRECT comment`}
+            : t("This is a CORRECT comment")}
         </StyledValidation>
       )}
 
       {(!isEditModal || (isEditModal && editReview)) && (
         <ButtonsCont>
           <SaveButton type="submit" disabled={formik.isSubmitting}>
-            {isEditModal ? "Edit" : "Save"}
+            {isEditModal ? t("Edit") : t("Save")}
           </SaveButton>
           <CancelButton
             type="button"
@@ -132,7 +134,7 @@ export const FeedbackForm = ({ reviewData, onSave, onDelete, onClose }) => {
             onClick={() => onClose()}
             disabled={formik.isSubmitting}
           >
-            Cancel
+            {t("Cancel")}
           </CancelButton>
         </ButtonsCont>
       )}

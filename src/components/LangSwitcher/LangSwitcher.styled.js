@@ -1,12 +1,5 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
-  @media screen and (min-width: 768px) {
-    padding-top: 25px;
-    padding-right: 20px;
-  }
-`;
-
 export const List = styled.ul`
   margin: 5px 0 0;
   padding: 0;
@@ -33,7 +26,7 @@ export const LangBtn = styled.button`
 export const CurrentLangBtn = styled.button`
   padding: 4px;
   display: flex;
-  background-color: var(--accent-text-color);
+  background-color: transparent;
 
   :hover,
   :focus {

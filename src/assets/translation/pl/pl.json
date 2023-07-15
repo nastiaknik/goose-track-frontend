@@ -15,5 +15,23 @@
   "One": "W jednym",
   "GooseTrack is an all-in-one": "GooseTrack to kompleksowe narzędzie do zarządzania produktywnością, które pomaga być na bieżąco z zadaniami, wydarzeniami i terminami. Pożegnaj rozproszone listy zadań i powitaj zwiększoną produktywność dzięki GooseTrack.",
   "Description": "Opis",
-  "Reviews": "Recenzje"
+  "Reviews": "Recenzje",
+
+  "Feedback": "Opinia",
+  "Rating": "Ocena",
+  "Review": "Recenzja",
+  "Enter text": "Wpisz tekst",
+  "Save": "Zapisz",
+  "Edit": "Edytuj",
+  "Cancel": "Anuluj",
+  "This is a CORRECT comment": "To jest PRAWIDŁOWY komentarz",
+
+  "Let go": "Porzuć",
+  "of the past and focus on the present!": "przeszłość i skup się na teraźniejszości!",
+
+  "User Panel": "Panel użytkownika",
+  "My account": "Moje konto",
+  "Statistics": "Statystyki",
+  "Log Out": "Wyloguj",
+  "User Profile": "Profil użytkownika"
 }
