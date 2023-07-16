@@ -129,6 +129,7 @@ export const UserForm = () => {
             formik={formik}
             isSubmited={isSubmited}
             setAllowSubmit={setAllowSubmit}
+            element="input"
           />
         </BirthdayContainer>
 

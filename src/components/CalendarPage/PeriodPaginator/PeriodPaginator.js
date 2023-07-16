@@ -12,10 +12,7 @@ import {
   IconLeft,
   IconLeftActive,
 } from "./PeriodPaginator.styled.js";
-import {
-  StyledDatePicker,
-  DatePickerWrapper,
-} from "../../StatisticsPage/StatisticsChart/StatisticsHead.styled";
+import { StyledDatePicker } from "components/SharedComponents/DatePicker/DatePicker";
 import { useTranslation } from "react-i18next";
 import { enUS as en, uk as ua, pl, es } from "date-fns/locale";
 
@@ -62,14 +59,13 @@ export const PeriodPaginator = ({ activePage }) => {
     <Wrapper>
       {activePage === "month" && (
         <>
-          <DatePickerWrapper>
-            <StyledDatePicker
-              selected={new Date(t(urlDate))}
-              onChange={(date) => handleClick(date)}
-              dateFormat="MMM yyyy"
-              locale={locale[currentLanguage]}
-            />
-          </DatePickerWrapper>
+          <StyledDatePicker
+            selected={new Date(t(urlDate))}
+            onChange={(date) => handleClick(date)}
+            dateFormat="MMM yyyy"
+            locale={locale[currentLanguage]}
+            element="button"
+          />
           <ButtonsContainer>
             <ButtonLeft type="button" onClick={handlePrevMonth}>
               {activeBtn === "prev" ? <IconLeftActive /> : <IconLeft />}
@@ -83,14 +79,13 @@ export const PeriodPaginator = ({ activePage }) => {
 
       {activePage === "day" && (
         <>
-          <DatePickerWrapper>
-            <StyledDatePicker
-              selected={new Date(urlDate)}
-              onChange={(date) => handleClick(date)}
-              dateFormat="d MMM yyyy"
-              locale={locale[currentLanguage]}
-            />
-          </DatePickerWrapper>
+          <StyledDatePicker
+            selected={new Date(urlDate)}
+            onChange={(date) => handleClick(date)}
+            dateFormat="d MMM yyyy"
+            locale={locale[currentLanguage]}
+            element="button"
+          />
           <ButtonsContainer>
             <ButtonLeft type="button" onClick={handlePrevDay}>
               {activeBtn === "prev" ? <IconLeftActive /> : <IconLeft />}

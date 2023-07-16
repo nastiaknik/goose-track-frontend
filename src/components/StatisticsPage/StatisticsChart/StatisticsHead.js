@@ -1,6 +1,8 @@
+import { useTranslation } from "react-i18next";
+import { enUS as en, uk as ua, pl, es } from "date-fns/locale";
+import { StyledDatePicker } from "components/SharedComponents/DatePicker/DatePicker";
+import { TbPointFilled } from "react-icons/tb";
 import {
-  StyledDatePicker,
-  DatePickerWrapper,
   DataContainer,
   PrevDayButton,
   NextDayButton,
@@ -10,7 +12,6 @@ import {
   LeftArrow,
   RightArrow,
 } from "./StatisticsHead.styled";
-import { TbPointFilled } from "react-icons/tb";
 
 export const StatisticsHead = ({
   selectedDate,
@@ -18,16 +19,20 @@ export const StatisticsHead = ({
   handlePreviousDay,
   handleNextDay,
 }) => {
+  const { i18n, t } = useTranslation();
+  const currentLanguage = i18n.language;
+  const locale = { en, ua, pl, es };
+
   return (
     <ChartHead>
       <DataContainer>
-        <DatePickerWrapper>
-          <StyledDatePicker
-            selected={selectedDate}
-            onChange={(date) => setSelectedDate(date)}
-            dateFormat="d MMMM yyyy "
-          />
-        </DatePickerWrapper>
+        <StyledDatePicker
+          selected={selectedDate}
+          onChange={(date) => setSelectedDate(date)}
+          dateFormat="d MMMM yyyy "
+          element="button"
+          locale={locale[currentLanguage]}
+        />
         <ButtDiv>
           <PrevDayButton onClick={handlePreviousDay}>
             <LeftArrow />
@@ -40,11 +45,11 @@ export const StatisticsHead = ({
       <LegendList>
         <li>
           <TbPointFilled color="#FFD2DD" size={20} />
-          <span>By Day</span>
+          <span>{t("By Day")}</span>
         </li>
         <li>
           <TbPointFilled color="#3E85F3" size={20} />
-          <span>By Month</span>
+          <span>{t("By Month")}</span>
         </li>
       </LegendList>
     </ChartHead>

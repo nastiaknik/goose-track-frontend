@@ -10,6 +10,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { Chart } from "./StatisticsChart.styled";
+import { useTranslation } from "react-i18next";
 
 export const StatisticsChart = ({
   todoByDayPer,
@@ -20,24 +21,25 @@ export const StatisticsChart = ({
   doneByMPer,
   currentTheme,
 }) => {
+  const { t } = useTranslation();
   const [data, setData] = useState([]);
 
   useEffect(() => {
     const chartElements = [
       {
-        name: "To Do",
+        name: t("To Do"),
         ByDay: todoByDayPer,
         ByMonth: todoByMPer,
         amt: 2400,
       },
       {
-        name: "In Progress",
+        name: t("In Progress"),
         ByDay: inprogressByDayPer,
         ByMonth: inprogressByMPer,
         amt: 2210,
       },
       {
-        name: "Done",
+        name: t("Done"),
         ByDay: doneByDayPer,
         ByMonth: doneByMPer,
         amt: 2290,
@@ -51,6 +53,7 @@ export const StatisticsChart = ({
     inprogressByMPer,
     doneByDayPer,
     doneByMPer,
+    t,
   ]);
 
   const renderCustomizedLabel = (props) => {
@@ -106,8 +109,6 @@ export const StatisticsChart = ({
               }}
               barCategoryGap="25%"
               barGap="15%"
-              // barSize={27}
-              // barSize={isMobile? 15: 27}
             >
               <defs>
                 <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
@@ -151,7 +152,7 @@ export const StatisticsChart = ({
               >
                 <Label
                   position="insideTopRight"
-                  value="Tasks"
+                  value={t("Tasks")}
                   dx={-5}
                   dy={-40}
                 />

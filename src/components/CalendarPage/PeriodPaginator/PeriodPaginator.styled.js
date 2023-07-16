@@ -36,6 +36,7 @@ export const ButtonRight = styled(ButtonBase)`
 export const IconRight = styled(IconArrowRight)`
   stroke: ${({ theme }) => theme.variableColors.arrowColor};
 `;
+
 export const IconRightActive = styled(IconArrowRight)`
   stroke: ${({ theme }) => theme.variableColors.activeArrowColor};
 `;

@@ -4,7 +4,7 @@ import {
   AiOutlineCheckCircle,
 } from "react-icons/ai";
 
-import { DatePicker } from "components/SharedComponents/DatePicker/DatePicker";
+import { StyledDatePicker } from "components/SharedComponents/DatePicker/DatePicker";
 import { format } from "date-fns";
 import { useTranslation } from "react-i18next";
 import { enUS as en, uk as ua, pl, es } from "date-fns/locale";
@@ -43,7 +43,7 @@ export const DataInput = ({
         </StyledIconContainer>
       )}
       {text}
-      <DatePicker
+      <StyledDatePicker
         name="birthday"
         selected={new Date(formik?.values.birthday)}
         onChange={async (date) => {
@@ -62,6 +62,7 @@ export const DataInput = ({
         isSubmited={isSubmited}
         error={formik.errors[`${name}`]}
         locale={locale[currentLanguage]}
+        element="input"
       />
       {formik.touched[`${name}`] && (
         <StyledValidation

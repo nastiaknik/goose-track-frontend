@@ -82,6 +82,16 @@
   "Day": "Día",
 
   "To do": "Por hacer",
+  "To Do": "Por Hacer",
   "In progress": "En progreso",
-  "Done": "Hecho"
+  "In Progress": "En Progreso",
+  "Done": "Hecho",
+
+  "Title is required": "Se requiere un título",
+  "Start is required": "Se requiere una fecha de inicio",
+  "Less than start": "Antes del inicio",
+
+  "By Day": "Por día",
+  "By Month": "Por mes",
+  "Tasks": "Tareas"
 }

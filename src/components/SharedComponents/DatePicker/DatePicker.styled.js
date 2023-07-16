@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 const validateColor = (error, isSubmited, color) => {
@@ -236,23 +235,20 @@ export const DatePickerWrapper = styled.div`
   }
 `;
 
-export const StyledDatePicker = styled(DatePicker)`
+export const Input = styled.input`
   position: relative;
   width: 100%;
   margin-top: 8px;
   padding: 14px 14px 12px;
-
   border-radius: 8px;
   border: 1px solid rgba(220, 227, 229, 0.6);
   outline: 2px solid transparent;
   outline-color: ${({ error, isSubmited }) =>
     validateColor(error, isSubmited, "transparent")};
   transition: outline var(--animation);
-
   font-family: "InterRegular";
   font-size: 14px;
   line-height: 1.3;
-
   color: ${({ theme }) => theme.variableColors.text};
   background-color: ${({ theme }) => theme.variableColors.secondaryBackground};
 
@@ -272,4 +268,39 @@ export const StyledDatePicker = styled(DatePicker)`
   :focus {
     outline: 2px solid var(--primary-text-color);
   }
+`;
+
+export const Button = styled.button`
+  min-width: 121px;
+  height: 30px;
+  border-radius: 8px;
+  font-family: "InterSemiBold";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.3;
+  outline: none;
+  padding: 6px 12px;
+  box-sizing: border-box;
+  color: white;
+  background-color: #3e85f3;
+  text-align: center;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+
+  @media screen and (min-width: 768px) {
+    min-width: 145px;
+    height: 34px;
+    font-size: 16px;
+    line-height: 1.2;
+    padding: 8px 12px;
+  }
+
+  :hover,
+  :focus {
+    background-color: var(--hover-btn-bg-color);
+  }
+
+  transition: background-color var(--animation);
 `;

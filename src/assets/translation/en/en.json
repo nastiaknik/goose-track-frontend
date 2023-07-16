@@ -82,6 +82,16 @@
   "Day": "Day",
 
   "To do": "To do",
+  "To Do": "To Do",
   "In progress": "In progress",
-  "Done": "Done"
+  "In Progress": "In Progress",
+  "Done": "Done",
+
+  "Title is required": "Title is required",
+  "Start is required": "Start is required",
+  "Less than start": "Less than start",
+
+  "By Day": "By Day",
+  "By Month": "By Month",
+  "Tasks": "Tasks"
 }
