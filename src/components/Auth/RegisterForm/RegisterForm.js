@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import { useFormik } from "formik";
 import { RegisterSchema } from "../../../helpers/formValidationSchemas";
@@ -7,9 +8,11 @@ import { register } from "redux/auth/operations";
 
 import { LuLogIn } from "react-icons/lu";
 import { FormInput } from "components/FormElements/FormInput/FormInput";
-import { StyledForm, Title, SubmitBtn } from "./RegisterForm.styled";
+import { StyledForm, Title, SubmitBtn, Wrapper } from "./RegisterForm.styled";
+import LangSwitcher from "components/LangSwitcher/LangSwitcher";
 
 export const RegisterForm = () => {
+  const { t } = useTranslation();
   const [isSubmited, setIsSubmited] = useState(false);
   const dispatch = useDispatch();
 
@@ -35,37 +38,40 @@ export const RegisterForm = () => {
 
   return (
     <StyledForm>
-      <Title>Sign Up</Title>
+      <Wrapper>
+        <Title>{t("Sign Up")}</Title>
+        <LangSwitcher />
+      </Wrapper>
       <FormInput
-        text="Name"
+        text={t("Name")}
         name="username"
         type="text"
-        placeholder="Enter your name"
+        placeholder={t("Enter your name")}
         isSubmited={isSubmited}
         formik={formik}
         auth={true}
       />
       <FormInput
-        text="Email"
+        text={t("Email")}
         name="email"
         type="email"
-        placeholder="Enter email"
+        placeholder={t("Enter email")}
         isSubmited={isSubmited}
         formik={formik}
         auth={true}
       />
       <FormInput
-        text="Password"
+        text={t("Password")}
         name="password"
         type="password"
-        placeholder="Enter password"
+        placeholder={t("Enter password")}
         isSubmited={isSubmited}
         formik={formik}
         auth={true}
         validation
       />
       <SubmitBtn type="submit" onClick={handleValidation}>
-        Sign Up <LuLogIn />
+        {t("Sign Up")} <LuLogIn />
       </SubmitBtn>
     </StyledForm>
   );

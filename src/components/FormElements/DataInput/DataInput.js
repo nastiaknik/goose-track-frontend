@@ -20,11 +20,12 @@ import {
 export const DataInput = ({
   text,
   name,
+  placeholder,
   isSubmited,
   formik,
   setAllowSubmit,
 }) => {
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
   const currentLanguage = i18n.language;
   const locale = { en, ua, pl, es };
 
@@ -49,14 +50,15 @@ export const DataInput = ({
         onChange={async (date) => {
           formik.setFieldValue(
             "birthday",
-            date ? format(date, "yyyy-MM-dd") : null
+            date
+              ? format(date, "yyyy-MM-dd")
+              : new Date(new Date().setHours(0, 0, 0, 0))
           );
           await Promise.resolve();
           setAllowSubmit(true);
         }}
-        dateFormat="dd-MM-yyyy"
-        maxDate={new Date()}
-        placeholderText="dd-MM-yyyy"
+        dateFormat={["dd/MM/yyyy", "dd.MM.yyyy", "dd MM yyyy", "dd-MM-yyyy"]}
+        placeholderText={placeholder}
         formatWeekDay={(day) => day.charAt(0)}
         calendarStartDay={1}
         isSubmited={isSubmited}
@@ -70,8 +72,8 @@ export const DataInput = ({
           error={formik.errors[`${name}`]}
         >
           {formik.errors[`${name}`]
-            ? formik.errors[`${name}`]
-            : `This is a CORRECT ${name}`}
+            ? t(formik.errors[`${name}`])
+            : t(`This is a CORRECT ${name}`)}
         </StyledValidation>
       )}
       <InputThumb>{handleIcon(formik.errors[`${name}`])}</InputThumb>

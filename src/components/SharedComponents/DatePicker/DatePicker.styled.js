@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 const validateColor = (error, isSubmited, color) => {
@@ -235,7 +236,7 @@ export const DatePickerWrapper = styled.div`
   }
 `;
 
-export const Input = styled.input`
+export const Input = styled(DatePicker)`
   position: relative;
   width: 100%;
   margin-top: 8px;

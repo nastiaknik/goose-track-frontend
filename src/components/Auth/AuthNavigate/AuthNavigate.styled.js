@@ -104,7 +104,6 @@ export const StyledLink = styled(Link)`
 export const StyledDetails = styled.details`
   position: relative;
   margin-top: 10px;
-  margin-bottom: 20px;
   font-family: var(--primary-font);
   font-weight: 600;
   color: var(--accent-bg-color);
@@ -112,7 +111,6 @@ export const StyledDetails = styled.details`
 
   > summary {
     list-style: none;
-
     font-size: 16px;
     text-decoration-line: underline;
 

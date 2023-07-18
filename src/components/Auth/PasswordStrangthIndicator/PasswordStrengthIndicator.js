@@ -1,4 +1,5 @@
 import zxcvbn from "zxcvbn";
+import { useTranslation } from "react-i18next";
 import {
   Container,
   ProgressBar,
@@ -7,21 +8,22 @@ import {
 } from "./PasswordStrengthIndicator.styled";
 
 export const PasswordStrengthIndicator = ({ password }) => {
+  const { t } = useTranslation();
   const testResult = zxcvbn(password);
   const num = (testResult.score * 100) / 4;
 
   const handleProgressTextContent = (num) => {
     switch (num) {
       case 0:
-        return "Very weak";
+        return t("Very weak");
       case 25:
-        return "Weak";
+        return t("Weak");
       case 50:
-        return "Medium";
+        return t("Medium");
       case 75:
-        return "Strong";
+        return t("Strong");
       case 100:
-        return "Very strong";
+        return t("Very strong");
       default:
         return "";
     }

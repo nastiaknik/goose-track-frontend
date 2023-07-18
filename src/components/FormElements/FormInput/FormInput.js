@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import PropTypes from "prop-types";
 import { useState } from "react";
 
@@ -27,6 +28,7 @@ export const FormInput = ({
   auth,
   validation,
 }) => {
+  const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
 
   const checkInputName = () => {
@@ -89,8 +91,8 @@ export const FormInput = ({
           validation={validation}
         >
           {formik.errors[`${name}`]
-            ? formik.errors[`${name}`]
-            : `This is a CORRECT ${name}`}
+            ? t(formik.errors[`${name}`])
+            : t(`This is a CORRECT ${name}`)}
         </StyledValidation>
       )}
       <InputThumb>

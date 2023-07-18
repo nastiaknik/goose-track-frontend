@@ -101,7 +101,9 @@ export const TaskForm = ({ onClose, task, status, ...props }) => {
                 value={values.title}
                 placeholder={t("Enter text")}
               />
-              <Errors>{errors.title && touched.title && errors.title}</Errors>
+              <Errors>
+                {errors.title && touched.title && t(errors.title)}
+              </Errors>
             </Label>
 
             <Wrapper>
@@ -117,7 +119,9 @@ export const TaskForm = ({ onClose, task, status, ...props }) => {
                   value={values.start}
                   placeholder={t("Select time")}
                 />
-                <Errors>{errors.start && touched.start && errors.start}</Errors>
+                <Errors>
+                  {errors.start && touched.start && t(errors.start)}
+                </Errors>
               </Label>
 
               <Label htmlFor="end">
@@ -132,7 +136,7 @@ export const TaskForm = ({ onClose, task, status, ...props }) => {
                   value={values.end}
                   placeholder={t("Select time")}
                 />
-                <Errors>{errors.end && touched.end && errors.end}</Errors>
+                <Errors>{errors.end && touched.end && t(errors.end)}</Errors>
               </Label>
             </Wrapper>
 

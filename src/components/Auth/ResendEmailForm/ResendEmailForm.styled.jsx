@@ -14,3 +14,10 @@ export const EmailSubmitBtn = styled(SubmitBtn)`
     background-color: var(--inactive-nav-text-color);
   }
 `;
+
+export const Wrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+`;

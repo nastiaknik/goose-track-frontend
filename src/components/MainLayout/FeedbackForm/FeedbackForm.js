@@ -118,7 +118,7 @@ export const FeedbackForm = ({ reviewData, onSave, onDelete, onClose }) => {
           error={formik.errors?.comment}
         >
           {formik.errors?.comment
-            ? formik.errors?.comment
+            ? t(formik.errors?.comment)
             : t("This is a CORRECT comment")}
         </StyledValidation>
       )}

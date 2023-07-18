@@ -1,19 +1,21 @@
+import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import { useFormik } from "formik";
 import { LoginSchema } from "helpers/formValidationSchemas";
-
 import { useDispatch } from "react-redux";
 import { login } from "redux/auth/operations";
-
 import { LuLogIn } from "react-icons/lu";
+import LangSwitcher from "components/LangSwitcher/LangSwitcher";
 import { FormInput } from "components/FormElements/FormInput/FormInput";
 import {
   StyledLoginForm,
   LoginTitle,
   LoginSubmitBtn,
+  Wrapper,
 } from "./LoginForm.styled";
 
 export const LoginForm = () => {
+  const { t } = useTranslation();
   const [isSubmited, setIsSubmited] = useState(false);
   const dispatch = useDispatch();
 
@@ -38,27 +40,31 @@ export const LoginForm = () => {
 
   return (
     <StyledLoginForm>
-      <LoginTitle>Log In</LoginTitle>
+      <Wrapper>
+        <LoginTitle>{t("Log In")}</LoginTitle>
+        <LangSwitcher />
+      </Wrapper>
+
       <FormInput
-        text="Email"
+        text={t("Email")}
         name="email"
         type="email"
-        placeholder="Enter email"
+        placeholder={t("Enter email")}
         isSubmited={isSubmited}
         formik={formik}
         auth={true}
       />
       <FormInput
-        text="Password"
+        text={t("Password")}
         name="password"
         type="password"
-        placeholder="Enter password"
+        placeholder={t("Enter password")}
         isSubmited={isSubmited}
         formik={formik}
         auth={true}
       />
       <LoginSubmitBtn type="submit" onClick={handleValidation}>
-        Log In <LuLogIn />
+        {t("Log In")} <LuLogIn />
       </LoginSubmitBtn>
     </StyledLoginForm>
   );

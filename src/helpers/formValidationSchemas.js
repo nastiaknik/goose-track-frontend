@@ -51,8 +51,10 @@ export const PasswordSchema = object().shape({
 });
 
 export const FeedbackSchema = object().shape({
-  comment: string().max(300, "Maximum 300 letters").required("Required"),
-  rating: number().required("Required"),
+  comment: string()
+    .max(300, "Maximum 300 letters")
+    .required("Comment is required"),
+  rating: number().required("Rating is required"),
 });
 
 export const UpdateInfoSchema = object().shape({
@@ -66,7 +68,9 @@ export const UpdateInfoSchema = object().shape({
       message: "Invalid email",
       excludeEmptyString: true,
     }),
-  birthday: date().nullable().max(new Date()),
+  birthday: date()
+    .nullable()
+    .max(new Date(), "Birthday field must be at earlier than tomorrow's date"),
   phone: string()
     .matches(
       /^(\+)?[\d\s-]+$/,
@@ -81,12 +85,13 @@ export const UpdateInfoSchema = object().shape({
     .max(16, "Skype should not exceed 16 characters")
     .nullable(),
   photo: mixed()
+    .nullable()
     .test("fileSize", "File too large", (value) => {
       if (!value || typeof value !== "object") {
         return true;
       }
 
-      const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2MB
+      const MAX_FILE_SIZE = 1024 * 1024;
       return value.size <= MAX_FILE_SIZE;
     })
     .test("fileFormat", "Unsupported format", (value) => {

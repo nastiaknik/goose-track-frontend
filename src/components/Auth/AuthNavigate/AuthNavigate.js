@@ -1,7 +1,7 @@
+import { useTranslation } from "react-i18next";
 import PropTypes from "prop-types";
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
-
 import { RegisterForm } from "../RegisterForm/RegisterForm";
 import { LoginForm } from "../LoginForm/LoginForm";
 import { ResendEmailForm } from "../ResendEmailForm/ResendEmailForm";
@@ -14,20 +14,21 @@ import {
   StyledOption,
 } from "./AuthNavigate.styled";
 
-export const AuthNavigate = ({ linkPath, linktext, children }) => {
-  const [userProblems, setUserPrioblems] = useState(null);
+export const AuthNavigate = ({ linkPath, linktext }) => {
+  const { t } = useTranslation();
+  const [userProblems, setUserProblems] = useState(null);
   const location = useLocation();
 
   const handleEmailResend = () => {
-    setUserPrioblems("email");
+    setUserProblems("email");
   };
 
   const handleForgotPassword = () => {
-    setUserPrioblems("password");
+    setUserProblems("password");
   };
 
   const handleGoBack = () => {
-    setUserPrioblems(null);
+    setUserProblems(null);
   };
 
   return (
@@ -41,25 +42,25 @@ export const AuthNavigate = ({ linkPath, linktext, children }) => {
               <LoginForm />
             )}
             <StyledDetails>
-              <summary>Have some problems?</summary>
+              <summary>{t("Have some problems?")}</summary>
               <DetailsList>
                 {location.pathname !== "/register" && (
                   <StyledOption onClick={handleForgotPassword}>
-                    Forgot password
+                    {t("Forgot password")}
                   </StyledOption>
                 )}
                 <StyledOption onClick={handleEmailResend}>
-                  Resend verification email
+                  {t("Resend verification email")}
                 </StyledOption>
               </DetailsList>
             </StyledDetails>
-            <StyledLink to={linkPath}>{linktext}</StyledLink>
+            <StyledLink to={linkPath}>{t(linktext)}</StyledLink>
           </>
         ) : (
           <>
             <ResendEmailForm userProblems={userProblems} />
             <StyledLink onClick={handleGoBack}>
-              Back to {location.pathname.slice(1)}
+              {t(`Back to ${location.pathname.slice(1)}`)}
             </StyledLink>
           </>
         )}

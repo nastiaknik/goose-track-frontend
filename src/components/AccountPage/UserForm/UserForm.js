@@ -34,32 +34,34 @@ export const UserForm = () => {
 
   const [isSubmited, setIsSubmited] = useState(false);
   const [allowSubmit, setAllowSubmit] = useState(false);
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState(user?.imgURL || null);
   const [userData, setUserData] = useState({
     username: user.username ?? "",
     phone: user.phone ?? "",
     birthday: format(new Date(user.birthday || Date.now()), "yyyy-MM-dd"),
     skype: user.skype ?? "",
     email: user.email ?? "",
-    photo: user.imgURL ?? null,
+    photo: null,
   });
 
   const formik = useFormik({
     initialValues: userData,
     validationSchema: UpdateInfoSchema,
-    onSubmit: (values) => {
+    onSubmit: ({ username, phone, birthday, skype, email, photo }) => {
       setIsSubmited(true);
-      dispatch(updateUserInfo(values));
-      setUserData(values);
+      dispatch(
+        updateUserInfo({ username, phone, birthday, skype, email, photo })
+      );
+      setUserData({ username, phone, birthday, skype, email, photo });
       setAllowSubmit(false);
     },
   });
 
   useEffect(() => {
     if (formik.errors.photo) {
-      toast.error(`${formik.errors.photo}`);
+      toast.error(t(formik.errors.photo));
     }
-  }, [formik.errors.photo]);
+  }, [formik.errors.photo, t]);
 
   const handleValidation = (e) => {
     e.preventDefault();

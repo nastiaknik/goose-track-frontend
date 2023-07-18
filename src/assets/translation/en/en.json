@@ -49,7 +49,7 @@
   "Enter email": "Enter email",
   "Enter phone number": "Enter phone number",
   "Enter skype number": "Enter skype number",
-  "Enter birthday": "Enter birthday",
+  "Enter birthday": "Enter your birthdate",
 
   "Title": "Title",
   "Start": "Start",
@@ -93,5 +93,63 @@
 
   "By Day": "By Day",
   "By Month": "By Month",
-  "Tasks": "Tasks"
+  "Tasks": "Tasks",
+
+  "This is a CORRECT username": "This is a CORRECT username",
+  "This is a CORRECT birthday": "This is a CORRECT birthday",
+  "This is a CORRECT email": "This is a CORRECT email",
+  "This is a CORRECT phone": "This is a CORRECT phone",
+  "This is a CORRECT skype": "This is a CORRECT skype",
+
+  "Username is required": "Username is required",
+  "Email is required": "Email is required",
+  "Allow digits, spaces, dashes and can start with +": "Allow digits, spaces, dashes and can start with +",
+  "Start with @ and contain only [a-z], [0-9] and _": "Start with @ and contain only [a-z], [0-9] and _",
+  "Invalid email": "Invalid email",
+  "Username should not exceed 16 characters": "Username should not exceed 16 characters",
+  "Skype should not exceed 16 characters": "Skype should not exceed 16 characters",
+  "File too large": "File too large",
+  "Unsupported format": "Unsupported format",
+  "Birthday field must be at earlier than tomorrow's date": "Birthday field must be at earlier than tomorrow's date",
+
+  "Password is too short": "Password is too short",
+  "Password is required": "Password is required",
+  "Maximum 300 letters": "Maximum 300 letters",
+  "Comment is required": "Comment is required",
+  "Rating is required": "Rating is required",
+  "Title should not exceed 250 characters": "Title should not exceed 250 characters",
+  "Invalid time format": "Invalid time format",
+  "Priority is required": "Priority is required",
+  "Invalid priority": "Invalid priority",
+
+  "Have some problems?": "Have some problems?",
+  "Forgot password": "Forgot password",
+  "Resend verification email": "Resend verification email",
+  "Back to": "Back to",
+  "Log In": "Log In",
+  "Passwords should be the same for both inputs": "Passwords should be the same for both inputs",
+  "Change password": "Change password",
+  "Very weak": "Very weak",
+  "Weak": "Weak",
+  "Strong": "Strong",
+  "Very strong": "Very strong",
+  "Sign Up": "Sign Up",
+  "Enter your name": "Enter your name",
+  "Enter password": "Enter password",
+
+  "Email verification resend": "Email verification resend",
+  "Enter your email": "Enter your email",
+  "Resend email in {{seconds}} sec": "Resend email in {{seconds}} sec",
+  "Resend email": "Resend email",
+  "Resend recovery email in {{seconds}} sec": "Resend recovery email in {{seconds}} sec",
+  "Send recovery email": "Send recovery email",
+
+  "Password": "Password",
+  "Name": "Name",
+  "Back to login": "Back to login",
+  "Back to register": "Back to register",
+
+  "Login success": "Login success",
+  "Registration success": "Registration success",
+  "User data updated": "User data updated"
 }

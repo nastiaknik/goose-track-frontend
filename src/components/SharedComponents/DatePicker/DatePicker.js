@@ -5,19 +5,17 @@ import DatePicker from "react-datepicker";
 export const StyledDatePicker = (props) => {
   return (
     <DatePickerWrapper>
-      <DatePicker
-        customInput={<CustomInput element={props.element} />}
-        {...props}
-      />
+      {props.element === "input" ? (
+        <Input {...props} />
+      ) : (
+        <DatePicker customInput={<CustomInput {...props} />} {...props} />
+      )}
     </DatePickerWrapper>
   );
 };
 
-const CustomInput = forwardRef(({ value, onClick, element }, ref) => {
-  console.log(element);
-  return element === "input" ? (
-    <Input onClick={onClick} ref={ref} value={value} />
-  ) : (
+const CustomInput = forwardRef(({ value, onClick }, ref) => {
+  return (
     <Button onClick={onClick} ref={ref}>
       {value}
     </Button>

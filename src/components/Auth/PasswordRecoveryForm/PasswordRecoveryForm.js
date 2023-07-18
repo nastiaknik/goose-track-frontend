@@ -1,6 +1,6 @@
+import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-
 import { useFormik } from "formik";
 import axios from "axios";
 import { PasswordSchema } from "helpers/formValidationSchemas";
@@ -11,9 +11,11 @@ import {
   StyledRecoveryForm,
   RecoveryTitle,
   RecoverySubmitBtn,
+  Wrapper,
 } from "./PasswordRecoveryForm.styled";
 
 export const PasswordRecoveryForm = () => {
+  const { t } = useTranslation();
   const [isSubmited, setIsSubmited] = useState(false);
   const { verificationId } = useParams();
   const navigate = useNavigate();
@@ -32,10 +34,10 @@ export const PasswordRecoveryForm = () => {
           { id: values.id, password: values.password }
         )
         .then((response) => {
-          toast.success(response.data.message);
+          toast.success(t(response.data.message));
           navigate("/login", { replace: true });
         })
-        .catch((err) => toast.error(err.response.data.message));
+        .catch((err) => toast.error(t(err.response.data.message)));
 
       resetForm();
       setIsSubmited(false);
@@ -46,7 +48,7 @@ export const PasswordRecoveryForm = () => {
     e.preventDefault();
 
     if (formik.values.password !== formik.values.passwordRepeat) {
-      toast.error("Passwords should be the same for both inputs");
+      toast.error(t("Passwords should be the same for both inputs"));
       return;
     }
 
@@ -57,27 +59,29 @@ export const PasswordRecoveryForm = () => {
 
   return (
     <StyledRecoveryForm>
-      <RecoveryTitle>Change password</RecoveryTitle>
+      <Wrapper>
+        <RecoveryTitle>{t("Change password")}</RecoveryTitle>
+      </Wrapper>
       <FormInput
         text="Password"
         name="password"
         type="password"
-        placeholder="Enter password"
+        placeholder={t("Enter password")}
         isSubmited={isSubmited}
         formik={formik}
         auth={true}
       />
       <FormInput
-        text="Repeat password"
+        text={t("Repeat password")}
         name="passwordRepeat"
         type="password"
-        placeholder="Repeat your password"
+        placeholder={t("Repeat your password")}
         isSubmited={isSubmited}
         formik={formik}
         auth={true}
       />
       <RecoverySubmitBtn type="submit" onClick={handleValidation}>
-        Change password
+        {t("Change password")}
       </RecoverySubmitBtn>
     </StyledRecoveryForm>
   );

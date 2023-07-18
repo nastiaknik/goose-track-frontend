@@ -26,3 +26,10 @@ export const StyledLoginForm = styled(StyledForm)`
 export const LoginTitle = styled(Title)``;
 
 export const LoginSubmitBtn = styled(SubmitBtn)``;
+
+export const Wrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+`;

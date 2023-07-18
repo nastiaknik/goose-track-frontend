@@ -9,14 +9,14 @@ export const StyledBtnUp = styled.button`
   position: fixed;
   bottom: 25px;
   right: 25px;
-  color: ${({ theme }) => theme.variableColors.activeArrowColor};
-  background-color: ${({ theme }) => theme.variableColors.primaryBackground};
+  color: var(--active-arrow-color);
+  background-color: var(--secondary-bg-color);
   transition: color var(--animation), background-color var(--animation);
 
   :hover,
   :focus {
-    color: ${({ theme }) => theme.variableColors.backgroundButton};
-    background-color: ${({ theme }) => theme.variableColors.activeArrowColor};
+    color: var(--accent-bg-color);
+    background-color: var(--active-arrow-color);
   }
 
   @media screen and (min-width: 768px) {

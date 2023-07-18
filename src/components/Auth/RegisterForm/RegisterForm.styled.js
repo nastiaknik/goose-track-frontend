@@ -87,3 +87,10 @@ export const SubmitBtn = styled.button`
     font-size: 18px;
   }
 `;
+
+export const Wrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+`;

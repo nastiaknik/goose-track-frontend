@@ -26,3 +26,10 @@ export const StyledRecoveryForm = styled(StyledForm)`
 export const RecoveryTitle = styled(Title)``;
 
 export const RecoverySubmitBtn = styled(SubmitBtn)``;
+
+export const Wrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+`;

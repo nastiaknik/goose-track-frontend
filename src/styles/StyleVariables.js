@@ -32,6 +32,7 @@ export const StyleVariables = createGlobalStyle`
   --description-text-color: rgba(17, 17, 17, 0.9); // main page description
   --review-text-color: rgba(17, 17, 17, 0.7);
   --label-text-color:  rgba(52, 52, 52, 0.8);
+  --active-arrow-color: #dce3e5;
 
   /* calendar */
   --priority-low-bg-color: #72C2F8;

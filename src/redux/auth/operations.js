@@ -1,6 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { toast } from "react-toastify";
+import i18n from "../../assets/translation/i18n";
 
 let store;
 
@@ -76,10 +77,10 @@ export const register = createAsyncThunk(
   async (userdata, { rejectWithValue }) => {
     try {
       const response = await axios.post("api/auth/register", userdata);
-      toast.success("Registration success");
+      toast.success(i18n.t("Registration success"));
       return response.data;
     } catch (e) {
-      toast.error(e.response.data.message);
+      toast.error(i18n.t(e.response.data.message));
       return rejectWithValue(e.message);
     }
   }
@@ -91,10 +92,10 @@ export const login = createAsyncThunk(
     try {
       const response = await axios.post("api/auth/login", userdata);
       token.set(response.data.accessToken);
-      toast.success("Login success");
+      toast.success(i18n.t("Login success"));
       return response.data;
     } catch (e) {
-      toast.error(e.response.data.message);
+      toast.error(i18n.t(e.response.data.message));
       return rejectWithValue(e.message);
     }
   }
@@ -161,7 +162,7 @@ export const logout = createAsyncThunk(
       await $api.post("api/auth/logout");
       token.unset();
     } catch (e) {
-      toast.error(e.response.data.message);
+      toast.error(i18n.t(e.response.data.message));
       return rejectWithValue(e.message);
     }
   }
@@ -171,16 +172,15 @@ export const updateUserInfo = createAsyncThunk(
   "auth/updateUserInfo",
   async (userData, { rejectWithValue }) => {
     try {
-      /* const boundary = crypto.randomBytes(16).toString("hex");*/
       const { data } = await $api.patch("api/auth/user", userData, {
         headers: {
           "Content-Type": `multipart/form-data; boundary=a1f8bdc2e9c7a5eef43d73e79fc8b2a1`,
         },
       });
-      toast.success("User data updated");
+      toast.success(i18n.t("User data updated"));
       return data;
     } catch (e) {
-      toast.error(e.response.data.message);
+      toast.error(i18n.t(e.response.data.message));
       return rejectWithValue(e.message);
     }
   }
