@@ -9,13 +9,10 @@ export const injectStore = (_store) => {
   store = _store;
 };
 
-// axios.defaults.baseURL = "https://goose-track-backend-i4mr.onrender.com";
-
-axios.defaults.baseURL = "http://localhost:3001";
+axios.defaults.baseURL = "https://goose-track-backend-i4mr.onrender.com";
 
 const $api = axios.create({
-  // baseURL: "https://goose-track-backend-i4mr.onrender.com",
-  baseURL: "http://localhost:3001",
+  baseURL: "https://goose-track-backend-i4mr.onrender.com",
 });
 
 const token = {
