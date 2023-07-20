@@ -9,10 +9,13 @@ export const injectStore = (_store) => {
   store = _store;
 };
 
-axios.defaults.baseURL = "https://goose-track-backend-i4mr.onrender.com";
+// axios.defaults.baseURL = "https://goose-track-backend-i4mr.onrender.com";
+
+axios.defaults.baseURL = "http://localhost:3001";
 
 const $api = axios.create({
-  baseURL: "https://goose-track-backend-i4mr.onrender.com",
+  // baseURL: "https://goose-track-backend-i4mr.onrender.com",
+  baseURL: "http://localhost:3001",
 });
 
 const token = {
@@ -31,14 +34,15 @@ $api.interceptors.request.use(
 
       if (token) {
         config.headers["Authorization"] = "Bearer " + token;
-      } else {
-        const cookie = document.cookie
-          .split(";")
-          .find((item) => item.includes("access_token"));
-
-        const cookieToken = cookie.split("=");
-        config.headers["Authorization"] = "Bearer " + cookieToken[1];
       }
+      // else {
+      //   const cookie = document.cookie
+      //     .split(";")
+      //     .find((item) => item.includes("access_token"));
+
+      //   const cookieToken = cookie.split("=");
+      //   config.headers["Authorization"] = "Bearer " + cookieToken[1];
+      // }
     }
 
     return config;
