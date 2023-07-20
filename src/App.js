@@ -2,12 +2,13 @@ import "modern-normalize";
 import { GlobalStyles } from "./styles/GlobalStyles";
 import { StyleVariables } from "./styles/StyleVariables";
 import { Suspense, lazy, useEffect } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useSearchParams } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { ChoosedMonth } from "./components/CalendarPage/ChoosedMonth/ChoosedMonth";
 import { ChoosedDay } from "./components/CalendarPage/ChoosedDay/ChoosedDay";
 import { useDispatch } from "react-redux";
+import { setToken } from "./redux/auth/authSlice";
 import { refresh } from "redux/auth/operations";
 import { GusLoader } from "components/Loader/GusLoader";
 import { RestrictedRoute } from "components/SharedComponents/RestrictedRoute";
@@ -27,11 +28,18 @@ const StatisticsPage = lazy(() =>
 );
 
 function App() {
+  const [searchParams] = useSearchParams();
+  const accessToken = searchParams.get("accessToken") ?? "";
+
   const dispatch = useDispatch();
 
   useEffect(() => {
+    if (accessToken) {
+      dispatch(setToken(accessToken));
+    }
+
     dispatch(refresh());
-  }, [dispatch]);
+  }, [dispatch, accessToken]);
 
   return (
     <>
