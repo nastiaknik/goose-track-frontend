@@ -10,7 +10,7 @@ export const StyledForm = styled.form`
   text-align: left;
 
   @media screen and (min-width: 768px) {
-    padding: 40px;
+    padding: 25px;
   }
 
   > label {
@@ -85,6 +85,85 @@ export const SubmitBtn = styled.button`
     padding: 16px;
 
     font-size: 18px;
+  }
+`;
+
+export const GoogleLink = styled.a`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 11px;
+
+  width: 100%;
+  margin-top: 10px;
+  padding: 14px;
+
+  border-radius: 16px;
+  background: var(--accent-bg-color);
+  box-shadow: 4px 2px 16px 0px rgba(136, 165, 191, 0.48);
+
+  color: var(--light-text-color);
+  font-family: var(--primary-font);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.3;
+  letter-spacing: -0.36px;
+
+  transition: background var(--animation);
+  :hover,
+  :focus {
+    background: var(--hover-btn-bg-color);
+  }
+
+  > svg {
+    width: 18px;
+    height: 18px;
+    stroke-width: 1px;
+
+    @media screen and (min-width: 768px) {
+      width: 22px;
+      height: 22px;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    padding: 16px;
+
+    font-size: 18px;
+  }
+`;
+
+export const Divider = styled.p`
+  margin-top: 10px;
+  padding: 0 16px;
+
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--auth-placeholder-color);
+
+  :before,
+  :after {
+    content: " ";
+    display: inline-block;
+    width: 70px;
+    height: 3px;
+    background-color: var(--auth-placeholder-color);
+    margin-bottom: 5px;
+  }
+
+  :before {
+    margin-right: 10px;
+  }
+
+  :after {
+    margin-left: 10px;
+  }
+
+  @media screen and (min-width: 768px) {
+    :before,
+    :after {
+      width: 155px;
+    }
   }
 `;
 

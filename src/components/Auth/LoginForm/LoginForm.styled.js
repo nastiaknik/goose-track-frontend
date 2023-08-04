@@ -3,6 +3,8 @@ import {
   StyledForm,
   Title,
   SubmitBtn,
+  GoogleLink,
+  Divider,
 } from "../RegisterForm/RegisterForm.styled";
 
 export const StyledLoginForm = styled(StyledForm)`
@@ -26,6 +28,10 @@ export const StyledLoginForm = styled(StyledForm)`
 export const LoginTitle = styled(Title)``;
 
 export const LoginSubmitBtn = styled(SubmitBtn)``;
+
+export const LoginGoogleLink = styled(GoogleLink)``;
+
+export const LoginDivider = styled(Divider)``;
 
 export const Wrapper = styled.div`
   display: flex;
