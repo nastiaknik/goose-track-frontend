@@ -70,7 +70,7 @@ export const LoginForm = () => {
         {t("Log In")} <LuLogIn />
       </LoginSubmitBtn>
       <LoginDivider>or</LoginDivider>
-      <LoginGoogleLink href="http://localhost:3001/api/auth/google">
+      <LoginGoogleLink href="https://goose-track-backend-i4mr.onrender.com/api/auth/google">
         Log In with Google <FcGoogle />
       </LoginGoogleLink>
     </StyledLoginForm>

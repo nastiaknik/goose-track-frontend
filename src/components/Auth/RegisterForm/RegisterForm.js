@@ -82,7 +82,7 @@ export const RegisterForm = () => {
         {t("Sign Up")} <LuLogIn />
       </SubmitBtn>
       <Divider>or</Divider>
-      <GoogleLink href="http://localhost:3001/api/auth/google">
+      <GoogleLink href="https://goose-track-backend-i4mr.onrender.com/api/auth/google">
         Sign Up with Google <FcGoogle />
       </GoogleLink>
     </StyledForm>
