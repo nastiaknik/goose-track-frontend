@@ -7,8 +7,16 @@ import { useDispatch } from "react-redux";
 import { register } from "redux/auth/operations";
 
 import { LuLogIn } from "react-icons/lu";
+import { FcGoogle } from "react-icons/fc";
 import { FormInput } from "components/FormElements/FormInput/FormInput";
-import { StyledForm, Title, SubmitBtn, Wrapper } from "./RegisterForm.styled";
+import {
+  StyledForm,
+  Title,
+  SubmitBtn,
+  Wrapper,
+  GoogleLink,
+  Divider,
+} from "./RegisterForm.styled";
 import LangSwitcher from "components/LangSwitcher/LangSwitcher";
 
 export const RegisterForm = () => {
@@ -73,6 +81,10 @@ export const RegisterForm = () => {
       <SubmitBtn type="submit" onClick={handleValidation}>
         {t("Sign Up")} <LuLogIn />
       </SubmitBtn>
+      <Divider>or</Divider>
+      <GoogleLink href="https://goose-track-backend-i4mr.onrender.com/api/auth/google">
+        Sign Up with Google <FcGoogle />
+      </GoogleLink>
     </StyledForm>
   );
 };
